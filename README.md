@@ -27,6 +27,8 @@ This Braindamage Edition builds upon the [Insane Edition](https://github.com/tfe
 
 - Self-hosted container image registry with Harbor (we're ditching DockerHub)
 - X.509 certificate management with Cert Manager
+- Sealed Secrets
+- External DNS
 
 ### Versions in order of complexity:
 
