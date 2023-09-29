@@ -2,7 +2,7 @@ environment: dev
 
 deployment:
   image:
-    tag: 897
+    tag: 905
   replicas: 1
 
 configmap: 
