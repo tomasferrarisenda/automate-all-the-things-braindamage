@@ -1,0 +1,14 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-hpa
+  # labels:
+  #  app: devops-toolkit
+spec:
+  minReplicas: 2
+  maxReplicas: 6
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-deployment-primary # We specify primary because we are using Flagger
+  targetCPUUtilizationPercentage: 1
