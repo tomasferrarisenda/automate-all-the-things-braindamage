@@ -11,4 +11,5 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-deployment-primary # We specify primary because we are using Flagger
-  targetCPUUtilizationPercentage: 1
+  targetCPUUtilizationPercentage: 80
+  # targetCPUUtilizationPercentage: 1 # Uncomment this and comment the line above to test the Horizontal Pod Autoscaler
