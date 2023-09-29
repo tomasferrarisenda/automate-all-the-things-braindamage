@@ -26,11 +26,11 @@ spec:
           # We specify resources now because we are using Horizontal Pod Autoscalers
           resources:
             requests:
-              memory: "50Mi"
-              cpu: "500m"
+              memory: "5Mi"
+              cpu: "50m"
             limits:
-              memory: "500Mi"
-              cpu: "2000m"
+              memory: "50Mi"
+              cpu: "200m"
           env:
             - name: REDIS_HOST
               value: {{ .Values.redis_host }} 
