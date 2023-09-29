@@ -23,6 +23,14 @@ spec:
           image: {{ .Values.deployment.image.repository }}:{{ .Values.deployment.image.tag }}
           ports:
             - containerPort: {{ .Values.port }}
+          # We specify resources now because we are using Horizontal Pod Autoscalers
+          resources:
+            requests:
+              memory: "50Mi"
+              cpu: "500m"
+            limits:
+              memory: "500Mi"
+              cpu: "2000m"
           env:
             - name: REDIS_HOST
               value: {{ .Values.redis_host }} 
