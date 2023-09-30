@@ -8,4 +8,4 @@ deployment:
   replicas: 1
 
 secret:
-  redis_pass: automate-all-the-things-dev
+  redis_pass: 
