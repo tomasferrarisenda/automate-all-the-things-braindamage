@@ -695,7 +695,7 @@ Manifest not mentioned here don't generate any conflicts so we can ignore them. 
     - 30 Horizontal Pod Autoscaler
 - Post-Sync
 
-## Backend Applications
+## Frontend Applications
 - Pre-Sync
 - Sync
     - 00 Deployment
