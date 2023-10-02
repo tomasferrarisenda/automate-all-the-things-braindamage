@@ -2,6 +2,8 @@ apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-hpa
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
 spec:
   minReplicas: 1
   maxReplicas: 6
