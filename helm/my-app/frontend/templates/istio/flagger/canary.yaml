@@ -2,6 +2,8 @@ apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
   name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-canary
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"
 spec:
   # Deployment reference
   targetRef:

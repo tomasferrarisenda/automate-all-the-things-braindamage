@@ -685,11 +685,20 @@ Happy automating!
     - 60 Frontends
 - Post-Sync
 
-Manifest not mentiioned here don't generate any conflicts so we can ignore them. By default they will get "0" wave priority.
+Manifest not mentioned here don't generate any conflicts so we can ignore them. By default they will get "0" wave priority.
 ## Backend Applications
 - Pre-Sync
 - Sync
     - 00 Sealed-Secret
     - 10 Deployment
     - 20 Canary
+    - 30 Horizontal Pod Autoscaler
+- Post-Sync
+
+## Backend Applications
+- Pre-Sync
+- Sync
+    - 00 Deployment
+    - 10 Canary
+    - 20 Horizontal Pod Autoscaler
 - Post-Sync
