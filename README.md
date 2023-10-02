@@ -675,14 +675,14 @@ Happy automating!
 
 ## App of Apps
 - Pre-Sync
+- Sync
     - 00 Prometheus
     - 10 Istio Base / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS
     - 20 Istiod / Grafana 
     - 30 Istio Gateway / Flagger
     - 40 Kiali / Flagger Load-Tester
-- Sync
-    - 00 Backends
-    - 10 Frontends
+    - 50 Backends
+    - 60 Frontends
 - Post-Sync
 
 Manifest not mentiioned here don't generate any conflicts so we can ignore them. By default they will get "0" wave priority.
