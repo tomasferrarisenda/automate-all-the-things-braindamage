@@ -692,5 +692,4 @@ Manifest not mentiioned here don't generate any conflicts so we can ignore them.
     - 00 Sealed-Secret
     - 10 Deployment
     - 20 Canary
-    - 30 Horizontal Pod Autoscaler
 - Post-Sync
