@@ -13,8 +13,9 @@ expose:
 
   ingress:
 
-    # hosts:
-    #   core: core.harbor.domain
+    hosts:
+      core: ""
+      # core: core.harbor.domain
     
     # set to the type of ingress controller if it has specific requirements.
     # leave as `default` for most ingress controllers.
@@ -25,7 +26,6 @@ expose:
     controller: alb
 
     annotations: {
-      ingress.kubernetes.io/ssl-redirect: "false",
       kubernetes.io/ingress.class: alb,
       alb.ingress.kubernetes.io/scheme: internet-facing,
       alb.ingress.kubernetes.io/target-type: ip,
@@ -35,5 +35,8 @@ expose:
       alb.ingress.kubernetes.io/healthcheck-timeout-seconds: '5',
       alb.ingress.kubernetes.io/success-codes: '200',
       alb.ingress.kubernetes.io/healthy-threshold-count: '2',
-      alb.ingress.kubernetes.io/unhealthy-threshold-count: '2'
+      alb.ingress.kubernetes.io/unhealthy-threshold-count: '2',
+      
+      # Delete the "ssl-redirect" annotations in "expose.ingress.annotations" when TLS is disabled and "expose.type" is "ingress"
+      ingress.kubernetes.io/ssl-redirect: "false"
     } 
