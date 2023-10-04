@@ -677,6 +677,10 @@ Special thanks to all these wonderful YouTube people. This wouldn't have been po
 Happy automating!
 
 
+
+# About ArgoCD Sync Waves
+We have A LOT going on right now, it's getting out of control. Let's get our shit together, together.
+
 ## App of Apps
 - Pre-Sync
 - Sync
