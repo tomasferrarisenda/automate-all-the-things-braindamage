@@ -6,7 +6,7 @@ configs:
     # -- Run server without TLS
     server.insecure: true
 
-  # This Lua custom script enables application the health assessment. This makes sync phases and waver work at the application level
+  # This is to make Sync Waves work in the App of Apps pattern (https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/1.7-1.8/#health-assessment-of-argoprojioapplication-crd-has-been-removed)
   cm:
     resource.customizations.health.argoproj.io_Application: |
       hs = {}
@@ -21,6 +21,7 @@ configs:
         end
       end
       return hs
+      
 
 ## Server
 server:
