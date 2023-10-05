@@ -15,7 +15,6 @@ expose:
 
     hosts:
       core: ""
-      # core: core.harbor.domain
     
     # set to the type of ingress controller if it has specific requirements.
     # leave as `default` for most ingress controllers.
