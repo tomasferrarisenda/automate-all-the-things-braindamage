@@ -25,7 +25,8 @@ expose:
     # set to `ncp` if using the NCP (NSX-T Container Plugin) ingress controller
     # set to `alb` if using the ALB ingress controller
     # set to `f5-bigip` if using the F5 BIG-IP ingress controller
-    controller: alb
+    controller: default
+    # controller: alb
 
     annotations: {
       kubernetes.io/ingress.class: alb,
