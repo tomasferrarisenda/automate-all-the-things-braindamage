@@ -1,5 +1,5 @@
 # Default user is "admin"
-harborAdminPassword: "automate-all-the-things"
+harborAdminPassword: automate-all-the-things
 
 expose:
   # Set how to expose the service. Set the type as "ingress", "clusterIP", "nodePort" or "loadBalancer"
