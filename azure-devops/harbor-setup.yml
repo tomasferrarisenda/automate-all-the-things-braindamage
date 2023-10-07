@@ -74,8 +74,9 @@ steps:
     dockerVersion: '17.09.0-ce'
 
 - script: | 
-    sudo /etc/docker/daemon.json
+    cat /etc/docker/daemon.json
   displayName: 'probando'
+
 # - task: Docker@2
 #   displayName: Build And Push Image
 #   inputs:
