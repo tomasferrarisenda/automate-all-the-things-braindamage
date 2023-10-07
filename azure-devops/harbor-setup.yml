@@ -1,0 +1,80 @@
+name: harbor-setup
+
+trigger: none
+
+variables:
+  - group: aws-keys
+  - name: AWS_REGION
+    value: us-east-2  # This value was modified by the initial-setup python script
+  - name: APP_NAME
+    value: gonchi # This value was modified by the initial-setup python script
+    
+
+pool:
+  vmImage: 'ubuntu-latest' 
+  # If you are using a self-hosted agent, comment out the previous line and uncomment the following three
+  # name: <agent-pool-name> # Insert here the name of the agent pool you created
+  # demands:
+  #   - agent.name -equals <agent-name> # Insert here the name of the agent you created
+
+
+steps:
+# # In this case it's necessary to specify the checkout with the persistCredential options set to true. This will enable us to push the changes to the repo.
+- checkout: self
+  persistCredentials: true
+
+- script: | 
+    mkdir ~/.aws
+    echo -e "[default]\naws_access_key_id = $(aws_access_key_id)\naws_secret_access_key = $(aws_secret_access_key)" > ~/.aws/credentials
+    echo -e "[default]\nregion = $(AWS_REGION)"> ~/.aws/config 
+  displayName: 'Configure AWS Profile'
+
+- task: AWSCLI@1
+  displayName: 'Update KubeConfig'
+  inputs:
+    awsCredentials: 'aws'
+    regionName: '$(AWS_REGION)' 
+    awsCommand: 'eks'
+    awsSubCommand: 'update-kubeconfig'
+    awsArguments: '--name $(APP_NAME)-cluster --region $(AWS_REGION)' 
+
+- script: |
+    while [[ $(kubectl get -n registry ingress harbor-ingress -o 'jsonpath={.status.loadBalancer.ingress[0].hostname}') == '' ]]; do
+      echo "Harbor Ingress is not ready. Checking again in 5 seconds..."
+      sleep 5
+    done
+    kubectl get ingress -n registry harbor-ingress -o=jsonpath="{'http://'}{.status.loadBalancer.ingress[].hostname}{'\n'}" > harbor-url.txt
+  displayName: 'Get Harbor Endpoint'
+
+- script: |
+    sed -i "s/externalURL:.*/externalURL: $(cat harbor-url.txt | tr -d '\n') # This value was modified by the harbor pipeline/g" helm/infra/harbor/values-custom.yaml    
+  displayName: 'Modify values'
+  condition: always()
+
+- script: |
+    git pull origin main
+    git config --global user.email "AzureDevOps@HarborPipeline.com"
+    git config --global user.name "Azure DevOps - Harbor Pipeline"
+    git checkout -b main
+    git add helm/infra/harbor/values-custom.yaml
+    git commit -m "Harbor endpoint URL updated by Azure DevOps"
+    git push --set-upstream origin main
+  displayName: 'Push changes to GitHub'
+
+
+- script: | 
+    brew install nerdctl
+  displayName: 'Install nerdctl'
+
+
+- script: | 
+    nerdctl login --username admin --password automate-all-the-things k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80 --insecure-registry
+  displayName: 'Login to registry'
+
+- script: | 
+    docker image build --tag k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80/my-app/frontend:1 my-app/backend
+  displayName: 'Build image'
+
+- script: | 
+    nerdctl image push k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80/my-app/frontend:1 --insecure-registry
+  displayName: 'Push image'
