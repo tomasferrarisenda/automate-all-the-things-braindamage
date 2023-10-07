@@ -77,6 +77,14 @@ steps:
     cat /etc/docker/daemon.json
   displayName: 'probando'
 
+- script: | 
+    echo '{ "exec-opts": ["native.cgroupdriver=cgroupfs"], "cgroup-parent": "/actions_job", "insecure-registries" : ["k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80"] }' > /etc/docker/daemon.json
+  displayName: 'probando2'
+
+- script: | 
+    cat /etc/docker/daemon.json
+  displayName: 'probando3'
+
 # - task: Docker@2
 #   displayName: Build And Push Image
 #   inputs:
