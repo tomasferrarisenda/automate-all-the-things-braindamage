@@ -68,22 +68,18 @@ steps:
     git push --set-upstream origin main
   displayName: 'Push changes to GitHub'
 
-- task: DockerInstaller@0
-  displayName: Install Docker
-  inputs:
-    dockerVersion: '17.09.0-ce'
+# - task: DockerInstaller@0
+#   displayName: Install Docker
+#   inputs:
+#     dockerVersion: '17.09.0-ce'
 
-- script: | 
-    cat /etc/docker/daemon.json
-  displayName: 'probando'
+# - script: | 
+#     cat /etc/docker/daemon.json
+#   displayName: 'probando'
 
-- script: | 
-    sudo echo '{ "exec-opts": ["native.cgroupdriver=cgroupfs"], "cgroup-parent": "/actions_job", "insecure-registries" : ["k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80"] }' > /etc/docker/daemon.json
-  displayName: 'probando2'
-
-- script: | 
-    cat /etc/docker/daemon.json
-  displayName: 'probando3'
+# - script: | 
+#     sudo echo '{ "exec-opts": ["native.cgroupdriver=cgroupfs"], "cgroup-parent": "/actions_job", "insecure-registries" : ["k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80"] }' > /etc/docker/daemon.json
+#   displayName: 'probando2'
 
 # - task: Docker@2
 #   displayName: Build And Push Image
@@ -93,22 +89,47 @@ steps:
 #     command: 'buildAndPush'
 #     Dockerfile: 'my-app/backend/Dockerfile'
 
+
 - script: | 
-    docker login --username admin --password automate-all-the-things k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80
+    curl -X 'POST' -u admin:automate-all-the-things\
+      'http://k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com/api/v2.0/projects' \
+      -H 'accept: application/json' \
+      -H 'X-Resource-Name-In-Location: false' \
+      -H 'Content-Type: application/json' \
+      -H 'X-Harbor-CSRF-Token: uquRVLoVanrIUQLxZcL3wVsD8IQ7/miuHJwKWhsONgHewkZTbjfOUpiakuQE5mCdrOG375AsUwYEz35j186fBA==' \
+      -d '{
+      "project_name": "hola3",
+      "public": true,
+      "metadata": {
+        "public": "false",
+        "enable_content_trust": "false",
+        "enable_content_trust_cosign": "true",
+        "prevent_vul": "true",
+        "severity": "low",
+        "auto_scan": "true"
+      }
+    }'
+  displayName: 'Create project'
+
+- script: | 
+    apt-get -y install podman
+  displayName: 'install podman'
+
+- script: | 
+    podman login --username admin --password automate-all-the-things k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80 --tls-verify=false
   displayName: 'Login to registry'
 
 - script: | 
-    docker image build --tag k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80/my-app/backend:1 my-app/backend
+    podman image build --tag k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80/my-app/backend:1 my-app/backend
   displayName: 'Build image'
 
 - script: | 
-    nerdctl image push k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80/my-app/frontend:1 --insecure-registry
+    podman image push k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80/my-app/backend:1 --tls-verify=false
   displayName: 'Push image'
 
-- script: | 
-    brew install nerdctl
-  displayName: 'Install nerdctl'
-
-- script: | 
-    nerdctl login --username admin --password automate-all-the-things k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80 --insecure-registry
-  displayName: 'Login to registry'
+# - script: | 
+#     docker login --username admin --password automate-all-the-things k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80
+#   displayName: 'Login to registry'
+# - script: | 
+#     docker image build --tag k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80/my-app/backend:1 my-app/backend
+#   displayName: 'Build image'
