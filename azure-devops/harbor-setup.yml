@@ -23,9 +23,6 @@ steps:
 - checkout: self
   persistCredentials: true
 
-- script: | 
-    /etc/docker/daemon.json
-  displayName: 'probando'
 
 - script: | 
     mkdir ~/.aws
@@ -76,6 +73,9 @@ steps:
   inputs:
     dockerVersion: '17.09.0-ce'
 
+- script: | 
+    /etc/docker/daemon.json
+  displayName: 'probando'
 # - task: Docker@2
 #   displayName: Build And Push Image
 #   inputs:
