@@ -24,6 +24,16 @@ steps:
   persistCredentials: true
 
 - script: | 
+    /etc/docker/daemon.json
+  displayName: 'probando'
+
+- script: | 
+    mkdir ~/.aws
+    echo -e "[default]\naws_access_key_id = $(aws_access_key_id)\naws_secret_access_key = $(aws_secret_access_key)" > ~/.aws/credentials
+    echo -e "[default]\nregion = $(AWS_REGION)"> ~/.aws/config 
+  displayName: 'Configure AWS Profile'
+
+- script: | 
     mkdir ~/.aws
     echo -e "[default]\naws_access_key_id = $(aws_access_key_id)\naws_secret_access_key = $(aws_secret_access_key)" > ~/.aws/credentials
     echo -e "[default]\nregion = $(AWS_REGION)"> ~/.aws/config 
@@ -47,7 +57,7 @@ steps:
   displayName: 'Get Harbor Endpoint'
 
 - script: |
-    sed -i "s/externalURL:.*/externalURL: $(cat harbor-url.txt | tr -d '\n') # This value was modified by the harbor pipeline/g" helm/infra/harbor/values-custom.yaml    
+    sed -i "s|externalURL:.*|externalURL: $(cat harbor-url.txt | tr -d '\n') # This value was modified by the harbor pipeline|g" helm/infra/harbor/values-custom.yaml    
   displayName: 'Modify values'
   condition: always()
 
@@ -61,18 +71,29 @@ steps:
     git push --set-upstream origin main
   displayName: 'Push changes to GitHub'
 
+- task: DockerInstaller@0
+  displayName: Install Docker
+  inputs:
+    dockerVersion: '17.09.0-ce'
+
+# - task: Docker@2
+#   displayName: Build And Push Image
+#   inputs:
+#     containerRegistry: 'dockerhub'
+#     repository: 'k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80/my-app/backend:1'
+#     command: 'buildAndPush'
+#     Dockerfile: 'my-app/backend/Dockerfile'
 
 - script: | 
     brew install nerdctl
   displayName: 'Install nerdctl'
-
 
 - script: | 
     nerdctl login --username admin --password automate-all-the-things k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80 --insecure-registry
   displayName: 'Login to registry'
 
 - script: | 
-    docker image build --tag k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80/my-app/frontend:1 my-app/backend
+    docker image build --tag k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80/my-app/backend:1 my-app/backend
   displayName: 'Build image'
 
 - script: | 
