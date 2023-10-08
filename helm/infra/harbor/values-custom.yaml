@@ -44,4 +44,4 @@ expose:
     } 
 
 # This fixes an issue where login to portal didn't work (https://github.com/goharbor/harbor-helm/issues/565#issuecomment-783240880)
-externalURL: http://AATT_HARBOR_REGISTRY # This value was modified by the harbor-setup pipeline
+externalURL: http://k8s-registry-harborin-3fc40329a9-1560970000.us-east-2.elb.amazonaws.com # This value was modified by the harbor-setup pipeline

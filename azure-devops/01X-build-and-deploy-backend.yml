@@ -19,7 +19,7 @@ variables:
   - name: USER_EMAIL
     value: tomas.ferrari@sendati.com # This value was modified by the initial-setup python script
   - name: HARBOR_REGISTRY
-    value: http://AATT_HARBOR_REGISTRY # This value was modified by the harbor-setup pipeline # This value was modified by the harbor-setup pipeline # This value was modified by the harbor-setup pipeline
+    value: http://k8s-registry-harborin-3fc40329a9-1560970000.us-east-2.elb.amazonaws.com # This value was modified by the harbor-setup pipeline # This value was modified by the harbor-setup pipeline # This value was modified by the harbor-setup pipeline
     
 pool:
   vmImage: 'ubuntu-latest' 
