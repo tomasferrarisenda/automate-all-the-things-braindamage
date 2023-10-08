@@ -73,7 +73,11 @@ steps:
     git config --global user.email "AzureDevOps@HarborPipeline.com"
     git config --global user.name "Azure DevOps - Harbor Pipeline"
     git checkout -b main
-    git add helm/infra/harbor/values-custom.yaml azure-devops/01X-build-and-deploy-backend.yml azure-devops/01X-build-and-deploy-frontend.yml
+    git add helm/infra/harbor/values-custom.yaml
+    git add helm/my-app/backend/values.yaml
+    git add helm/my-app/frontend/values.yaml
+    git add azure-devops/01X-build-and-deploy-backend.yml
+    git add azure-devops/01X-build-and-deploy-frontend.yml
     git commit -m "Harbor endpoint URL updated by Azure DevOps"
     git push --set-upstream origin main
   displayName: 'Push changes to GitHub'
