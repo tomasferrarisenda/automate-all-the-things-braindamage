@@ -9,4 +9,5 @@ deployment:
     istio: monitor # This label is used by the PodMonitor
   }
   image:
-    repository:  # This value was modified by the harbor-setup pipeline:80/gonchi/gonchi-backend # This value was modified by the initial-setup python script
+    # repository: tferrari92/gonchi-backend # This value was modified by the initial-setup python script
+    repository:  AATT_HARBOR_REGISTRY:80/gonchi/gonchi-backend # This value was modified by the initial-setup python script
