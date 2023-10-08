@@ -97,7 +97,7 @@ steps:
 
 - script: | 
     curl -X 'POST' -u admin:automate-all-the-things \
-      '$(cat harbor-url.txt | tr -d "\n")/api/v2.0/projects' \
+      "$(cat harbor-url.txt | tr -d '\n')/api/v2.0/projects" \
       -H 'accept: application/json' \
       -H 'X-Resource-Name-In-Location: false' \
       -H 'Content-Type: application/json' \
