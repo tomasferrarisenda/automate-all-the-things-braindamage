@@ -52,14 +52,15 @@ steps:
 
 - script: |
     sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-url.txt | tr -d '\n') # This value was modified by the harbor-setup pipeline|g" azure-devops/01X-build-and-deploy-backend.yml    
-  displayName: 'Modify values'
+    sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-url.txt | tr -d '\n') # This value was modified by the harbor-setup pipeline|g" azure-devops/01X-build-and-deploy-frontend.yml    
+  displayName: 'Modify build & deploy pipelines'
 
 - script: |
     git pull origin main
     git config --global user.email "AzureDevOps@HarborPipeline.com"
     git config --global user.name "Azure DevOps - Harbor Pipeline"
     git checkout -b main
-    git add helm/infra/harbor/values-custom.yaml azure-devops/01X-build-and-deploy-backend.yml
+    git add helm/infra/harbor/values-custom.yaml azure-devops/01X-build-and-deploy-backend.yml azure-devops/01X-build-and-deploy-frontend.yml
     git commit -m "Harbor endpoint URL updated by Azure DevOps"
     git push --set-upstream origin main
   displayName: 'Push changes to GitHub'
@@ -87,6 +88,7 @@ steps:
 
 
 - script: | 
+    cat harbor-url.txt | tr -d '\n'
     curl -X 'POST' -u admin:automate-all-the-things\
       '$(cat harbor-url.txt | tr -d '\n')/api/v2.0/projects' \
       -H 'accept: application/json' \
