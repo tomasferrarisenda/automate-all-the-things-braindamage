@@ -2,6 +2,14 @@ name: harbor-setup
 
 trigger: none
 
+# parameters:
+#   - name: HARBOR_USER
+#     displayName: 'Introduce the user for Harbor'
+#     type: string
+#   - name: HARBOR_PASSWORD
+#     displayName: 'Introduce the password for Harbor'
+#     type: string
+
 variables:
   - group: aws-keys
   - name: AWS_REGION
@@ -88,9 +96,8 @@ steps:
 
 
 - script: | 
-    cat harbor-url.txt | tr -d '\n'
-    curl -X 'POST' -u admin:automate-all-the-things\
-      '$(cat harbor-url.txt | tr -d '\n')/api/v2.0/projects' \
+    curl -X 'POST' -u admin:automate-all-the-things \
+      '$(cat harbor-url.txt | tr -d "\n")/api/v2.0/projects' \
       -H 'accept: application/json' \
       -H 'X-Resource-Name-In-Location: false' \
       -H 'Content-Type: application/json' \
@@ -105,7 +112,7 @@ steps:
         "auto_scan": "true"
       }
     }'
-  displayName: 'Create project'
+  displayName: 'Create Harbor project for $(APP_NAME)'
 
 # # We use podman because it allows us to push to instecure (http) registries with the flag "--tls-verify=false"
 # - script: | 
