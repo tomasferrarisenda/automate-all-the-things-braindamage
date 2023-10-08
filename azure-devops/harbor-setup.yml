@@ -60,8 +60,8 @@ steps:
   displayName: 'Modify harbor helm chart values'
 
 - script: |
-    sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-endpont.txt)|g" helm/my-app/backend/values.yaml    
-    sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-endpont.txt)|g" helm/my-app/frontend/values.yaml    
+    sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-endpoint.txt)|g" helm/my-app/backend/values.yaml    
+    sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-endpoint.txt)|g" helm/my-app/frontend/values.yaml    
   displayName: 'Modify $(APP_NAME) helm charts values'
 
 - script: |
