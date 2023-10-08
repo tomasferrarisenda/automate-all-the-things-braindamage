@@ -52,6 +52,7 @@ steps:
       sleep 5
     done
     kubectl get ingress -n registry harbor-ingress -o=jsonpath="{.status.loadBalancer.ingress[].hostname}{'\n'}" > harbor-endpoint.txt
+    cat harbor-endpoint.txt
   displayName: 'Get Harbor Endpoint'
 
 - script: |
