@@ -23,13 +23,6 @@ steps:
 - checkout: self
   persistCredentials: true
 
-
-- script: | 
-    mkdir ~/.aws
-    echo -e "[default]\naws_access_key_id = $(aws_access_key_id)\naws_secret_access_key = $(aws_secret_access_key)" > ~/.aws/credentials
-    echo -e "[default]\nregion = $(AWS_REGION)"> ~/.aws/config 
-  displayName: 'Configure AWS Profile'
-
 - script: | 
     mkdir ~/.aws
     echo -e "[default]\naws_access_key_id = $(aws_access_key_id)\naws_secret_access_key = $(aws_secret_access_key)" > ~/.aws/credentials
@@ -54,16 +47,19 @@ steps:
   displayName: 'Get Harbor Endpoint'
 
 - script: |
-    sed -i "s|externalURL:.*|externalURL: $(cat harbor-url.txt | tr -d '\n') # This value was modified by the harbor pipeline|g" helm/infra/harbor/values-custom.yaml    
+    sed -i "s|externalURL:.*|externalURL: $(cat harbor-url.txt | tr -d '\n') # This value was modified by the harbor-setup pipeline|g" helm/infra/harbor/values-custom.yaml    
   displayName: 'Modify values'
-  condition: always()
+
+- script: |
+    sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-url.txt | tr -d '\n') # This value was modified by the harbor-setup pipeline|g" azure-devops/01X-build-and-deploy-backend.yml    
+  displayName: 'Modify values'
 
 - script: |
     git pull origin main
     git config --global user.email "AzureDevOps@HarborPipeline.com"
     git config --global user.name "Azure DevOps - Harbor Pipeline"
     git checkout -b main
-    git add helm/infra/harbor/values-custom.yaml
+    git add helm/infra/harbor/values-custom.yaml azure-devops/01X-build-and-deploy-backend.yml
     git commit -m "Harbor endpoint URL updated by Azure DevOps"
     git push --set-upstream origin main
   displayName: 'Push changes to GitHub'
@@ -92,12 +88,12 @@ steps:
 
 - script: | 
     curl -X 'POST' -u admin:automate-all-the-things\
-      'http://k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com/api/v2.0/projects' \
+      '$(cat harbor-url.txt | tr -d '\n')/api/v2.0/projects' \
       -H 'accept: application/json' \
       -H 'X-Resource-Name-In-Location: false' \
       -H 'Content-Type: application/json' \
       -d '{
-      "project_name": "hola6",
+      "project_name": "$(APP_NAME)",
       "metadata": {
         "public": "false",
         "enable_content_trust": "false",
@@ -109,22 +105,22 @@ steps:
     }'
   displayName: 'Create project'
 
-# We use podman because it allows us to push to instecure (http) registries with the flag "--tls-verify=false"
-- script: | 
-    apt-get -y install podman
-  displayName: 'Install podman'
+# # We use podman because it allows us to push to instecure (http) registries with the flag "--tls-verify=false"
+# - script: | 
+#     apt-get -y install podman
+#   displayName: 'Install podman'
 
-- script: | 
-    podman login --username admin --password automate-all-the-things k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80 --tls-verify=false
-  displayName: 'Login to registry'
+# - script: | 
+#     podman login --username admin --password automate-all-the-things k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80 --tls-verify=false
+#   displayName: 'Login to registry'
 
-- script: | 
-    podman image build --tag k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80/my-app/backend:1 my-app/backend
-  displayName: 'Build image'
+# - script: | 
+#     podman image build --tag k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80/my-app/backend:1 my-app/backend
+#   displayName: 'Build image'
 
-- script: | 
-    podman image push k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80/my-app/backend:1 --tls-verify=false
-  displayName: 'Push image'
+# - script: | 
+#     podman image push k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80/my-app/backend:1 --tls-verify=false
+#   displayName: 'Push image'
 
 # - script: | 
 #     docker login --username admin --password automate-all-the-things k8s-registry-harborin-3fc40329a9-502641590.us-east-2.elb.amazonaws.com:80
