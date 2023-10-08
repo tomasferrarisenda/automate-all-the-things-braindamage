@@ -47,9 +47,9 @@ stages:
     #     command: 'buildAndPush'
     #     Dockerfile: 'my-app/backend/Dockerfile'
 
-    # We use podman because it allows us to push to instecure (http) registries with the flag "--tls-verify=false"
+    # We use podman because it allows us to push to insecure (http) registries with the flag "--tls-verify=false"
     - script: | 
-        apt-get -y install podman
+        sudo apt-get -y install podman
       displayName: 'Install podman'
 
     - script: | 
