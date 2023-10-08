@@ -4,7 +4,7 @@ redis_host: master.gonchi-stage-elascache-rep-group.u0khnz.use2.cache.amazonaws.
 
 deployment:
   image:
-    tag: 1002
+    tag: 1005
   replicas: 1
 
 secret:
