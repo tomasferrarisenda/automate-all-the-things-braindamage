@@ -51,16 +51,21 @@ steps:
       echo "Harbor Ingress is not ready. Checking again in 5 seconds..."
       sleep 5
     done
-    kubectl get ingress -n registry harbor-ingress -o=jsonpath="{'http://'}{.status.loadBalancer.ingress[].hostname}{'\n'}" > harbor-url.txt
+    kubectl get ingress -n registry harbor-ingress -o=jsonpath="{.status.loadBalancer.ingress[].hostname}{'\n'}" > harbor-endpoint.txt
   displayName: 'Get Harbor Endpoint'
 
 - script: |
-    sed -i "s|externalURL:.*|externalURL: $(cat harbor-url.txt | tr -d '\n') # This value was modified by the harbor-setup pipeline|g" helm/infra/harbor/values-custom.yaml    
-  displayName: 'Modify values'
+    sed -i "s|externalURL:.*|externalURL: http://$(cat harbor-endpoint.txt) # This value was modified by the harbor-setup pipeline|g" helm/infra/harbor/values-custom.yaml    
+  displayName: 'Modify harbor helm chart values'
 
 - script: |
-    sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-url.txt | tr -d '\n') # This value was modified by the harbor-setup pipeline|g" azure-devops/01X-build-and-deploy-backend.yml    
-    sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-url.txt | tr -d '\n') # This value was modified by the harbor-setup pipeline|g" azure-devops/01X-build-and-deploy-frontend.yml    
+    sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-endpont.txt) # This value was modified by the harbor-setup pipeline|g" helm/my-app/backend/values.yaml    
+    sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-endpont.txt) # This value was modified by the harbor-setup pipeline|g" helm/my-app/frontend/values.yaml    
+  displayName: 'Modify $(APP_NAME) helm charts values'
+
+- script: |
+    sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-endpoint.txt) # This value was modified by the harbor-setup pipeline|g" azure-devops/01X-build-and-deploy-backend.yml    
+    sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-endpoint.txt) # This value was modified by the harbor-setup pipeline|g" azure-devops/01X-build-and-deploy-frontend.yml    
   displayName: 'Modify build & deploy pipelines'
 
 - script: |
@@ -97,7 +102,7 @@ steps:
 
 - script: | 
     curl -X 'POST' -u admin:automate-all-the-things \
-      "$(cat harbor-url.txt | tr -d '\n')/api/v2.0/projects" \
+      "http://$(cat harbor-endpoint.txt | tr -d '\n')/api/v2.0/projects" \
       -H 'accept: application/json' \
       -H 'X-Resource-Name-In-Location: false' \
       -H 'Content-Type: application/json' \

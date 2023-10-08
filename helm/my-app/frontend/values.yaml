@@ -11,7 +11,9 @@ deployment:
     istio: monitor
   }
   image:
-    repository: tferrari92/gonchi-frontend # This value was modified by the initial-setup python script
+    # repository: tferrari92/gonchi-frontend # This value was modified by the initial-setup python script
+    repository: AATT_HARBOR_REGISTRY:80/gonchi/gonchi-frontend # This value was modified by the initial-setup python script
+
 
 configmap:
   images: |-
