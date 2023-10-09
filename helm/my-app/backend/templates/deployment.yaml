@@ -41,4 +41,6 @@ spec:
                 secretKeyRef:
                   name: redis-secret
                   key: REDIS_PASS
+      imagePullSecrets:
+      - name: harbor-credentials
 
