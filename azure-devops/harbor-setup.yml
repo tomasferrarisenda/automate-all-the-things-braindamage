@@ -68,8 +68,8 @@ steps:
     # sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-endpoint.txt)|g" helm/my-app/frontend/values.yaml    
 
 - script: |
-    sed -i "s|value:.* # This value was modified by the harbor-setup pipeline|value: $(cat harbor-endpoint.txt) # This value was modified by the harbor-setup pipeline|g" azure-devops/01X-build-and-deploy-backend.yml  
-    sed -i "s|value:.* # This value was modified by the harbor-setup pipeline|value: $(cat harbor-endpoint.txt) # This value was modified by the harbor-setup pipeline|g" azure-devops/01X-build-and-deploy-frontend.yml  
+    sed -i "s|value:.* # This value was modified by the harbor-setup pipeline|value: $(cat harbor-endpoint.txt) # This value was modified by the harbor-setup pipeline|g" azure-devops/01-build-and-deploy-backend.yml  
+    sed -i "s|value:.* # This value was modified by the harbor-setup pipeline|value: $(cat harbor-endpoint.txt) # This value was modified by the harbor-setup pipeline|g" azure-devops/02-build-and-deploy-frontend.yml  
   displayName: 'Modify build & deploy pipelines'
     # sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-endpoint.txt)|g" azure-devops/01X-build-and-deploy-backend.yml    
     # sed -i "s|AATT_HARBOR_REGISTRY|$(cat harbor-endpoint.txt)|g" azure-devops/01X-build-and-deploy-frontend.yml    
