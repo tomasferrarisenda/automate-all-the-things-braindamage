@@ -117,7 +117,7 @@ steps:
 #       -d '{
 #       "project_name": "$(APP_NAME)",
 #       "metadata": {
-#         "public": "false",d
+#         "public": "false",
 #         "enable_content_trust": "false",
 #         "enable_content_trust_cosign": "true",
 #         "prevent_vul": "true",
@@ -138,7 +138,7 @@ steps:
       "project_name": "$(APP_NAME)",
       "metadata": {
         "public": "true",
-        "enable_content_trust": "true",
+        "enable_content_trust": "false",
         "enable_content_trust_cosign": "false",
         "prevent_vul": "false",
         "auto_scan": "false"
