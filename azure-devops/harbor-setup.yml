@@ -109,6 +109,25 @@ steps:
 #     command: 'buildAndPush'
 #     Dockerfile: 'my-app/backend/Dockerfile'
 
+# - script: | 
+#     curl -X 'POST' -u admin:automate-all-the-things \
+#       "http://$(cat harbor-endpoint.txt | tr -d '\n')/api/v2.0/projects" \
+#       -H 'accept: application/json' \
+#       -H 'X-Resource-Name-In-Location: false' \
+#       -H 'Content-Type: application/json' \
+#       -d '{
+#       "project_name": "$(APP_NAME)",
+#       "metadata": {
+#         "public": "false",d
+#         "enable_content_trust": "false",
+#         "enable_content_trust_cosign": "true",
+#         "prevent_vul": "true",
+#         "severity": "low",
+#         "auto_scan": "true"
+#       }
+#     }'
+#   displayName: 'Create Harbor project for $(APP_NAME)'
+
 
 - script: | 
     curl -X 'POST' -u admin:automate-all-the-things \
@@ -119,12 +138,11 @@ steps:
       -d '{
       "project_name": "$(APP_NAME)",
       "metadata": {
-        "public": "false",
-        "enable_content_trust": "false",
-        "enable_content_trust_cosign": "true",
-        "prevent_vul": "true",
-        "severity": "low",
-        "auto_scan": "true"
+        "public": "true",
+        "enable_content_trust": "true",
+        "enable_content_trust_cosign": "false",
+        "prevent_vul": "false",
+        "auto_scan": "false"
       }
     }'
   displayName: 'Create Harbor project for $(APP_NAME)'

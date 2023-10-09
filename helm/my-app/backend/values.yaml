@@ -10,4 +10,5 @@ deployment:
   }
   image:
     # repository: k8s-registry-harborin-3fc40329a9-2086369037.us-east-2.elb.amazonaws.com:80/gonchi/gonchi-backend # This value was modified by the harbor-setup pipeline
-    repository: k8s-registry-harborin-3fc40329a9-2086369037.us-east-2.elb.amazonaws.com:80/gonchi/gonchi-backend # This value was modified by the harbor-setup pipeline
+    repository: harbor-core.registry:80/gonchi/gonchi-backend # This value was modified by the harbor-setup pipeline
+    # repository: k8s-registry-harborin-3fc40329a9-2086369037.us-east-2.elb.amazonaws.com:80/gonchi/gonchi-backend # This value was modified by the harbor-setup pipeline
