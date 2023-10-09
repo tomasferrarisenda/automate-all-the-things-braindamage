@@ -43,4 +43,4 @@ expose:
       ingress.kubernetes.io/ssl-redirect: "false"
     } 
 
-externalURL: http://k8s-registry-harborin-3fc40329a9-1560970000.us-east-2.elb.amazonaws.com # This value was modified by the harbor-setup pipeline
+externalURL: http://k8s-registry-harborin-3fc40329a9-2086369037.us-east-2.elb.amazonaws.com # This value was modified by the harbor-setup pipeline
