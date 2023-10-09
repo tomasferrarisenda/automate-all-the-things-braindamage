@@ -1,0 +1,11 @@
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: oktaynginx3
+# spec:
+#   containers:
+#   - name: oktaynginx3
+#     image: k8s-registry-harborin-3fc40329a9-2086369037.us-east-2.elb.amazonaws.com:80/gonchi/gonchi-backend@sha256:41c0bbaaecb6822db256d3e0378584adf677128bf02e0d0eaba4c96d1542fff6
+#     imagePullPolicy: Always
+#   imagePullSecrets:
+#   - name: harbor-credentials
