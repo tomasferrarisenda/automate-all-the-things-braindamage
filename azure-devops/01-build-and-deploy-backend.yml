@@ -57,11 +57,11 @@ stages:
       displayName: 'Login to registry'
 
     - script: | 
-        podman image build --tag $(HARBOR_REGISTRY):80/$(APP_NAME)/$(APP_NAME)-backend:$(Build.BuildId) my-app/backend
+        podman image build --tag $(HARBOR_REGISTRY)/$(APP_NAME)/$(APP_NAME)-backend:$(Build.BuildId) my-app/backend
       displayName: 'Build image'
 
     - script: | 
-        podman image push $(HARBOR_REGISTRY):80/$(APP_NAME)/$(APP_NAME)-backend:$(Build.BuildId) --tls-verify=false
+        podman image push $(HARBOR_REGISTRY)/$(APP_NAME)/$(APP_NAME)-backend:$(Build.BuildId) --tls-verify=false
       displayName: 'Push image'
         
 
