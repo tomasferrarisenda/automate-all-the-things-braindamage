@@ -41,6 +41,7 @@ spec:
                 secretKeyRef:
                   name: redis-secret
                   key: REDIS_PASS
+      # TRANSENDANCE
       # imagePullSecrets:
       # - name: harbor-credentials
 

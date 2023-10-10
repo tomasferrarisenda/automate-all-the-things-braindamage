@@ -685,7 +685,9 @@ We have A LOT going on right now, it's getting out of control. Let's get our shi
 - Pre-Sync
 - Sync
     - -50 Prometheus
-    - -40 Istio Base / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS
+    - -40 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS
+    <!-- TRANSENDANCE -->
+    <!-- - -40 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS -->
     - -30 Istiod / Grafana 
     - -20 Istio Gateway / Flagger
     - -10 Kiali / Flagger Load-Tester
