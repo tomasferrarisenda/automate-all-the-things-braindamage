@@ -33,8 +33,8 @@ async function getAndIncrementVisitorCount() {
 app.get("/", async (req, res) => {
 
   setTimeout(() => {
-    console.log("Waited for 2 seconds");
     // You can add your code to execute after the 2-second delay here
+    console.log("Waited for 2 seconds");
   }, 2000); // 2000 milliseconds = 2 seconds
 
   try {
