@@ -9,11 +9,11 @@ metadata:
     argocd.argoproj.io/sync-wave: "-40"
 spec:
   destination:
-    namespace: tracing
+    namespace: observability
     server: https://kubernetes.default.svc  
   project: tracing
   source:
-    path: helm/infra/tracing/jaeger
+    path: helm/infra/observability/jaeger
     helm:
       valueFiles:
         - values-custom.yaml
