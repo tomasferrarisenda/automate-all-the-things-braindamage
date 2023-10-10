@@ -16,5 +16,5 @@ COPY . .
 # Expose the server port
 EXPOSE 3000
 
-# Start the server with instrumentation
-CMD [ "node", "--require", "./instrumentation.js", "app.js" ]
+# Start the server
+CMD [ "node", "app.js" ]
