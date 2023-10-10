@@ -1,18 +1,18 @@
-# collector:
-#   ingress:
-#     enabled: true
-#     # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
-#     # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
-#     # ingressClassName: nginx
-#     annotations: {    
-#       kubernetes.io/ingress.class: alb,
-#       alb.ingress.kubernetes.io/scheme: internet-facing,
-#       alb.ingress.kubernetes.io/target-type: ip,
-#       alb.ingress.kubernetes.io/healthcheck-protocol: HTTP,
-#       alb.ingress.kubernetes.io/healthcheck-port: traffic-port,
-#       alb.ingress.kubernetes.io/healthcheck-interval-seconds: '15',
-#       alb.ingress.kubernetes.io/healthcheck-timeout-seconds: '5',
-#       alb.ingress.kubernetes.io/success-codes: '200',
-#       alb.ingress.kubernetes.io/healthy-threshold-count: '2',
-#       alb.ingress.kubernetes.io/unhealthy-threshold-count: '2'
-#     }
+query:
+  ingress:
+    enabled: true
+    # For Kubernetes >= 1.18 you should specify the ingress-controller via the field ingressClassName
+    # See https://kubernetes.io/blog/2020/04/02/improvements-to-the-ingress-api-in-kubernetes-1.18/#specifying-the-class-of-an-ingress
+    # ingressClassName: nginx
+    annotations: {    
+      kubernetes.io/ingress.class: alb,
+      alb.ingress.kubernetes.io/scheme: internet-facing,
+      alb.ingress.kubernetes.io/target-type: ip,
+      alb.ingress.kubernetes.io/healthcheck-protocol: HTTP,
+      alb.ingress.kubernetes.io/healthcheck-port: traffic-port,
+      alb.ingress.kubernetes.io/healthcheck-interval-seconds: '15',
+      alb.ingress.kubernetes.io/healthcheck-timeout-seconds: '5',
+      alb.ingress.kubernetes.io/success-codes: '200',
+      alb.ingress.kubernetes.io/healthy-threshold-count: '2',
+      alb.ingress.kubernetes.io/unhealthy-threshold-count: '2'
+    }
