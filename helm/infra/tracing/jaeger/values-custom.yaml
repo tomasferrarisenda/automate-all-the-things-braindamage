@@ -25,4 +25,3 @@ cassandra:
     # To enable persistence, please see the documentation for the Cassandra chart
     enabled: true
     storageClass: "gp2"
-    # storageClassName: gp2
