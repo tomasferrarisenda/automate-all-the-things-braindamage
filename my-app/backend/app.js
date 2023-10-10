@@ -31,8 +31,11 @@ const app = express();
 
 // API endpoint to retrieve visitor count
 app.get("/", async (req, res) => {
-  console.log(`Server is running on port ${port}`);
-
+  
+  setTimeout(() => {
+    console.log("Waited for 2 seconds");
+    // You can add your code to execute after the 2-second delay here
+  }, 2000); // 2000 milliseconds = 2 seconds
 
   // try {
   //   const visitorCount = await getAndIncrementVisitorCount();
