@@ -4,45 +4,45 @@ const Redis = require("ioredis");
 const app = express();
 
 // Create a Redis client
-// const redisClient = new Redis({
-//   host: process.env.REDIS_HOST, // Replace with the name of the Redis service
-//   port: 6379, // Replace with the Redis port if it's different
-//   password: process.env.REDIS_PASS, // Replace with your Redis password
-//   // When using Istio, TLS is already provided by the envoys. We remove it so it doesn't cause any conflicts.
-//   // tls: {}, // Password protected AWS ElastiCache clusters require TLS encryption. 
-// });
+const redisClient = new Redis({
+  host: process.env.REDIS_HOST, // Replace with the name of the Redis service
+  port: 6379, // Replace with the Redis port if it's different
+  password: process.env.REDIS_PASS, // Replace with your Redis password
+  // When using Istio, TLS is already provided by the envoys. We remove it so it doesn't cause any conflicts.
+  // tls: {}, // Password protected AWS ElastiCache clusters require TLS encryption. 
+});
 
-// // Custom middleware to log incoming requests
-// app.use((req, res, next) => {
-//   console.log(`Received ${req.method} request at: ${req.url}`);
-//   next();
-// });
+// Custom middleware to log incoming requests
+app.use((req, res, next) => {
+  console.log(`Received ${req.method} request at: ${req.url}`);
+  next();
+});
 
-// // Retrieve the visitor count from Redis
-// async function getAndIncrementVisitorCount() {
-//   try {
-//     const count = await redisClient.incr("visitor_count");
-//     return count;
-//   } catch (error) {
-//     console.error("Error retrieving visitor count:", error);
-//     throw error;
-//   }
-// }
+// Retrieve the visitor count from Redis
+async function getAndIncrementVisitorCount() {
+  try {
+    const count = await redisClient.incr("visitor_count");
+    return count;
+  } catch (error) {
+    console.error("Error retrieving visitor count:", error);
+    throw error;
+  }
+}
 
 // API endpoint to retrieve visitor count
 app.get("/", async (req, res) => {
-  
+
   setTimeout(() => {
     console.log("Waited for 2 seconds");
     // You can add your code to execute after the 2-second delay here
   }, 2000); // 2000 milliseconds = 2 seconds
 
-  // try {
-  //   const visitorCount = await getAndIncrementVisitorCount();
-  //   res.json({ count: visitorCount });
-  // } catch (error) {
-  //   res.status(500).json({ error: "Failed to retrieve visitor count" });
-  // }
+  try {
+    const visitorCount = await getAndIncrementVisitorCount();
+    res.json({ count: visitorCount });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to retrieve visitor count" });
+  }
 });
 
 // Start the server
