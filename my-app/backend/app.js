@@ -1,4 +1,4 @@
-const service = process.env.REDIS_HOST
+const service = process.env.SERVICE
 const { init } = require('./tracer')
 const api = require('@opentelemetry/api')
 init(service, 'development') // calling tracer with service name and environment to view in jaegerui
