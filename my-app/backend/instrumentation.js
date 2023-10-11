@@ -24,7 +24,7 @@ const sdk = new opentelemetry.NodeSDK({
   metricReader: new PeriodicExportingMetricReader({
     exporter: new OTLPMetricExporter({
       // url: '<your-otlp-endpoint>/v1/metrics', // url is optional and can be omitted - default is http://localhost:4318/v1/metrics
-      url: "http://jaeger-collector.observability:14268/api/metrics",
+      // url: "http://jaeger-collector.observability:14268/api/metrics",
       // headers: {}, // an optional object containing custom headers to be sent with each request
       // concurrencyLimit: 1, // an optional limit on pending requests
     }),
