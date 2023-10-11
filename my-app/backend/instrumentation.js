@@ -17,10 +17,10 @@ const sdk = new opentelemetry.NodeSDK({
     // optional - default url is http://localhost:4318/v1/traces
     // url: '<your-otlp-endpoint>/v1/traces',
     // url: process.env.JAEGER_ENDPOINT,
+    url: 'http://jaeger-collector.observability:14268/api/traces'
     // url: 'http://jaeger-collector.observability:14268/api/traces',
-    // url: 'http://jaeger-collector.observability:14268/api/traces'
     // url: 'http://jaeger-collector.observability:14268/v1/traces'
-    url: 'http://jaeger-collector.observability:4318/v1/traces'
+    // url: 'http://jaeger-collector.observability:4318/v1/traces'
     // optional - collection of custom headers to be sent with each request, empty by default
     // headers: {},
   }),
