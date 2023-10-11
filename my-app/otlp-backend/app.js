@@ -1,7 +1,3 @@
-const { init } = require('./tracer')
-const api = require('@opentelemetry/api')
-init('demo-node-service', 'development') // calling tracer with service name and environment to view in jaegerui
-
 const express = require("express");
 const Redis = require("ioredis");
 
@@ -35,6 +31,12 @@ async function getAndIncrementVisitorCount() {
 
 // API endpoint to retrieve visitor count
 app.get("/", async (req, res) => {
+
+  setTimeout(() => {
+    // You can add your code to execute after the 2-second delay here
+    console.log("Waited for 2 seconds");
+  }, 2000); // 2000 milliseconds = 2 seconds
+
   try {
     const visitorCount = await getAndIncrementVisitorCount();
     res.json({ count: visitorCount });
