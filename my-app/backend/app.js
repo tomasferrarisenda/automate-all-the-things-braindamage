@@ -35,8 +35,10 @@ async function getAndIncrementVisitorCount() {
 
 // API endpoint to retrieve visitor count
 app.get("/", async (req, res) => {
+  
+  randomWait();
+  
   try {
-    randomWait();
     const visitorCount = await getAndIncrementVisitorCount();
     res.json({ count: visitorCount });
   } catch (error) {
