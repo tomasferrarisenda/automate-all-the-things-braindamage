@@ -36,9 +36,6 @@ async function getAndIncrementVisitorCount() {
 
 // API endpoint to retrieve visitor count
 app.get("/", async (req, res) => {
-  
-  // randomWait();
-
   try {
     const visitorCount = await getAndIncrementVisitorCount();
     res.json({ count: visitorCount });
@@ -52,24 +49,5 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
-
-
-// function randomWait() {
-//   // Generate a random number between 0 and 1
-//   const randomValue = Math.random();
-
-//   if (randomValue < 0.5) {
-//     // If the random value is less than 0.5, wait for 2 seconds
-//     setTimeout(() => {
-//       console.log('Waited for 2 seconds.');
-//       callback();
-//     }, 2000);
-//   } else {
-//     // If the random value is greater than or equal to 0.5, don't wait
-//     console.log('No wait.');
-//     callback();
-//   }
-// }
 
 
