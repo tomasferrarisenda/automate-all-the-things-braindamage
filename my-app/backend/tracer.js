@@ -18,7 +18,7 @@ const { JaegerExporter } = require('@opentelemetry/exporter-jaeger')
 const { NodeTracerProvider } = require('@opentelemetry/sdk-trace-node')
 const { OTTracePropagator } = require('@opentelemetry/propagator-ot-trace')
 
-const hostName = process.env.JAEGER_ENDPOINT || 'localhost'
+const hostName = process.env.JAEGER_HOST || 'localhost'
 
 const options = {
   tags: [],
