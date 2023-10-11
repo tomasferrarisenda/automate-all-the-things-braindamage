@@ -41,10 +41,6 @@ sdk.start();
 const { NodeSDK } = require('@opentelemetry/sdk-node');
 const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
 const {
-  getNodeAutoInstrumentations,
-} = require('@opentelemetry/auto-instrumentations-node');
-const {
-  PeriodicExportingMetricReader,
   ConsoleMetricExporter,
 } = require('@opentelemetry/sdk-metrics');
 
