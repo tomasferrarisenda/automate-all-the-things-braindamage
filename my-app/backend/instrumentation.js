@@ -17,10 +17,10 @@ const sdk = new opentelemetry.NodeSDK({
     // optional - default url is http://localhost:4318/v1/traces
     // url: '<your-otlp-endpoint>/v1/traces',
     // url: process.env.JAEGER_ENDPOINT,
-    url: 'http://jaeger-collector.observability:14268/api/traces'
+    // url: 'http://jaeger-collector.observability:14268/api/traces'
     // url: 'http://jaeger-collector.observability:14268/api/traces',
     // url: 'http://jaeger-collector.observability:14268/v1/traces'
-    // url: 'http://jaeger-collector.observability:4318/v1/traces'
+    url: 'http://jaeger-collector.observability:4318/v1/traces',
     // optional - collection of custom headers to be sent with each request, empty by default
     // headers: {},
   }),
@@ -37,19 +37,19 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start();
 
 
-//////
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
-const {
-  ConsoleMetricExporter,
-} = require('@opentelemetry/sdk-metrics');
+// //////
+// const { NodeSDK } = require('@opentelemetry/sdk-node');
+// const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
+// const {
+//   ConsoleMetricExporter,
+// } = require('@opentelemetry/sdk-metrics');
 
-const consoleSdk = new NodeSDK({
-  traceExporter: new ConsoleSpanExporter(),
-  metricReader: new PeriodicExportingMetricReader({
-    exporter: new ConsoleMetricExporter(),
-  }),
-  instrumentations: [getNodeAutoInstrumentations()],
-});
+// const consoleSdk = new NodeSDK({
+//   traceExporter: new ConsoleSpanExporter(),
+//   metricReader: new PeriodicExportingMetricReader({
+//     exporter: new ConsoleMetricExporter(),
+//   }),
+//   instrumentations: [getNodeAutoInstrumentations()],
+// });
 
-consoleSdk.start();
+// consoleSdk.start();
