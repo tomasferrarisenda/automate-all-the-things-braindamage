@@ -25,7 +25,7 @@ This Braindamage Edition builds upon the [Insane Edition](https://github.com/tfe
 
 ### New features:
 
-- ArgoCD Sync Phases and Waves
+- ArgoCD Sync Waves
 - Sealed Secrets
 - Backend code instrumented with OpenTelemetry
 - Traces collection and visualization Jaeger
