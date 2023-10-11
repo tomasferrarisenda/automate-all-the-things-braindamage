@@ -686,34 +686,33 @@ Happy automating!
 # About ArgoCD Sync Waves
 We have A LOT going on right now, it's getting out of control. Let's get our shit together, together.
 
+## ArgoCD Self-Manage Applications
+- -1020 argocd-appprojects (ArgoCD Projects)
+- -1010 argocd (ArgoCD itself)
+- -1000 argocd-apps (App of Apps)
+
 ## App of Apps
-- Pre-Sync
-- Sync
-    - -50 Prometheus
-    - -40 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS
-    <!-- TRANSENDANCE -->
-    <!-- - -40 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS -->
-    - -30 Istiod / Grafana 
-    - -20 Istio Gateway / Flagger
-    - -10 Kiali / Flagger Load-Tester
-    - 00 Backends
-    - 10 Frontends
-- Post-Sync
+- -50 Prometheus
+- -40 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS
+<!-- TRANSENDANCE -->
+<!-- - -40 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS -->
+- -30 Istiod / Grafana 
+- -20 Istio Gateway / Flagger
+- -10 Kiali / Flagger Load-Tester
+<!-- - 00 Backends
+- 10 Frontends -->
+- 00 Databases
+- 10 Backends
+- 20 Frontends
 
 Manifest not mentioned here don't generate any conflicts so we can ignore them. By default they will get "0" wave priority.
 ## Backend Applications
-- Pre-Sync
-- Sync
-    - -10 Sealed-Secret
-    - 00 Deployment
-    - 10 Canary
-    - 20 Horizontal Pod Autoscaler
-- Post-Sync
+- -10 Sealed-Secret
+- 00 Deployment
+- 10 Canary
+- 20 Horizontal Pod Autoscaler
 
 ## Frontend Applications
-- Pre-Sync
-- Sync
-    - 00 Deployment
-    - 10 Canary
-    - 20 Horizontal Pod Autoscaler
-- Post-Sync
+- 00 Deployment
+- 10 Canary
+- 20 Horizontal Pod Autoscaler
