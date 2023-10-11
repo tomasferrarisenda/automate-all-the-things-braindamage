@@ -10,10 +10,12 @@ const {
 } = require('@opentelemetry/exporter-metrics-otlp-proto');
 const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
 
+
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
     // optional - default url is http://localhost:4318/v1/traces
     // url: '<your-otlp-endpoint>/v1/traces',
+    url: process.env.JAEGER_ENDPOINT,
     // optional - collection of custom headers to be sent with each request, empty by default
     // headers: {},
   }),
