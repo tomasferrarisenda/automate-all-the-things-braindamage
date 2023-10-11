@@ -41,6 +41,8 @@ spec:
                 secretKeyRef:
                   name: redis-secret
                   key: REDIS_PASS
+            - name: JAEGER_ENDPOINT
+              value: http://jaeger-collector.obsevability:14268/api/traces
       # TRANSENDANCE
       # imagePullSecrets:
       # - name: harbor-credentials
