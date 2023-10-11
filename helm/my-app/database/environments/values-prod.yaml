@@ -1,0 +1,6 @@
+global:
+  redis:
+    password: "automate-all-the-things-prod"
+
+replica:
+  replicaCount: 1

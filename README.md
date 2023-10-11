@@ -699,8 +699,6 @@ We have A LOT going on right now, it's getting out of control. Let's get our shi
 - -30 Istiod / Grafana 
 - -20 Istio Gateway / Flagger
 - -10 Kiali / Flagger Load-Tester
-<!-- - 00 Backends
-- 10 Frontends -->
 - 00 Databases
 - 10 Backends
 - 20 Frontends
