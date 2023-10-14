@@ -1,4 +1,4 @@
-{{- if ne .Values.environment "dev" }} # Do not deploy in dev environment
+# {{- if ne .Values.environment "dev" }} # Do not deploy in dev environment
 apiVersion: flagger.app/v1beta1
 kind: Canary
 metadata:
@@ -83,4 +83,4 @@ spec:
     #     metadata:
     #       type: bash
     #       cmd: "curl http://orders-canary:3003/v1/orders | grep deliveryType"
-{{- end }}
+# {{- end }}
