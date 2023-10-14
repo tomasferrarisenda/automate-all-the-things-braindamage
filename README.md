@@ -687,10 +687,10 @@ Happy automating!
 # About ArgoCD Sync Waves
 We have A LOT going on right now, it's getting out of control. Let's get our shit together, together.
 
-<!-- ## ArgoCD Self-Manage Applications
+## ArgoCD Self-Manage Applications
 - -1020 argocd-appprojects (ArgoCD Projects)
 - -1010 argocd (ArgoCD itself)
-- -1000 argocd-apps (App of Apps) -->
+- -1000 argocd-apps (App of Apps)
 
 ## App of Apps
 - -50 Prometheus
