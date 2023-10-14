@@ -20,6 +20,12 @@ query:
     pathType: Prefix
 
 
+collector:
+  service:
+    zipkin: 
+      port: 9411
+
+
 cassandra:
   persistence:
     # To enable persistence, please see the documentation for the Cassandra chart
