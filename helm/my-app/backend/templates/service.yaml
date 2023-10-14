@@ -1,0 +1,14 @@
+{{- if eq .Values.environment "dev" }} # Deploy only in dev environment
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.appName }}-{{ .Values.environment }}-service
+spec:
+  selector:
+    app: {{ .Values.appName }}-{{ .Values.environment }}
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: ClusterIP
+{{- if eq .Values.environment "dev" }}
