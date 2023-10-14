@@ -1,13 +1,18 @@
 global:
   istioNamespace: service-mesh
+  tracer:
+    zipkin:
+      # Host:Port for reporting trace data in zipkin format. If not specified, will default to
+      # zipkin service (port 9411) in the same namespace as the other istio components.
+      address: "jaeger-collector.observability:9411"
 
 meshConfig:
   ingressService: istio-gateway
   ingressSelector: gateway
-  defaultConfig:
-    tracing:
-      zipkin:
-        address: jaeger-collector.observability:9411 
+  # defaultConfig:
+  #   tracing:
+  #     zipkin:
+  #       address: jaeger-collector.observability:9411 
   
   outboundTrafficPolicy:
     mode: ALLOW_ANY # Default is ALLOW_ANY. With REGISTRY_ONLY Istio proxy blocks any host without an HTTP service or service entry defined within the mesh.
