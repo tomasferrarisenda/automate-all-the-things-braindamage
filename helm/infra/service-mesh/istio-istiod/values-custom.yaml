@@ -1,10 +1,10 @@
 global:
   istioNamespace: service-mesh
-  tracer:
-    zipkin:
-      # Host:Port for reporting trace data in zipkin format. If not specified, will default to
-      # zipkin service (port 9411) in the same namespace as the other istio components.
-      address: "jaeger-collector.observability:9411"
+  # tracer:
+  #   zipkin:
+  #     # Host:Port for reporting trace data in zipkin format. If not specified, will default to
+  #     # zipkin service (port 9411) in the same namespace as the other istio components.
+  #     address: "jaeger-collector.observability:9411"
 
 meshConfig:
   ingressService: istio-gateway
