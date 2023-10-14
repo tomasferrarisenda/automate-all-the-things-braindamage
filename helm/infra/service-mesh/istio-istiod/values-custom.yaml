@@ -9,10 +9,10 @@ global:
 meshConfig:
   ingressService: istio-gateway
   ingressSelector: gateway
-  # defaultConfig:
-  #   tracing:
-  #     zipkin:
-  #       address: jaeger-collector.observability:9411 
+  defaultConfig:
+    tracing:
+      zipkin:
+        address: jaeger-collector.observability:9411 
   
   outboundTrafficPolicy:
     mode: ALLOW_ANY # Default is ALLOW_ANY. With REGISTRY_ONLY Istio proxy blocks any host without an HTTP service or service entry defined within the mesh.
