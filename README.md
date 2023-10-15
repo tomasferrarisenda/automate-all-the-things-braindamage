@@ -25,6 +25,7 @@ This Braindamage Edition builds upon the [Insane Edition](https://github.com/tfe
 
 ### New features:
 
+- Removed the use of Canary deployments in Dev environment
 - ArgoCD Sync Waves
 - Horizontal Pod Autoscaler
 - Sealed Secrets
