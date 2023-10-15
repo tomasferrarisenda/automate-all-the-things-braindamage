@@ -148,9 +148,9 @@ Our app is a very simple static website, but I'm not spoiling it for you. You'll
 - Kubernetes Secrets Encryption -> Bitnami Sealed Secrets
 - Code Instrumentation -> OpenTelemetry
 - Tracing -> Jaeger
-- Container Image Registry -> Harbor
-- X.509 Certificate Management -> Cert Manager
-- External DNS Automatic Configuration -> External DNS
+- TRANSCENDANCE Container Image Registry -> Harbor
+- TRANSCENDANCE X.509 Certificate Management -> Cert Manager
+- TRANSCENDANCE External DNS Automatic Configuration -> External DNS
 <br/>
 
 <p title="Logos Banner" align="center"> <img  src="https://i.imgur.com/NPx9iJS.png"> </p>
