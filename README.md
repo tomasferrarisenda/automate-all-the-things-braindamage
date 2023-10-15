@@ -702,18 +702,18 @@ We have A LOT going on right now, it's getting out of control. Let's get our shi
 - -30 Istiod / Grafana 
 - -20 Istio Gateway / Flagger
 - -10 Kiali / Flagger Load-Tester
-- 00 Databases
-- 10 Backends
-- 20 Frontends
+<!-- TRANSENDANCE - 00 Databases -->
+- 00 Backends
+- 10 Frontends
 
 Manifest not mentioned here don't generate any conflicts so we can ignore them. By default they will get "0" wave priority.
 ## Backend Applications
 - -10 Sealed-Secret
 - 00 Deployment
 - 10 Canary
-- 20 Horizontal Pod Autoscaler
+<!-- TRANSCENDANCE - 20 Horizontal Pod Autoscaler -->
 
 ## Frontend Applications
 - 00 Deployment
 - 10 Canary
-- 20 Horizontal Pod Autoscaler
+<!-- TRANSCENDANCE - 20 Horizontal Pod Autoscaler -->
