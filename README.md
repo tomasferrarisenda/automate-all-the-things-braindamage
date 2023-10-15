@@ -25,12 +25,12 @@ This Braindamage Edition builds upon the [Insane Edition](https://github.com/tfe
 
 ### New features:
 
-- Removed the use of Canary deployments in Dev environment
 - ArgoCD Sync Waves
 - Horizontal Pod Autoscaler
 - Sealed Secrets
 - Backend code instrumented with OpenTelemetry
 - Traces collection and visualization Jaeger
+- Removed the use of Canary deployments in Dev environment
 - TRANSCENDANCE Move the Databases inside Kubernetes
 - TRANSCENDANCE X.509 certificate management with Cert Manager
 - TRANSCENDANCE External DNS
