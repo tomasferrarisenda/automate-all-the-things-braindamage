@@ -8,7 +8,8 @@ spec:
     - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-gateway
   hosts:
     - {{ .Values.host }}
-    - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-service
+    # - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-service
+    - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-service.{{ .Values.appName }}-{{ .Values.environment }}.svc.cluster.local
   http:
     - match:
         - uri:
@@ -17,5 +18,6 @@ spec:
         uri: /
       route:
         - destination:
-            host: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-service
+            # host: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-service
+            host: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-service.{{ .Values.appName }}-{{ .Values.environment }}.svc.cluster.local
 {{- end }}
