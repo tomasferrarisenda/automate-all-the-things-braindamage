@@ -12,11 +12,10 @@ spec:
   http:
     - match:
         - uri:
-            prefix: /dev/
+            prefix: /{{ .Values.environment }}/
       rewrite:
         uri: /
       route:
         - destination:
             host: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-service
-          # weight: 100
 {{- end }}
