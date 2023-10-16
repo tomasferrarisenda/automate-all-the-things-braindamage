@@ -36,13 +36,13 @@ cassandra:
     cluster_size: 1
   livenessProbe:
     initialDelaySeconds: 180
-    # periodSeconds: 30
+    periodSeconds: 60
     # timeoutSeconds: 5
     # successThreshold: 1
     # failureThreshold: 3
   readinessProbe:
     initialDelaySeconds: 180
-    # periodSeconds: 30
+    periodSeconds: 60
     # timeoutSeconds: 5
     # successThreshold: 1
     # failureThreshold: 3
