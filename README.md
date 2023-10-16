@@ -153,7 +153,7 @@ Our app is a very simple static website, but I'm not spoiling it for you. You'll
 - TRANSCENDANCE External DNS Automatic Configuration -> External DNS
 <br/>
 
-<p title="Logos Banner" align="center"> <img  src="https://i.imgur.com/NPx9iJS.png"> </p>
+<p title="Logos Banner" align="center"> <img  src="https://i.imgur.com/PLLfOmY.png"> </p>
 
 <br/>
 
