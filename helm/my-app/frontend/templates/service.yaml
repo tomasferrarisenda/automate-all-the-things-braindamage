@@ -1,14 +1,14 @@
-# {{- if eq .Values.environment "dev" }} # Deploy only in dev environment
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-deployment # We name it deployment because the services created in the onther environments bt Flagger are called like this
-# spec:
-#   selector:
-#     app: {{ .Values.appName }}-{{ .Values.environment }}
-#   ports:
-#     - protocol: TCP
-#       port: 3000
-#       targetPort: 3000
-#   type: ClusterIP
-# {{- end }}
+{{- if eq .Values.environment "dev" }} # Deploy only in dev environment
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-deployment # We name it deployment because the services created in the onther environments bt Flagger are called like this
+spec:
+  selector:
+    app: {{ .Values.appName }}-{{ .Values.environment }}-{{ .Values.environment }}
+  ports:
+    - protocol: TCP
+      port: {{ .Values.port }}
+      targetPort: {{ .Values.port }}
+  type: ClusterIP
+{{- end }}
