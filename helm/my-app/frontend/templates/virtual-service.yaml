@@ -1,0 +1,23 @@
+{{- if eq .Values.environment "dev" }} # Deploy only in dev environment
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: gonchi-frontend-dev-deployment
+  namespace: gonchi-dev
+spec:
+  gateways:
+    - gonchi-frontend-dev-gateway
+  hosts:
+    - a0affdbe14747400992c06aaa814c0d7-528836119.us-east-2.elb.amazonaws.com
+    - gonchi-frontend-dev-deployment
+  http:
+    - match:
+        - uri:
+            prefix: /dev/
+      rewrite:
+        uri: /
+      route:
+        - destination:
+            host: gonchi-frontend-dev-deployment
+          # weight: 100
+{{- end }}
