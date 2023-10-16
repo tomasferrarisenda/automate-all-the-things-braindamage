@@ -37,13 +37,13 @@ cassandra:
   livenessProbe:
     initialDelaySeconds: 180
     periodSeconds: 60
-    # timeoutSeconds: 5
+    timeoutSeconds: 10
     # successThreshold: 1
     # failureThreshold: 3
   readinessProbe:
     initialDelaySeconds: 180
     periodSeconds: 60
-    # timeoutSeconds: 5
+    timeoutSeconds: 10
     # successThreshold: 1
     # failureThreshold: 3
     # address: "${POD_IP}"
