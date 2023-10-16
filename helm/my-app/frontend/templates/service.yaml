@@ -5,7 +5,7 @@ metadata:
   name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-deployment # We name it deployment because the services created in the onther environments bt Flagger are called like this
 spec:
   selector:
-    app: {{ .Values.appName }}-{{ .Values.environment }}-{{ .Values.environment }}
+    app: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}
   ports:
     - protocol: TCP
       port: {{ .Values.port }}
