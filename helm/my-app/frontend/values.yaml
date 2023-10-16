@@ -2,7 +2,7 @@ appName: gonchi # This value was modified by the initial-setup python script
 
 service: frontend
 
-host: acb8b2465ba1445aebae19fdd6460b67-530300887.us-east-2.elb.amazonaws.com # This value was modified by the deploy-argocd pipeline
+host: a0affdbe14747400992c06aaa814c0d7-528836119.us-east-2.elb.amazonaws.com # This value was modified by the deploy-argocd pipeline
 
 port: 80
 
