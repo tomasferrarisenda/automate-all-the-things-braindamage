@@ -12,6 +12,4 @@ spec:
     - route:
         - destination:
             host: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-service
-            port:
-              number: {{ .Values.port }}
 {{- end }}
