@@ -19,7 +19,7 @@ query:
       - ""
     pathType: Prefix
 
-
+# Allow recieving traces from Istio
 collector:
   service:
     zipkin: 
