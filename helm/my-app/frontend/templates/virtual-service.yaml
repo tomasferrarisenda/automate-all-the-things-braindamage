@@ -2,7 +2,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: gonchi-frontend-dev-deployment
+  name: gonchi-frontend-dev-virtual-service
   namespace: gonchi-dev
 spec:
   gateways:
@@ -18,6 +18,6 @@ spec:
         uri: /
       route:
         - destination:
-            host: gonchi-frontend-dev-deployment
+            host: gonchi-frontend-dev-service
           # weight: 100
 {{- end }}
