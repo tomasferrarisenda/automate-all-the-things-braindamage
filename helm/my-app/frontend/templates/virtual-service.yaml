@@ -7,7 +7,7 @@ spec:
   gateways:
     - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-gateway
   hosts:
-    - a0affdbe14747400992c06aaa814c0d7-528836119.us-east-2.elb.amazonaws.com
+    - {{ .Values.host }}
     - {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-deployment
   http:
     - match:
