@@ -7,7 +7,7 @@ global:
       address: "jaeger-collector.observability:9411"
 
 pilot:
-  traceSampling: 100 # What percentage of requests get reported to your tracing system (100%)
+  traceSampling: 100 # What percentage of requests get reported to your tracing system (See: https://istio.io/latest/docs/tasks/observability/distributed-tracing/mesh-and-proxy-config/#customizing-trace-sampling)
 
 meshConfig:
   ingressService: istio-gateway
