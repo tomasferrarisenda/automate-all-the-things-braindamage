@@ -11,6 +11,5 @@ spec:
   http:
     - route:
         - destination:
-            # host: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-service
             host: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-service.{{ .Values.appName }}-{{ .Values.environment }}.svc.cluster.local
 {{- end }}
