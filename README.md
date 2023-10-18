@@ -65,24 +65,22 @@ This Braindamage Edition builds upon the [Insane Edition](https://github.com/tfe
 - [AWS Infrastructure Deployment Pipeline](#aws-infrastructure-deployment-pipeline)
   - [Description](#description)
   - [Instructions](#instructions)
-- [Backend Service Build & Deploy Pipeline](#backend-service-build--deploy-pipeline)
-  - [Description](#description-1)
-  - [Instructions](#instructions-1)
-- [Frontend Service Build & Deploy Pipeline](#frontend-service-build--deploy-pipeline)
+- [ArgoCD Sync Waves](#argocd-sync-waves)
+- [ArgoCD Deployment Pipeline](#argocd-deployment-pipeline)
   - [Description](#description-2)
   - [Instructions](#instructions-2)
-- [ArgoCD Deployment Pipeline](#argocd-deployment-pipeline)
+- [Backend Service Build & Deploy Pipeline](#backend-service-build--deploy-pipeline)
   - [Description](#description-3)
   - [Instructions](#instructions-3)
-- [Kubernetes Tools Management](#kubernetes-tools-management)
+- [Frontend Service Build & Deploy Pipeline](#frontend-service-build--deploy-pipeline)
   - [Description](#description-4)
   - [Instructions](#instructions-4)
-- [A Little About Istio](#a-little-about-istio)
-  - [And what the hell is Flagger?](#and-what-the-hell-is-flagger)
-  - [Other details](#other-details)
-- [Destroy All The Things Pipeline](#destroy-all-the-things-pipeline)
+- [Kubernetes Tools Management](#kubernetes-tools-management)
   - [Description](#description-5)
   - [Instructions](#instructions-5)
+- [Destroy All The Things Pipeline](#destroy-all-the-things-pipeline)
+  - [Description](#description-6)
+  - [Instructions](#instructions-6)
 - [Conclusion](#conclusion)
 
 <br/>
@@ -399,6 +397,92 @@ pool:
 <br/>
 <br/>
 
+# ABOUT ARGOCD SYNC WAVES
+
+We have A LOT going on right now, it's kinda getting out of control. Let's get our shit together, together.
+
+This will let us return to the original order of pipelines, ArgoCD will know in what order to deploy the resources, regardless of the order in which we create them.
+
+
+Manifest not mentioned here don't generate any conflicts so we can ignore them. By default they will get "0" wave priority.
+
+before runnin destrol all the things make sure all applications are helathy, the implementation of sync waves will impeder the proper deletion is they are not healthy
+
+
+## ArgoCD Self-Manage Applications
+- -1020 argocd-appprojects (ArgoCD Projects)
+- -1010 argocd (ArgoCD itself)
+- -1000 argocd-apps (App of Apps)
+
+## App of Apps
+- -50 Prometheus
+- -40 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS
+<!-- TRANSENDANCE -->
+<!-- - -40 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS -->
+- -30 Istiod / Grafana 
+- -20 Istio Gateway / Flagger
+- -10 Kiali / Flagger Load-Tester
+<!-- TRANSENDANCE - 00 Databases -->
+- 00 Backends
+- 10 Frontends
+
+## Backend Applications
+Canary should be deployed only after sealed secret is ok. because if not, it will consider the sealed secret like a new version, try to deploy it and fail
+
+- -10 Sealed-Secret
+- 00 Deployment
+- 10 Canary
+<!-- TRANSCENDANCE - 20 Horizontal Pod Autoscaler -->
+
+## Frontend Applications
+- 00 Deployment
+- 10 Canary
+<!-- TRANSCENDANCE - 20 Horizontal Pod Autoscaler -->
+
+
+# ARGOCD DEPLOYMENT PIPELINE
+
+## Description
+
+We won't go into what ArgoCD is, for that you have [this video](https://youtu.be/MeU5_k9ssrs) by the #1 DevOps youtuber, Nana from [TechWorld with Nana](https://www.youtube.com/@TechWorldwithNana).
+
+This pipeline will use the [ArgoCD Helm Chart](helm/argo-cd/) in our repo to deploy ArgoCD into our EKS.<br>
+The first thing it will do is run the necessary tasks to connect to our the cluster. After this, ArgoCD will be installed, along with it's Ingress.
+
+It will then create the necessary resources for ArgoCD to be self-managed and to apply the [App of Apps pattern](https://youtu.be/2pvGL0zqf9o). ArgoCD will be watching the helm charts in the [helm](helm) directory in our repo, it will automatically create all the resources it finds and apply any future changes me make there. The [helm/infra](helm/my-app) and [helm/my-app](helm/my-app) directories simulates what would be our K8S infrastructure repositories would be.
+
+If you want to know more about Helm, [here's another Nana video](https://youtu.be/-ykwb1d0DXU).
+
+Following up, it will get the Istio Gateway endpoint and put it into the [frontend values file](helm/my-app/frontend/values.yaml). It will also export the endpoint for each environment as an artifact.
+
+Finally the pipeline will get the ArgoCD web UI URL and admin account password and export them as an artifact too. You might need to wait a few seconds for the URL to be active, this is because an AWS Load Balancer takes a little time to be deployed.
+
+<br/>
+
+## Instructions
+
+1. Go to "Pipelines" under "Pipelines" on the left side menu.
+2. Click on "New pipeline".
+3. Select "GitHub".
+4. Select the repo, it should be "your-github-username/automate-all-the-things-braindamage"
+5. Select "Existing Azure Pipelines YAML file".
+6. Under "Branch" select "main" and under "Path" select "/azure-devops/03-deploy-argocd.yml". Click "Continue".
+7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
+8. Click on "Run".
+9. When it's done, the endpoints and ArgoCD access files will be exported as artifacts. You'll find them in the pipeline run screen. Download them to see the ArgoCD URL and credentials, and the frontend endpoints.
+<p title="Guide" align="center"> <img width="700" src="https://i.imgur.com/UtZyCCe.png"> </p>
+
+10. You can now access the ArgoCD UI, if it's not ready just hit refresh every few seconds. Here you should find all the applications. Three will be under the "argocd" project, these are necessary for ArgoCD self-management.<br>
+You will also see a few other applications related to our new service mesh implementation, they will be under the "service-mesh" project. We'll explore these later.<br>
+Another six applications will be under the "my-app" project. These manage our app's backend and frontend in the three environments. These will be in a "Progressing/Degraded" state. This is because we haven't built our app and pushed it to DockerHub yet, we'll take care of that soon. From the other exported artifact, you'll get the URLs for each enviroment's frontend, but don't expect these to work until we have deployed our app.  
+
+<br/>
+<br/>
+<p title="Gitops Chills" align="center"> <img width="460" src="https://i.imgur.com/kGQUUTw.jpg"> </p>
+<br/>
+<br/>
+
+
 # BACKEND SERVICE BUILD & DEPLOY PIPELINE
 
 ## Description
@@ -490,47 +574,6 @@ For the infrastructure, same as before. If the infrastrucure team needs to, for 
 <br/>
 <br/>
 
-# ARGOCD DEPLOYMENT PIPELINE
-
-## Description
-
-We won't go into what ArgoCD is, for that you have [this video](https://youtu.be/MeU5_k9ssrs) by the #1 DevOps youtuber, Nana from [TechWorld with Nana](https://www.youtube.com/@TechWorldwithNana).
-
-This pipeline will use the [ArgoCD Helm Chart](helm/argo-cd/) in our repo to deploy ArgoCD into our EKS.<br>
-The first thing it will do is run the necessary tasks to connect to our the cluster. After this, ArgoCD will be installed, along with it's Ingress.
-
-It will then create the necessary resources for ArgoCD to be self-managed and to apply the [App of Apps pattern](https://youtu.be/2pvGL0zqf9o). ArgoCD will be watching the helm charts in the [helm](helm) directory in our repo, it will automatically create all the resources it finds and apply any future changes me make there. The [helm/infra](helm/my-app) and [helm/my-app](helm/my-app) directories simulates what would be our K8S infrastructure repositories would be.
-
-If you want to know more about Helm, [here's another Nana video](https://youtu.be/-ykwb1d0DXU).
-
-Following up, it will get the Istio Gateway endpoint and put it into the [frontend values file](helm/my-app/frontend/values.yaml). It will also export the endpoint for each environment as an artifact.
-
-Finally the pipeline will get the ArgoCD web UI URL and admin account password and export them as an artifact too. You might need to wait a few seconds for the URL to be active, this is because an AWS Load Balancer takes a little time to be deployed.
-
-<br/>
-
-## Instructions
-
-1. Go to "Pipelines" under "Pipelines" on the left side menu.
-2. Click on "New pipeline".
-3. Select "GitHub".
-4. Select the repo, it should be "your-github-username/automate-all-the-things-braindamage"
-5. Select "Existing Azure Pipelines YAML file".
-6. Under "Branch" select "main" and under "Path" select "/azure-devops/03-deploy-argocd.yml". Click "Continue".
-7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
-8. Click on "Run".
-9. When it's done, the endpoints and ArgoCD access files will be exported as artifacts. You'll find them in the pipeline run screen. Download them to see the ArgoCD URL and credentials, and the frontend endpoints.
-<p title="Guide" align="center"> <img width="700" src="https://i.imgur.com/UtZyCCe.png"> </p>
-
-10. You can now access the ArgoCD UI, if it's not ready just hit refresh every few seconds. Here you should find all the applications. Three will be under the "argocd" project, these are necessary for ArgoCD self-management.<br>
-You will also see a few other applications related to our new service mesh implementation, they will be under the "service-mesh" project. We'll explore these later.<br>
-Another six applications will be under the "my-app" project. These manage our app's backend and frontend in the three environments. These will be in a "Progressing/Degraded" state. This is because we haven't built our app and pushed it to DockerHub yet, we'll take care of that soon. From the other exported artifact, you'll get the URLs for each enviroment's frontend, but don't expect these to work until we have deployed our app.  
-
-<br/>
-<br/>
-<p title="Gitops Chills" align="center"> <img width="460" src="https://i.imgur.com/kGQUUTw.jpg"> </p>
-<br/>
-<br/>
 
 # Kubernetes Tools Management
 
@@ -683,37 +726,3 @@ Special thanks to all these wonderful YouTube people. This wouldn't have been po
 - [Anton Putra](https://www.youtube.com/@AntonPutra)
 
 Happy automating!
-
-
-
-# About ArgoCD Sync Waves
-We have A LOT going on right now, it's getting out of control. Let's get our shit together, together.
-
-## ArgoCD Self-Manage Applications
-- -1020 argocd-appprojects (ArgoCD Projects)
-- -1010 argocd (ArgoCD itself)
-- -1000 argocd-apps (App of Apps)
-
-## App of Apps
-- -50 Prometheus
-- -40 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS
-<!-- TRANSENDANCE -->
-<!-- - -40 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS -->
-- -30 Istiod / Grafana 
-- -20 Istio Gateway / Flagger
-- -10 Kiali / Flagger Load-Tester
-<!-- TRANSENDANCE - 00 Databases -->
-- 00 Backends
-- 10 Frontends
-
-Manifest not mentioned here don't generate any conflicts so we can ignore them. By default they will get "0" wave priority.
-## Backend Applications
-- -10 Sealed-Secret
-- 00 Deployment
-- 10 Canary
-<!-- TRANSCENDANCE - 20 Horizontal Pod Autoscaler -->
-
-## Frontend Applications
-- 00 Deployment
-- 10 Canary
-<!-- TRANSCENDANCE - 20 Horizontal Pod Autoscaler -->
