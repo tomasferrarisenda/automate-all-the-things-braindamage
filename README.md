@@ -443,6 +443,11 @@ Canary should be deployed only after sealed secret is ok. because if not, it wil
 - 10 Canary
 <!-- TRANSCENDANCE - 20 Horizontal Pod Autoscaler -->
 
+<br/>
+<br/>
+<p title="Winnie Gitops" align="center"> <img width="460" src="https://i.imgur.com/2Xntz2P.jpg"> </p>
+<br/>
+<br/>
 
 # ARGOCD DEPLOYMENT PIPELINE
 
