@@ -445,7 +445,7 @@ Canary should be deployed only after sealed secret is ok. because if not, it wil
 
 <br/>
 <br/>
-<p title="Winnie Gitops" align="center"> <img width="460" src="https://i.imgur.com/2Xntz2P.jpg"> </p>
+<p title="Feeling of power" align="center"> <img width="460" src="https://i.imgur.com/o4LuRu7.jpg"> </p>
 <br/>
 <br/>
 
