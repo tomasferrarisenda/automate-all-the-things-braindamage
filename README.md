@@ -19,7 +19,7 @@
 
 <p title="All The Things" align="center"> <img src="https://i.imgur.com/9wX6ADr.jpg"></p>
 <!-- TRANSCENDANCE -->
-<!-- <p title="All The Things" align="center"> <img src="https://i.imgur.com/g5kNL60.jpg"></p> -->
+<!-- <p title="All The Things" align="center"> <img src="https://i.imgur.com/j4oqXCh.jpg"></p> -->
 
 # **BRAINDAMAGE EDITION**
 
