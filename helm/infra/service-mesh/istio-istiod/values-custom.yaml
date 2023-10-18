@@ -6,6 +6,9 @@ global:
       # zipkin service (port 9411) in the same namespace as the other istio components.
       address: "jaeger-collector.observability:9411"
 
+pilot:
+  traceSampling: 100 # What percentage of requests get reported to your tracing system (100%)
+
 meshConfig:
   ingressService: istio-gateway
   ingressSelector: gateway
