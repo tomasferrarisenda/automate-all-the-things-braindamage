@@ -70,6 +70,8 @@ dashboards:
     #   file: dashboards/grafana-overview.json
     istio:
       file: dashboards/istio.json
+    jaeger:
+      file: dashboards/jaeger.json
     # k8s-coredns:
     #   file: dashboards/k8s-coredns.json
     # k8s-resources-cluster:
@@ -114,6 +116,9 @@ dashboards:
     #   file: dashboards/workload-total.json
       
     # Dashboards from grafana.com  
+    jaeger2: # https://grafana.com/grafana/dashboards/10001-jaeger/
+      gnetId: 10001
+      revision: 2
     kubernetesViewsGlobal: # https://grafana.com/grafana/dashboards/15757-kubernetes-views-global/
       gnetId: 15757
       revision: 30
