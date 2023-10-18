@@ -17,7 +17,9 @@
     <a  href="/docs/readme_es.md">Versión en Español</a>
 </p> -->
 
-<p title="All The Things" align="center"> <img src="https://i.imgur.com/9wX6ADr.jpg"></p>
+<!-- <p title="All The Things" align="center"> <img src="https://i.imgur.com/9wX6ADr.jpg"></p> -->
+<!-- TRANSCENDANCE -->
+<p title="All The Things" align="center"> <img src="https://i.imgur.com/g5kNL60.jpg"></p>
 
 # **BRAINDAMAGE EDITION**
 
@@ -588,8 +590,6 @@ For the infrastructure, same as before. If the infrastrucure team needs to, for 
 ## Description
 
 Let's talk how we're meant to manage the installation, customization and uninstallation of Kubernetes tools from now on.
-
-In the previos version [Hardcore Edition](https://github.com/tferrari92/automate-all-the-things-hardcore) of this guide, I had you deploy the observability tools through an "Observability Deployment pipeline". What this pipeline did, we'll be doing manually from now on.
 
 If you haven't figured it out yet, let me explain how the system works:<br>
 ArgoCD has an Application running which watches the [argo-cd/applications directory](argo-cd/applications). It will deploy all application.yaml's it finds there. Each of these application.yaml's point to their corresponding Helm chart in the [helm directory](helm). This is know as the App of Apps pattern.<br>
