@@ -417,33 +417,33 @@ before runnin destrol all the things make sure all applications are helathy, the
 
 
 ## ArgoCD Self-Manage Applications
-- -1020 argocd-appprojects (ArgoCD Projects)
-- -1010 argocd (ArgoCD itself)
-- -1000 argocd-apps (App of Apps)
+- -102 argocd-appprojects (ArgoCD Projects)
+- -101 argocd (ArgoCD itself)
+- -100 argocd-apps (App of Apps)
 
 ## App of Apps
-- -50 Prometheus
-- -40 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS
+- -5 Prometheus
+- -4 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS
 <!-- TRANSENDANCE -->
 <!-- - -40 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS -->
-- -30 Istiod / Grafana 
-- -20 Istio Gateway / Flagger
-- -10 Kiali / Flagger Load-Tester
+- -3 Istiod / Grafana 
+- -2 Istio Gateway / Flagger
+- -1 Kiali / Flagger Load-Tester
 <!-- TRANSENDANCE - 00 Databases -->
-- 00 Backends
-- 10 Frontends
+- 0 Backends
+- 1 Frontends
 
 ## Backend Applications
 Canary should be deployed only after sealed secret is ok. because if not, it will consider the sealed secret like a new version, try to deploy it and fail
 
-- -10 Sealed-Secret
-- 00 Deployment
-- 10 Canary
+- -1 Sealed-Secret
+- 0 Deployment
+- 1 Canary
 <!-- TRANSCENDANCE - 20 Horizontal Pod Autoscaler -->
 
 ## Frontend Applications
-- 00 Deployment
-- 10 Canary
+- 0 Deployment
+- 1 Canary
 <!-- TRANSCENDANCE - 20 Horizontal Pod Autoscaler -->
 
 <br/>

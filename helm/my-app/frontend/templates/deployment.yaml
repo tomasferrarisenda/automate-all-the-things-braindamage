@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ .Values.appName }}-{{ .Values.service }}-{{ .Values.environment }}-deployment
   annotations:
-    argocd.argoproj.io/sync-wave: "00"
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   replicas: {{ .Values.deployment.replicas }}
   selector:
