@@ -3,8 +3,8 @@ kind: Application
 metadata:
   name: argocd-apps
   namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "-1000"
+  # annotations:
+  #   argocd.argoproj.io/sync-wave: "-1000"
 spec:    
   destination:
     namespace: argocd
