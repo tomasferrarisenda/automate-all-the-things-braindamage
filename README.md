@@ -17,9 +17,9 @@
     <a  href="/docs/readme_es.md">Versión en Español</a>
 </p> -->
 
-<!-- <p title="All The Things" align="center"> <img src="https://i.imgur.com/9wX6ADr.jpg"></p> -->
+<p title="All The Things" align="center"> <img src="https://i.imgur.com/9wX6ADr.jpg"></p>
 <!-- TRANSCENDANCE -->
-<p title="All The Things" align="center"> <img src="https://i.imgur.com/g5kNL60.jpg"></p>
+<!-- <p title="All The Things" align="center"> <img src="https://i.imgur.com/g5kNL60.jpg"></p> -->
 
 # **BRAINDAMAGE EDITION**
 
