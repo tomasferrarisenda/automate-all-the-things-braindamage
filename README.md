@@ -417,9 +417,9 @@ before runnin destrol all the things make sure all applications are helathy, the
 
 
 ## ArgoCD Self-Manage Applications
-- -102 argocd-appprojects (ArgoCD Projects)
-- -101 argocd (ArgoCD itself)
-- -100 argocd-apps (App of Apps)
+- -12 argocd-appprojects (ArgoCD Projects)
+- -11 argocd (ArgoCD itself)
+- -10 argocd-apps (App of Apps)
 
 ## App of Apps
 - -5 Prometheus
