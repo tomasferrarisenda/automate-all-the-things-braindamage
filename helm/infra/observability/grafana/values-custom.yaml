@@ -31,6 +31,10 @@ datasources:
       type: loki
       url: http://loki-stack:3100 # Name of the k8s service and it's port
       access: proxy
+    - name: Jaeger
+      type: jaeger
+      url: http://jaeger-query:80 # Name of the k8s service and it's port
+      access: proxy
 
 dashboardProviders:
    dashboardproviders.yaml:
