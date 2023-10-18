@@ -65,7 +65,7 @@ This Braindamage Edition builds upon the [Insane Edition](https://github.com/tfe
 - [AWS Infrastructure Deployment Pipeline](#aws-infrastructure-deployment-pipeline)
   - [Description](#description)
   - [Instructions](#instructions)
-- [ArgoCD Sync Waves](#argocd-sync-waves)
+- [About ArgoCD Sync Waves](#about-argocd-sync-waves)
   - [ArgoCD Self-Manage Applications](#argocd-self-manage-applications)
   - [App of Apps](#app-of-apps)
   - [Backend Applications](#backend-applications)
