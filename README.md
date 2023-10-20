@@ -75,19 +75,22 @@ This Braindamage Edition builds upon the [Insane Edition](https://github.com/tfe
 - [ArgoCD Deployment Pipeline](#argocd-deployment-pipeline)
   - [Description](#description-2)
   - [Instructions](#instructions-2)
-- [Backend Service Build & Deploy Pipeline](#backend-service-build--deploy-pipeline)
+- [Sealed Secrets Pipeline](#sealed-secrets-pipeline)
   - [Description](#description-3)
   - [Instructions](#instructions-3)
-- [Frontend Service Build & Deploy Pipeline](#frontend-service-build--deploy-pipeline)
+- [Backend Service Build & Deploy Pipeline](#backend-service-build--deploy-pipeline)
   - [Description](#description-4)
   - [Instructions](#instructions-4)
-- [Kubernetes Tools Management](#kubernetes-tools-management)
+- [Frontend Service Build & Deploy Pipeline](#frontend-service-build--deploy-pipeline)
   - [Description](#description-5)
   - [Instructions](#instructions-5)
-- [Traces With OpenTelemetry and Jaeger](#traces-with-opentelemetry-and-jaeger)
-- [Destroy All The Things Pipeline](#destroy-all-the-things-pipeline)
+- [Kubernetes Tools Management](#kubernetes-tools-management)
   - [Description](#description-6)
   - [Instructions](#instructions-6)
+- [Traces With OpenTelemetry and Jaeger](#traces-with-opentelemetry-and-jaeger)
+- [Destroy All The Things Pipeline](#destroy-all-the-things-pipeline)
+  - [Description](#description-7)
+  - [Instructions](#instructions-7)
 - [Conclusion](#conclusion)
 
 <br/>
@@ -491,6 +494,33 @@ Another six applications will be under the "my-app" project. These manage our ap
 <br/>
 <br/>
 <p title="Gitops Chills" align="center"> <img width="460" src="https://i.imgur.com/kGQUUTw.jpg"> </p>
+<br/>
+<br/>
+
+
+# SEALED SECRETS PIPELINE
+
+## Description
+
+text
+
+<br/>
+
+## Instructions
+
+1. Go to "Pipelines" under "Pipelines" on the left side menu.
+2. Click on "New pipeline".
+3. Select "GitHub".
+4. Select the repo, it should be "your-github-username/automate-all-the-things-braindamage"
+5. Select "Existing Azure Pipelines YAML file".
+6. Under "Branch" select "main" and under "Path" select "/azure-devops/02-build-and-deploy-frontend.yml". Click "Continue".
+7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
+8. Click on "Run".
+
+
+<br/>
+<br/>
+<p title="Keep your secrets" align="center"> <img width="460" src="https://i.imgur.com/rmhp3EJ.jpg"> </p>
 <br/>
 <br/>
 
