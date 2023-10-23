@@ -415,9 +415,7 @@ We will implement ArgoCD Sync Waves. Through a simple annotation in our manifest
 
 This means we shouldn't worry anymore about in which order our pipelines are run, ArgoCD will always make sure that, for example, the backend is successfully deployed before applying the frontend manifests.
 
-You will see that not all manifests have the ArgoCD Sync Wave annotation. If I didn't give a manifest a Sync Wave number it's because it doesn't generate any conflicts in terms of the order in which it is deployed. By default they will get a "0" wave priority.
-
-before runnin destrol all the things make sure all applications are helathy, the implementation of sync waves will impeder the proper deletion is they are not healthy
+You will see that not all manifests have the ArgoCD Sync Wave annotation. If I didn't give a manifest a Sync Wave number it's because it doesn't generate any conflicts in terms of the order in which it's deployed. By default they will get a "0" sync wave priority.
 
 The sequence will go like this: 
 1. At the highest level we will make sure that all ArgoCD self-management resources are deployed first. They will get number "-12" to "-10"
@@ -425,7 +423,9 @@ The sequence will go like this:
 3. My-app resources come next. Backend will get "0" and Frontend "1".
 4. Within Backend and Frontend, the individual manifest also get Sync Waves. These sync wave numbers will be evaluated within the scope of the Application in which they are deployed, so they will not compete with the numbers assigned to, for example, the Prometheus Application.
 
-**IMPORTANT**: I chose these numbers arbitrarily, feel free to change them or raise an issue if you see room for improvement. Also, by default ArgoCD is not able to apply Sync Waves for manifest of type Application. I had to do [this](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/1.7-1.8/#health-assessment-of-argoprojioapplication-crd-has-been-removed) to make it work. You can see it in the [ArgoCD Helm chart custom values file](helm/infra/argo-cd/values-custom.yaml). 
+**IMPORTANT**: I chose these numbers arbitrarily, feel free to change them or raise an issue if you see room for improvement.<br>
+Also, by default ArgoCD is not able to apply Sync Waves for manifest of type Application. I had to do [this](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/1.7-1.8/#health-assessment-of-argoprojioapplication-crd-has-been-removed) to make it work. You can see it in the [ArgoCD Helm chart custom values file](helm/infra/argo-cd/values-custom.yaml).<br>
+And one more thing, before running the destroy all the things pipeline, make sure all applications are healthy, the implementation of sync waves will mess with applications deletion is they are not healthy.
 
 Here are the specific numbers:
 
