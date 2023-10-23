@@ -425,7 +425,7 @@ The sequence will go like this:
 3. After that our my-app resources. Backend will get "0" and Frontend "1".
 4. Within Backend and Frontend, the individual manifest also get Sync Waves. These sync wave numbers will be evaluated within the scope of the Application in which they are deployed, so they will not compete with the numbers assigned to, for example, the Prometheus Application.
 
-**IMPORTANT**: I chose these numbers arbitrarily, feel free to change them or raise an issue if you see room for improvement. Also, by default ArgoCD is not able to apply Sync Waves for manifest of type Application. I had to do [this](https://kubito.dev/posts/enable-argocd-sync-wave-between-apps/) to make it work. You can see it in the [ArgoCD Helm chart custom values file](helm/infra/argo-cd/values-custom.yaml). 
+**IMPORTANT**: I chose these numbers arbitrarily, feel free to change them or raise an issue if you see room for improvement. Also, by default ArgoCD is not able to apply Sync Waves for manifest of type Application. I had to do [this](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/1.7-1.8/#health-assessment-of-argoprojioapplication-crd-has-been-removed) to make it work. You can see it in the [ArgoCD Helm chart custom values file](helm/infra/argo-cd/values-custom.yaml). 
 
 Here are the specific numbers:
 
