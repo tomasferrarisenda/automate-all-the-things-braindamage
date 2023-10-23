@@ -171,9 +171,7 @@ Some things could have been further automatized but I prioritized modularization
 
 For example, the EKS cluster could have been deployed with ArgoCD installed in one pipeline, but I wanted to have them separated so that each module is focused on it's specific task, making each of them more recyclable.
 
-I also wanted to keep it simple, so not every security best practice will be followed. You can use this as a starting point and from here build something larger and more secure.
-
-Also, please do submit an issue if you find any errors or you have any ideas on how to improve this, I would love to hear them.
+Also, please do submit an issue if you find any errors or you have any good ideas on how to improve this, I would love to hear them.
 
 Let's begin...
 
@@ -748,8 +746,8 @@ Special thanks to all these wonderful YouTube people. This wouldn't have been po
 
 [Automate All The Things Transcendence](https://github.com/tferrari92/automate-all-the-things-transcendence):
 
-- We'll move the Databases to inside the cluster
-- We'll start using Horizontal Pod Autoscaler
-- We'll automate TLS certificates management with Kubernetes Cert Manager
-- We'll automate DNS management with Kubernetes External DNS
+- We'll move the Databases to inside the cluster.
+- We'll start using Horizontal Pod Autoscalers.
+- We'll automate TLS certificates management with Kubernetes Cert Manager.
+- We'll automate DNS records management with Kubernetes External DNS.
 - We'll ditch DockerHub and start using our self-hosted image registry with Harbor.
