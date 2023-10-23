@@ -425,8 +425,8 @@ The sequence will go like this:
 
 **IMPORTANT**:<br>
 I chose these numbers arbitrarily, feel free to change them or raise an issue if you see room for improvement.<br>
-Also, by default ArgoCD is not able to apply Sync Waves for manifest of type Application. I had to do [this](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/1.7-1.8/#health-assessment-of-argoprojioapplication-crd-has-been-removed) to make it work. You can see it in the [ArgoCD Helm chart custom values file](helm/infra/argo-cd/values-custom.yaml).<br>
-And one more thing, before running the destroy all the things pipeline, make sure all applications are healthy, the implementation of sync waves will mess with applications deletion is they are not healthy.
+Also, by default ArgoCD is not able to apply Sync Waves for manifests of type Application. I had to do [this](https://argo-cd.readthedocs.io/en/stable/operator-manual/upgrading/1.7-1.8/#health-assessment-of-argoprojioapplication-crd-has-been-removed) to make it work. You can see it in the [ArgoCD Helm chart custom values file](helm/infra/argo-cd/values-custom.yaml).<br>
+And one more thing, before running the Destroy All The Things pipeline, make sure all applications are healthy, the implementation of Sync Waves will mess with applications deletion if they are not healthy.
 
 Here are the specific numbers:
 
