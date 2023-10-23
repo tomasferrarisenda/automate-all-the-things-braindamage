@@ -502,7 +502,7 @@ Another six applications will be under the "my-app" project. These manage our ap
 
 ## Description
 
-Up until now, we have been leaving our Kubernetes secrtes exposed in our repo. Anyone with access to the repo could see the what the password for the Redis DBs were. Technically, they were base64 encoded, but this is like wearing really light underwear, almost naked. Anyone could decode them easily.
+Up until now, we have been leaving our Kubernetes secrtes exposed in our repo. Anyone with access to the repo could see the what the password for the Redis DBs were. Technically, they were base64 encoded, but anyone could easily decode them.
 
 From now on, we will encrypt them, and for this we will use Bitnami Sealed Secrets. As always, I'm not going into details on how the tool works, but you can check out [this video](https://youtu.be/wWMJCY2E0d4?si=zX93I7hji-6w7hnX) from KodeKloud.
 
