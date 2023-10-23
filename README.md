@@ -173,6 +173,8 @@ For example, the EKS cluster could have been deployed with ArgoCD installed in o
 
 I also wanted to keep it simple, so not every security best practice will be followed. You can use this as a starting point and from here build something larger and more secure.
 
+Also, please do submit an issue if you find any errors or you have any ideas on how to improve this, I would love to hear them.
+
 Let's begin...
 
 <br/>
@@ -481,7 +483,7 @@ Finally the pipeline will get the ArgoCD web UI URL and admin account password a
 3. Select "GitHub".
 4. Select the repo, it should be "your-github-username/automate-all-the-things-braindamage"
 5. Select "Existing Azure Pipelines YAML file".
-6. Under "Branch" select "main" and under "Path" select "/azure-devops/03-deploy-argocd.yml". Click "Continue".
+6. Under "Branch" select "main" and under "Path" select "/azure-devops/01-deploy-argocd.yml". Click "Continue".
 7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
 8. Click on "Run".
 9. When it's done, the endpoints and ArgoCD access files will be exported as artifacts. You'll find them in the pipeline run screen. Download them to see the ArgoCD URL and credentials, and the frontend endpoints.
@@ -746,8 +748,8 @@ Special thanks to all these wonderful YouTube people. This wouldn't have been po
 
 [Automate All The Things Transcendence](https://github.com/tferrari92/automate-all-the-things-transcendence):
 
-- We'll move the Databases inside the cluster
+- We'll move the Databases to inside the cluster
 - We'll start using Horizontal Pod Autoscaler
-- TLS certificates management with Kubernetes Cert Manager
+- We'll automate TLS certificates management with Kubernetes Cert Manager
 - We'll automate DNS management with Kubernetes External DNS
 - We'll ditch DockerHub and start using our self-hosted image registry with Harbor.
