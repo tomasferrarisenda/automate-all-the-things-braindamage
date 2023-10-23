@@ -744,4 +744,10 @@ Special thanks to all these wonderful YouTube people. This wouldn't have been po
 
 ## On the next edition
 
+[Automate All The Things Transcendence](https://github.com/tferrari92/automate-all-the-things-transcendence):
 
+- We'll move the Databases inside the cluster
+- We'll start using Horizontal Pod Autoscaler
+- TLS certificates management with Kubernetes Cert Manager
+- We'll automate DNS management with Kubernetes External DNS
+- We'll ditch DockerHub and start using our self-hosted image registry with Harbor.
