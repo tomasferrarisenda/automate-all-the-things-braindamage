@@ -409,15 +409,25 @@ pool:
 
 # ABOUT ARGOCD SYNC WAVES
 
-We have A LOT going on right now, it's kinda getting out of control. Let's get our shit together, together.
+We have A LOT going on right now, it's getting out of control. Let's get our shit together, together.
 
-This will let us return to the original order of pipelines, ArgoCD will know in what order to deploy the resources, regardless of the order in which we create them.
+We will implement ArgoCD Sync Waves. Through a simple annotation in our manifests, we can tell ArgoCD in which order our resources should be deployed. We basically give each manifest a number (which can be negative too) which defines what it's place in the deployment sequence is.
 
+This means we shouldn't worry anymore about in which order our pipelines are run, ArgoCD will always make sure that, for example, the backend is successfully deployed before applying the frontend manifests.
 
-Manifest not mentioned here don't generate any conflicts so we can ignore them. By default they will get "0" wave priority.
+You will see that not all manifests have the ArgoCD Sync Wave annotation. If I didn't give a manifest a Sync Wave number it's because it doesn't generate any conflicts in terms of the order in which it is deployed. By default they will get a "0" wave priority.
 
 before runnin destrol all the things make sure all applications are helathy, the implementation of sync waves will impeder the proper deletion is they are not healthy
 
+The sequence will go like this: 
+1. At the highest level we will make sure that all ArgoCD self-management resources are deployed first. They will get number "-12" to "-10"
+2. Then our infrastructure tools will be deployed (observability, service-mesh, etc.). They will get numbers "-5" to "-1".
+3. After that our my-app resources. Backend will get "0" and Frontend "1".
+4. Within Backend and Frontend, the individual manifest also get Sync Waves. These sync wave numbers will be evaluated within the scope of the Application in which they are deployed, so they will not compete with the numbers assigned to, for example, the Prometheus Application.
+
+**IMPORTANT**: I chose these numbers arbitrarily, feel free to change them or raise an issue if you see room for improvement. Also, by default ArgoCD is not able to apply Sync Waves for manifest of type Application. I had to do [this](https://kubito.dev/posts/enable-argocd-sync-wave-between-apps/) to make it work. You can see it in the [ArgoCD Helm chart custom values file](helm/infra/argo-cd/values-custom.yaml). 
+
+Here are the specific numbers:
 
 ## ArgoCD Self-Manage Applications
 - -12 ArgoCD AppProjects (ArgoCD Projects)
@@ -426,7 +436,7 @@ before runnin destrol all the things make sure all applications are helathy, the
 
 ## App of Apps
 - -5 Prometheus
-- -4 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS
+- -4 Istio Base / Jaegger / Loki / Sealed-Secrets
 <!-- TRANSENDANCE -->
 <!-- - -40 Istio Base / Jaegger / Loki / Metrics-Server / Harbor / Sealed-Secrets / Cert-Manager / External DNS -->
 - -3 Istiod / Grafana 
@@ -437,8 +447,6 @@ before runnin destrol all the things make sure all applications are helathy, the
 - 1 Frontends
 
 ## Backend Applications
-Canary should be deployed only after sealed secret is ok. because if not, it will consider the sealed secret like a new version, try to deploy it and fail
-
 - -1 Sealed-Secret
 - 0 Deployment
 - 1 Canary
