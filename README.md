@@ -502,7 +502,11 @@ Another six applications will be under the "my-app" project. These manage our ap
 
 ## Description
 
-text
+Up until now, we have been leaving our Kubernetes secrtes exposed in our repo. Anyone with access to the repo could see the what the password for the Redis DBs were. Technically, they were base64 encoded, but this is like wearing really light underwear, almost naked. Anyone could decode them easily.
+
+From now on, we will encrypt them, and for this we will use Bitnami Sealed Secrets. As always, I'm not going into details on how the tool works, but you can check out [this video](https://youtu.be/wWMJCY2E0d4?si=zX93I7hji-6w7hnX) from KodeKloud.
+
+You could easily encrypt the secrets yourselves using the kubeseal CLI tool, but I made a pipeline to make it easier. Before running, the pipeline will require you to introduce the Redis passwords for each environment. The pipeline will then install the Kubeseal CLI tool and with it, it will generate Sealed Secrets and save the values of the encrypted passwords to the [values files of each environment](helm/my-app/backend/environments/). The [sealed secret manifest](helm/my-app/backend/templates/redis-sealed-secret.yaml) will use these values to create the SealedSecret objects in the cluster.
 
 <br/>
 
@@ -513,7 +517,7 @@ text
 3. Select "GitHub".
 4. Select the repo, it should be "your-github-username/automate-all-the-things-braindamage"
 5. Select "Existing Azure Pipelines YAML file".
-6. Under "Branch" select "main" and under "Path" select "/azure-devops/02-build-and-deploy-frontend.yml". Click "Continue".
+6. Under "Branch" select "main" and under "Path" select "/azure-devops/02-sealed-secret-generator.yml". Click "Continue".
 7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
 8. Click on "Run".
 
@@ -561,7 +565,7 @@ Now, if the infrastrucure team needs to make changes to the cluster resources, t
 3. Select "GitHub".
 4. Select the repo, it should be "your-github-username/automate-all-the-things-braindamage"
 5. Select "Existing Azure Pipelines YAML file".
-6. Under "Branch" select "main" and under "Path" select "/azure-devops/01-build-and-deploy-backend.yml". Click "Continue".
+6. Under "Branch" select "main" and under "Path" select "/azure-devops/03-build-and-deploy-backend.yml". Click "Continue".
 7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
 8. Click on "Run".
 
@@ -599,7 +603,7 @@ For the infrastructure, same as before. If the infrastrucure team needs to, for 
 3. Select "GitHub".
 4. Select the repo, it should be "your-github-username/automate-all-the-things-braindamage"
 5. Select "Existing Azure Pipelines YAML file".
-6. Under "Branch" select "main" and under "Path" select "/azure-devops/02-build-and-deploy-frontend.yml". Click "Continue".
+6. Under "Branch" select "main" and under "Path" select "/azure-devops/04-build-and-deploy-frontend.yml". Click "Continue".
 7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
 8. Click on "Run".
 
@@ -697,7 +701,7 @@ The pipeline will finish with a warning, worry not, this is because the "terrafo
 3. Select "GitHub".
 4. Select the repo, it should be "your-github-username/automate-all-the-things-braindamage"
 5. Select "Existing Azure Pipelines YAML file".
-6. Under "Branch" select "main" and under "Path" select "/azure-devops/04-destroy-all-the-things.yml". Click "Continue".
+6. Under "Branch" select "main" and under "Path" select "/azure-devops/05-destroy-all-the-things.yml". Click "Continue".
 7. If you DON'T have a hosted parallelism, you'll need to do the same thing as in point 10 from the [infrastructure deployment pipeline](#instructions).
 8. Click on "Run".
 9. There's two AWS resources that for some reason don't get destroyed: a DHCP Option Set and an Auto Scaling Managed Rule. I'm pretty sure these don't generate any expenses but you can go and delete them manually just in case. I'm really sorry about this... I have brought [shame](https://i.imgur.com/PIm1apF.gifv) upon my family...
@@ -734,4 +738,10 @@ Special thanks to all these wonderful YouTube people. This wouldn't have been po
 - Mumshad Mannambeth and his guys from [KodeKloud](https://www.youtube.com/@KodeKloud)
 - [Anton Putra](https://www.youtube.com/@AntonPutra)
 
-Happy automating!
+### Happy automating!
+
+<br/>
+
+## On the next edition
+
+
