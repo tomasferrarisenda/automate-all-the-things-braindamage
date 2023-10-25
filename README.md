@@ -670,7 +670,7 @@ We can follow this same logic for deploying new my-app services, for example for
 
 Here's [the video you should watch](https://youtu.be/FK0uh-7nDSg?feature=shared). As Viktor instructed, we have instrumented our NodeJS backend code with OpenTelemetry. You can check out the changes in the [my-app/backend directory](my-app/backend/).
 
-But we are not done there, we need a tool to collect these metrics and visualize them, here's where Jaeger comes in. Following the instructions mentioned in [Kubernetes Tool Management](#kubernetes-tool-management), we installed Jaeger and made the necessary configurations for it to recieve both traces from out instrumented code, but also from the Istio service mesh.
+But we are not done there, we need a tool to collect these metrics and visualize them, here's where Jaeger comes in. Following the instructions mentioned in [Kubernetes Tools Management](#kubernetes-tools-management), we installed Jaeger and made the necessary configurations for it to recieve both traces from out instrumented code, but also from the Istio service mesh.
 
 With OpenTelemetry, you can either manually or automatically instrument your code. I went the automatic way, which will only give you some general tracing information. If you want more details, like for example, how long a specific function takes to run, then you'll have to do some manual instrumentation.
 
