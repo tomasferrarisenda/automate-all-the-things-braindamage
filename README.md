@@ -746,7 +746,7 @@ Special thanks to all these wonderful YouTube people. This wouldn't have been po
 
 ## On the next edition
 
-[Automate All The Things Transcendence](https://github.com/tferrari92/automate-all-the-things-transcendence):
+[Automate All The Things Transcendence Edition](https://github.com/tferrari92/automate-all-the-things-transcendence):
 
 - We'll move the Databases to inside the cluster.
 - We'll start using Horizontal Pod Autoscalers.
