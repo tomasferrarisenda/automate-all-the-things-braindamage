@@ -8,11 +8,15 @@ metadata:
     # This annotation doesn't work in objects of kind Resource. It only works in objects of kind Component.
     # Our Redis deployment is registered as a Resource in Backstege catalog, so we can't use this annotation unless we change the kind of the object to Component.
     # backstage.io/kubernetes-id: meme-web-redis
+    github.com/project-slug: tomasferrarisenda/backstage-minikube-lab-reloaded
+    argocd/app-selector: system-service=meme-web-redis # This is for Backstage ArgoCD plugin. Can also use argocd/app-name
+    grafana/dashboard-selector: "tags @> 'linux'" # The following selector will return dashboards that have a 'linux' tag
+    # grafana/overview-dashboard: 'http://localhost:8082/d/k8s_views_global/kubernetes-views-global' # I couldn't make this work. Got error: Refused to frame 'https://localhost:8082/' because it violates the following Content Security Policy directive: "frame-src 'self' http://localhost:8082".
   tags:
     - redis 
   links:
     - title: Documentation
-      url: https://github.com/tomasferrarisenda/automate-all-the-things-braindamage
+      url: https://github.com/tomasferrarisenda/automate-all-the-things-transcendence
     - title: Admin Dashboard
       type: admin-dashboard
       icon: dashboard
