@@ -1,6 +1,6 @@
 environment: stage
 
-redis_host: 
+redis_host: master.meme-web-stage-elascache-rep-group.shelfr.use1.cache.amazonaws.com
 
 deployment:
   image:

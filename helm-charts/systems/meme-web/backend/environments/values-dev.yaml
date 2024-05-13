@@ -1,6 +1,6 @@
 environment: dev
     
-redis_host: 
+redis_host: master.meme-web-dev-elascache-rep-group.shelfr.use1.cache.amazonaws.com
 
 deployment:
   image:  
