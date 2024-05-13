@@ -52,39 +52,6 @@ proxy:
   #     target: 'https://example.com'
   #     changeOrigin: true
 
-  # This will only work if you already have a ArgoCD running in Minikube and have port-forwarded it to localhost:8081
-  # You will also need to generate a token in ArgoCD for the backstage-service-account user.
-  # This token must be set in the ARGOCD_AUTH_TOKEN environment variable before runninf 'yarn dev'
-  '/argocd/api':
-    target: http://localhost:8081/api/v1/
-    changeOrigin: true
-    # only if your argocd api has self-signed cert
-    secure: false
-    headers:
-      Cookie:
-        $env: ARGOCD_AUTH_TOKEN
-
-  '/grafana/api':
-    # May be a public or an internal DNS
-    target: http://localhost:8082/
-    changeOrigin: true
-    secure: false
-    headers:
-      Authorization: Bearer ${GRAFANA_TOKEN}
-
-# Optional: this will link to your argoCD web UI for each argoCD application
-argocd:
-  baseUrl: http://localhost:8081/
-
-grafana:
-  domain: http://localhost:8082 # Don't use final slash "/". Links will fail if you do
-
-  # Is unified alerting enabled in Grafana?
-  # See: https://grafana.com/blog/2021/06/14/the-new-unified-alerting-system-for-grafana-everything-you-need-to-know/
-  # Optional. Default: false
-  unifiedAlerting: false
-
-
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
 # and an external cloud storage when deploying TechDocs for production use-case.
@@ -98,11 +65,7 @@ techdocs:
 
 auth:
   # see https://backstage.io/docs/auth/ to learn about auth providers
-  providers:
-    github:
-      development:
-        clientId: ${AUTH_GITHUB_CLIENT_ID}
-        clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
+  providers: {}
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options

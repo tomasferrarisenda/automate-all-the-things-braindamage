@@ -60,25 +60,7 @@ import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
 
 // CUSTOM
 import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
-import { EntityRecentGithubActionsRunsCard } from '@backstage/plugin-github-actions';
-import {
-  EntityGithubInsightsContent,
-  EntityGithubInsightsLanguagesCard,
-  EntityGithubInsightsReadmeCard,
-  // EntityGithubInsightsReleasesCard,
-  isGithubInsightsAvailable,
-} from '@roadiehq/backstage-plugin-github-insights';
-import {
-  EntityArgoCDOverviewCard,
-  isArgocdAvailable
-} from '@roadiehq/backstage-plugin-argo-cd';
-import {
-  EntityGrafanaDashboardsCard,
-  // I couldn't make the dashboard viewer work, so I commented it out.
-  // I kept getting error: 
-  // Refused to frame 'https://localhost:8082/' because it violates the following Content Security Policy directive: "frame-src 'self' http://localhost:8082".
-  // EntityOverviewDashboardViewer,
-} from '@k-phoen/backstage-plugin-grafana';
+
 
 const techdocsContent = (
   <EntityTechdocsContent>
@@ -146,72 +128,19 @@ const entityWarningContent = (
 const overviewContent = (
   <Grid container spacing={3} alignItems="stretch">
     {entityWarningContent}
-
-    {/* ABOUT */}
     <Grid item md={6}>
       <EntityAboutCard variant="gridItem" />
     </Grid>
-
-    {/* RELATIONS */}
     <Grid item md={6} xs={12}>
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
 
-    {/* LINKS */}
     <Grid item md={4} xs={12}>
       <EntityLinksCard />
     </Grid>
-
-    {/* SUBCOMPONENTS */}
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
     </Grid>
-
-    {/* RECENT WORKFLOW RUNS */}
-    <EntitySwitch>
-      <EntitySwitch.Case if={isGithubActionsAvailable}>
-        <Grid item sm={6}>
-          <EntityRecentGithubActionsRunsCard limit={4} variant="gridItem" />
-        </Grid>
-      </EntitySwitch.Case>
-    </EntitySwitch>
-
-    {/* GITHUB INSIGHTS */}
-    <EntitySwitch>
-      <EntitySwitch.Case if={e => Boolean(isGithubInsightsAvailable(e))}>
-
-        {/* README */}
-        <Grid item md={6}>
-          <EntityGithubInsightsReadmeCard maxHeight={350} />
-        </Grid>
-
-        {/* LANGUAGES */}
-        <Grid item md={6}>
-          <EntityGithubInsightsLanguagesCard />
-        </Grid>
-      </EntitySwitch.Case>
-    </EntitySwitch>
-
-    {/* GRAFANA */}
-    <Grid item md={6}>
-      <EntityGrafanaDashboardsCard />
-    </Grid>
-    {/* I couldn't make the dashboard viewer work, so I commented it out.
-    I kept getting error: 
-    Refused to frame 'https://localhost:8082/' because it violates the following Content Security Policy directive: "frame-src 'self' http://localhost:8082". */}
-    {/* <Grid item md={6}>
-      <EntityOverviewDashboardViewer />
-    </Grid> */}
-
-    {/* ARGOCD */}
-    <EntitySwitch>
-      <EntitySwitch.Case if={e => Boolean(isArgocdAvailable(e))}>
-        <Grid item sm={4}>
-          <EntityArgoCDOverviewCard />
-        </Grid>
-      </EntitySwitch.Case>
-    </EntitySwitch>
-
   </Grid>
 );
 
@@ -254,10 +183,6 @@ const serviceEntityPage = (
     {/* CUSTOM */}
     <EntityLayout.Route path="/kubernetes" title="Kubernetes">
       <EntityKubernetesContent refreshIntervalMs={30000} />
-    </EntityLayout.Route>
-
-    <EntityLayout.Route path="/code-insights" title="Code Insights">
-      <EntityGithubInsightsContent />
     </EntityLayout.Route>
 
   </EntityLayout>

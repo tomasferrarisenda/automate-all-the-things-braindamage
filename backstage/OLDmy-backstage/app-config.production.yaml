@@ -14,8 +14,8 @@ backend:
     connect-src: ["'self'", 'http:', 'https:']
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
-    img-src: ["'self'", 'data:', 'https://i.imgur.com', 'https://avatars.githubusercontent.com']
-    frame-src: ["'self'", 'http://localhost:8082'] # This allows the iframe to load the Grafana dashboards (when Grafana service is port-forwarded to localhost:8082)
+    img-src: ["'self'", 'data:', 'https://i.imgur.com']
+
     # Since we are not using HTTPS we require this. Without it backend resources will not load in the UI when accesing through the ingress. See: https://github.com/backstage/backstage/issues/23247#issuecomment-1971454432
     upgrade-insecure-requests: false 
 
@@ -45,14 +45,6 @@ backend:
       #   ca: # if you have a CA file and want to verify it you can uncomment this section
       #     $file: <file-path>/ca/server.crt
 
-auth:
-  # see https://backstage.io/docs/auth/ to learn about auth providers
-  providers:
-    github:
-      development:
-        clientId: ${AUTH_GITHUB_CLIENT_ID}
-        clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
-        
 integrations:
   github:
     - host: github.com
@@ -79,32 +71,6 @@ kubernetes:
           skipTLSVerify: false
           skipMetricsLookup: true
 
-proxy:
-  '/argocd/api':
-    target: http://argocd-server.argocd.svc.cluster.local/api/v1/
-    changeOrigin: true
-    # only if your argocd api has self-signed cert
-    secure: false
-    headers:
-      Cookie:
-        $env: ARGOCD_AUTH_TOKEN
-
-  '/grafana/api':
-    # May be a public or an internal DNS
-    target: http://grafana.observability.svc.cluster.local/
-    changeOrigin: true
-    secure: false
-    headers:
-      Authorization: Bearer ${GRAFANA_TOKEN}
-
-# Optional: this will link to your argoCD web UI for each argoCD application
-argocd:
-  baseUrl: http://localhost:8081/ 
-
-grafana:
-  domain: http://localhost:8082 # Don't use final slash "/". Links will fail if you do
-
-  
 ##########################################################################################
 # The Catalog configuration will be passed through a ConfigMap when deployed to Kubernetes.
 # Check the values-custom.yaml file in the Backstage helm-chart.
