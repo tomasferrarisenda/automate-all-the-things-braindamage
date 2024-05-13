@@ -2,7 +2,7 @@ environment: stage
 
 deployment:
   image:
-    tag: 2
+    tag: 1
   replicas: 1
   labels:
     full-name: meme-web-frontend-stage
