@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: toto-fefe
+spec:
+  profile:
+    displayName: "Toto Fefe"	
+    email: totofefe@hotmail.com
+    picture: https://avatars.githubusercontent.com/u/103530859?s=400&u=7f7f271e2f5cb846e64fdd4238c4656e62ace4a4&v=4
+  memberOf:
+    - group:default/taylor-team
