@@ -4,7 +4,7 @@ redis_host: master.meme-web-prod-elascache-rep-group.shelfr.use1.cache.amazonaws
 
 deployment:
   image:
-    tag: 1
+    tag: 3
   replicas: 1
   labels:
     full-name: meme-web-backend-prod # This value was modified by the initial-setup python script
