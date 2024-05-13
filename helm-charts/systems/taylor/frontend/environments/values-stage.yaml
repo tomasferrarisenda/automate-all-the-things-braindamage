@@ -1,0 +1,14 @@
+environment: stage
+
+deployment:
+  image:  
+    tag: 
+  replicas: 1
+  labels:
+    full-name: taylor-frontend-stage
+
+configmap: 
+  nginxConf: |-
+      location /api {
+          proxy_pass http://taylor-backend-stage-service:3000/;
+      }

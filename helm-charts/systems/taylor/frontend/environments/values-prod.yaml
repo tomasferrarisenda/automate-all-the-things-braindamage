@@ -1,0 +1,14 @@
+environment: prod
+
+deployment:
+  image:  
+    tag: 
+  replicas: 1
+  labels:
+    full-name: taylor-frontend-prod
+
+configmap: 
+  nginxConf: |-
+      location /api {
+          proxy_pass http://taylor-backend-prod-service:3000/;
+      }

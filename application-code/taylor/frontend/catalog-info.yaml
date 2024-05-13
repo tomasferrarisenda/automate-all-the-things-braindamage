@@ -1,0 +1,34 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: taylor-frontend
+  description: dsfsdfasdf
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: taylor-frontend
+  tags:
+    - nginx
+  links:
+    - title: Documentation
+      url: https://github.com/tomasferrarisenda/automate-all-the-things-braindamage
+    - title: Admin Dashboard
+      type: admin-dashboard
+      icon: dashboard
+      url: https://admin.example-org.com
+    - title: Metrics
+      type: metrics-dashboard
+      icon: analytics
+      url: https://grafana.domain.com/
+    - title: Logs
+      type: logs-dashboard  
+      icon: assignment
+      url: https://grafana.domain.com/
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:default/taylor-team
+  system: taylor
+  # dependsOn:
+  #   - 
+  # providesApis:
+  #   - 
