@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: taylor
+  description: oteeeee
+  tags:
+    - mate
+spec:
+  owner: group:default/taylor-team
