@@ -26,6 +26,11 @@ This Transcendence Edition builds upon the [Braindamage Edition](https://github.
 
 ### New features:
 - Crossplane
+- Beefier Backstage deployment with new plugins:
+  - GitHub Actions plugin
+  - GitHub Insights plugin
+  - ArgoCD plugin
+  - Grafana plugin
 
 ### Versions in order of complexity:
 
