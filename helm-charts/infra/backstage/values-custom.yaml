@@ -10,8 +10,18 @@ backstage:
     - name: GITHUB_TOKEN
       valueFrom:
         secretKeyRef:
-          name: github-token
+          name: github-secret
           key: GITHUB_TOKEN
+    - name: AUTH_GITHUB_CLIENT_ID
+      valueFrom:
+        secretKeyRef:
+          name: github-secret
+          key: AUTH_GITHUB_CLIENT_ID
+    - name: AUTH_GITHUB_CLIENT_SECRET
+      valueFrom:
+        secretKeyRef:
+          name: github-secret
+          key: AUTH_GITHUB_CLIENT_SECRET  
 
   appConfig:
     catalog:
