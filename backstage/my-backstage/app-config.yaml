@@ -154,7 +154,7 @@ catalog:
         catalogPath: '/application-code/**/*catalog-info.yaml' # this will search all folders for files that end in template.yaml
         filters:
           branch: 'main' # string
-          repository: 'automate-all-the-things-braindamage' # Regex
+          repository: 'automate-all-the-things-transcendence' # Regex
         schedule: # same options as in TaskScheduleDefinition
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
@@ -165,7 +165,7 @@ catalog:
         catalogPath: '/application-code/**/*catalog-info.yaml' # this will search all folders for files that end in template.yaml
         filters:
           branch: 'main' # string
-          repository: 'automate-all-the-things-braindamage' # Regex
+          repository: 'automate-all-the-things-transcendence' # Regex
         schedule: # same options as in TaskScheduleDefinition
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
@@ -176,7 +176,7 @@ catalog:
         catalogPath: '/application-code/**/*api-info.yaml' # this will search all folders for files that end in template.yaml
         filters:
           branch: 'main' # string
-          repository: 'automate-all-the-things-braindamage' # Regex
+          repository: 'automate-all-the-things-transcendence' # Regex
         schedule: # same options as in TaskScheduleDefinition
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
@@ -187,7 +187,7 @@ catalog:
         catalogPath: '/backstage/entities/templates/**/*template.yaml' # this will search all folders for files that end in template.yaml
         filters:
           branch: 'main' # string
-          repository: 'automate-all-the-things-braindamage' # Regex
+          repository: 'automate-all-the-things-transcendence' # Regex
         schedule: # same options as in TaskScheduleDefinition
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
@@ -198,7 +198,7 @@ catalog:
         catalogPath: '/backstage/entities/systems/**/*.yaml' # this will search all folders for files that end in .yaml
         filters:
           branch: 'main' # string
-          repository: 'automate-all-the-things-braindamage' # Regex
+          repository: 'automate-all-the-things-transcendence' # Regex
         schedule: # same options as in TaskScheduleDefinition
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
@@ -209,7 +209,7 @@ catalog:
         catalogPath: '/backstage/entities/groups/**/*.yaml' # this will search all folders for files that end in .yaml
         filters: # optional filters
           branch: 'main' # optional string
-          repository: 'automate-all-the-things-braindamage' # optional Regex
+          repository: 'automate-all-the-things-transcendence' # optional Regex
         schedule: # same options as in TaskScheduleDefinition
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
@@ -220,7 +220,7 @@ catalog:
         catalogPath: '/backstage/entities/users/**/*.yaml' # this will search all folders for files that end in .yaml
         filters: # optional filters
           branch: 'main' # optional string
-          repository: 'automate-all-the-things-braindamage' # optional Regex
+          repository: 'automate-all-the-things-transcendence' # optional Regex
         schedule: # same options as in TaskScheduleDefinition
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
