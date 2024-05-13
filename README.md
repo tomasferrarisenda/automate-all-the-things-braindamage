@@ -25,7 +25,6 @@
 This Transcendence Edition builds upon the [Braindamage Edition](https://github.com/tferrari92/automate-all-the-things-braindamage).
 
 ### New features:
-
 - Crossplane
 
 ### Versions in order of complexity:
