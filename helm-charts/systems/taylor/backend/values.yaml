@@ -1,0 +1,12 @@
+system: taylor 
+
+service: backend 
+
+deployment:
+  image:
+    repository: tferrari92/taylor-backend
+  labels:
+    system: taylor
+    service: backend
+    backstage.io/kubernetes-id: taylor-backend
+    istio: monitor

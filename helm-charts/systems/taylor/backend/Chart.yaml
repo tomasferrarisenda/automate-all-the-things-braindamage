@@ -1,0 +1,4 @@
+apiVersion: v2
+name: taylor-backend
+description: A Helm chart for deploying taylor-backend
+version: 1.0
