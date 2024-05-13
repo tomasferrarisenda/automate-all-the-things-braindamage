@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: taylor-team
+  title: taylor-team
+  description: dsdfsdfads
+spec:
+  type: team
+  children: []
+  profile:
+    email: totofefe@hotmail.com
+    # slack: 
