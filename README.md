@@ -328,6 +328,7 @@ Choose a name and a value for expiration. Under scopes select "repo" and "workfl
 <p title="GitHub Token" align="center"> <<img width="650" src="https://i.imgur.com/zTn7gDI.png"> </p>
 
 Click Generate token. Store the token somewhere safe.
+
 </br>
 
 ### Set up GitHub OAuth
