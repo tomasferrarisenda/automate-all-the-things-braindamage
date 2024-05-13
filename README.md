@@ -17,16 +17,16 @@
     <a  href="/docs/readme_es.md">Versión en Español</a>
 </p> -->
 
-<p title="All The Things" align="center"> <img src="https://i.imgur.com/9wX6ADr.jpg"></p>
+<p title="All The Things" align="center"> <img src="https://i.imgur.com/j4oqXCh.jpg"></p>
 
 
-# **BRAINDAMAGE EDITION**
+# **TRANSCENDENCE EDITION**
 
-This Braindamage Edition builds upon the [Overload Edition](https://github.com/tferrari92/automate-all-the-things-overload).
+This Transcendence Edition builds upon the [Braindamage Edition](https://github.com/tferrari92/automate-all-the-things-braindamage).
 
 ### New features:
 
-- Developer Portal with Backstage.io
+- Crossplane
 
 ### Versions in order of complexity:
 
