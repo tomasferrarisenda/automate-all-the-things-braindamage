@@ -370,6 +370,32 @@ I've already added some custom stuff to the default Backstage installation that 
 
 </br>
 
+### OAuth with GitHub
+This allows the user to sign in using their GitHub account.
+
+You can add a Sign in page by uncommenting these lines in the [App.tsx file](/backstage/my-backstage/packages/app/src/App.tsx):
+```js
+// import { githubAuthApiRef } from '@backstage/core-plugin-api';
+// import { SignInPage } from '@backstage/core-components';
+
+  // components: {
+  //   SignInPage: props => (
+  //     <SignInPage
+  //       {...props}
+  //       auto
+  //       provider={{
+  //         id: 'github-auth-provider',
+  //         title: 'GitHub',
+  //         message: 'Sign in using GitHub',
+  //         apiRef: githubAuthApiRef,
+  //       }}
+  //     />
+  //   ),
+  // },
+```
+
+</br>
+
 ### Plugins I've added
 
 #### - Kubernetes plugin
