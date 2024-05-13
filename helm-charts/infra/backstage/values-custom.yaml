@@ -3,7 +3,7 @@ backstage:
 
   image:
     registry: "" # This is necessary to override the default value "ghcr.io"
-    repository: AATT_DOCKERHUB_USERNAME/backstage
+    repository: tferrari92/backstage
     tag: "24" # This value was modified by the backstage build and push pipeline
 
   extraEnvVars:
@@ -33,7 +33,7 @@ backstage:
         github:
           # Catalogs
           catalogsProvider:
-            organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+            organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
             catalogPath: '/application-code/**/*catalog-info.yaml' # this will search all folders for files that end in template.yaml
             filters:
               branch: 'main' # string
@@ -44,7 +44,7 @@ backstage:
 
           # Resources
           resourcesProvider:
-            organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+            organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
             catalogPath: '/application-code/**/*catalog-info.yaml' # this will search all folders for files that end in template.yaml
             filters:
               branch: 'main' # string
@@ -55,7 +55,7 @@ backstage:
 
           # APIs
           apisProvider:
-            organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+            organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
             catalogPath: '/application-code/**/*api-info.yaml' # this will search all folders for files that end in template.yaml
             filters:
               branch: 'main' # string
@@ -66,7 +66,7 @@ backstage:
 
           # Templates
           templatesProvider:
-            organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+            organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
             catalogPath: '/backstage/entities/templates/**/*template.yaml' # this will search all folders for files that end in template.yaml
             filters:
               branch: 'main' # string
@@ -77,7 +77,7 @@ backstage:
 
           # Systems
           systemsProvider:
-            organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+            organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
             catalogPath: '/backstage/entities/systems/**/*.yaml' # this will search all folders for files that end in .yaml
             filters:
               branch: 'main' # string
@@ -88,7 +88,7 @@ backstage:
 
           # Groups
           groupsProvider:
-            organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+            organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
             catalogPath: '/backstage/entities/groups/**/*.yaml' # this will search all folders for files that end in .yaml
             filters: # optional filters
               branch: 'main' # optional string
@@ -99,7 +99,7 @@ backstage:
 
           # Users
           usersProvider:
-            organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+            organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
             catalogPath: '/backstage/entities/users/**/*.yaml' # this will search all folders for files that end in .yaml
             filters: # optional filters
               branch: 'main' # optional string

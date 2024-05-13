@@ -4,7 +4,7 @@ service: ${{ values.service }}
 
 deployment:
   image:
-    repository: AATT_DOCKERHUB_USERNAME/${{ values.system }}-${{ values.service }}
+    repository: tferrari92/${{ values.system }}-${{ values.service }}
   labels:
     system: ${{ values.system }}
     service: ${{ values.service }}

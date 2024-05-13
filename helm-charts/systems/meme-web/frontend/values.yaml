@@ -8,7 +8,7 @@ port: 80
 
 deployment:
   image:
-    repository: AATT_DOCKERHUB_USERNAME/meme-web-frontend # This value was modified by the initial-setup python script
+    repository: tferrari92/meme-web-frontend # This value was modified by the initial-setup python script
   labels:
     system: meme-web 
     service: frontend

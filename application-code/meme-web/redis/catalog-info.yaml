@@ -12,7 +12,7 @@ metadata:
     - redis 
   links:
     - title: Documentation
-      url: https://github.com/AATT_GITHUB_USERNAME/automate-all-the-things-braindamage
+      url: https://github.com/tomasferrarisenda/automate-all-the-things-braindamage
     - title: Admin Dashboard
       type: admin-dashboard
       icon: dashboard

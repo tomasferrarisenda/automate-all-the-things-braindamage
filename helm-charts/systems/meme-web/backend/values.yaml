@@ -13,4 +13,4 @@ deployment:
 
   
   image:
-    repository: AATT_DOCKERHUB_USERNAME/meme-web-backend # This value was modified by the initial-setup python script
+    repository: tferrari92/meme-web-backend # This value was modified by the initial-setup python script
