@@ -66,6 +66,7 @@ This Transcendence Edition builds upon the [Braindamage Edition](https://github.
    - [Set up GitHub OAuth](#set-a-github-oauth)
   - [Run Backstage locally](#run-backstage-locally)
   - [Customising Backstage](#customising-backstage)
+    - [OAuth with GitHub](#oauth-with-github)
     - [Plugins I've added](#plugins-ive-added)
     - [Templates I've created](#templates-ive-created)
     - [My arbitrary rules](#my-arbitrary-rules)
