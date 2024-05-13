@@ -63,12 +63,14 @@ This Transcendence Edition builds upon the [Braindamage Edition](https://github.
   - [Prerequisites](#prerequisites)
   - [Initial setup](#create-secrets-for-github-actions)
    - [Get GitHub PAT](#get-github-pat-personal-access-token)
+   - [Set up GitHub OAuth](#set-a-github-oauth)
   - [Run Backstage locally](#run-backstage-locally)
   - [Customising Backstage](#customising-backstage)
     - [Plugins I've added](#plugins-ive-added)
     - [Templates I've created](#templates-ive-created)
     - [My arbitrary rules](#my-arbitrary-rules)
   - [Meme-Web](#meme-web)
+  - [Challenge](#challenge)
 - [AWS Infrastructure Deployment Pipeline](#aws-infrastructure-deployment-pipeline)
   - [Description](#description)
   - [Instructions](#instructions)
@@ -325,6 +327,16 @@ Choose a name and a value for expiration. Under scopes select "repo" and "workfl
 <p title="GitHub Token" align="center"> <<img width="650" src="https://i.imgur.com/zTn7gDI.png"> </p>
 
 Click Generate token. Store the token somewhere safe.
+</br>
+
+### Set up GitHub OAuth
+1. Go [here](https://github.com/settings/applications/new).
+2. Complete with the following data:<br>
+        Application name: Backstage<br>
+        Homepage URL: http://localhost:3000/<br>
+        Authorization callback URL: http://localhost:7007/api/auth/github/handler/frame
+3. Click on "Generate a new client secret".
+4. Save Client ID and Secret somewhere safe.
 
 </br>
 
@@ -450,13 +462,13 @@ I've left the meme-web as an example so that you can use it as reference when de
 
 ## Challenge
 Using the templates on the "Create" tab:
-1. Create a new Group, merge the Pull Request.
-2. Create a new System that is owned by that Group, merge the Pull Request.
-3. Create a new NGINX service that belongs to that system, merge the Pull Request.
-4. Create a new Node.js service that belongs to that system, merge the Pull Request.
+1. Create a new Group, merge the generated Pull Request into your main branch.
+2. Create a new System that is owned by that Group, merge the generated Pull Request into your main branch.
+3. Create a new NGINX service that belongs to that System, merge the generated Pull Request into your main branch.
+4. Create a new Node.js service that belongs to that System, merge the generated Pull Request into your main branch.
+5. Run the workflows to build and deploy the new services.
 
 If you did everything right, you should see this new system with both services running when you deploy to EKS.
-
 
 <br/>
 <br/>
