@@ -442,6 +442,17 @@ I've left the meme-web as an example so that you can use it as reference when de
 - [group](/backstage/entities/groups/meme-web-team.yaml)
 - [user](/backstage/entities/users/geralt.yaml)
 
+</br>
+
+## Challenge
+Using the templates on the "Create" tab:
+1. Create a new Group, merge the Pull Request.
+2. Create a new System that is owned by that Group, merge the Pull Request.
+3. Create a new NGINX service that belongs to that system, merge the Pull Request.
+4. Create a new Node.js service that belongs to that system, merge the Pull Request.
+
+If you did everything right, you should see this new system with both services running when you deploy to EKS.
+
 
 <br/>
 <br/>
