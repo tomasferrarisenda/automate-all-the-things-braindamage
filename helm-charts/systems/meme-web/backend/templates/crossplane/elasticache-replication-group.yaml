@@ -25,7 +25,7 @@ spec:
       name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
     transitEncryptionEnabled: true
     authTokenSecretRef:
-      # namespace: 
+      namespace: {{ .Values.system }}-{{ .Values.environment }}
       # name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-secret # Name of the secret
       name: redis-secret # Name of the secret
       key: REDIS_PASS
