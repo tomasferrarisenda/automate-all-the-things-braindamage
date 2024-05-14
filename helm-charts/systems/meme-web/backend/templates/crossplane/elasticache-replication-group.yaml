@@ -17,8 +17,10 @@ spec:
     # numCacheClusters: 1
     # parameterGroupName: default.redis7
     region: us-east-1
-    subnetGroupNameRef:
-      name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
+    securityGroupIds: 
+      - <security-group-id>
+    # subnetGroupNameRef: # esto es para referancia a otro managed resource de crossplane donde entrara la infro requerida
+    #   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
     # securityGroupIdRefs: 
     #   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-databases-security-group
     # transitEncryptionEnabled: true
