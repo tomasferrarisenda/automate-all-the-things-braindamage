@@ -6,8 +6,6 @@ metadata:
   annotations:
     backstage.io/techdocs-ref: dir:.
     backstage.io/kubernetes-id: meme-web-frontend
-    backstage.io/techdocs-ref: dir:.
-    backstage.io/kubernetes-id: meme-web-frontend
     github.com/project-slug: tomasferrarisenda/automate-all-the-things-transcendence
     argocd/app-selector: system-service=meme-web-frontend # This is for Backstage ArgoCD plugin. You need to add this label in the application.yaml. You can also use argocd/app-name
     grafana/dashboard-selector: "tags @> 'linux'" # The following selector will return dashboards that have a 'linux' tag
