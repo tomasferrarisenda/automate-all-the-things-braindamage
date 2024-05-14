@@ -5,6 +5,8 @@ metadata:
   name: crossplane-bucket
   annotations:
     argocd.argoproj.io/sync-wave: "3"
+  labels:
+    crossplane-managed-resource: "true"
 spec:
   forProvider:
     region: us-east-1
