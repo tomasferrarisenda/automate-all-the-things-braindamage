@@ -3,7 +3,7 @@ kind: Provider
 metadata:
   name: provider-aws-ec2
   annotations:
-    argocd.argoproj.io/hook: PreSync
+    # argocd.argoproj.io/hook: PreSync
     # argocd.argoproj.io/sync-wave: "0"
 spec:
   package: xpkg.upbound.io/upbound/provider-aws-ec2:v1.4.0

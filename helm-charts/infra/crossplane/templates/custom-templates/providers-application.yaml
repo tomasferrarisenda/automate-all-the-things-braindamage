@@ -1,22 +1,22 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: crossplane-providers
-  namespace: argocd
-  annotations:
-    argocd.argoproj.io/sync-wave: "1"
-spec:  
-  destination:
-    namespace: crossplane-system
-    server: https://kubernetes.default.svc
-  project: crossplane
-  source:
-    repoURL: https://github.com/tomasferrarisenda/automate-all-the-things-transcendence.git # This value was modified by the initial-setup python script
-    path: helm-charts/infra/crossplane/provider-manifests
-    directory:
-      recurse: true
-      jsonnet: {}
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: crossplane-providers
+#   namespace: argocd
+#   annotations:
+#     argocd.argoproj.io/sync-wave: "1"
+# spec:  
+#   destination:
+#     namespace: crossplane-system
+#     server: https://kubernetes.default.svc
+#   project: crossplane
+#   source:
+#     repoURL: https://github.com/tomasferrarisenda/automate-all-the-things-transcendence.git # This value was modified by the initial-setup python script
+#     path: helm-charts/infra/crossplane/provider-manifests
+#     directory:
+#       recurse: true
+#       jsonnet: {}
+#   syncPolicy:
+#     automated:
+#       selfHeal: true
+#       prune: true
