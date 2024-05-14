@@ -3,7 +3,7 @@ kind: SecurityGroup
 metadata:
   name: databases-security-group
   annotations:
-    argocd.argoproj.io/sync-wave: "-3"
+    argocd.argoproj.io/sync-wave: "-4"
 spec:
   forProvider:
     description: "Security group for databases"
