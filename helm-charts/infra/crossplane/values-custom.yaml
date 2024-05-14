@@ -10,25 +10,25 @@ aws_credentials: AgChpphcd9L+rc7ut0UFhZ8QxEV/7Sq14F8RgXkAqS+MU+QR22Q8OWUbgx58Dhk
 #     argocd.argoproj.io/hook: PreSync
 
 
-# extraObjects: 
-#   - apiVersion: pkg.crossplane.io/v1
-#     kind: Provider
-#     metadata:
-#       name: provider-aws-ec2
-#       annotations:
-#         argocd.argoproj.io/hook: PostSync
-#         argocd.argoproj.io/sync-wave: "1"
-#     spec:
-#       package: xpkg.upbound.io/upbound/provider-aws-ec2:v1.4.0
-#   - apiVersion: pkg.crossplane.io/v1
-#     kind: Provider
-#     metadata:
-#       name: provider-aws-elasticache
-#       annotations:
-#         argocd.argoproj.io/hook: PostSync
-#         argocd.argoproj.io/sync-wave: "1"
-#     spec:
-#       package: xpkg.upbound.io/upbound/provider-aws-elasticache:v1.4.0
+extraObjects: 
+  - apiVersion: pkg.crossplane.io/v1
+    kind: Provider
+    metadata:
+      name: provider-aws-ec2
+      annotations:
+        argocd.argoproj.io/hook: PostSync
+        argocd.argoproj.io/sync-wave: "1"
+    spec:
+      package: xpkg.upbound.io/upbound/provider-aws-ec2:v1.4.0
+  - apiVersion: pkg.crossplane.io/v1
+    kind: Provider
+    metadata:
+      name: provider-aws-elasticache
+      annotations:
+        argocd.argoproj.io/hook: PostSync
+        argocd.argoproj.io/sync-wave: "1"
+    spec:
+      package: xpkg.upbound.io/upbound/provider-aws-elasticache:v1.4.0
   - apiVersion: pkg.crossplane.io/v1
     kind: Provider
     metadata:
