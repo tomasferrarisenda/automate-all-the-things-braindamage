@@ -288,6 +288,8 @@ These will be required for our workflows to connect to your AWS account.
 
 The true power of Crossplane lies behind Crossplane compositions, but that's a slighlty more advaded concept so we'll leave it for next edition, let's start with the basics.
 
+ARGO NO APPLICA EXITOSAMENTE LA APPLICATION DE CORSSPLANE POR LOS PROVIDER Y PROVEDR CONGI Q NO SE PUEDEN APLICAR PORQ NO EXISTEN LOS  CRDS CORRESPONDIENTES, EL TEMA ES Q LOS CRDS CORRESPONDIENTE NO SE EN QUE MOMENTO NI DE DONDE SALEN? LOS GENEREA LOS PODS? ARGO POR DEFAULT DEBERIA APLICAR PRIMERO ESTOS CRDS PERO EN EL CHART NO APARENCE LOS MANIFEST DE LOS CRD POR LO Q NO LOS RECONOCE COMO ALGO QUE TIENE QUE APLICARSE PRIMERO. COMO SE CREAN Y DE DONDE SALEN LOS CRD DE PROVIDEER Y PROVIDERCONFIG????
+
 ## Foundational VS Non-Foundational
 For the moment, we will not be reaplacing all our Terraform IaC with Crossplane. 
 Ejemplos
