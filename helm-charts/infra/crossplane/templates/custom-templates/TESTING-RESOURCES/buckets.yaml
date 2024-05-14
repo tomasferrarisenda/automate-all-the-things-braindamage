@@ -3,6 +3,8 @@ kind: Bucket
 metadata:
   # generateName: crossplane-bucket- # This does not work with ArgoCD because Argo uses "apply" command and generateName can only be used with "create" command.
   name: crossplane-bucket
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   forProvider:
     region: us-east-1
