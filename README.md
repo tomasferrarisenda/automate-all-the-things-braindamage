@@ -59,6 +59,7 @@ This Transcendence Edition builds upon the [Braindamage Edition](https://github.
 - [GitHub Actions Setup](#github-actions-setup)
   - [Get your AWS keys](#get-your-aws-keys)
   - [Create secrets for GitHub Actions](#create-secrets-for-github-actions)
+- [Crossplane](#crossplane)
 - [Backstage.io](#backstageio)
   - [Prerequisites](#prerequisites)
   - [Initial setup](#create-secrets-for-github-actions)
@@ -276,6 +277,22 @@ These will be required for our workflows to connect to your AWS account.
 
 ---
 
+<br/>
+<br/>
+
+# BACKSTAGE.IO
+
+## Foundational VS Non-Foundational
+Ejemplos
+Porq seguimos usando tf para algunas
+las bases elasticahce se mudaron a dentro del hel  char de backend
+hay q ver lo del destroy
+hay q manualmente cargar el redis host en los values
+
+
+<br/>
+<br/>
+<p title="We Are Not The Same" align="center"> <img width="460" src="https://i.imgur.com/E0s8TW6.png"> </p>
 <br/>
 <br/>
 
