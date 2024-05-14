@@ -11,7 +11,7 @@ spec:
   forProvider:
     region: us-east-1
     subnetIdRefs:
-      - name: example
+      - name: subnet-0be8c65da3f816b83
   providerConfigRef:
     name: default
     # name: elasticache-subnet-group
