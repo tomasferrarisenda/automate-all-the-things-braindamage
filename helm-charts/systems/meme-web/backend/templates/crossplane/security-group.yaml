@@ -1,0 +1,24 @@
+apiVersion: ec2.aws.crossplane.io/v1beta1
+kind: SecurityGroup
+metadata:
+  name: databases-security-group
+spec:
+  forProvider:
+    description: "Security group for databases"
+    groupName: "${var.project}-databases"
+    vpcId: <vpc-id>  # Replace with the actual VPC ID
+    ingress:
+      - fromPort: 22
+        toPort: 22
+        ipProtocol: "tcp"
+        cidrBlocks:
+          - <public-subnet-c-cidr-block>  # Replace with actual CIDR block for public subnet C
+      - fromPort: 0
+        toPort: 0
+        ipProtocol: "-1"
+        cidrBlocks:
+          - <public-subnet-c-cidr-block>  # Replace with actual CIDR block for public subnet C
+          - <private-subnet-a-cidr-block>  # Replace with actual CIDR block for private subnet A
+          - <private-subnet-b-cidr-block>  # Replace with actual CIDR block for private subnet B
+  providerConfigRef:
+    name: aws-provider

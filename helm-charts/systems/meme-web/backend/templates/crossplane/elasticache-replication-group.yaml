@@ -1,0 +1,25 @@
+apiVersion: cache.aws.crossplane.io/v1beta1
+kind: ReplicationGroup
+metadata:
+  name: elasticache-replication-group-{{ .Values.environment }}
+spec:
+  forProvider:
+    replicationGroupID: "{{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elascache-rep-group"
+    replicationGroupDescription: "Redis cluster for {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}"
+    cacheNodeType: "cache.t4g.micro"
+    engine: "redis"
+    engineVersion: "7.0"
+    port: 6379
+    parameterGroupName: "default.redis7"
+    snapshotRetentionLimit: 5
+    snapshotWindow: "00:00-05:00"
+    subnetGroupName: elasticache-subnet-group
+    automaticFailoverEnabled: false
+    securityGroupIDs:
+      - <security-group-id>
+    transitEncryptionEnabled: true
+    authToken: "automate-all-the-things-{{ .Values.environment }}"
+    clusterMode:
+      replicasPerNodeGroup: 1
+  providerConfigRef:
+    name: default

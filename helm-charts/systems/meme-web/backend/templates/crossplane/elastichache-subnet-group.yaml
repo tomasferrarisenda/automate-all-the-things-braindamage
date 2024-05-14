@@ -1,0 +1,11 @@
+apiVersion: cache.aws.crossplane.io/v1beta1
+kind: SubnetGroup
+metadata:
+  name: elasticache-subnet-group
+spec:
+  forProvider:
+    name: elasticache-subnet-group
+    subnetIDs:
+      - <private-subnet-c-id>
+  providerConfigRef:
+    name: aws-provider

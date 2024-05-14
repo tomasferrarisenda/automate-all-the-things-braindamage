@@ -285,7 +285,7 @@ These will be required for our workflows to connect to your AWS account.
 ## Foundational VS Non-Foundational
 Ejemplos
 Porq seguimos usando tf para algunas
-las bases elasticahce se mudaron a dentro del hel  char de backend
+las bases elasticahce se mudaron a dentro del hel  char de backend. this involved some restructuring of resources loke subenet group and security group IDs. aun se puede ssh desde la ec2 a los nodos de elasticache??? ver security-groups.tf
 hay q ver lo del destroy
 hay q manualmente cargar el redis host en los values
 
