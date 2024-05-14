@@ -314,6 +314,8 @@ hay q ver lo del destroy
 hay q manualmente cargar el redis host en los values
 we might go full crossplane in the future.. maybe, who knows?
 
+Detalle: cuandoe entremos a los front, el visits no va a funcionar aun porqu ahora tenemos q esperar que las elasticache levantan y tardan bastante
+
 
 <br/>
 <br/>

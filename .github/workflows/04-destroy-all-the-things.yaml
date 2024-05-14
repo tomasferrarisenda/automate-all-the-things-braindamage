@@ -29,7 +29,14 @@ jobs:
       - name: Delete applications & ArgoCD
         run: | 
           kubectl delete -n argocd applications.argoproj.io argocd-app-of-apps
+         
           # kubectl delete managed --all --all-namespaces --grace-period=1
+
+          # The aws-secret with the credentials for the Crossplane ProviderConfig will be deleted with the Crossplane application.
+          # We need to create it again for the ProviderConfig to be be able to connect to AWS and successfully delete all managed resources.
+          echo -e "[default]\naws_access_key_id = $AWS_ACCESS_KEY_ID\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > aws-credentials.txt
+          kubectl create secret generic aws-secret -n crossplane-system --from-file=creds=./aws-credentials.txt
+
           kubectl patch kiali kiali -n service-mesh -p '{"metadata":{"finalizers": []}}' --type=merge
           kubectl delete -n argocd applications.argoproj.io --all
           helm uninstall -n argocd argocd
