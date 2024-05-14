@@ -284,6 +284,9 @@ These will be required for our workflows to connect to your AWS account.
 
 # CROSSPLANE
 
+LEER ESTO https://docs.crossplane.io/latest/guides/crossplane-with-argo-cd/#Set-Resource-Exclusion
+
+
 [this series](https://www.youtube.com/playlist?list=PLyicRj904Z99i8U5JaNW5X3AyBvfQz-16) One of the best DevOps youtubers and one of the minds behind Crossplane. For the purpose of this edition, watching only part ona and two should be enough. 
 
 The true power of Crossplane lies behind Crossplane compositions, but that's a slighlty more advaded concept so we'll leave it for next edition, let's start with the basics.

@@ -3,7 +3,7 @@ kind: Provider
 metadata:
   name: provider-aws-s3
   annotations:
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/sync-wave: "1"
+    # argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   package: xpkg.upbound.io/upbound/provider-aws-s3:v1.1.0
