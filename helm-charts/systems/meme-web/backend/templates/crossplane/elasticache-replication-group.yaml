@@ -18,7 +18,7 @@ spec:
     # parameterGroupName: default.redis7
     region: us-east-1
     securityGroupIds: 
-      - <security-group-id>
+      - {{ .Values.securityGroupId }}
     # subnetGroupNameRef: # esto es para referancia a otro managed resource de crossplane donde entrara la infro requerida
     #   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
     # securityGroupIdRefs: 
