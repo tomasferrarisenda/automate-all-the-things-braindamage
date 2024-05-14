@@ -60,6 +60,7 @@ This Transcendence Edition builds upon the [Braindamage Edition](https://github.
   - [Get your AWS keys](#get-your-aws-keys)
   - [Create secrets for GitHub Actions](#create-secrets-for-github-actions)
 - [Crossplane](#crossplane)
+  - [Foundational VS Non-Foundational](#foundational-vs-non-foundational)
 - [Backstage.io](#backstageio)
   - [Prerequisites](#prerequisites)
   - [Initial setup](#create-secrets-for-github-actions)
