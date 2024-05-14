@@ -169,7 +169,7 @@ Our app is a very simple static website, but I'm not spoiling it for you. You'll
 
 <br/>
 
-<p title="Logos Banner" align="center"> <img  src="https://i.imgur.com/9WuQ7Pv.png"> </p>
+<p title="Logos Banner" align="center"> <img  src="https://i.imgur.com/Nx1SnPM.png"> </p>
 
 <br/>
 
