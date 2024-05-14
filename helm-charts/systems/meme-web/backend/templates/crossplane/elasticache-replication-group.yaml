@@ -23,11 +23,12 @@ spec:
     #   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-databases-security-group
     subnetGroupNameRef: # esto es para referancia a otro managed resource de crossplane donde entrara la infro requerida
       name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
-    # transitEncryptionEnabled: true
-    # authTokenSecretRef:
-    #   namespace: 
-    #   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-secret # Name of the secret
-    #   key: authToken
+    transitEncryptionEnabled: true
+    authTokenSecretRef:
+      # namespace: 
+      # name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-secret # Name of the secret
+      name: redis-secret # Name of the secret
+      key: REDIS_PASS
 
 
     # replicationGroupID: "{{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elascache-rep-group"
