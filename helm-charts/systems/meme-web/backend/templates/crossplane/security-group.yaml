@@ -1,44 +1,32 @@
 # apiVersion: ec2.aws.upbound.io/v1beta1
 # kind: SecurityGroup
 # metadata:
-#   labels:
-#     testing.upbound.io/example-name: securitygroup1
-#   name: securitygroup1
-# spec:
-#   forProvider:
-#     description: Allow TLS inbound traffic
-#     name: test
-#     region: us-west-1
-#     tags:
-#       Name: test
-#     vpcIdSelector:
-#       matchLabels:
-#         testing.upbound.io/example-name: vpc1
-
-
-# apiVersion: ec2.aws.crossplane.io/v1beta1
-# kind: SecurityGroup
-# metadata:
 #   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-databases-security-group
 #   annotations:
 #     argocd.argoproj.io/sync-wave: "-4"
 # spec:
 #   forProvider:
-#     description: "Security group for databases"
-#     groupName: "${var.project}-databases"
-#     vpcId: <vpc-id>  # Replace with the actual VPC ID
+#     description: Allow TLS inbound traffic
+#     name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-databases-security-group
+#     region: us-east-1
+#     tags:
+#       Name: test
+#     vpcId: vpc-12345678
 #     ingress:
-#       - fromPort: 22
-#         toPort: 22
-#         ipProtocol: "tcp"
+#         description: Allow SSH from EC2 instance
 #         cidrBlocks:
 #           - <public-subnet-c-cidr-block>  # Replace with actual CIDR block for public subnet C
-#       - fromPort: 0
-#         toPort: 0
-#         ipProtocol: "-1"
+#         protocol: tcp
+#         fromPort: 22
+#         toPort: 22
+#     ingress:
+#         description: Allow EKS nodes to connect to the DB
 #         cidrBlocks:
 #           - <public-subnet-c-cidr-block>  # Replace with actual CIDR block for public subnet C
 #           - <private-subnet-a-cidr-block>  # Replace with actual CIDR block for private subnet A
 #           - <private-subnet-b-cidr-block>  # Replace with actual CIDR block for private subnet B
+#         protocol: "-1"
+#         fromPort: 0
+#         toPort: 6379
 #   providerConfigRef:
-#     name: aws-provider
+#     name: default

@@ -284,6 +284,8 @@ These will be required for our workflows to connect to your AWS account.
 
 # CROSSPLANE
 
+One of the best DevOps youtubers [this playlist](https://www.youtube.com/playlist?list=PLyicRj904Z99i8U5JaNW5X3AyBvfQz-16) and one of the minds behind Crossplane.
+
 ## Foundational VS Non-Foundational
 Ejemplos
 Porq seguimos usando tf para algunas
