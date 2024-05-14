@@ -6,7 +6,8 @@ metadata:
   name: {{ .Values.environment }}-elasticache-serviceentry
 spec:
   hosts:
-  - {{ .Values.redis_host }}
+  - master.{{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-ec-rep-grp.shelfr.use1.cache.amazonaws.com
+  # - {{ .Values.redis_host }}
   ports:
   - number: 6379
     name: tcp

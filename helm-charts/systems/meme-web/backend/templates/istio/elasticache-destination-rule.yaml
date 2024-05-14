@@ -4,7 +4,8 @@ kind: DestinationRule
 metadata:
   name: {{ .Values.environment }}-elasticache-destinationrule
 spec:
-  host: {{ .Values.redis_host }}
+  host: master.{{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-ec-rep-grp.shelfr.use1.cache.amazonaws.com
+  # host: {{ .Values.redis_host }}
   trafficPolicy:
     portLevelSettings:
     - port:
