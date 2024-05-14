@@ -13,7 +13,8 @@ spec:
     automaticFailoverEnabled: true
     description: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elascache-rep-group
     engineVersion: "7.1"
-    cacheNodeType: cache.t4g.micro
+    globalReplicationGroupId: pruebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    nodeType: cache.t4g.micro
     numCacheClusters: 1
     parameterGroupName: default.redis7
     port: 6379
