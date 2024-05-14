@@ -289,6 +289,7 @@ These will be required for our workflows to connect to your AWS account.
 The true power of Crossplane lies behind Crossplane compositions, but that's a slighlty more advaded concept so we'll leave it for next edition, let's start with the basics.
 
 ## Foundational VS Non-Foundational
+For the moment, we will not be reaplacing all our Terraform IaC with Crossplane. 
 Ejemplos
 Porq seguimos usando tf para algunas
 las bases elasticahce se mudaron a dentro del hel  char de backend. this involved some restructuring of resources loke subenet group and security group IDs. aun se puede ssh desde la ec2 a los nodos de elasticache??? ver security-groups.tf

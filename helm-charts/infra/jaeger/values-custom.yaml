@@ -18,11 +18,19 @@ query:
       - ""
     pathType: Prefix
 
+  # We do this because the cassandra db takes a while to start up. The collector adn query pods will fail to start if the db is not ready and will take a long time to retry.
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+
 # Allow recieving traces from Istio
 collector:
   service:
     zipkin: 
       port: 9411
+      
+  # We do this because the cassandra db takes a while to start up. The collector adn query pods will fail to start if the db is not ready and will take a long time to retry.
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 
 
 cassandra:
