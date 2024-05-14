@@ -280,7 +280,7 @@ These will be required for our workflows to connect to your AWS account.
 <br/>
 <br/>
 
-# BACKSTAGE.IO
+# CROSSPLANE
 
 ## Foundational VS Non-Foundational
 Ejemplos
@@ -292,7 +292,7 @@ hay q manualmente cargar el redis host en los values
 
 <br/>
 <br/>
-<p title="We Are Not The Same" align="center"> <img width="460" src="https://i.imgur.com/E0s8TW6.png"> </p>
+<p title="Anakin - We use k8s now" align="center"> <img width="460" src="https://i.imgur.com/Gwh1r0L.png"> </p>
 <br/>
 <br/>
 
