@@ -80,7 +80,7 @@ jobs:
       #     sed -i "s/redis_host:.*/redis_host: $(cat elasticache_stage_endpoint.txt | tr -d '\n')/g" helm-charts/systems/$SYSTEM/backend/environments/values-stage.yaml
       #     sed -i "s/redis_host:.*/redis_host: $(cat elasticache_prod_endpoint.txt | tr -d '\n')/g" helm-charts/systems/$SYSTEM/backend/environments/values-prod.yaml
 
-      - name: Modify values for each environment
+      - name: Modify values
         if: ${{ always() }}
         run: |
           sed -i "s/subnetId:.*/subnetId: $(cat database_subnet_id.txt | tr -d '\n')/g" helm-charts/systems/$SYSTEM/backend/values.yaml
