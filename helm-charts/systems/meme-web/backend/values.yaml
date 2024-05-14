@@ -15,5 +15,5 @@ deployment:
   image:
     repository: tferrari92/meme-web-backend # This value was modified by the initial-setup python script
 
-subnetId: subnet-0d3e7a56d6f8587c9
-securityGroupId: sg-0004ca877e29e809c
+subnetId: subnet-00adea5e461fe190c
+securityGroupId: sg-0e31579d8e8359d2b
