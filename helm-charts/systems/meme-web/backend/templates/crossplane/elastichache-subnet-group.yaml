@@ -1,13 +1,19 @@
-apiVersion: cache.aws.crossplane.io/v1beta1
+apiVersion: elasticache.aws.upbound.io/v1beta1
 kind: SubnetGroup
 metadata:
-  name: elasticache-subnet-group
+  name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
   annotations:
+    meta.upbound.io/example-id: elasticache/v1beta1/cluster
     argocd.argoproj.io/sync-wave: "-3"
+  labels:
+    testing.upbound.io/example-name: example
 spec:
   forProvider:
-    name: elasticache-subnet-group
-    subnetIDs:
-      - <private-subnet-c-id>
+    region: us-east-1
+    subnetIdRefs:
+      - name: example
   providerConfigRef:
-    name: aws-provider
+    name: default
+    # name: elasticache-subnet-group
+
+
