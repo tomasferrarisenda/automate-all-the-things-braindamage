@@ -14,3 +14,5 @@ deployment:
   
   image:
     repository: tferrari92/meme-web-backend # This value was modified by the initial-setup python script
+
+subnet_id: subnet-0d3e7a56d6f8587c9 

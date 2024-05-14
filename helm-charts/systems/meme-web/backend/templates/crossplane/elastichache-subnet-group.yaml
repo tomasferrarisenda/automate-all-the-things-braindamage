@@ -13,7 +13,7 @@ spec:
     # subnetIdRefs: # esto es para referancia a otro managed resource de crossplane donde entrara la infro requerida
     #   - name: subnet-ejemplo
     subnetIds: # esto es directamente a AWS
-      - subnet-0d3e7a56d6f8587c9 # private subnet C
+      - {{ .Values.subnet_id }} # private subnet C
   providerConfigRef:
     name: default
 
