@@ -1,4 +1,4 @@
-apiVersion: cache.aws.crossplane.io/v1beta1
+apiVersion: elasticache.aws.upbound.io/v1beta1
 kind: ReplicationGroup
 metadata:
   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elascache-rep-group
