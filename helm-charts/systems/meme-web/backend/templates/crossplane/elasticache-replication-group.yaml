@@ -19,8 +19,8 @@ spec:
     region: us-east-1
     securityGroupIds: 
       - {{ .Values.securityGroupId }}
-    # subnetGroupNameRef: # esto es para referancia a otro managed resource de crossplane donde entrara la infro requerida
-    #   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
+    subnetGroupNameRef: # esto es para referancia a otro managed resource de crossplane donde entrara la infro requerida
+      name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
     # securityGroupIdRefs: 
     #   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-databases-security-group
     # transitEncryptionEnabled: true
