@@ -1,1 +1,31 @@
 aws_credentials: AgChpphcd9L+rc7ut0UFhZ8QxEV/7Sq14F8RgXkAqS+MU+QR22Q8OWUbgx58DhkAlMioYjrvUSn3aBq1Ol59AjCwplZ6gnAS9H8x90WiTH4tLGY3VCH8oOJNYyVVttv00cxKZKwGQqoBIogvaVURwuWFB1136SSVKJurMWjIsl1p8BsM6q7RL85ydwfC4a4hcuUEe1G1TRkZ7ODo1qsBSrnHmnwaT4HMrBtyTXaclGLD53luCmsSnceQylvV6uyuHj4Y9+CRok49gOxCv6wl+TNaWdQvtwKi5iSoyKElk/8+d2zRaiVt70Ia86ChKW9TdNYYgbdjBsSZcOX2R5P7xMd4r5jOSBuo73pmgEqFRSNxACvfpUb9v/dHNoOoHSNzLFkXwi4Nrk+pY9dffYrE9EWMVpyznJfXY6lpVISsFc++IcXAdfv+760P08znj+9mPJfQp+iFknKj34H27BKKDlWJE5yuv6uwSW+MWJWBuRD+C3fXbh/agsk83BInW/MPwFQA4jQYVBM8abvVQJIvsq6W8mZKcXZZe5tMnPscNibI+1JUQuqCEQdbhWFJx609I9heIP7eLjJZibjMAmTv6/mvPN/hoMFxaRoLr+GAuQSC8vZTKM53z7p/zckNyqqpB3SJrPfe+2XLszEsG/mJGduiZ0gID44jBd8loCZ4pPxLYiYAuofT2zNiB4n58eXTwsaLMO72rldl9CjQcDk3ZXq/TrI7yfEavzfuLSXPUuJ7pCyx2Vl9fVkkgFnMHnhLHr49YpHWZLa3rMPorE1cS3kiKHr83kns3ndp1FXD1ReQBFRwU55bzQPurJTkVIm7oGGENK2iImB1WxX2VYXg6XXzK0iQqw== # This value was modified by the sealed-secrets pipeline
+
+
+extraObjects: 
+  - apiVersion: pkg.crossplane.io/v1
+    kind: Provider
+    metadata:
+      name: provider-aws-ec2
+      # annotations:
+      #   argocd.argoproj.io/hook: PostSync
+      #   argocd.argoproj.io/sync-wave: "1"
+    spec:
+      package: xpkg.upbound.io/upbound/provider-aws-ec2:v1.4.0
+  - apiVersion: pkg.crossplane.io/v1
+    kind: Provider
+    metadata:
+      name: provider-aws-elasticache
+      # annotations:
+      #   argocd.argoproj.io/hook: PostSync
+      #   argocd.argoproj.io/sync-wave: "1"
+    spec:
+      package: xpkg.upbound.io/upbound/provider-aws-elasticache:v1.4.0
+  - apiVersion: pkg.crossplane.io/v1
+    kind: Provider
+    metadata:
+      name: provider-aws-s3
+      # annotations:
+      #   argocd.argoproj.io/hook: PostSync
+      #   argocd.argoproj.io/sync-wave: "1"
+    spec:
+      package: xpkg.upbound.io/upbound/provider-aws-s3:v1.1.0
