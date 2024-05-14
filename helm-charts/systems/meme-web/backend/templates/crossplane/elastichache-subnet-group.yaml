@@ -2,6 +2,8 @@ apiVersion: cache.aws.crossplane.io/v1beta1
 kind: SubnetGroup
 metadata:
   name: elasticache-subnet-group
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   forProvider:
     name: elasticache-subnet-group

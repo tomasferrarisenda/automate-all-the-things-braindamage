@@ -1,7 +1,9 @@
 apiVersion: cache.aws.crossplane.io/v1beta1
 kind: ReplicationGroup
 metadata:
-  name: elasticache-replication-group-{{ .Values.environment }}
+  name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elascache-rep-group
+  annotations:
+    argocd.argoproj.io/sync-wave: "-1"
 spec:
   forProvider:
     replicationGroupID: "{{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elascache-rep-group"

@@ -2,6 +2,8 @@ apiVersion: ec2.aws.crossplane.io/v1beta1
 kind: SecurityGroup
 metadata:
   name: databases-security-group
+  annotations:
+    argocd.argoproj.io/sync-wave: "-3"
 spec:
   forProvider:
     description: "Security group for databases"

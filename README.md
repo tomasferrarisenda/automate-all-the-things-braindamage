@@ -630,7 +630,9 @@ Here are the specific numbers:
 - 1 Frontends
 
 ## Backend Applications
-- -1 Sealed-Secret
+- -3 Crossplane AWS SecurityGroup
+- -2 Crossplane AWS SubnetGroup
+- -1 SealedSecret / Crossplane AWS ReplicationGroup
 - 0 Deployment
 - 1 Canary
 
