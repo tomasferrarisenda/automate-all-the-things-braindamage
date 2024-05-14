@@ -1,19 +1,19 @@
-apiVersion: elasticache.aws.upbound.io/v1beta1
-kind: SubnetGroup
-metadata:
-  name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
-  annotations:
-    meta.upbound.io/example-id: elasticache/v1beta1/cluster
-    argocd.argoproj.io/sync-wave: "-3"
-  labels:
-    testing.upbound.io/example-name: example
-spec:
-  forProvider:
-    region: us-east-1
-    subnetIdRefs:
-      - name: subnet-0be8c65da3f816b83
-  providerConfigRef:
-    name: default
-    # name: elasticache-subnet-group
+# apiVersion: elasticache.aws.upbound.io/v1beta1
+# kind: SubnetGroup
+# metadata:
+#   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
+#   annotations:
+#     meta.upbound.io/example-id: elasticache/v1beta1/cluster
+#     argocd.argoproj.io/sync-wave: "-3"
+#   labels:
+#     testing.upbound.io/example-name: example
+# spec:
+#   forProvider:
+#     region: us-east-1
+#     subnetIdRefs:
+#       - name: subnet-0be8c65da3f816b83
+#   providerConfigRef:
+#     name: default
+#     # name: elasticache-subnet-group
 
 
