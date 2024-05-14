@@ -24,10 +24,12 @@ jobs:
         run: aws eks --region $AWS_REGION update-kubeconfig --name $PROJECT-cluster
 
       # Before deleting all Ingresses we eliminate ArgoCD because if we don't, it will re-deploy the Ingresses, automatically creating untracked AWS Application Load Balancers, which would mess with the terraform destroy  
+      # We also need to delete all Crossplane managed resources before the Crossplane application is deleted. If the ProviderConfig is deleted before the managed resources, the managed resources will be orphaned and not deleted. See: https://github.com/crossplane/crossplane/issues/1737
       # We also need to remove the finalizers from the Kiali CR for deletion to be successful, it's a known issue (https://kiali.io/docs/installation/installation-guide/install-with-helm/#known-problem-uninstall-hangs-unable-to-delete-the-kiali-cr)
       - name: Delete applications & ArgoCD
         run: | 
           kubectl delete -n argocd applications.argoproj.io argocd-app-of-apps
+          kubectl delete managed --all --all-namespaces --grace-period=1
           kubectl patch kiali kiali -n service-mesh -p '{"metadata":{"finalizers": []}}' --type=merge
           kubectl delete -n argocd applications.argoproj.io --all
           helm uninstall -n argocd argocd
