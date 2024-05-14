@@ -1,10 +1,10 @@
 # apiVersion: argoproj.io/v1alpha1
 # kind: Application
 # metadata:
-#   name: crossplane-providers
+#   name: crossplane-provider-configs
 #   namespace: argocd
 #   annotations:
-#     argocd.argoproj.io/sync-wave: "1"
+#     argocd.argoproj.io/sync-wave: "2"
 # spec:  
 #   destination:
 #     namespace: crossplane-system
@@ -12,7 +12,7 @@
 #   project: crossplane
 #   source:
 #     repoURL: https://github.com/tomasferrarisenda/automate-all-the-things-transcendence.git # This value was modified by the initial-setup python script
-#     path: helm-charts/infra/crossplane/provider-manifests
+#     path: helm-charts/infra/crossplane/provider-config-manifests
 #     directory:
 #       recurse: true
 #       jsonnet: {}
