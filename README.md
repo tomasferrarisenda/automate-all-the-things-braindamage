@@ -166,6 +166,7 @@ Our app is a very simple static website, but I'm not spoiling it for you. You'll
 - Code Instrumentation -> OpenTelemetry
 - Tracing -> Jaeger
 - Internal Developer Platform -> Backstage.io
+- Non-Foundational IaC -> Crossplane
 
 <br/>
 
