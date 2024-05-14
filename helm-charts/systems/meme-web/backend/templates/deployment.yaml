@@ -33,7 +33,8 @@ spec:
             - name: SERVICE
               value: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}
             - name: REDIS_HOST
-              value: {{ .Values.redis_host }} 
+              value: master.{{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-ec-rep-grp.shelfr.use1.cache.amazonaws.com
+              # value: {{ .Values.redis_host }} 
             - name: JAEGER_HOST
               value: jaeger-collector.observability
             - name: REDIS_PASS
