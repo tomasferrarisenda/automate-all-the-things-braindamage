@@ -1,6 +1,6 @@
 environment: prod
 
-redis_host: master.meme-web-prod-elascache-rep-group.shelfr.use1.cache.amazonaws.com
+redis_host: master.meme-web-backend-prod-ec-rep-grp.shelfr.use1.cache.amazonaws.com
 
 deployment:
   image:
