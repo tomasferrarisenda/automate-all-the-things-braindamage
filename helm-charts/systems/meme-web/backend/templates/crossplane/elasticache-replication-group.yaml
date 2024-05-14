@@ -1,7 +1,7 @@
 apiVersion: elasticache.aws.upbound.io/v1beta1
 kind: ReplicationGroup
 metadata:
-  name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elascache-rep-group
+  name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-ec-rep-grp
   annotations:
     argocd.argoproj.io/sync-wave: "-2"
   #   meta.upbound.io/example-id: elasticache/v1beta1/replicationgroup
