@@ -14,7 +14,7 @@ spec:
     description: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elascache-rep-group
     engineVersion: "7.1"
     nodeType: cache.t4g.micro
-    # numCacheClusters: 1
+    numCacheClusters: 2
     # parameterGroupName: default.redis7
     region: us-east-1
     securityGroupIds: 

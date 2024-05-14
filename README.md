@@ -290,6 +290,13 @@ The true power of Crossplane lies behind Crossplane compositions, but that's a s
 
 ARGO NO APPLICA EXITOSAMENTE LA APPLICATION DE CORSSPLANE POR LOS PROVIDER Y PROVEDR CONGI Q NO SE PUEDEN APLICAR PORQ NO EXISTEN LOS  CRDS CORRESPONDIENTES, EL TEMA ES Q LOS CRDS CORRESPONDIENTE NO SE EN QUE MOMENTO NI DE DONDE SALEN? LOS GENEREA LOS PODS? ARGO POR DEFAULT DEBERIA APLICAR PRIMERO ESTOS CRDS PERO EN EL CHART NO APARENCE LOS MANIFEST DE LOS CRD POR LO Q NO LOS RECONOCE COMO ALGO QUE TIENE QUE APLICARSE PRIMERO. COMO SE CREAN Y DE DONDE SALEN LOS CRD DE PROVIDEER Y PROVIDERCONFIG????
 
+INSTALL CROSSPLANE CLI
+curl -sL "https://raw.githubusercontent.com/crossplane/crossplane/master/install.sh" | sh
+crossplane --help
+
+trace command:
+crossplane beta trace replicationgroup meme-web-backend-dev-elascache-rep-group
+
 ## Foundational VS Non-Foundational
 For the moment, we will not be reaplacing all our Terraform IaC with Crossplane. 
 Ejemplos
