@@ -27,18 +27,25 @@ jobs:
       - name: Delete applications & ArgoCD
         run: | 
           # First we delete the ArgoCD App of Apps application so that it doesn't try to re-deploy applications while they are being deleted. 
-          kubectl delete -n argocd applications.argoproj.io argocd-app-of-apps
+          # kubectl delete -n argocd applications.argoproj.io argocd-app-of-apps
          
-          # The aws-secret with the credentials for the Crossplane ProviderConfig will be deleted with the Crossplane application.
-          # We need to create it again for the ProviderConfig to be be able to connect to AWS and successfully delete all managed resources.
-          echo -e "[default]\naws_access_key_id = $AWS_ACCESS_KEY_ID\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > aws-credentials.txt
-          kubectl create secret generic aws-secret -n crossplane-system --from-file=creds=./aws-credentials.txt
 
           # We also need to remove the finalizers from the Kiali CR for deletion to be successful, it's a known issue (https://kiali.io/docs/installation/installation-guide/install-with-helm/#known-problem-uninstall-hangs-unable-to-delete-the-kiali-cr)
           kubectl patch kiali kiali -n service-mesh -p '{"metadata":{"finalizers": []}}' --type=merge
           
-          # Now we can delete all ArgoCD applications and the ArgoCD itself.
+          # Now we can delete all ArgoCD applications
           kubectl delete -n argocd applications.argoproj.io --all
+
+          # The aws-secret with the credentials for the Crossplane ProviderConfig will be deleted with the Crossplane application.
+          # We need to create it again for the ProviderConfig to be be able to connect to AWS and successfully delete all managed resources.
+          echo -e "[default]\naws_access_key_id = $AWS_ACCESS_KEY_ID\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > aws-credentials.txt
+          COMMAND="kubectl create secret generic aws-secret -n crossplane-system --from-file=creds=./aws-credentials.txt"
+          until $COMMAND; do
+            echo "Command failed. Retrying in 5 seconds..."
+            sleep 5
+          done
+        
+          # Now we can uninstall ArgoCD
           helm uninstall -n argocd argocd
 
       # Before deleting all infra we make sure there are no existing ingresses so the terraform destroy isn't messed up by the existance of untracked AWS Application Load Balancers
