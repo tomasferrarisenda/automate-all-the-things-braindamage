@@ -326,6 +326,8 @@ crossplane beta trace replicationgroup meme-web-backend-dev-elascache-rep-group
 
 Paraver si est listo
 kubectl get replicationgroups.elasticache.aws.upbound.io -w
+
+siempre me queda un securitygroupingressrules.ec2.aws.upbound.io random y hay q editarle el finalizer pa q no joda. Es por esto? https://github.com/crossplane-contrib/provider-upjet-aws/issues/1242
 ## Foundational VS Non-Foundational
 For the moment, we will not be reaplacing all our Terraform IaC with Crossplane. 
 Ejemplos
@@ -399,13 +401,15 @@ Click Generate token. Store the token somewhere safe.
 ### Set up GitHub OAuth
 
 ACUTALIZAR ESTA PARETE DICIENDO Q CUANDOTENGAN LA URL DE BACKSTAGE PONERLA ACA SER VERA ALGO ASI
-http://k8s-backstag-backstag-e78a25dae5-420865081.us-east-1.elb.amazonaws.com/
+http://k8s-backstag-backstag-e78a25dae5-420865081.us-east-1.elb.amazonaws.com
+http://k8s-backstag-backstag-e78a25dae5-420865081.us-east-1.elb.amazonaws.com:7000/api/auth/github/handler/frame
 
 1. Go [here](https://github.com/settings/applications/new).
 2. Complete with the following data:<br>
         Application name: Backstage<br>
         Homepage URL: http://localhost:3000/<br>
         Authorization callback URL: http://localhost:7007/api/auth/github/handler/frame
+                                                      
 3. Click on "Generate a new client secret".
 4. Save Client ID and Secret somewhere safe.
 
