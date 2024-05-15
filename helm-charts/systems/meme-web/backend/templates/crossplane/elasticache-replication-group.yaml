@@ -12,10 +12,10 @@ spec:
     nodeType: cache.t4g.micro
     numCacheClusters: 2
     region: us-east-1
+    securityGroupIdRefs: 
+      - name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
     # securityGroupIds: 
     #   - {{ .Values.securityGroupId }}
-    securityGroupIdRefs: 
-      name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
     subnetGroupNameRef: # esto es para referancia a otro managed resource de crossplane donde entrara la infro requerida
       name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
     transitEncryptionEnabled: true
