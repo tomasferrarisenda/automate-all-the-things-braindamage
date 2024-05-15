@@ -16,4 +16,4 @@ deployment:
 
 vpcId: vpc-0c85782ab28300ed7
 subnetId: subnet-0409c47fc1face9ba
-securityGroupId: sg-0b7bab67c05dab563
+# securityGroupId: sg-0b7bab67c05dab563

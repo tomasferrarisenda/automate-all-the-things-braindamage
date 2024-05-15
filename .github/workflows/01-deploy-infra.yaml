@@ -71,7 +71,7 @@ jobs:
         run: |
           echo "$(terraform -chdir=terraform/aws output -raw vps_id)" > vps_id.txt
           echo "$(terraform -chdir=terraform/aws output -raw database_subnet_id)" > database_subnet_id.txt
-          echo "$(terraform -chdir=terraform/aws output -raw database_security_group_id)" > database_security_group_id.txt
+          # echo "$(terraform -chdir=terraform/aws output -raw database_security_group_id)" > database_security_group_id.txt
 
       # - name: Modify values for each environment
       #   if: ${{ always() }}
@@ -85,7 +85,7 @@ jobs:
         run: |
           sed -i "s/vpcId:.*/vpcId: $(cat vps_id.txt | tr -d '\n')/g" helm-charts/systems/$SYSTEM/backend/values.yaml
           sed -i "s/subnetId:.*/subnetId: $(cat database_subnet_id.txt | tr -d '\n')/g" helm-charts/systems/$SYSTEM/backend/values.yaml
-          sed -i "s/securityGroupId:.*/securityGroupId: $(cat database_security_group_id.txt | tr -d '\n')/g" helm-charts/systems/$SYSTEM/backend/values.yaml
+          # sed -i "s/securityGroupId:.*/securityGroupId: $(cat database_security_group_id.txt | tr -d '\n')/g" helm-charts/systems/$SYSTEM/backend/values.yaml
 
       # - name: Commit changes to GitHub
       #   if: ${{ always() }}
