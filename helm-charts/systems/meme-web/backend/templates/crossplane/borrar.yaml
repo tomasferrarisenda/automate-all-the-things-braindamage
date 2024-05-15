@@ -3,6 +3,8 @@ apiVersion: ec2.aws.crossplane.io/v1beta1
 kind: SecurityGroup
 metadata:
   name: sample-cluster-sg
+  annotations:
+    argocd.argoproj.io/sync-wave: "-5"
 spec:
   forProvider:
     description: Cluster communication with worker nodes
