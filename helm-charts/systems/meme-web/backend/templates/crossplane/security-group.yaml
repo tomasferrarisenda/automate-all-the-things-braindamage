@@ -39,7 +39,7 @@ spec:
       #     description: Allow EKS nodes to connect to the DB
       #   - cidrIp: 10.0.96.0/19  # CIDR block for private subnet B
       #     description: Allow EKS nodes to connect to the DB
-        toPort: 6379
+        # toPort: 6379
 
   providerConfigRef:
     name: default
