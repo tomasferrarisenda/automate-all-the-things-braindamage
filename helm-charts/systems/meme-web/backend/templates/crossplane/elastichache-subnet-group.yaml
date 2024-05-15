@@ -4,9 +4,6 @@ metadata:
   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
   annotations:
     argocd.argoproj.io/sync-wave: "-3"
-    # meta.upbound.io/example-id: elasticache/v1beta1/cluster
-  # labels:
-  #   testing.upbound.io/example-name: example
 spec:
   forProvider:
     region: us-east-1
