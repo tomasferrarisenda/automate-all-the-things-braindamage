@@ -44,7 +44,7 @@ kind: SecurityGroupIngressRule
 metadata:
   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-ing-rule-1
   annotations:
-    argocd.argoproj.io/sync-wave: "-4"
+    argocd.argoproj.io/sync-wave: "-5"
 spec:
   forProvider:
     description: Allow redis-cli from EC2 instance
