@@ -31,7 +31,7 @@ metadata:
     - title: Helm Chart
       type: helm-chart 
       icon: github
-      url: https://github.com/tomasferrarisenda/automate-all-the-things-transcendence/tree/main/helm-charts/systems/meme-web/backend
+      url: https://github.com/tomasferrarisenda/automate-all-the-things-transcendence/tree/main/helm-charts/systems/meme-web/frontend
 spec:
   type: service
   lifecycle: production
