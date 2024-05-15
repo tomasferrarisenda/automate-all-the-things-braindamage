@@ -15,6 +15,7 @@ metadata:
   links:
     - title: Documentation
       url: https://github.com/tomasferrarisenda/automate-all-the-things-transcendence
+      icon: docs
     - title: Admin Dashboard
       type: admin-dashboard
       icon: dashboard
