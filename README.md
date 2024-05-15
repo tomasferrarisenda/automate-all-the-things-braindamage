@@ -65,7 +65,7 @@ This Transcendence Edition builds upon the [Braindamage Edition](https://github.
   - [Prerequisites](#prerequisites)
   - [Initial setup](#create-secrets-for-github-actions)
    - [Get GitHub PAT](#get-github-pat-personal-access-token)
-   - [Set up GitHub OAuth](#set-a-github-oauth)
+   - [Set up GitHub OAuth](#set-up-github-oauth)
   - [Run Backstage locally](#run-backstage-locally)
   - [Customising Backstage](#customising-backstage)
     - [OAuth with GitHub](#oauth-with-github)
@@ -324,7 +324,8 @@ crossplane beta trace replicationgroup meme-web-backend-dev-elascache-rep-group
 
       # We also need to delete all Crossplane managed resources before the Crossplane application is deleted. If the ProviderConfig is deleted before the managed resources, the managed resources will be orphaned and not deleted. See: https://github.com/crossplane/crossplane/issues/1737
 
-
+Paraver si est listo
+kubectl get replicationgroups.elasticache.aws.upbound.io -w
 ## Foundational VS Non-Foundational
 For the moment, we will not be reaplacing all our Terraform IaC with Crossplane. 
 Ejemplos
