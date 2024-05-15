@@ -12,5 +12,5 @@ spec:
     subnetIds: # esto es directamente a AWS
       - {{ .Values.subnetId }} # private subnet C
   providerConfigRef:
-    name: default
+    name: aws
 

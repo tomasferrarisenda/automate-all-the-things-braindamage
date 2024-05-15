@@ -294,6 +294,10 @@ The true power of Crossplane lies behind Crossplane compositions, but that's a s
 I had to find this workaround. not then most elegant solution. If you have any better ideas, I'm all ears
 EXPLCIAR la application secundaria q creamos dento del chart de crossplane. Esto resuelve tambien el problema del secret que necesita el providerconfig para conectarse a aws pa eliminer los managedresources: ESTO NO HACE FALTA PORQUE CON LA SOLUCION DE LAS SUB-APPLICATIONS DE CROSSPLANE PARA PROVIDERS Y PROVIDERCONFIGS, LA APPLICATION DE CROSSPLANE NO PUEDE SER BORRADA HASTA QUE ELLAS NO MUERAN, Y PROVIDERCONFIGS NO PUEDE MORIR HASTA QUE NO MUERAN TODOS LOS MANAGED RESOURCES
 
+I created a kind fo application cascading effect where ProviderConfig cant be deleted until managed resources are delted (this is by design from Crossplane), Provider cant be deleted until ProviderConfig is deleted (this is thanks to this application cascadde) and Crossplane application cant be deleted untip Providers application is deleted (also thanks to cascading effect), which means the secret is not deleted which would stop the ProviderConf from connecting to aws if it was
+
+Managed Resources <- ProviderConfig <- Providers <- Crossplane
+
 ARGO NO APPLICA EXITOSAMENTE LA APPLICATION DE CORSSPLANE POR LOS PROVIDER Y PROVEDR CONGI Q NO SE PUEDEN APLICAR PORQ NO EXISTEN LOS  CRDS CORRESPONDIENTES, EL TEMA ES Q LOS CRDS CORRESPONDIENTE NO SE EN QUE MOMENTO NI DE DONDE SALEN? LOS GENEREA LOS PODS? ARGO POR DEFAULT DEBERIA APLICAR PRIMERO ESTOS CRDS PERO EN EL CHART NO APARENCE LOS MANIFEST DE LOS CRD POR LO Q NO LOS RECONOCE COMO ALGO QUE TIENE QUE APLICARSE PRIMERO. COMO SE CREAN Y DE DONDE SALEN LOS CRD DE PROVIDEER Y PROVIDERCONFIG???? 
 
 INSTALL CROSSPLANE CLI

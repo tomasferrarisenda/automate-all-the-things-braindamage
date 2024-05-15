@@ -24,4 +24,4 @@ spec:
       name: redis-secret 
       key: REDIS_PASS
   providerConfigRef:
-    name: default
+    name: aws
