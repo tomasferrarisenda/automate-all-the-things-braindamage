@@ -11,23 +11,24 @@ spec:
     region: us-east-1
     vpcId: {{ .Values.vpcId }}
     ingress:
-      - description: Allow SSH from EC2 instance
-        cidrBlocks:
-          - 10.0.128.0/19"  # CIDR block for public subnet C
-        protocol: tcp
+      - ipRanges:
+        - description: Allow SSH from EC2 instance
+          cidrIp: 10.0.128.0/19  # CIDR block for public subnet C
+        ipProtocol: tcp
         fromPort: 22
         toPort: 22
-      - description: Allow redis-cli from EC2 instance
-        cidrBlocks:
-          - 10.0.128.0/19"  # CIDR block for public subnet C
-        protocol: "-1"
+      - ipRanges:
+        - description: Allow redis-cli from EC2 instance
+          cidrIp: 10.0.128.0/19  # CIDR block for public subnet C
+        ipProtocol: tcp
         fromPort: 6379
         toPort: 6379
-      - description: Allow EKS nodes to connect to the DB
-        cidrBlocks:
-          - "10.0.32.0/19"  # CIDR block for private subnet A
-          - "10.0.96.0/19"  # CIDR block for private subnet B
-        protocol: "-1"
+      - ipRanges:
+        - description: Allow EKS nodes to connect to the DB
+          cidrIp: 10.0.32.0/19  # CIDR block for private subnet A
+        - description: Allow EKS nodes to connect to the DB
+          cidrIp: 10.0.96.0/19  # CIDR block for private subnet B
+        ipProtocol: tcp
         fromPort: 6379
         toPort: 6379
   providerConfigRef:
