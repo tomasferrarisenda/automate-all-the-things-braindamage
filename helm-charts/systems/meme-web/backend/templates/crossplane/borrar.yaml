@@ -1,22 +1,22 @@
-{{- if eq .Values.environment "dev" }} # Deploy only in dev environment
-apiVersion: ec2.aws.crossplane.io/v1beta1
-kind: SecurityGroup
-metadata:
-  name: sample-cluster-sg
-  annotations:
-    argocd.argoproj.io/sync-wave: "-5"
-spec:
-  forProvider:
-    description: Cluster communication with worker nodes
-    groupName: my-cool-ekscluster-sg
-    ingress:
-      - fromPort: 80
-        ipProtocol: tcp
-        ipRanges:
-          - cidrIp: 10.0.0.0/8
-        toPort: 80
-    region: us-east-1
-    vpcId: {{ .Values.vpcId }}
-  providerConfigRef:
-    name: default
-{{- end }}
+# {{- if eq .Values.environment "dev" }} # Deploy only in dev environment
+# apiVersion: ec2.aws.crossplane.io/v1beta1
+# kind: SecurityGroup
+# metadata:
+#   name: sample-cluster-sg
+#   annotations:
+#     argocd.argoproj.io/sync-wave: "-5"
+# spec:
+#   forProvider:
+#     description: Cluster communication with worker nodes
+#     groupName: my-cool-ekscluster-sg
+#     ingress:
+#       - fromPort: 80
+#         ipProtocol: tcp
+#         ipRanges:
+#           - cidrIp: 10.0.0.0/8
+#         toPort: 80
+#     region: us-east-1
+#     vpcId: {{ .Values.vpcId }}
+#   providerConfigRef:
+#     name: default
+# {{- end }}
