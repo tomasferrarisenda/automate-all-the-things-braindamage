@@ -27,6 +27,10 @@ metadata:
       type: logs-dashboard  
       icon: assignment
       url: https://grafana.domain.com/
+    - title: Helm Chart
+      type: helm-chart 
+      icon: github
+      url: https://github.com/tomasferrarisenda/automate-all-the-things-transcendence/tree/main/helm-charts/systems/meme-web/backend
 spec:
   type: service
   lifecycle: production

@@ -308,6 +308,11 @@ I created a kind fo application cascading effect where ProviderConfig cant be de
 
 Managed Resources <- ProviderConfig <- Providers <- Crossplane
 
+
+`The same behaviour doesnt exist for between Provider and Managed Resources, meaning the Managed Resources can be deleted before the Provider they are dependant on.
+
+I thoufght this could be accomplished with sync waves but the managed resources exist iin a differnt application that the providers so it doesnt work
+
 ARGO NO APPLICA EXITOSAMENTE LA APPLICATION DE CORSSPLANE POR LOS PROVIDER Y PROVEDR CONGI Q NO SE PUEDEN APLICAR PORQ NO EXISTEN LOS  CRDS CORRESPONDIENTES, EL TEMA ES Q LOS CRDS CORRESPONDIENTE NO SE EN QUE MOMENTO NI DE DONDE SALEN? LOS GENEREA LOS PODS? ARGO POR DEFAULT DEBERIA APLICAR PRIMERO ESTOS CRDS PERO EN EL CHART NO APARENCE LOS MANIFEST DE LOS CRD POR LO Q NO LOS RECONOCE COMO ALGO QUE TIENE QUE APLICARSE PRIMERO. COMO SE CREAN Y DE DONDE SALEN LOS CRD DE PROVIDEER Y PROVIDERCONFIG???? 
 
 INSTALL CROSSPLANE CLI
