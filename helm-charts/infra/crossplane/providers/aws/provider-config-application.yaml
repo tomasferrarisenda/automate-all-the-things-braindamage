@@ -1,4 +1,6 @@
-apiVersion: argoproj.io/v1alpha1
+################################################################################################################################################
+# Explanation of why this is here: https://github.com/tferrari92/automate-all-the-things-transcendence/docs/crossplane-notes.md#cascade-deletion
+################################################################################################################################################apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: crossplane-provider-configs
