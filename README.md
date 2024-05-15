@@ -420,7 +420,7 @@ Everything's ready to start playing with Backstage.
 
 Create env var for your GitHub token
 ```bash
-export GITHUB_TOKEN=<your-github-token>
+export GITHUB_TOKEN=<your-github-token> AUTH_GITHUB_CLIENT_ID=<your-github-auth-client-id> AUTH_GITHUB_CLIENT_SECRET=<your-github-auth-client-secret>
 ```
 
 Then run
