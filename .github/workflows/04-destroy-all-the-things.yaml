@@ -24,20 +24,20 @@ jobs:
         run: aws eks --region $AWS_REGION update-kubeconfig --name $PROJECT-cluster
 
       # Before deleting all Ingresses we eliminate ArgoCD because if we don't, it will re-deploy the Ingresses, automatically creating untracked AWS Application Load Balancers, which would mess with the terraform destroy  
-      ########################################## We also need to delete all Crossplane managed resources before the Crossplane application is deleted. If the ProviderConfig is deleted before the managed resources, the managed resources will be orphaned and not deleted. See: https://github.com/crossplane/crossplane/issues/1737
-      # We also need to remove the finalizers from the Kiali CR for deletion to be successful, it's a known issue (https://kiali.io/docs/installation/installation-guide/install-with-helm/#known-problem-uninstall-hangs-unable-to-delete-the-kiali-cr)
       - name: Delete applications & ArgoCD
         run: | 
+          # First we delete the ArgoCD App of Apps application so that it doesn't try to re-deploy applications while they are being deleted. 
           kubectl delete -n argocd applications.argoproj.io argocd-app-of-apps
          
-          # kubectl delete managed --all --all-namespaces --grace-period=1
-
           # The aws-secret with the credentials for the Crossplane ProviderConfig will be deleted with the Crossplane application.
           # We need to create it again for the ProviderConfig to be be able to connect to AWS and successfully delete all managed resources.
           echo -e "[default]\naws_access_key_id = $AWS_ACCESS_KEY_ID\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > aws-credentials.txt
           kubectl create secret generic aws-secret -n crossplane-system --from-file=creds=./aws-credentials.txt
 
+          # We also need to remove the finalizers from the Kiali CR for deletion to be successful, it's a known issue (https://kiali.io/docs/installation/installation-guide/install-with-helm/#known-problem-uninstall-hangs-unable-to-delete-the-kiali-cr)
           kubectl patch kiali kiali -n service-mesh -p '{"metadata":{"finalizers": []}}' --type=merge
+          
+          # Now we can delete all ArgoCD applications and the ArgoCD itself.
           kubectl delete -n argocd applications.argoproj.io --all
           helm uninstall -n argocd argocd
 

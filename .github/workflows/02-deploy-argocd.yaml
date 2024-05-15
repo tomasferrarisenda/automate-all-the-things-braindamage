@@ -66,7 +66,7 @@ jobs:
           echo "###############################################"          
           echo "###############################################"   
           
-      - name: Get Host Endpoint
+      - name: Get meme-web frontend endpoint
         run : |
           while [[ $(kubectl get -n service-mesh service istio-gateway -o 'jsonpath={.status.loadBalancer.ingress[0].hostname}') == '' ]]; do
             echo "Istio Gateway is not ready. Checking again in 5 seconds..."
