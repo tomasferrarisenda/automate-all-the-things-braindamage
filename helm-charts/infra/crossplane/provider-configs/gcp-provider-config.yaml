@@ -1,14 +1,14 @@
 ################################################################################################################################################
 # Explanation of why this is here: https://github.com/tferrari92/automate-all-the-things-transcendence/docs/crossplane-notes.md#cascade-deletion
 ################################################################################################################################################
-apiVersion: aws.upbound.io/v1beta1
-kind: ProviderConfig
-metadata:
-  name: aws
-spec:
-  credentials:
-    source: Secret
-    secretRef:
-      namespace: crossplane-system
-      name: aws-secret
-      key: creds
+# apiVersion: gcp.upbound.io/v1beta1
+# kind: ProviderConfig
+# metadata:
+#   name: gcp
+# spec:
+#   credentials:
+#     source: Secret
+#     secretRef:
+#       namespace: crossplane-system
+#       name: gcp-secret
+#       key: creds
