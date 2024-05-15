@@ -11,12 +11,19 @@ spec:
     region: us-east-1
     vpcId: {{ .Values.vpcId }}
     ingress:
-      - ipRanges:
-        - description: Allow SSH from EC2 instance
-          cidrIp: 10.0.128.0/19  # CIDR block for public subnet C
+      - fromPort: 22
         ipProtocol: tcp
-        fromPort: 22
+        ipRanges:
+        - cidrIp: 10.0.128.0/19  # CIDR block for public subnet C
+          description: Allow SSH from EC2 instance
         toPort: 22
+
+      # - fromPort: 443
+      #   ipProtocol: tcp
+      #   ipRanges:
+      #     - cidrIp: 0.0.0.0/0
+      #   toPort: 443
+
       - ipRanges:
         - description: Allow redis-cli from EC2 instance
           cidrIp: 10.0.128.0/19  # CIDR block for public subnet C
