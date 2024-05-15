@@ -1,3 +1,5 @@
+
+# Security Group
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: SecurityGroup
 metadata:
@@ -13,10 +15,8 @@ spec:
   providerConfigRef:
     name: default
 
-
-
-
 ---
+# Ingress Rule: Allow SSH from EC2 instance
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: SecurityGroupIngressRule
 metadata:
@@ -37,10 +37,8 @@ spec:
     name: default
 
 
-
-
-
 ---
+# Ingress Rule: Allow redis-cli from EC2 instance
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: SecurityGroupIngressRule
 metadata:
@@ -60,11 +58,8 @@ spec:
   providerConfigRef:
     name: default
 
-
-
-
-
 ---
+# Ingress Rule: Allow EKS node 1 to connect to the DB
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: SecurityGroupIngressRule
 metadata:
@@ -84,10 +79,8 @@ spec:
   providerConfigRef:
     name: default
 
-
-
-
 ---
+# Ingress Rule: Allow EKS node 2 to connect to the DB
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: SecurityGroupIngressRule
 metadata:
@@ -106,43 +99,3 @@ spec:
       name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
   providerConfigRef:
     name: default
-
-
-
-
-          # egress:
-    #   - fromPort: -1
-    #     ipProtocol: "-1"
-    #     ipRanges:
-    #       - cidrIp: 0.0.0.0/0
-    #     toPort: -1
-    # ingress:
-    #   - fromPort: 22
-    #     ipProtocol: tcp
-    #     ipRanges:
-    #       - cidrIp: 10.0.128.0/19 # CIDR block for public subnet C
-    #         description: Allow SSH from EC2 instance
-    #     toPort: 22
-
-      # - fromPort: 22
-      #   ipProtocol: tcp
-      #   ipRanges:
-      #   - cidrIp: 10.0.128.0/19 # CIDR block for public subnet C
-      #     description: Allow SSH from EC2 instance
-      #   toPort: 22
-
-      # - fromPort: 6379
-      #   ipProtocol: tcp
-      #   ipRanges:
-      #   - cidrIp: 10.0.128.0/19  # CIDR block for public subnet C
-      #     description: Allow redis-cli from EC2 instance
-      #   toPort: 6379
-
-      # - fromPort: 6379
-      #   ipProtocol: tcp
-      #   ipRanges:
-      #   - cidrIp: 10.0.32.0/19  # CIDR block for private subnet A
-      #     description: Allow EKS nodes to connect to the DB
-      #   - cidrIp: 10.0.96.0/19  # CIDR block for private subnet B
-      #     description: Allow EKS nodes to connect to the DB
-        # toPort: 6379
