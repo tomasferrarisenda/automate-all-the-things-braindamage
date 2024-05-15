@@ -294,6 +294,12 @@ The true power of Crossplane lies behind Crossplane compositions, but that's a s
 I had to find this workaround. not then most elegant solution. If you have any better ideas, I'm all ears
 EXPLCIAR la application secundaria q creamos dento del chart de crossplane. Esto resuelve tambien el problema del secret que necesita el providerconfig para conectarse a aws pa eliminer los managedresources: ESTO NO HACE FALTA PORQUE CON LA SOLUCION DE LAS SUB-APPLICATIONS DE CROSSPLANE PARA PROVIDERS Y PROVIDERCONFIGS, LA APPLICATION DE CROSSPLANE NO PUEDE SER BORRADA HASTA QUE ELLAS NO MUERAN, Y PROVIDERCONFIGS NO PUEDE MORIR HASTA QUE NO MUERAN TODOS LOS MANAGED RESOURCES
 
+At the time of deletion we need to make sure of three things:
+1. The ProviderConfig doesn't get deleted before the Managed Resources: If it did, there wouldn't be anyone to send the request to AWS to have the Managed Resources deleted.
+2. The aws-secret holding the credentials doesn't get deleted before the ProviderConfig: If it does, the ProviderConfig won't be able to connect to AWS.
+3. The Providers don't get deleted before the Managed Resources: If they do the ProviderConfig won't know how to interact with the AWS APIs.
+
+
 I created a kind fo application cascading effect where ProviderConfig cant be deleted until managed resources are delted (this is by design from Crossplane), Provider cant be deleted until ProviderConfig is deleted (this is thanks to this application cascadde) and Crossplane application cant be deleted untip Providers application is deleted (also thanks to cascading effect), which means the secret is not deleted which would stop the ProviderConf from connecting to aws if it was
 
 Managed Resources <- ProviderConfig <- Providers <- Crossplane
