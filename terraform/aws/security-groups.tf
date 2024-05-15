@@ -33,7 +33,7 @@ resource "aws_security_group" "databases" {
   ingress {
     from_port   = 6379
     to_port     = 6379
-    protocol    = "-1"
+    protocol    = "tcp" # All
     cidr_blocks = [aws_subnet.public-subnet-c.cidr_block]
   }
 
@@ -42,7 +42,7 @@ resource "aws_security_group" "databases" {
   ingress {
     from_port   = 6379
     to_port     = 6379
-    protocol    = "-1"
+    protocol    = "tcp" # All
     cidr_blocks = [aws_subnet.private-subnet-a.cidr_block, aws_subnet.private-subnet-b.cidr_block]
   }
 }

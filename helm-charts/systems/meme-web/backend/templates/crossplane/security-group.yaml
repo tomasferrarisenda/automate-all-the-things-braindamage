@@ -25,7 +25,7 @@
 #         cidrBlocks:
 #           - 10.0.128.0/19"  # CIDR block for public subnet C
 #         protocol: "-1"
-#         fromPort: 0
+#         fromPort: 6379
 #         toPort: 6379
 #     # ----------------------------------------------------------    
 #     ingress:
@@ -34,7 +34,7 @@
 #           - "10.0.32.0/19"  # CIDR block for private subnet A
 #           - "10.0.96.0/19"  # CIDR block for private subnet B
 #         protocol: "-1"
-#         fromPort: 0
+#         fromPort: 6379
 #         toPort: 6379
 #   providerConfigRef:
 #     name: default
