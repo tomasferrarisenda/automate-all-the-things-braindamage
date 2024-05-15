@@ -10,10 +10,10 @@ deployment:
     service: backend
     backstage.io/kubernetes-id: meme-web-backend 
     istio: monitor
-
   
   image:
     repository: tferrari92/meme-web-backend # This value was modified by the initial-setup python script
 
+vpcId: vpc-12345678
 subnetId: subnet-00adea5e461fe190c
-securityGroupId: sg-0e31579d8e8359d2b
+# securityGroupId: sg-0e31579d8e8359d2b

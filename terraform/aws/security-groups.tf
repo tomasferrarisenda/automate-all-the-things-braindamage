@@ -29,11 +29,20 @@ resource "aws_security_group" "databases" {
     cidr_blocks = [aws_subnet.public-subnet-c.cidr_block]
   }
 
+  # Allow the EC2 located in public-subnet-c to connect with redis-cli
+  ingress {
+    from_port   = 0
+    to_port     = 6379
+    protocol    = "-1"
+    cidr_blocks = [aws_subnet.public-subnet-c.cidr_block]
+  }
+
+
   # Allow the EKS nodes located in private-subnet-a and private-subnet-b to connect.
   ingress {
     from_port   = 0
-    to_port     = 0
+    to_port     = 6379
     protocol    = "-1"
-    cidr_blocks = [aws_subnet.public-subnet-c.cidr_block, aws_subnet.private-subnet-a.cidr_block, aws_subnet.private-subnet-b.cidr_block]
+    cidr_blocks = [aws_subnet.private-subnet-a.cidr_block, aws_subnet.private-subnet-b.cidr_block]
   }
 }
