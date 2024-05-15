@@ -67,9 +67,10 @@ jobs:
       #     echo "$(terraform -chdir=terraform/aws output -raw elasticache_stage_primary_endpoint_address)" > elasticache_stage_endpoint.txt
       #     echo "$(terraform -chdir=terraform/aws output -raw elasticache_prod_primary_endpoint_address)" > elasticache_prod_endpoint.txt
 
-      - name: Save databese subnet id
+      - name: Save network resources IDs
         if: ${{ always() }}
         run: |
+          echo "$(terraform -chdir=terraform/aws output -raw vps_id)" > vps_id.txt
           echo "$(terraform -chdir=terraform/aws output -raw database_subnet_id)" > database_subnet_id.txt
           echo "$(terraform -chdir=terraform/aws output -raw database_security_group_id)" > database_security_group_id.txt
 
@@ -83,6 +84,7 @@ jobs:
       - name: Modify values
         if: ${{ always() }}
         run: |
+          sed -i "s/vpcId:.*/vpcId: $(cat vps_id.txt | tr -d '\n')/g" helm-charts/systems/$SYSTEM/backend/values.yaml
           sed -i "s/subnetId:.*/subnetId: $(cat database_subnet_id.txt | tr -d '\n')/g" helm-charts/systems/$SYSTEM/backend/values.yaml
           sed -i "s/securityGroupId:.*/securityGroupId: $(cat database_security_group_id.txt | tr -d '\n')/g" helm-charts/systems/$SYSTEM/backend/values.yaml
 
@@ -103,7 +105,7 @@ jobs:
           git config --global user.email "GitHubActions@DeployInfraWorkflow.com"
           git config --global user.name "GitHub Actions - Deploy Infra Workflow"
           git add helm-charts/systems/$SYSTEM/backend/values.yaml
-          git commit -m "subnetId & securityGroupId updated in environments values.yaml files by GitHub Actions"
+          git commit -m "Network resources IDs updated in environments values.yaml files by GitHub Actions"
           git push
 
       - name: Save SSH command

@@ -38,7 +38,7 @@ resource "aws_security_group" "databases" {
   }
 
 
-  # Allow the EKS nodes located in private-subnet-a and private-subnet-b to connect.
+  # Allow the EKS nodes located in private-subnet-a and private-subnet-b to connect to DB.
   ingress {
     from_port   = 0
     to_port     = 6379

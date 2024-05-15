@@ -1,3 +1,6 @@
+output "vps_id" {
+  value = aws_vpc.main.id
+}
 
 output "database_subnet_id" {
   value = aws_subnet.private-subnet-c.id
