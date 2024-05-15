@@ -1,4 +1,4 @@
-apiVersion: ec2.aws.crossplane.io/v1beta1
+apiVersion: ec2.aws.upbound.io/v1beta1
 kind: SecurityGroup
 metadata:
   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
@@ -7,37 +7,74 @@ metadata:
 spec:
   forProvider:
     description: Security group for {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-database
-    groupName: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
+    name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
     region: us-east-1
     vpcId: {{ .Values.vpcId }}
-    ingress:
-      - fromPort: 22
-        ipProtocol: tcp
-        ipRanges:
-          - cidrIp: 10.0.128.0/19 # CIDR block for public subnet C
-            description: Allow SSH from EC2 instance
-        toPort: 22
+    # ingress:
+    #   - fromPort: 22
+    #     ipProtocol: tcp
+    #     ipRanges:
+    #       - cidrIp: 10.0.128.0/19 # CIDR block for public subnet C
+    #         description: Allow SSH from EC2 instance
+    #     toPort: 22
 
-      - ipRanges:
-        - description: Allow redis-cli from EC2 instance
-          cidrIp: 10.0.128.0/19  # CIDR block for public subnet C
-        ipProtocol: tcp
-        fromPort: 6379
-        toPort: 6379
+    #   - ipRanges:
+    #     - description: Allow redis-cli from EC2 instance
+    #       cidrIp: 10.0.128.0/19  # CIDR block for public subnet C
+    #     ipProtocol: tcp
+    #     fromPort: 6379
+    #     toPort: 6379
 
-      - ipRanges:
-        - description: Allow EKS nodes to connect to the DB
-          cidrIp: 10.0.32.0/19  # CIDR block for private subnet A
-        - description: Allow EKS nodes to connect to the DB
-          cidrIp: 10.0.96.0/19  # CIDR block for private subnet B
-        ipProtocol: tcp
-        fromPort: 6379
-        toPort: 6379
+    #   - ipRanges:
+    #     - description: Allow EKS nodes to connect to the DB
+    #       cidrIp: 10.0.32.0/19  # CIDR block for private subnet A
+    #     - description: Allow EKS nodes to connect to the DB
+    #       cidrIp: 10.0.96.0/19  # CIDR block for private subnet B
+    #     ipProtocol: tcp
+    #     fromPort: 6379
+    #     toPort: 6379
+  providerConfigRef:
+    name: default
 
+---
+
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroupIngressRule
+metadata:
+  name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-ing-rule-0
+spec:
+  forProvider:
+    description: Allow SSH from EC2 instance
+    region: us-east-1
+    cidrIpv4: 10.0.128.0/19 # CIDR block for public subnet C
+    ipProtocol: tcp
+    fromPort: 22
+    toPort: 22
+    securityGroupIdRef: 
+      name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
   providerConfigRef:
     name: default
 
 
+
+---
+
+# apiVersion: ec2.aws.upbound.io/v1beta1
+# kind: SecurityGroupIngressRule
+# metadata:
+#   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-ing-rule-1
+# spec:
+#   forProvider:
+#     description: Allow SSH from EC2 instance
+#     region: us-east-1
+#     cidrIpv4: 10.0.128.0/19 # CIDR block for public subnet C
+#     ipProtocol: tcp
+#     fromPort: 22
+#     toPort: 22
+#     securityGroupIdRef: 
+#       name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
+#   providerConfigRef:
+#     name: default
 
 
 
