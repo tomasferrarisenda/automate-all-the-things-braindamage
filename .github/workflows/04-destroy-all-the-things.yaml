@@ -50,7 +50,7 @@ jobs:
           #########################################################################################
         
           # Now we can uninstall ArgoCD
-          helm uninstall -n argocd argocd
+          # helm uninstall -n argocd argocd
 
       # Before deleting all infra we make sure there are no existing ingresses so the terraform destroy isn't messed up by the existance of untracked AWS Application Load Balancers
       - name: Delete ingresses
