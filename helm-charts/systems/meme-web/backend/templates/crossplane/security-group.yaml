@@ -13,6 +13,9 @@ spec:
   providerConfigRef:
     name: default
 
+
+
+
 ---
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: SecurityGroupIngressRule
@@ -32,6 +35,10 @@ spec:
       name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
   providerConfigRef:
     name: default
+
+
+
+
 
 ---
 apiVersion: ec2.aws.upbound.io/v1beta1
@@ -53,6 +60,10 @@ spec:
   providerConfigRef:
     name: default
 
+
+
+
+
 ---
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: SecurityGroupIngressRule
@@ -72,6 +83,8 @@ spec:
       name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
   providerConfigRef:
     name: default
+
+
 
 
 ---
