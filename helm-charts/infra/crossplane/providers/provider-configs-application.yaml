@@ -4,10 +4,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: aws-crossplane-provider-configs
+  name: crossplane-provider-configs
   namespace: argocd
-  # annotations:
-  #   argocd.argoproj.io/sync-wave: "1"
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
   finalizers:
     - resources-finalizer.argocd.argoproj.io # Adding the finalizer enables cascading deletes when implementing the App of Apps pattern. If this isn't used, when you remove the application yaml from git, the application will be removed from ArgoCD but the resources will remain active in the cluster
 spec:  
@@ -19,9 +19,8 @@ spec:
     repoURL: https://github.com/tomasferrarisenda/automate-all-the-things-transcendence.git # This value was modified by the initial-setup python script
     path: helm-charts/infra/crossplane/provider-configs
     directory:
-      include: 'aws-provider-config.yaml'
-    #   recurse: true
-    #   jsonnet: {}
+      recurse: true
+      jsonnet: {}
   syncPolicy:
     automated:
       selfHeal: true
