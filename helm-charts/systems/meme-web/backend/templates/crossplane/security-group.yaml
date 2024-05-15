@@ -64,7 +64,7 @@ spec:
   forProvider:
     description: Allow EKS node 1 to connect to the DB
     region: us-east-1
-    cidrIp: 10.0.32.0/19  # CIDR block for private subnet A
+    cidrIpv4: 10.0.32.0/19  # CIDR block for private subnet A
     ipProtocol: tcp
     fromPort: 6379
     toPort: 6379
@@ -85,7 +85,7 @@ spec:
   forProvider:
     description: Allow EKS node 2 to connect to the DB
     region: us-east-1
-    cidrIp: 10.0.96.0/19  # CIDR block for private subnet B
+    cidrIpv4: 10.0.96.0/19  # CIDR block for private subnet B
     ipProtocol: tcp
     fromPort: 6379
     toPort: 6379
