@@ -4,7 +4,7 @@ environment: prod
 
 deployment:
   image:
-    tag: 3
+    tag: 5
   replicas: 1
   labels:
     full-name: meme-web-backend-prod # This value was modified by the initial-setup python script
