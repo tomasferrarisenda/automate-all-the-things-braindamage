@@ -17,7 +17,7 @@ spec:
   project: crossplane
   source:
     repoURL: https://github.com/tomasferrarisenda/automate-all-the-things-transcendence.git # This value was modified by the initial-setup python script
-    path: helm-charts/infra/crossplane/provider-config-manifests/aws-provider-config.yaml
+    path: helm-charts/infra/crossplane/provider-configs/aws-provider-config.yaml
     # directory:
     #   recurse: true
     #   jsonnet: {}
