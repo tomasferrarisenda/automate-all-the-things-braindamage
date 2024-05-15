@@ -19,6 +19,7 @@ resource "aws_security_group" "default" {
 
 resource "aws_security_group" "databases" {
   name_prefix = var.project
+  description = "Security group for databases"
   vpc_id      = aws_vpc.main.id
 
   # Allow the EC2 located in public-subnet-c to connect only through port 22 (SSH)
