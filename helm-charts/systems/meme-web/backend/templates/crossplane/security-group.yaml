@@ -10,6 +10,12 @@ spec:
     groupName: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
     region: us-east-1
     vpcId: {{ .Values.vpcId }}
+    egress:
+      - fromPort: -1
+        ipProtocol: "-1"
+        ipRanges:
+          - cidrIp: 0.0.0.0/0
+        toPort: -1
     ingress:
       - fromPort: 22
         ipProtocol: tcp
