@@ -294,6 +294,9 @@ The true power of Crossplane lies behind Crossplane compositions, but that's a s
 I had to find this workaround. not then most elegant solution. If you have any better ideas, I'm all ears
 EXPLCIAR la application secundaria q creamos dento del chart de crossplane. Esto resuelve tambien el problema del secret que necesita el providerconfig para conectarse a aws pa eliminer los managedresources: ESTO NO HACE FALTA PORQUE CON LA SOLUCION DE LAS SUB-APPLICATIONS DE CROSSPLANE PARA PROVIDERS Y PROVIDERCONFIGS, LA APPLICATION DE CROSSPLANE NO PUEDE SER BORRADA HASTA QUE ELLAS NO MUERAN, Y PROVIDERCONFIGS NO PUEDE MORIR HASTA QUE NO MUERAN TODOS LOS MANAGED RESOURCES
 
+## Extra Providers and ProviderConfigs
+I added some extra Provider and ProviderConfig manifests which are all commented out. They are there just to show that you could deploy to any hyperscaler if you wanted to. 
+
 ## Cascade deletion
 At the time of deletion we need to make sure of three things:
 1. The ProviderConfig doesn't get deleted before the Managed Resources: If it did, there wouldn't be anyone to send the request to AWS to have the Managed Resources deleted.
