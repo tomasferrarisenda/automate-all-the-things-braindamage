@@ -2,7 +2,7 @@ environment: dev
 
 deployment:
   image:
-    tag: 5
+    tag: 6
   replicas: 1
   labels:
     full-name: meme-web-frontend-dev
