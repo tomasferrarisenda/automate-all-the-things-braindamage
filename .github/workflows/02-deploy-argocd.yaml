@@ -103,7 +103,7 @@ jobs:
       - name: Publish frontend endpoints
         uses: actions/upload-artifact@v4
         with:
-          name: frontend-endpoints
+          name: meme-web-frontend-endpoints
           path: frontend_endpoints.txt
 
       - name: 'Save ArgoCD credentials'
