@@ -3,7 +3,6 @@ name: 01-Deploy AWS infrastructure
 on:
   workflow_dispatch:
 
-
 env:
   AWS_REGION: us-east-1 # This value was modified by the initial-setup python script
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
