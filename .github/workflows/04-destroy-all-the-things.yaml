@@ -35,14 +35,19 @@ jobs:
           # # Now we can delete all ArgoCD applications
           # kubectl delete -n argocd applications.argoproj.io --all
 
-          # The aws-secret with the credentials for the Crossplane ProviderConfig will be deleted with the Crossplane application.
-          # We need to create it again for the ProviderConfig to be be able to connect to AWS and successfully delete all managed resources.
-          echo -e "[default]\naws_access_key_id = $AWS_ACCESS_KEY_ID\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > aws-credentials.txt
-          COMMAND="kubectl create secret generic aws-secret -n crossplane-system --from-file=creds=./aws-credentials.txt"
-          until $COMMAND; do
-            echo "Command failed. Retrying in 5 seconds..."
-            sleep 5
-          done
+          ###################################################################################################################
+          # ESTO NO HACE FALTA PORQUE CON LA SOLUCION DE LAS SUB-APPLICATIONS DE CROSSPLANE PARA PROVIDERS Y PROVIDERCONFIGS,
+          # LA APPLICATION DE CROSSPLANE NO PUEDE SER BORRADA HASTA QUE ELLAS NO MUERAN, Y PROVIDERCONFIGS NO PUEDE MORIR 
+          # HASTA QUE NO MUERAN TODOS LOS MANAGED RESOURCES
+          # # The aws-secret with the credentials for the Crossplane ProviderConfig will be deleted with the Crossplane application.
+          # # We need to create it again for the ProviderConfig to be be able to connect to AWS and successfully delete all managed resources.
+          # echo -e "[default]\naws_access_key_id = $AWS_ACCESS_KEY_ID\naws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > aws-credentials.txt
+          # COMMAND="kubectl create secret generic aws-secret -n crossplane-system --from-file=creds=./aws-credentials.txt"
+          # until $COMMAND; do
+          #   echo "Command failed. Retrying in 5 seconds..."
+          #   sleep 5
+          # done
+          #########################################################################################
         
           # Now we can uninstall ArgoCD
           helm uninstall -n argocd argocd
