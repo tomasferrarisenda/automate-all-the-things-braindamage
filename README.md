@@ -397,6 +397,10 @@ Click Generate token. Store the token somewhere safe.
 </br>
 
 ### Set up GitHub OAuth
+
+ACUTALIZAR ESTA PARETE DICIENDO Q CUANDOTENGAN LA URL DE BACKSTAGE PONERLA ACA SER VERA ALGO ASI
+http://k8s-backstag-backstag-e78a25dae5-420865081.us-east-1.elb.amazonaws.com/
+
 1. Go [here](https://github.com/settings/applications/new).
 2. Complete with the following data:<br>
         Application name: Backstage<br>
