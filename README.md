@@ -589,24 +589,20 @@ If you did everything right, you should see this new system with both services r
 
 </br>
 
-## Once Backstage is deployed
-hay q cambiar el URL en app-config.production.yaml. Reemplazar localhost en
+## Once Backstage is deployed on EKS
+1. hay q cambiar el URL en app-config.production.yaml. Reemplazar localhost en
 ```js
 app:
   baseUrl: http://<actual-url>:7007 # This needs to be modified with the actual URL Backstage gets once it's deployed in EKS
 backend:
   baseUrl: http://<actual-url>:7007 # This needs to be modified with the actual URL Backstage gets once it's deployed in EKS
 ```
-tambien hay q crear un bnuevo github app como explicamos [aca](#set-up-github-oauth) pero con el nuevo URL, se veria algo asi:
-
-ACUTALIZAR ESTA PARETE DICIENDO Q CUANDOTENGAN LA URL DE BACKSTAGE PONERLA ACA SER VERA ALGO ASI
-http://k8s-backstag-backstag-e78a25dae5-420865081.us-east-1.elb.amazonaws.com
-http://k8s-backstag-backstag-e78a25dae5-420865081.us-east-1.elb.amazonaws.com:7000/api/auth/github/handler/frame
+2. When you commit and push, the Backstage workflow will run automatically, we need to wait for the new image to be deployed on EKS. Meanwhile:                 
+3. tambien hay q modificar el github app como explicamos [aca](#set-up-github-oauth) pero con el nuevo URL, se veria algo asi:
     Application name: Backstage<br>
-    Homepage URL: `http://localhost:3000/`<br>
-    Authorization callback URL: `http://localhost:7007/api/auth/github/handler/frame`
+    Homepage URL: `http://<actual-url>:3000/`<br>
+    Authorization callback URL: `http://<actual-url>:7007/api/auth/github/handler/frame`
 
-3. Correr el ppl usando los nevos clientId y Client secret                       
 
 <br/>
 <br/>
