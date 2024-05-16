@@ -2,8 +2,8 @@ apiVersion: elasticache.aws.upbound.io/v1beta1
 kind: ReplicationGroup
 metadata:
   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-ec-rep-grp
-  annotations:
-    argocd.argoproj.io/sync-wave: "-2"
+  # annotations:
+  #   argocd.argoproj.io/sync-wave: "-2"
 spec:
   forProvider:
     automaticFailoverEnabled: true
