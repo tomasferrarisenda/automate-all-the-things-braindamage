@@ -599,12 +599,12 @@ If you did everything right, you should see this new system with both services r
 ## Once Backstage is deployed on EKS
 In order for some of the new plugins to work you need to do the following:
 
-1. hay q cambiar el URL en app-config.production.yaml. Reemplazar localhost en
+1. Change the value of these variables in the [app-config.production](/backstage/my-backstage/app-config.production.yaml) for the actual Backstage URL. They should look something like this:
 ```js
 app:
-  baseUrl: http://<actual-url>
+  baseUrl: http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com
 backend:
-  baseUrl: http://<actual-url>
+  baseUrl: http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com
 ```
 You can do the same for:
 ```js
@@ -614,13 +614,11 @@ grafana:
   domain: http://<actual-url>
 ```
 2. When you commit and push, the Backstage workflow will run automatically, we need to wait for the new image to be deployed on EKS. Meanwhile:                 
-3. tambien hay q modificar el github app como explicamos [aca](#set-up-github-oauth) pero con el nuevo URL, se veria algo asi:
+3. Modify the values that we set on [this stepa](#set-up-github-oauth) for the GitHub OAuth App for the new URL. They should look something like this:
     Application name: Backstage<br>
     Homepage URL: `http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com/`<br>
     Authorization callback URL: `http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com/api/auth/github/handler/frame`
-NO HACE FALTA USAR LOS PUERTOS!!!!!!!!!!!!!!!!!!!
-
-
+Notice that we don't need to use the ports now.
 
 <br/>
 <br/>
