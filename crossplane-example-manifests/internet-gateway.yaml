@@ -1,0 +1,11 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: InternetGateway
+metadata:
+  name: sistema-gaturro-ig
+spec:
+  forProvider:
+    region: us-west-1
+    # tags:
+    #   Name: main
+    vpcIdRef:
+      name: sistema-gaturro-vpc
