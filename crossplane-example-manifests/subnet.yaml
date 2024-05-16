@@ -79,7 +79,6 @@ metadata:
   name: sistema-gaturro-subnet-c
 spec:
   forProvider:
-    mapPublicIpOnLaunch: true
     availabilityZone: us-west-1c
     cidrBlock: 10.0.32.0/19
     region: us-west-1
