@@ -1,9 +1,15 @@
-apiVersion: iam.aws.crossplane.io/v1beta1
+apiVersion: iam.aws.upbound.io/v1beta1
 kind: RolePolicyAttachment
+metadata:
+  name: AmazonEKS_CNI_Policy-policy-attachment
 spec:
   forProvider:
     policyArn: arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
-    roleNameSelector:
-      matchControllerRef: true
-      matchLabels:
-        role: managed-nodegroup
+    # policyArnSelector:
+    #   matchLabels:
+    #     testing.upbound.io/example-name: role
+    roleRef:
+      name: sistema-gaturro-eks-role
+    # roleSelector:
+    #   matchLabels:
+    #     testing.upbound.io/example-name: role

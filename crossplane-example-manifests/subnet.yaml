@@ -1,12 +1,12 @@
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: DefaultSubnet
 metadata:
-  name: ${{ values.system }}-${{ values.name }}-subnet
+  name: sistema-gaturro-subnet
 spec:
   forProvider:
-    availabilityZone: ${{ values.region }}a
-    region: ${{ values.region }}
+    availabilityZone: us-west-1a
+    region: us-west-1
     tags:
-      Name: ${{ values.system }}-${{ values.name }}-subnet
+      Name: sistema-gaturro-subnet
   providerConfigRef:
     name: aws

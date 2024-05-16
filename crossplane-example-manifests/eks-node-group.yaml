@@ -1,21 +1,19 @@
-apiVersion: eks.aws.crossplane.io/v1alpha1
+apiVersion: eks.aws.upbound.io/v1beta1
 kind: NodeGroup
+metadata:
+  name: sistema-gaturro-eks-ng
 spec:
   forProvider:
-    amiType:
-    clusterNameSelector:
-      matchControllerRef: true
-      matchLabels:
-        role: controlplane
-    nodeRoleSelector:
-      matchControllerRef: true
-      matchLabels:
-        role: managed-nodegroup
-    subnets:
+    clusterNameRef:
+      name: sistema-gaturro-eks-cluster
+    nodeRoleArnRef:
+      name: sistema-gaturro-node-role
+    region: us-west-1
     scalingConfig:
-      minSize:
-      desiredSize:
-      maxSize:
-    capacityType:
+      - desiredSize: 1
+        maxSize: 1
+        minSize: 1
+    subnetIdRefs:
+      - name: sistema-gaturro-subnet
     instanceTypes:
       - t3.micro
