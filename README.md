@@ -609,15 +609,17 @@ backend:
 You can do the same for:
 ```js
 argocd:
-  baseUrl: http://<actual-url>/ 
+  baseUrl: http://<actual-argocd-url>/ 
 grafana:
-  domain: http://<actual-url>
+  domain: http://<actual-grafana-url>
 ```
 2. When you commit and push, the Backstage workflow will run automatically, we need to wait for the new image to be deployed on EKS. Meanwhile:                 
 3. Modify the values that we set on [this stepa](#set-up-github-oauth) for the GitHub OAuth App for the new URL. They should look something like this:
+
     Application name: Backstage<br>
     Homepage URL: `http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com/`<br>
     Authorization callback URL: `http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com/api/auth/github/handler/frame`
+
 Notice that we don't need to use the ports now.
 
 <br/>
