@@ -10,9 +10,9 @@ spec:
       name: sistema-gaturro-eks-ng-role
     region: us-west-1
     scalingConfig:
-      - desiredSize: 1
-        maxSize: 1
-        minSize: 1
+      - desiredSize: 2
+        maxSize: 2
+        minSize: 2
     subnetIdRefs:
       - name: sistema-gaturro-subnet-b
       - name: sistema-gaturro-subnet-c
