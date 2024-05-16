@@ -1,7 +1,7 @@
 apiVersion: iam.aws.upbound.io/v1beta1
 kind: RolePolicyAttachment
 metadata:
-  name: AmazonEKSVPCResourceController-policy-attachment
+  name: amazoneksvpcresourcecontroller-policy-attachment
 spec:
   forProvider:
     policyArn: arn:aws:iam::aws:policy/AmazonEKSVPCResourceController

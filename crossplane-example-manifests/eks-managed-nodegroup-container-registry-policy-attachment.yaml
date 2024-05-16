@@ -1,7 +1,7 @@
 apiVersion: iam.aws.upbound.io/v1beta1
 kind: RolePolicyAttachment
 metadata:
-  name: AmazonEC2ContainerRegistryReadOnly-policy-attachment
+  name: amazonec2containerregistryreadonly-policy-attachment
 spec:
   forProvider:
     policyArn: arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
