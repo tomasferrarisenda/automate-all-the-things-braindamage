@@ -55,7 +55,8 @@ backstage:
           # Resources
           resourcesProvider:
             organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
-            catalogPath: '/application-code/**/*catalog-info.yaml' # this will search all folders for files that end in template.yaml
+            catalogPath: '/crossplane-example-resources/**/*catalog-info.yaml' # this will search all folders for files that end in template.yaml
+            # catalogPath: '/application-code/**/*catalog-info.yaml' # this will search all folders for files that end in template.yaml
             filters:
               branch: 'main' # string
               repository: 'automate-all-the-things-transcendence' # Regex
@@ -117,6 +118,7 @@ backstage:
             schedule: # same options as in TaskScheduleDefinition
               frequency: { minutes: 1 }
               timeout: { minutes: 3 }
+
 
 githubToken: AgBhDyBg1vel189pZfWjyzVtHZ1jYAuHYKNytZVmOqbVxEnvIeBSy1FrGRWLH/VyKfPXWz/aQKobtJLtCQZ6C47Ju/zdLCDqyT/77uX+ED7aJ9N2mWh3axgg+a3ME9/B663fmF4EkU5k/hkC3vaWPXfOP8+LX/QDKJMr3NTIqGExcl4RodiEHEhp46045Bk+yrFWGjkynsrtmymWy5OzyupdHVOLGN7xDVZxZ6oZVk6VJf0agclMeind0uy2XwWIeqDRomowu10jFpHDP3LGBn5xcJflo1qW0IKZpACwZhX+T94RbRjymsEsDkU6KlKMDHn27T2mPxewAT+872pDkwuPGsA2Stpv5m09n7C8f6X3Qjxv5zlRK+KteA8J95wGnfVXP+9jCFqn842MiCZqCWritAKt/K9V37bkS3VyWQn75S3uMgw1sxua9dqpfOBJRKQzCduQjf/RFwPt8jdppn0RevNAUi4q55Z7cg+4KC0rAARbwBnQCRe3L2EcOtlakFObn2LnuaQJGpq4A9ICALxrF6ZB2GgnaK9X2JxcnceCOy31MPrUhyZ2bbmD4Wu3QkXUTBOT4rDSr8OzLfa3sABUWZ511iIyO172faNd1tRsHUQ8e36LQup96GJ3ziEBRYJABLPtyB4NjH2cIIRIMDfUTQ50aKgRx45eyetcPF6TUFxpOIcoZTAl6ai+9rYVRWcw2zDDN8IpFVO8aQpcJhA4JSn+eFhJzgwPHOmJ+L+oe0dOnMyeFtlj # This value was modified by the sealed-secrets pipeline
 githubAuthClientId: AgA+O6fuiRDNt++tgCYjOG1/xeJhosP5tX24JWbPMn6/YgG38Kx8idU3oLGECRXECxBpHTANFGxwbpVDfivrjre8MpInq7bTWGGa9PYp+kvilwFeJZ1vkLtDoxGkrqAP43VlwLvzDnIw+lqSDh34XNHfm0MGkx+JzzGBHOCytn6m1Shjb9Ddrsr+o9IhMV/7G1s70nE+jBFaoXPB6i7K4a8v5zxQYKgvRd5MjtrNJRlvHMgNIx7vNXPtQlKLejCbQv5aGEqu8TizO0/2+V69vsEk9pGPYFBudXSgPazEwa8m8Ei3zDGqlwpFa2lz/8tilWSirazsC+O8WlMEFXf06omaE3tM8Vixx7BaZY1eM0rmWdQB8YFmG/C/A40hiaBMriaOrpE89liMOLMyAuwkBaJJmYS0Ah6fbHY+Q+OPW1cIT1VwBrjtVhRyPNcTZbDL9YadT5+tdD1R5plXB5BjloVYO+OiAJUf/K26zI7olaT+uGUXNKhjPs6f5kPagIamJeXd9OUttZzcxRgCggvaeJ5Q2XTH5qLXc7/99J/OLh6Ip1NHn+vKXUvJrGH4wJQ5AcRYvdB7iV5/nl23cUjChca6E8JILSqK9GfkPAnrWePFXON6AsNddiWdmKfnczmfR57k7S8ua96H8NMkDRi3RMtegCEYOk+eCCYBdsYYl4hrlJrmSwMeLhKde7YkU5EcPvcvMEwTqHbF/wBxCHMDFKiHq/UrYA== # This value was modified by the sealed-secrets pipeline
