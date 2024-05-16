@@ -23,8 +23,27 @@ metadata:
 spec:
   forProvider:
     destinationCidrBlock: 0.0.0.0/0
+    # natGatewayIdRef:
+    #   name: sistema-gaturro-nat-gw
     gatewayIdRef:
       name: sistema-gaturro-ig
+    region: us-west-1
+    routeTableIdRef:
+      name: sistema-gaturro-route-table
+  providerConfigRef:
+    name: aws
+
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Route
+metadata:
+  name: sistema-gaturro-route-2
+spec:
+  forProvider:
+    destinationCidrBlock: 0.0.0.0/0
+    # destinationCidrBlock: 10.0.0.0/16
+    natGatewayIdRef:
+      name: sistema-gaturro-nat-gw
     region: us-west-1
     routeTableIdRef:
       name: sistema-gaturro-route-table
