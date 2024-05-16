@@ -112,10 +112,10 @@ proxy:
 
 # Optional: this will link to your argoCD web UI for each argoCD application
 argocd:
-  baseUrl: http://localhost:8081/ 
+  baseUrl: http://localhost:8081/ # This needs to be modified with the actual URL Backstage gets once it's deployed in EKS. Don't specify port.
 
 grafana:
-  domain: http://localhost:8082 # Don't use final slash "/". Links will fail if you do
+  domain: http://localhost:8082 # Don't use final slash "/". Links will fail if you do. This needs to be modified with the actual URL Backstage gets once it's deployed in EKS. Don't specify port.
 
   
 ##########################################################################################

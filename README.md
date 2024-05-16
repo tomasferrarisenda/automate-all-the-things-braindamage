@@ -606,6 +606,13 @@ app:
 backend:
   baseUrl: http://<actual-url> # This needs to be modified with the actual URL Backstage gets once it's deployed in EKS.  Don't specify port
 ```
+You can do the same for:
+```js
+argocd:
+  baseUrl: http://<actual-url>/ 
+grafana:
+  domain: http://<actual-url>
+```
 2. When you commit and push, the Backstage workflow will run automatically, we need to wait for the new image to be deployed on EKS. Meanwhile:                 
 3. tambien hay q modificar el github app como explicamos [aca](#set-up-github-oauth) pero con el nuevo URL, se veria algo asi:
     Application name: Backstage<br>
