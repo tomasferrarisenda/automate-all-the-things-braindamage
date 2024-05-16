@@ -1,21 +1,21 @@
-apiVersion: eks.aws.upbound.io/v1beta1
-kind: NodeGroup
-metadata:
-  name: sistema-gaturro-eks-ng
-spec:
-  forProvider:
-    clusterNameRef:
-      name: sistema-gaturro-eks-cluster
-    nodeRoleArnRef:
-      name: sistema-gaturro-eks-ng-role
-    region: us-west-1
-    scalingConfig:
-      - desiredSize: 1
-        maxSize: 1
-        minSize: 1
-    subnetIdRefs:
-      - name: sistema-gaturro-subnet
-    instanceTypes:
-      - t3.micro
-  providerConfigRef:
-    name: aws
+# apiVersion: eks.aws.upbound.io/v1beta1
+# kind: NodeGroup
+# metadata:
+#   name: sistema-gaturro-eks-ng
+# spec:
+#   forProvider:
+#     clusterNameRef:
+#       name: sistema-gaturro-eks-cluster
+#     nodeRoleArnRef:
+#       name: sistema-gaturro-eks-ng-role
+#     region: us-west-1
+#     scalingConfig:
+#       - desiredSize: 1
+#         maxSize: 1
+#         minSize: 1
+#     subnetIdRefs:
+#       - name: sistema-gaturro-subnet
+#     instanceTypes:
+#       - t3.micro
+#   providerConfigRef:
+#     name: aws
