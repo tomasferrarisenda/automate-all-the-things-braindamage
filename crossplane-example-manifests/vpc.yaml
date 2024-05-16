@@ -1,0 +1,11 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: DefaultVPC
+metadata:
+  name: ${{ values.system }}-${{ values.name }}-vpc
+spec:
+  forProvider:
+    region: ${{ values.region }}
+    tags:
+      Name: ${{ values.system }}-${{ values.name }}-vpc
+  providerConfigRef:
+    name: aws

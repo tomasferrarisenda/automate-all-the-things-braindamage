@@ -1,0 +1,18 @@
+apiVersion: eks.aws.crossplane.io/v1beta1
+kind: Cluster
+metadata:
+  labels:
+    role: controlplane
+spec:
+  forProvider:
+    version:
+    roleArnSelector:
+      matchControllerRef: true
+      matchLabels:
+        role: controlplane
+    resourcesVpcConfig:
+      endpointPrivateAccess:
+      endpointPublicAccess:
+      subnetIds:
+  writeConnectionSecretToRef:
+    namespace: crossplane-system

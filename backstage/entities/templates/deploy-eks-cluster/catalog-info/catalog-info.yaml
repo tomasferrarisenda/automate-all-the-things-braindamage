@@ -1,0 +1,23 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: ${{ values.system }}-${{ values.name }}-bucket
+  description: ${{ values.name }} bucket for the ${{ values.system }} system
+  annotations:
+    # backstage.io/techdocs-ref: dir:.
+    # This annotation doesn't work in objects of kind Resource. It only works in objects of kind Component.
+    # Our Redis deployment is registered as a Resource in Backstege catalog, so we can't use this annotation unless we change the kind of the object to Component.
+    # backstage.io/kubernetes-id: meme-web-redis
+    # github.com/project-slug: tomasferrarisenda/backstage-minikube-lab-reloaded
+    # argocd/app-selector: system-service=meme-web-redis # This is for Backstage ArgoCD plugin. You need to add this label in the application.yaml. You can also use argocd/app-name
+    # grafana/dashboard-selector: "tags @> 'linux'" # The following selector will return dashboards that have a 'linux' tag
+    # grafana/overview-dashboard: 'http://localhost:8082/d/k8s_views_global/kubernetes-views-global' # I couldn't make this work. Got error: Refused to frame 'https://localhost:8082/' because it violates the following Content Security Policy directive: "frame-src 'self' http://localhost:8082".
+  tags:
+    - aws 
+    - s3
+spec:
+  type: s3-bucket
+  # type: kubernetes-cluster
+  lifecycle: experimental
+  owner: ${{ values.owner }}
+  system: ${{ values.system }}

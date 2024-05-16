@@ -1,0 +1,21 @@
+apiVersion: eks.aws.crossplane.io/v1alpha1
+kind: NodeGroup
+spec:
+  forProvider:
+    amiType:
+    clusterNameSelector:
+      matchControllerRef: true
+      matchLabels:
+        role: controlplane
+    nodeRoleSelector:
+      matchControllerRef: true
+      matchLabels:
+        role: managed-nodegroup
+    subnets:
+    scalingConfig:
+      minSize:
+      desiredSize:
+      maxSize:
+    capacityType:
+    instanceTypes:
+      - t3.micro
