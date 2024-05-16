@@ -593,16 +593,16 @@ If you did everything right, you should see this new system with both services r
 1. hay q cambiar el URL en app-config.production.yaml. Reemplazar localhost en
 ```js
 app:
-  baseUrl: http://<actual-url>:7007 # This needs to be modified with the actual URL Backstage gets once it's deployed in EKS
+  baseUrl: http://<actual-url> # This needs to be modified with the actual URL Backstage gets once it's deployed in EKS. Don't specify port.
 backend:
-  baseUrl: http://<actual-url>:7007 # This needs to be modified with the actual URL Backstage gets once it's deployed in EKS
+  baseUrl: http://<actual-url> # This needs to be modified with the actual URL Backstage gets once it's deployed in EKS.  Don't specify port
 ```
 2. When you commit and push, the Backstage workflow will run automatically, we need to wait for the new image to be deployed on EKS. Meanwhile:                 
 3. tambien hay q modificar el github app como explicamos [aca](#set-up-github-oauth) pero con el nuevo URL, se veria algo asi:
     Application name: Backstage<br>
-    Homepage URL: `http://<actual-url>:3000/`<br>
-    Authorization callback URL: `http://<actual-url>:7007/api/auth/github/handler/frame`
-
+    Homepage URL: `http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com/`<br>
+    Authorization callback URL: `http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com/api/auth/github/handler/frame`
+NO HACE FALTA USAR LOS PUERTOS!!!!!!!!!!!!!!!!!!!
 
 <br/>
 <br/>
