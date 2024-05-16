@@ -14,7 +14,8 @@ spec:
         maxSize: 1
         minSize: 1
     subnetIdRefs:
-      - name: sistema-gaturro-subnet
+      - name: sistema-gaturro-subnet-b
+      - name: sistema-gaturro-subnet-c
     instanceTypes:
       - t3.micro
   providerConfigRef:
