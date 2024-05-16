@@ -23,3 +23,5 @@ spec:
     vpcId: vpc-0718c7deb85248620
     # vpcIdRef: 
     #   name: sistema-gaturro-vpc # no funca porq el recurso es defaultvpc
+  providerConfigRef:
+    name: aws
