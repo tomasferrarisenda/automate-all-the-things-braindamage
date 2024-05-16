@@ -10,5 +10,6 @@ spec:
     vpcConfig:
       - subnetIdRefs:
           - name: sistema-gaturro-subnet
+          - name: sistema-gaturro-subnet-2
   providerConfigRef:
     name: aws
