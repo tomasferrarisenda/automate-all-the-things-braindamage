@@ -13,46 +13,46 @@ spec:
   providerConfigRef:
     name: aws
 ---
-apiVersion: ec2.aws.upbound.io/v1beta1
-kind: RouteTableAssociation
-metadata:
-  name: sistema-gaturro-rta-public
-spec:
-  forProvider:
-    region: us-west-1
-    subnetIdRef:
-      name: sistema-gaturro-public-subnet-b
-    routeTableIdRef:
-      name: sistema-gaturro-route-table-public
-  providerConfigRef:
-    name: aws
----
-apiVersion: ec2.aws.upbound.io/v1beta1
-kind: RouteTable
-metadata:
-  name: sistema-gaturro-route-table-public
-spec:
-  forProvider:
-    region: us-west-1
-    vpcIdRef: 
-      name: sistema-gaturro-vpc
-  providerConfigRef:
-    name: aws
----
-apiVersion: ec2.aws.upbound.io/v1beta1
-kind: Route
-metadata:
-  name: sistema-gaturro-route-public
-spec:
-  forProvider:
-    destinationCidrBlock: 0.0.0.0/0
-    gatewayIdRef:
-      name: sistema-gaturro-ig
-    region: us-west-1
-    routeTableIdRef:
-      name: sistema-gaturro-route-table-public
-  providerConfigRef:
-    name: aws
+# apiVersion: ec2.aws.upbound.io/v1beta1
+# kind: RouteTableAssociation
+# metadata:
+#   name: sistema-gaturro-rta-public
+# spec:
+#   forProvider:
+#     region: us-west-1
+#     subnetIdRef:
+#       name: sistema-gaturro-public-subnet-b
+#     routeTableIdRef:
+#       name: sistema-gaturro-route-table-public
+#   providerConfigRef:
+#     name: aws
+# ---
+# apiVersion: ec2.aws.upbound.io/v1beta1
+# kind: RouteTable
+# metadata:
+#   name: sistema-gaturro-route-table-public
+# spec:
+#   forProvider:
+#     region: us-west-1
+#     vpcIdRef: 
+#       name: sistema-gaturro-vpc
+#   providerConfigRef:
+#     name: aws
+# ---
+# apiVersion: ec2.aws.upbound.io/v1beta1
+# kind: Route
+# metadata:
+#   name: sistema-gaturro-route-public
+# spec:
+#   forProvider:
+#     destinationCidrBlock: 0.0.0.0/0
+#     gatewayIdRef:
+#       name: sistema-gaturro-ig
+#     region: us-west-1
+#     routeTableIdRef:
+#       name: sistema-gaturro-route-table-public
+#   providerConfigRef:
+#     name: aws
 
 
 ---
@@ -70,43 +70,43 @@ spec:
   providerConfigRef:
     name: aws
 ---
-apiVersion: ec2.aws.upbound.io/v1beta1
-kind: RouteTableAssociation
-metadata:
-  name: istema-gaturro-rta
-spec:
-  forProvider:
-    region: us-west-1
-    subnetIdRef:
-      name: sistema-gaturro-private-subnet-c
-    routeTableIdRef:
-      name: sistema-gaturro-route-table-private
-  providerConfigRef:
-    name: aws
----
-apiVersion: ec2.aws.upbound.io/v1beta1
-kind: RouteTable
-metadata:
-  name: sistema-gaturro-route-table-private
-spec:
-  forProvider:
-    region: us-west-1
-    vpcIdRef: 
-      name: sistema-gaturro-vpc
-  providerConfigRef:
-    name: aws
----
-apiVersion: ec2.aws.upbound.io/v1beta1
-kind: Route
-metadata:
-  name: sistema-gaturro-route-private
-spec:
-  forProvider:
-    destinationCidrBlock: 0.0.0.0/0
-    natGatewayIdRef:
-      name: sistema-gaturro-nat-gw
-    region: us-west-1
-    routeTableIdRef:
-      name: sistema-gaturro-route-table-private
-  providerConfigRef:
-    name: aws
+# apiVersion: ec2.aws.upbound.io/v1beta1
+# kind: RouteTableAssociation
+# metadata:
+#   name: istema-gaturro-rta
+# spec:
+#   forProvider:
+#     region: us-west-1
+#     subnetIdRef:
+#       name: sistema-gaturro-private-subnet-c
+#     routeTableIdRef:
+#       name: sistema-gaturro-route-table-private
+#   providerConfigRef:
+#     name: aws
+# ---
+# apiVersion: ec2.aws.upbound.io/v1beta1
+# kind: RouteTable
+# metadata:
+#   name: sistema-gaturro-route-table-private
+# spec:
+#   forProvider:
+#     region: us-west-1
+#     vpcIdRef: 
+#       name: sistema-gaturro-vpc
+#   providerConfigRef:
+#     name: aws
+# ---
+# apiVersion: ec2.aws.upbound.io/v1beta1
+# kind: Route
+# metadata:
+#   name: sistema-gaturro-route-private
+# spec:
+#   forProvider:
+#     destinationCidrBlock: 0.0.0.0/0
+#     natGatewayIdRef:
+#       name: sistema-gaturro-nat-gw
+#     region: us-west-1
+#     routeTableIdRef:
+#       name: sistema-gaturro-route-table-private
+#   providerConfigRef:
+#     name: aws
