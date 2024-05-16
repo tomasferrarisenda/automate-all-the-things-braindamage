@@ -1,17 +1,12 @@
 apiVersion: eks.aws.upbound.io/v1beta1
 kind: Cluster
 metadata:
-  annotations:
-    meta.upbound.io/example-id: eks/v1beta1/cluster
-    uptest.upbound.io/timeout: "2400"
-  labels:
-    testing.upbound.io/example-name: example-clusterauth
-  name: sample-eks-cluster
+  name: sistema-gaturro-eks-cluster
 spec:
   forProvider:
     region: us-west-1
     roleArnRef:
-      name: sample-eks-cluster
+      name: sistema-gaturro-eks-controlplane-role
     vpcConfig:
       - subnetIdRefs:
           - name: sistema-gaturro-subnet
