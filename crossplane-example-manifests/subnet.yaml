@@ -4,7 +4,7 @@ metadata:
   name: sistema-gaturro-subnet
 spec:
   forProvider:
-    availabilityZone: us-west-1a
+    availabilityZone: us-west-1b
     region: us-west-1
     tags:
       Name: sistema-gaturro-subnet
