@@ -1,0 +1,15 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: NATGateway
+metadata:
+  name: sistema-gaturro-nat-gw
+spec:
+  forProvider:
+    connectivityType: private
+    region: us-west-1
+    subnetIdRef: 
+      name: sistema-gaturro-subnet-c
+    # subnetIdSelector:
+    #   matchLabels:
+    #     testing.upbound.io/example-name: example
+    # tags:
+    #   Name: gw NAT
