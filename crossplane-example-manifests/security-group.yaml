@@ -1,0 +1,49 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroup
+metadata:
+  name: sistema-gaturro-securitygroup
+spec:
+  forProvider:
+    description: Allow TLS inbound traffic
+    name: sistema-gaturro-securitygroup
+    region: us-west-1
+    vpcIdRef: 
+      name: sistema-gaturro-vpc
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroupRule
+metadata:
+  name: sistema-gaturro-securitygrouprule-1
+spec:
+  forProvider:
+    cidrBlocks:
+      - 0.0.0.0/0
+    fromPort: 0
+    protocol: -1
+    region: us-west-1
+    securityGroupIdRef:
+      name: sistema-gaturro-securitygroup
+    toPort: 0
+    type: ingress
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroupRule
+metadata:
+  name: sistema-gaturro-securitygrouprule-2
+spec:
+  forProvider:
+    cidrBlocks:
+      - 0.0.0.0/0
+    fromPort: 0
+    protocol: -1
+    region: us-west-1
+    securityGroupIdRef:
+      name: sistema-gaturro-securitygroup
+    toPort: 0
+    type: egress
+  providerConfigRef:
+    name: aws
