@@ -305,7 +305,7 @@ At the time of deletion we need to make sure of three things:
 3. The Providers don't get deleted before the Managed Resources: If they do the ProviderConfig won't know how to interact with the AWS APIs.
 
 
-I created a kind fo application cascading effect where ProviderConfig cant be deleted until managed resources are delted (this is by design from Crossplane), Provider cant be deleted until ProviderConfig is deleted (this is thanks to this application cascadde) and Crossplane application cant be deleted untip Providers application is deleted (also thanks to cascading effect), which means the secret is not deleted which would stop the ProviderConf from connecting to aws if it was
+I created a kind fo application cascading effect where ProviderConfig cant be deleted until managed resources are delted (this is by design from Crossplane through the use of ProviderConfigUsages), Provider cant be deleted until ProviderConfig is deleted (this is thanks to this application cascadde) and Crossplane application cant be deleted untip Providers application is deleted (also thanks to cascading effect), which means the secret is not deleted which would stop the ProviderConf from connecting to aws if it was
 
 Managed Resources <- ProviderConfig <- Providers <- Crossplane
 
