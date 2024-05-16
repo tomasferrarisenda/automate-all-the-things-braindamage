@@ -25,7 +25,7 @@ spec:
   forProvider:
     destinationCidrBlock: 0.0.0.0/0
     gatewayIdRef:
-      name: sistema-gaturro-nat-gw
+      name: sistema-gaturro-ig
     region: us-west-1
     routeTableIdRef:
       name: sistema-gaturro-route-table
