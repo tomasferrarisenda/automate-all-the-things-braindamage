@@ -13,3 +13,5 @@ spec:
     # roleSelector:
     #   matchLabels:
     #     testing.upbound.io/example-name: role
+  providerConfigRef:
+    name: aws

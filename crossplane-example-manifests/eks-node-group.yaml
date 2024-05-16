@@ -17,3 +17,5 @@ spec:
       - name: sistema-gaturro-subnet
     instanceTypes:
       - t3.micro
+  providerConfigRef:
+    name: aws

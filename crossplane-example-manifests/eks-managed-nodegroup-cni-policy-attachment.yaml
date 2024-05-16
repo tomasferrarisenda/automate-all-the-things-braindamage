@@ -12,4 +12,6 @@ spec:
       name: sistema-gaturro-eks-ng-role
     # roleSelector:
     #   matchLabels:
-    #     testing.upbound.io/example-name: role
+    #     testing.upbound.io/example-name: rol
+  providerConfigRef:
+    name: aws

@@ -21,3 +21,5 @@ spec:
             }
         ]
       }
+  providerConfigRef:
+    name: aws
