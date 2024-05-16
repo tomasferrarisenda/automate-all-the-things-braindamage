@@ -10,6 +10,8 @@
 #     region: us-west-1
 #     vpcIdRef: 
 #       name: sistema-gaturro-vpc
+#     tags:
+#       Name: sistema-gaturro-public-subnet-b
 #   providerConfigRef:
 #     name: aws
 # ---
@@ -55,6 +57,11 @@
 #     name: aws
 
 
+
+
+
+
+
 # ---
 # apiVersion: ec2.aws.upbound.io/v1beta1
 # kind: Subnet
@@ -67,6 +74,8 @@
 #     region: us-west-1
 #     vpcIdRef: 
 #       name: sistema-gaturro-vpc
+#     tags:
+#       Name: sistema-gaturro-private-subnet-c
 #   providerConfigRef:
 #     name: aws
 # ---
