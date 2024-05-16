@@ -1,0 +1,13 @@
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: OpenIDConnectProvider
+metadata:
+  name: sistema-gaturro-openid-connect-provider
+spec:
+  forProvider:
+    clientIdList:
+      - sts.amazonaws.com
+    thumbprintList:
+      - data.tls_certificate.eks.certificates[0].sha1_fingerprint
+    url: https://oidc.eks.us-west-1.amazonaws.com/id/F82373EBD8F1826990127384BB21B954
+  providerConfigRef:
+    name: aws
