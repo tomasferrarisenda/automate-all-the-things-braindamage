@@ -8,3 +8,4 @@ spec:
     region: us-west-1
   providerConfigRef:
     name: aws
+

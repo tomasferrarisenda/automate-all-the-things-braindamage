@@ -16,6 +16,8 @@ spec:
     directory:
       recurse: true
       jsonnet: {}
+      exclude: '*catalog-info.yaml'
+      # include: '*.yaml'
   syncPolicy:
     automated:
       selfHeal: true
