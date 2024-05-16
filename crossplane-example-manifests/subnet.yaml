@@ -62,6 +62,7 @@ metadata:
   name: sistema-gaturro-subnet-b
 spec:
   forProvider:
+    mapPublicIpOnLaunch: true
     availabilityZone: us-west-1b
     cidrBlock: 10.0.0.0/19
     region: us-west-1
