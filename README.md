@@ -74,6 +74,7 @@ This Transcendence Edition builds upon the [Braindamage Edition](https://github.
     - [My arbitrary rules](#my-arbitrary-rules)
   - [Meme-Web](#meme-web)
   - [Challenge](#challenge)
+  - [Once Backstage is deployed on EKS](#once-backstage-is-deployed-on-eks)
 - [AWS Infrastructure Deployment Pipeline](#aws-infrastructure-deployment-pipeline)
   - [Description](#description)
   - [Instructions](#instructions)
@@ -490,11 +491,15 @@ You can check the automatic discovery configuration under catalog.providers.gith
 </br>
 
 ### GitHub Actions plugin 
-The [GitHub Actions plugin](https://roadie.io/backstage/plugins/github-actions/) actually cames by default, but I added "Recent Workflow Runs" card to the overview tab of Components. All workflows will be mixed up because we are using monorepo. If we had a repo for each service, then this would make a lot more sense.
+The [GitHub Actions plugin](https://roadie.io/backstage/plugins/github-actions/) actually cames by default, but I added "Recent Workflow Runs" card to the overview tab of Components. All workflows will be mixed up because we are using monorepo. If we had a repo for each service, then this would make a lot more sense. 
+
+For this plugin to work you need to do [this](#once-backstage-is-deployed-on-eks).
 </br>
 
 ### GitHub Insights plugin
 The [GitHub Insights plugin](https://roadie.io/backstage/plugins/github-insights/) lets you see the GitHub insights of the repo like what languages are used, who are the contributors and a preview of the README.
+
+For this plugin to work you need to do [this](#once-backstage-is-deployed-on-eks).
 </br>
 
 ### ArgoCD plugin
@@ -590,6 +595,8 @@ If you did everything right, you should see this new system with both services r
 </br>
 
 ## Once Backstage is deployed on EKS
+In order for some of the new plugins to work you need to do the following:
+
 1. hay q cambiar el URL en app-config.production.yaml. Reemplazar localhost en
 ```js
 app:
