@@ -9,3 +9,5 @@ spec:
     #   Name: main
     vpcIdRef:
       name: sistema-gaturro-vpc
+  providerConfigRef:
+    name: aws
