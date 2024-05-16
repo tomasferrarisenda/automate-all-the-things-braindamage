@@ -1,12 +1,24 @@
+# apiVersion: ec2.aws.upbound.io/v1beta1
+# kind: DefaultSubnet
+# metadata:
+#   name: sistema-gaturro-subnet
+# spec:
+#   forProvider:
+#     availabilityZone: us-west-1b
+#     region: us-west-1
+#     tags:
+#       Name: sistema-gaturro-subnet
+#   providerConfigRef:
+#     name: aws
+
 apiVersion: ec2.aws.upbound.io/v1beta1
-kind: DefaultSubnet
+kind: Subnet
 metadata:
   name: sistema-gaturro-subnet
 spec:
   forProvider:
     availabilityZone: us-west-1b
+    cidrBlock: 172.16.10.0/24
     region: us-west-1
-    tags:
-      Name: sistema-gaturro-subnet
-  providerConfigRef:
-    name: aws
+    vpcIdRef:
+      name: sistema-gaturro-vpc
