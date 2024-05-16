@@ -1,7 +1,7 @@
 apiVersion: iam.aws.upbound.io/v1beta1
 kind: RolePolicyAttachment
 metadata:
-  name: amazoneks_cni_policy-policy-attachment
+  name: amazonekscnipolicy-policy-attachment
 spec:
   forProvider:
     policyArn: arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
