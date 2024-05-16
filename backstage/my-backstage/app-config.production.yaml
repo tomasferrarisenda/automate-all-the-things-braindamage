@@ -1,7 +1,8 @@
 app:
   # Should be the same as backend.baseUrl when using the `app-backend` plugin.
   title: Automate All The Things
-  baseUrl: http://localhost:7007
+  # baseUrl: http://localhost:7007
+  baseUrl: http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com:7007 # This needs to be modified with the actual URL Backstage gets once it's deployed in EKS
 
 organization:
   name: Automate All The Things
@@ -16,6 +17,7 @@ backend:
     # Default Helmet Content-Security-Policy values can be removed by setting the key to false
     img-src: ["'self'", 'data:', 'https://i.imgur.com', 'https://avatars.githubusercontent.com']
     frame-src: ["'self'", 'http://localhost:8082'] # This allows the iframe to load the Grafana dashboards (when Grafana service is port-forwarded to localhost:8082)
+    
     # Since we are not using HTTPS we require this. Without it backend resources will not load in the UI when accesing through the ingress. See: https://github.com/backstage/backstage/issues/23247#issuecomment-1971454432
     upgrade-insecure-requests: false 
 
@@ -24,7 +26,9 @@ backend:
   # reachable not just from within the backend host, but from all of your
   # callers. When its value is "http://localhost:7007", it's strictly private
   # and can't be reached by others.
-  baseUrl: http://localhost:7007
+  # baseUrl: http://localhost:7007
+  baseUrl: http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com:7007 # This needs to be modified with the actual URL Backstage gets once it's deployed in EKS
+
   # The listener can also be expressed as a single <host>:<port> string. In this case we bind to
   # all interfaces, the most permissive setting. The right value depends on your specific deployment.
   listen:

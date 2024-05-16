@@ -407,8 +407,8 @@ http://k8s-backstag-backstag-e78a25dae5-420865081.us-east-1.elb.amazonaws.com:70
 1. Go [here](https://github.com/settings/applications/new).
 2. Complete with the following data:<br>
         Application name: Backstage<br>
-        Homepage URL: http://localhost:3000/<br>
-        Authorization callback URL: http://localhost:7007/api/auth/github/handler/frame
+        Homepage URL: `http://localhost:3000/`<br>
+        Authorization callback URL: `http://localhost:7007/api/auth/github/handler/frame`
                                                       
 3. Click on "Generate a new client secret".
 4. Save Client ID and Secret somewhere safe.
@@ -587,6 +587,27 @@ Using the templates on the "Create" tab:
 
 If you did everything right, you should see this new system with both services running when you deploy to EKS.
 
+</br>
+
+## Once Backstage is deployed
+hay q cambiar el URL en app-config.production.yaml. Reemplazar localhost en
+```js
+app:
+  baseUrl: http://<actual-url>:7007 # This needs to be modified with the actual URL Backstage gets once it's deployed in EKS
+backend:
+  baseUrl: http://<actual-url>:7007 # This needs to be modified with the actual URL Backstage gets once it's deployed in EKS
+```
+tambien hay q crear un bnuevo github app como explicamos [aca](#set-up-github-oauth) pero con el nuevo URL, se veria algo asi:
+
+ACUTALIZAR ESTA PARETE DICIENDO Q CUANDOTENGAN LA URL DE BACKSTAGE PONERLA ACA SER VERA ALGO ASI
+http://k8s-backstag-backstag-e78a25dae5-420865081.us-east-1.elb.amazonaws.com
+http://k8s-backstag-backstag-e78a25dae5-420865081.us-east-1.elb.amazonaws.com:7000/api/auth/github/handler/frame
+    Application name: Backstage<br>
+    Homepage URL: `http://localhost:3000/`<br>
+    Authorization callback URL: `http://localhost:7007/api/auth/github/handler/frame`
+
+3. Correr el ppl usando los nevos clientId y Client secret                       
+
 <br/>
 <br/>
 <p title="Hard right" align="center"> <img width="460" src="https://i.imgur.com/Stl0y81.jpg"> </p>
@@ -678,10 +699,10 @@ Here are the specific numbers:
 
 ## App of Apps
 - -5 Prometheus
-- -4 Istio Base / Jaegger / Loki / Sealed-Secrets
+- -4 Istio Base / Jaegger / Loki / Sealed-Secrets / Backstage
 - -3 Istiod / Grafana 
 - -2 Istio Gateway / Flagger
-- -1 Kiali / Flagger Load-Tester / Backstage
+- -1 Kiali / Flagger Load-Tester 
 - 0 Backends
 - 1 Frontends
 
