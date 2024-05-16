@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: toto
+  title: hghfg
+  description: fghdfgh
+spec:
+  type: business-unit
+  children: []
+  profile:
+    email: totofefe@hotmail.com
+    # slack: 
