@@ -602,9 +602,9 @@ In order for some of the new plugins to work you need to do the following:
 1. hay q cambiar el URL en app-config.production.yaml. Reemplazar localhost en
 ```js
 app:
-  baseUrl: http://<actual-url> # This needs to be modified with the actual URL Backstage gets once it's deployed in EKS. Don't specify port.
+  baseUrl: http://<actual-url>
 backend:
-  baseUrl: http://<actual-url> # This needs to be modified with the actual URL Backstage gets once it's deployed in EKS.  Don't specify port
+  baseUrl: http://<actual-url>
 ```
 You can do the same for:
 ```js
