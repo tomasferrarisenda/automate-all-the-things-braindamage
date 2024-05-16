@@ -7,7 +7,7 @@ spec:
     clusterNameRef:
       name: sistema-gaturro-eks-cluster
     nodeRoleArnRef:
-      name: sistema-gaturro-node-role
+      name: sistema-gaturro-eks-ng-role
     region: us-west-1
     scalingConfig:
       - desiredSize: 1

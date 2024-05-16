@@ -1,8 +1,7 @@
 apiVersion: iam.aws.crossplane.io/v1beta1
 kind: Role
 metadata:
-  labels:
-    role: controlplane
+  name: sistema-gaturro-eks-controlplane-role
 spec:
   forProvider:
     assumeRolePolicyDocument: |

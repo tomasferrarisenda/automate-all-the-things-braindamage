@@ -9,7 +9,7 @@ spec:
     #   matchLabels:
     #     testing.upbound.io/example-name: role
     roleRef:
-      name: sistema-gaturro-eks-role
+      name: sistema-gaturro-eks-ng-role
     # roleSelector:
     #   matchLabels:
     #     testing.upbound.io/example-name: role
