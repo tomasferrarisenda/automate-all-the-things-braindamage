@@ -342,7 +342,7 @@ we might go full crossplane in the future.. maybe, who knows?
 
 Detalle: cuandoe entremos a los front, el visits no va a funcionar aun porqu ahora tenemos q esperar que las elasticache levantan y tardan bastante
 
-
+not everything can be automated with Crossplane yet; some steps are manual, and if you need 1-click deployment, Terraform is the better choice.
 <br/>
 <br/>
 <p title="Anakin - We use k8s now" align="center"> <img width="460" src="https://i.imgur.com/Gwh1r0L.png"> </p>
