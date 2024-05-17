@@ -25,3 +25,46 @@ spec:
       Name: sistema-gaturro-eks-ng-role
   providerConfigRef:
     name: aws
+
+---
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: amazoneksworkernodepolicy-policy-attachment
+spec:
+  forProvider:
+    policyArn: arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+    roleRef:
+      name: sistema-gaturro-eks-ng-role
+    tags:
+      Name: amazoneksworkernodepolicy-policy-attachment
+  providerConfigRef:
+    name: aws
+---
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: amazonekscnipolicy-policy-attachment
+spec:
+  forProvider:
+    policyArn: arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+    roleRef:
+      name: sistema-gaturro-eks-ng-role
+    tags:
+      Name: amazonekscnipolicy-policy-attachment
+  providerConfigRef:
+    name: aws
+---
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: amazonec2containerregistryreadonly-policy-attachment
+spec:
+  forProvider:
+    policyArn: arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
+    roleRef:
+      name: sistema-gaturro-eks-ng-role
+    tags:
+      Name: amazonec2containerregistryreadonly-policy-attachment
+  providerConfigRef:
+    name: aws
