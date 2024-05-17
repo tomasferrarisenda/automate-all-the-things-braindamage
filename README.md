@@ -308,6 +308,9 @@ y ver si tengo q borrar esto de applications
  
 ## Extra Providers and ProviderConfigs
 I added some extra Provider and ProviderConfig manifests for Azure and GCP which are all commented out. They are there just to show that you could deploy to any hyperscaler if you wanted to. 
+## Cascade deployment
+si pones los providers y rpoviderconfig en el mismo char t q crossplane nunca levanta ningunrecurso
+"The Kubernetes API could not find pkg.crossplane.io/Provider for requested resource crossplane-system/provider-aws-ec2. Make sure the "Provider" CRD is installed on the destination cluster."
 
 ## Cascade deletion
 At the time of deletion we need to make sure of three things:
