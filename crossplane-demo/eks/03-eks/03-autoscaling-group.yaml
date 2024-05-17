@@ -1,22 +1,22 @@
-apiVersion: autoscaling.aws.upbound.io/v1beta2
-kind: AutoscalingGroup
-metadata:
-  annotations:
-    meta.upbound.io/example-id: autoscaling/v1beta1/attachment
-  labels:
-    testing.upbound.io/example-name: asg
-  name: attachment-example
-spec:
-  forProvider:
-    availabilityZones:
-      - us-west-1b
-    launchConfigurationSelector:
-      matchLabels:
-        testing.upbound.io/example-name: attachment-example
-    maxSize: 1
-    minSize: 1
-    region: us-west-1
-    tag:
-      - key: AmazonECSManaged
-        propagateAtLaunch: true
-        value: "true"
+# apiVersion: autoscaling.aws.upbound.io/v1beta2
+# kind: AutoscalingGroup
+# metadata:
+#   annotations:
+#     meta.upbound.io/example-id: autoscaling/v1beta1/attachment
+#   labels:
+#     testing.upbound.io/example-name: asg
+#   name: attachment-example
+# spec:
+#   forProvider:
+#     availabilityZones:
+#       - us-west-1b
+#     launchConfigurationSelector:
+#       matchLabels:
+#         testing.upbound.io/example-name: attachment-example
+#     maxSize: 1
+#     minSize: 1
+#     region: us-west-1
+#     tag:
+#       - key: AmazonECSManaged
+#         propagateAtLaunch: true
+#         value: "true"
