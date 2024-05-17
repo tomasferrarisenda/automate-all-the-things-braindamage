@@ -24,7 +24,7 @@ spec:
     subnetIdRef:
       name: sistema-gaturro-private-subnet-b
     routeTableIdRef:
-      name: sistema-gaturro-route-table-private
+      name: sistema-gaturro-route-table-private-b
     tags:
       Name: sistema-gaturro-rta-private-b
   providerConfigRef:
