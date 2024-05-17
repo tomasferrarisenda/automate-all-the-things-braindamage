@@ -713,10 +713,10 @@ Here are the specific numbers:
 
 ## App of Apps
 - -5 Prometheus
-- -4 Istio Base / Jaegger / Loki / Sealed-Secrets / Backstage
+- -4 Istio Base / Jaegger / Loki / Sealed-Secrets 
 - -3 Istiod / Grafana 
 - -2 Istio Gateway / Flagger
-- -1 Kiali / Flagger Load-Tester 
+- -1 Kiali / Flagger Load-Tester / Backstage / Crossplane
 - 0 Backends
 - 1 Frontends
 
