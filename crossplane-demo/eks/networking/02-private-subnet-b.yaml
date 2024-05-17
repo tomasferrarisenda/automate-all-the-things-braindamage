@@ -17,7 +17,7 @@ spec:
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: RouteTableAssociation
 metadata:
-  name: sistema-gaturro-rta-private
+  name: sistema-gaturro-rta-private-b
 spec:
   forProvider:
     region: us-west-1
