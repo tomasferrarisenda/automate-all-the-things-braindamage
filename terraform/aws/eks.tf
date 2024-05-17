@@ -126,6 +126,7 @@ resource "aws_eks_node_group" "private-nodes" {
 
 
 # ----------------- OIDC -----------------
+# This binds AWS's IAM with Kubernetes's RBAC. It allows Kubernetes to authenticate AWS users.
 
 data "tls_certificate" "eks" {
   url = aws_eks_cluster.cluster.identity[0].oidc[0].issuer
