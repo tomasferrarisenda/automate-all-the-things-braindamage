@@ -4,7 +4,7 @@ metadata:
   name: sistema-gaturro-nat-gw-b
 spec:
   forProvider:
-    connectivityType: private
+    # connectivityType: private
     region: us-west-1
     subnetIdRef: 
       name: sistema-gaturro-public-subnet-b
@@ -25,7 +25,7 @@ metadata:
   name: sistema-gaturro-nat-gw-c
 spec:
   forProvider:
-    connectivityType: private
+    # connectivityType: private
     region: us-west-1
     subnetIdRef: 
       name: sistema-gaturro-public-subnet-c
