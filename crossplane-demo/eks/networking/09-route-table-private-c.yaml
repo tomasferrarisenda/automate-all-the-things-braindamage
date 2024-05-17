@@ -13,7 +13,7 @@ spec:
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Route
 metadata:
-  name: sistema-gaturro-route-private
+  name: sistema-gaturro-route-private-c
 spec:
   forProvider:
     destinationCidrBlock: 0.0.0.0/0
