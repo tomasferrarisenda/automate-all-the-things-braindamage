@@ -287,11 +287,12 @@ These will be required for our workflows to connect to your AWS account.
 
 
 
-[this series](https://www.youtube.com/playlist?list=PLyicRj904Z99i8U5JaNW5X3AyBvfQz-16) One of the best DevOps youtubers and one of the minds behind Crossplane. For the purpose of this edition, watching only part ona and two should be enough. 
+[this series](https://www.youtube.com/playlist?list=PLyicRj904Z99i8U5JaNW5X3AyBvfQz-16) One of the best DevOps youtubers and one of the minds behind Crossplane. For the purpose of this edition, watching only part ona and two should be enough.
+
+[This one](https://youtu.be/mpfqPXfX6mg?si=mMVgEmT8UEC5o-xA) from Anton Putra should also be very helpfull.
 
 The true power of Crossplane lies behind Crossplane compositions, but that's a slighlty more advaded concept so we'll leave it for next edition, let's start with the basics.
 
-I had to find this workaround. not then most elegant solution. If you have any better ideas, I'm all ears
 EXPLCIAR la application secundaria q creamos dento del chart de crossplane. Esto resuelve tambien el problema del secret que necesita el providerconfig para conectarse a aws pa eliminer los managedresources: ESTO NO HACE FALTA PORQUE CON LA SOLUCION DE LAS SUB-APPLICATIONS DE CROSSPLANE PARA PROVIDERS Y PROVIDERCONFIGS, LA APPLICATION DE CROSSPLANE NO PUEDE SER BORRADA HASTA QUE ELLAS NO MUERAN, Y PROVIDERCONFIGS NO PUEDE MORIR HASTA QUE NO MUERAN TODOS LOS MANAGED RESOURCES
 
 explicar que ahora las bbdd del backend se levantan a traves de manifests del chert de backed, no las levanta teraform
@@ -312,11 +313,13 @@ I added some extra Provider and ProviderConfig manifests for Azure and GCP which
 ## Cascade deployment
 si pones los providers y rpoviderconfig en el mismo char t q crossplane nunca levanta ningunrecurso
 "The Kubernetes API could not find pkg.crossplane.io/Provider for requested resource crossplane-system/provider-aws-ec2. Make sure the "Provider" CRD is installed on the destination cluster."
-1. Creaded providers applpication with sync wave 1 to that it deploys after al crossplane chart resources are deployed. This application has all the provider manifest but also:
-2. A providerconfig applciation which hassync wave 1 so that it deploys onlty after all providers have been deployed. Then:
-3. It will deploy the ProviderCofigs. In this case jsut one which is aws.
+Sync waves don't seem to work in this case. So I had to:
+1. Create a [providers application](/helm-charts/infra/crossplane/templates/custom-templates/providers-application.yaml) as a custom template inside the [Crossplane helm chart](/helm-charts/infra/crossplane/) with an Argo sync-wave of "1" so that it deploys only after al Crossplane chart resources are deployed. This application has all the Provider manifest but also:
+2. A [provider-configs application](helm-charts/infra/crossplane/providers/provider-configs-application.yaml) with an Argo sync-wave of "1" so that it deploys only after all Providers have been deployed. Then:
+3. It will deploy the [ProviderCofigs](/helm-charts/infra/crossplane/provider-configs/). In this case just one which is the AWS one.
 
 This way we resolve the order in which they nedd to be deployed so we have no errors.
+I had to find this workaround. not then most elegant solution. If you have any better ideas, I'm all ears
 
 ## Cascade deletion
 At the time of deletion we need to make sure of three things:
