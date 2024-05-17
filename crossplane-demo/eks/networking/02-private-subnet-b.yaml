@@ -25,5 +25,7 @@ spec:
       name: sistema-gaturro-private-subnet-b
     routeTableIdRef:
       name: sistema-gaturro-route-table-private
+    tags:
+      Name: sistema-gaturro-rta-private-b
   providerConfigRef:
     name: aws
