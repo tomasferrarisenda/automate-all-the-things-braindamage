@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: sistema-gaturro-eks-cluster
-  description: gaturro eks cluster for the sistema system
+  name: sistema-gaturro-bucket
+  description: gaturro S3 bucket for the sistema system
   annotations:
     # backstage.io/techdocs-ref: dir:.
     # This annotation doesn't work in objects of kind Resource. It only works in objects of kind Component.
@@ -16,8 +16,7 @@ metadata:
     - aws 
     - s3
 spec:
-  # type: s3-bucket
-  type: kubernetes-cluster
+  type: s3-bucket
   lifecycle: experimental
   owner: toto
   system: sistema
