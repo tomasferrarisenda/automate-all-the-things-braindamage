@@ -1,16 +1,16 @@
-apiVersion: elasticache.aws.upbound.io/v1beta1
-kind: SubnetGroup
-metadata:
-  name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
-  # annotations:
-  #   argocd.argoproj.io/sync-wave: "-3"
-spec:
-  forProvider:
-    region: us-east-1
-    # subnetIdRefs: # esto es para referancia a otro managed resource de crossplane donde entrara la infro requerida
-    #   - name: subnet-ejemplo
-    subnetIds: # esto es directamente a AWS
-      - {{ .Values.subnetId }} # private subnet C
-  providerConfigRef:
-    name: aws
+# apiVersion: elasticache.aws.upbound.io/v1beta1
+# kind: SubnetGroup
+# metadata:
+#   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
+#   # annotations:
+#   #   argocd.argoproj.io/sync-wave: "-3"
+# spec:
+#   forProvider:
+#     region: us-east-1
+#     # subnetIdRefs: # esto es para referancia a otro managed resource de crossplane donde entrara la infro requerida
+#     #   - name: subnet-ejemplo
+#     subnetIds: # esto es directamente a AWS
+#       - {{ .Values.subnetId }} # private subnet C
+#   providerConfigRef:
+#     name: aws
 

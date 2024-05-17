@@ -1,27 +1,27 @@
-apiVersion: elasticache.aws.upbound.io/v1beta1
-kind: ReplicationGroup
-metadata:
-  name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-ec-rep-grp
-  # annotations:
-  #   argocd.argoproj.io/sync-wave: "-2"
-spec:
-  forProvider:
-    automaticFailoverEnabled: true
-    description: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elascache-rep-group
-    engineVersion: "7.1"
-    nodeType: cache.t4g.micro
-    numCacheClusters: 2
-    region: us-east-1
-    securityGroupIdRefs: 
-      - name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
-    # securityGroupIds: 
-    #   - {{ .Values.securityGroupId }}
-    subnetGroupNameRef: # esto es para referancia a otro managed resource de crossplane donde entrara la infro requerida
-      name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
-    transitEncryptionEnabled: true
-    authTokenSecretRef:
-      namespace: {{ .Values.system }}-{{ .Values.environment }}
-      name: redis-secret 
-      key: REDIS_PASS
-  providerConfigRef:
-    name: aws
+# apiVersion: elasticache.aws.upbound.io/v1beta1
+# kind: ReplicationGroup
+# metadata:
+#   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-ec-rep-grp
+#   # annotations:
+#   #   argocd.argoproj.io/sync-wave: "-2"
+# spec:
+#   forProvider:
+#     automaticFailoverEnabled: true
+#     description: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elascache-rep-group
+#     engineVersion: "7.1"
+#     nodeType: cache.t4g.micro
+#     numCacheClusters: 2
+#     region: us-east-1
+#     securityGroupIdRefs: 
+#       - name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
+#     # securityGroupIds: 
+#     #   - {{ .Values.securityGroupId }}
+#     subnetGroupNameRef: # esto es para referancia a otro managed resource de crossplane donde entrara la infro requerida
+#       name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
+#     transitEncryptionEnabled: true
+#     authTokenSecretRef:
+#       namespace: {{ .Values.system }}-{{ .Values.environment }}
+#       name: redis-secret 
+#       key: REDIS_PASS
+#   providerConfigRef:
+#     name: aws
