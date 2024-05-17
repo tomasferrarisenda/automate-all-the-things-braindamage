@@ -32,18 +32,6 @@ spec:
       Name: sistema-gaturro-rta-public-b
   providerConfigRef:
     name: aws
----
-apiVersion: ec2.aws.upbound.io/v1beta1
-kind: EIP
-metadata:
-  name: sistema-gaturro-eip-b
-spec:
-  forProvider:
-    region: us-west-1
-    vpc: true
-    tags:
-      Name: sistema-gaturro-eip-b
-  providerConfigRef:
-    name: aws
+
 
 

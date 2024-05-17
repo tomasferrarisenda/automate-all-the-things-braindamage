@@ -20,6 +20,23 @@ spec:
 
 ---
 apiVersion: ec2.aws.upbound.io/v1beta1
+kind: EIP
+metadata:
+  name: sistema-gaturro-eip-b
+spec:
+  forProvider:
+    region: us-west-1
+    vpc: true
+    tags:
+      Name: sistema-gaturro-eip-b
+  providerConfigRef:
+    name: aws
+
+
+
+
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
 kind: NATGateway
 metadata:
   name: sistema-gaturro-nat-gw-c
@@ -36,5 +53,18 @@ spec:
     #     testing.upbound.io/example-name: example
     tags:
       Name: sistema-gaturro-nat-gw-c
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: EIP
+metadata:
+  name: sistema-gaturro-eip-c
+spec:
+  forProvider:
+    region: us-west-1
+    vpc: true
+    tags:
+      Name: sistema-gaturro-eip-c
   providerConfigRef:
     name: aws
