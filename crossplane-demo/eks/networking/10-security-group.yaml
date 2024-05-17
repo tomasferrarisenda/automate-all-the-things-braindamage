@@ -9,6 +9,8 @@ spec:
     region: us-west-1
     vpcIdRef: 
       name: sistema-gaturro-vpc
+    tags:
+      Name: sistema-gaturro-securitygroup
   providerConfigRef:
     name: aws
 ---
@@ -27,6 +29,8 @@ spec:
       name: sistema-gaturro-securitygroup
     toPort: 0
     type: ingress
+    tags:
+      Name: sistema-gaturro-securitygrouprule-1
   providerConfigRef:
     name: aws
 ---
@@ -45,5 +49,7 @@ spec:
       name: sistema-gaturro-securitygroup
     toPort: 0
     type: egress
+    tags:
+      Name: sistema-gaturro-securitygrouprule-2
   providerConfigRef:
     name: aws

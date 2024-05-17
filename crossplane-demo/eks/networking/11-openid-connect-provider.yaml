@@ -8,6 +8,8 @@ spec:
       - sts.amazonaws.com
     thumbprintList:
       - 9e99a48a9960b14926bb7f3b02e22da2b0ab7280
-    url: https://oidc.eks.us-west-1.amazonaws.com/id/F82373EBD8F1826990127384BB21B954
+    url: https://oidc.eks.us-west-1.amazonaws.com/id/9BBF76B7C9C6D52584F175E783DF54A4
+    tags:
+      Name: sistema-gaturro-openid-connect-provider
   providerConfigRef:
     name: aws
