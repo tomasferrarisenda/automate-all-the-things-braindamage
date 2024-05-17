@@ -602,16 +602,16 @@ In order for some of the new plugins to work you need to do the following:
 1. Change the value of these variables in the [app-config.production](/backstage/my-backstage/app-config.production.yaml) for the actual Backstage URL. They should look something like this:
 ```js
 app:
-  baseUrl: http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com
+  baseUrl: http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com # Don't use final slash "/"
 backend:
-  baseUrl: http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com
+  baseUrl: http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com # Don't use final slash "/"
 ```
 You can do the same for:
 ```js
 argocd:
   baseUrl: http://<actual-argocd-url>/ 
 grafana:
-  domain: http://<actual-grafana-url>
+  domain: http://<actual-grafana-url> # Don't use final slash "/"
 ```
 2. When you commit and push, the Backstage workflow will run automatically, we need to wait for the new image to be deployed on EKS. Meanwhile:                 
 3. Modify the values that we set on [this stepa](#set-up-github-oauth) for the GitHub OAuth App for the new URL. They should look something like this:
