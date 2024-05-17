@@ -5,6 +5,8 @@
 # kind: ProviderConfig
 # metadata:
 #   name: azure
+  # annotations:
+  #   argocd.argoproj.io/sync-wave: "2"
 # spec:
 #   credentials:
 #     source: Secret
