@@ -18,5 +18,7 @@ spec:
       - name: sistema-gaturro-private-subnet-c
     instanceTypes:
       - t3.micro
+    tags:
+      Name: sistema-gaturro-eks-ng
   providerConfigRef:
     name: aws

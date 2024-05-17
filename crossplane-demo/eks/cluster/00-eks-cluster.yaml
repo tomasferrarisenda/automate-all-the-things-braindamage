@@ -13,5 +13,7 @@ spec:
           - name: sistema-gaturro-private-subnet-b
           - name: sistema-gaturro-public-subnet-c
           - name: sistema-gaturro-private-subnet-c
+    tags:
+      Name: sistema-gaturro-eks-cluster
   providerConfigRef:
     name: aws
