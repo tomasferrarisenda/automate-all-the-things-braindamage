@@ -1,7 +1,7 @@
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: InternetGateway
 metadata:
-  name: sistema-gaturro-ig
+  name: sistema-gaturro-internet-gw
 spec:
   forProvider:
     region: us-west-1

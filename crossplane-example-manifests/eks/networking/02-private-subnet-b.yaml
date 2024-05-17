@@ -1,0 +1,29 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Subnet
+metadata:
+  name: sistema-gaturro-private-subnet-b
+spec:
+  forProvider:
+    availabilityZone: us-west-1c
+    cidrBlock: 10.0.64.0/19
+    region: us-west-1
+    vpcIdRef: 
+      name: sistema-gaturro-vpc
+    tags:
+      Name: sistema-gaturro-private-subnet-b
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: RouteTableAssociation
+metadata:
+  name: sistema-gaturro-rta-private
+spec:
+  forProvider:
+    region: us-west-1
+    subnetIdRef:
+      name: sistema-gaturro-private-subnet-b
+    routeTableIdRef:
+      name: sistema-gaturro-route-table-private
+  providerConfigRef:
+    name: aws

@@ -1,0 +1,26 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: RouteTable
+metadata:
+  name: sistema-gaturro-route-table-public
+spec:
+  forProvider:
+    region: us-west-1
+    vpcIdRef: 
+      name: sistema-gaturro-vpc
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Route
+metadata:
+  name: sistema-gaturro-route-public
+spec:
+  forProvider:
+    destinationCidrBlock: 0.0.0.0/0
+    gatewayIdRef:
+      name: sistema-gaturro-internet-gw
+    region: us-west-1
+    routeTableIdRef:
+      name: sistema-gaturro-route-table-public
+  providerConfigRef:
+    name: aws

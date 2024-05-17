@@ -10,6 +10,8 @@ spec:
     vpcConfig:
       - subnetIdRefs:
           - name: sistema-gaturro-public-subnet-b
+          - name: sistema-gaturro-private-subnet-b
+          - name: sistema-gaturro-public-subnet-c
           - name: sistema-gaturro-private-subnet-c
   providerConfigRef:
     name: aws
