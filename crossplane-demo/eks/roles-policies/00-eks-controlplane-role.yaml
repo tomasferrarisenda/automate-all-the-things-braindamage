@@ -21,5 +21,7 @@ spec:
             }
         ]
       }
+    tags:
+      Name: sistema-gaturro-eks-controlplane-role
   providerConfigRef:
     name: aws

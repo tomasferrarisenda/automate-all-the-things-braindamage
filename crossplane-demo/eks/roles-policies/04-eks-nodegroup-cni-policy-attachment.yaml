@@ -13,5 +13,7 @@ spec:
     # roleSelector:
     #   matchLabels:
     #     testing.upbound.io/example-name: rol
+    tags:
+      Name: amazonekscnipolicy-policy-attachment
   providerConfigRef:
     name: aws

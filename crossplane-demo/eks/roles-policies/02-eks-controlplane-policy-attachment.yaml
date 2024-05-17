@@ -13,5 +13,7 @@ spec:
     # roleSelector:
     #   matchLabels:
     #     testing.upbound.io/example-name: role
+    tags:
+      Name: samazoneksclusterpolicy-policy-attachment
   providerConfigRef:
     name: aws
