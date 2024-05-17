@@ -3,12 +3,12 @@ name: 03-Configure backstage
 on:
   workflow_dispatch:
     inputs:
-      ARGOCD_URL:
-        description: 'Introduce the URL of your ArgoCD instance. No trailing slash. Example: http://argocd.example.com'
-        required: true
-      GRAFANA_URL:
-        description: 'Introduce the URL of your Grafana instance. No trailing slash. Example: http://grafana.example.com'
-        required: true
+      # ARGOCD_URL:
+      #   description: 'Introduce the URL of your ArgoCD instance. No trailing slash. Example: http://argocd.example.com'
+      #   required: true
+      # GRAFANA_URL:
+      #   description: 'Introduce the URL of your Grafana instance. No trailing slash. Example: http://grafana.example.com'
+      #   required: true
       # AUTH_GITHUB_CLIENT_SECRET:
       #   description: 'Introduce your GitHub Auth Client Secret for Backstage'
       #   required: true
@@ -41,6 +41,11 @@ jobs:
       - name: Configure kubeconfig
         run: | 
           aws eks --region $AWS_REGION update-kubeconfig --name $PROJECT-cluster 
+
+     - name: Get URLS
+        run: | 
+          export ARGOCD_URL=$(kubectl get svc argocd-server -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+          export GRAFANA_URL=$(kubectl get svc grafana -n monitoring -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
 
       - name: Get ArgoCD auth token
         run: | 
@@ -99,3 +104,8 @@ jobs:
           echo "#############################################################################"
           echo "#############################################################################"
           echo "#############################################################################"
+
+      - name: PROVISORY create secrets
+        run: | 
+          kubectl create secret generic -n backstage argocd-auth-token --from-literal=ARGOCD_AUTH_TOKEN="$ARGOCD_AUTH_TOKEN"
+          kubectl create secret generic -n backstage grafana-token --from-literal=GRAFANA_TOKEN="$GRAFANA_TOKEN"
