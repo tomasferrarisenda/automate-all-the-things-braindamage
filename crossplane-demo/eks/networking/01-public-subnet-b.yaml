@@ -39,6 +39,8 @@ spec:
   forProvider:
     region: us-west-1
     vpc: true
+    tags:
+      Name: sistema-gaturro-eip-b
   providerConfigRef:
     name: aws
 
