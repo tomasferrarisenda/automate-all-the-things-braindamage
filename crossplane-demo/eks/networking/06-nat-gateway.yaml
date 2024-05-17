@@ -7,11 +7,11 @@ spec:
     connectivityType: private
     region: us-west-1
     subnetIdRef: 
-      name: sistema-gaturro-subnet-c
+      name: sistema-gaturro-private-subnet-b
     # subnetIdSelector:
     #   matchLabels:
     #     testing.upbound.io/example-name: example
-    # tags:
-    #   Name: gw NAT
+    tags:
+      Name: sistema-gaturro-nat-gw
   providerConfigRef:
     name: aws

@@ -7,6 +7,8 @@ spec:
     region: us-west-1
     vpcIdRef: 
       name: sistema-gaturro-vpc
+    tags:
+      Name: sistema-gaturro-route-table-public
   providerConfigRef:
     name: aws
 ---
@@ -22,5 +24,7 @@ spec:
     region: us-west-1
     routeTableIdRef:
       name: sistema-gaturro-route-table-public
+    tags:
+      Name: sistema-gaturro-route-public
   providerConfigRef:
     name: aws
