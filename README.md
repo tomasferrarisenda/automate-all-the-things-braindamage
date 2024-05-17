@@ -285,7 +285,6 @@ These will be required for our workflows to connect to your AWS account.
 
 # CROSSPLANE
 
-LEER ESTO https://docs.crossplane.io/latest/guides/crossplane-with-argo-cd/#Set-Resource-Exclusion
 
 
 [this series](https://www.youtube.com/playlist?list=PLyicRj904Z99i8U5JaNW5X3AyBvfQz-16) One of the best DevOps youtubers and one of the minds behind Crossplane. For the purpose of this edition, watching only part ona and two should be enough. 
@@ -297,8 +296,18 @@ EXPLCIAR la application secundaria q creamos dento del chart de crossplane. Esto
 
 explicar que ahora las bbdd del backend se levantan a traves de manifests del chert de backed, no las levanta teraform
 
+I repeat, THIS IS NOT how one is supposed to use Crossplne. We;ll only do it like this to get used to the basics.
+
+LEER ESTO https://docs.crossplane.io/latest/guides/crossplane-with-argo-cd/#Set-Resource-Exclusion
+y ver si tengo q borrar esto de applications
+   We don't want ProviderConfigs nor Providers nor Crossplane itsel to be deleted before all Managed Resources are deleted
+   So we'll remove the finalizers from all the crossplane-realted applications: crossplane, crossplane-providers & crossplane-provider-configs
+   These will make it so that the resources created by the applications are not deleted when the applications are deleted, remaining in the cluster until the cluster is destroyed
+   We usually don't want this but in this case its's necessary.
+   These resources don't create any Ingresses or PersistentVolumes, so there is no issue with them remaining in the cluster until it's destruction.
+ 
 ## Extra Providers and ProviderConfigs
-I added some extra Provider and ProviderConfig manifests which are all commented out. They are there just to show that you could deploy to any hyperscaler if you wanted to. 
+I added some extra Provider and ProviderConfig manifests for Azure and GCP which are all commented out. They are there just to show that you could deploy to any hyperscaler if you wanted to. 
 
 ## Cascade deletion
 At the time of deletion we need to make sure of three things:
