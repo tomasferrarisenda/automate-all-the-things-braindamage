@@ -14,6 +14,6 @@ deployment:
   image:
     repository: tferrari92/meme-web-backend # This value was modified by the initial-setup python script
 
-vpcId: vpc-044bf67dd31c59a56
-subnetId: subnet-0d2fd00b5598bd9bc
+vpcId: vpc-0b9d4f3830ab74f4a
+subnetId: subnet-0581cec1bf42efce7
 # securityGroupId: sg-0b7bab67c05dab563
