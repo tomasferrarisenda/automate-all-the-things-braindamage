@@ -1,22 +1,22 @@
-apiVersion: eks.aws.upbound.io/v1beta1
-kind: Cluster
-metadata:
-  name: sistema-gaturro-eks-cluster
-spec:
-  forProvider:
-    region: us-west-1
-    version: "1.29"
-    roleArnRef:
-      name: sistema-gaturro-eks-controlplane-role
-    vpcConfig:
-      - endpointPublicAccess: true
-        endpointPrivateAccess: false 
-        subnetIdRefs:
-          - name: sistema-gaturro-private-subnet-b
-          - name: sistema-gaturro-private-subnet-c
-          # - name: sistema-gaturro-public-subnet-b
-          # - name: sistema-gaturro-public-subnet-c
-    tags:
-      Name: sistema-gaturro-eks-cluster
-  providerConfigRef:
-    name: aws
+# apiVersion: eks.aws.upbound.io/v1beta1
+# kind: Cluster
+# metadata:
+#   name: sistema-gaturro-eks-cluster
+# spec:
+#   forProvider:
+#     region: us-west-1
+#     version: "1.29"
+#     roleArnRef:
+#       name: sistema-gaturro-eks-controlplane-role
+#     vpcConfig:
+#       - endpointPublicAccess: true
+#         endpointPrivateAccess: false 
+#         subnetIdRefs:
+#           - name: sistema-gaturro-private-subnet-b
+#           - name: sistema-gaturro-private-subnet-c
+#           # - name: sistema-gaturro-public-subnet-b
+#           # - name: sistema-gaturro-public-subnet-c
+#     tags:
+#       Name: sistema-gaturro-eks-cluster
+#   providerConfigRef:
+#     name: aws
