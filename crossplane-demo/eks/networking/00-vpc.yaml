@@ -14,12 +14,3 @@ spec:
     name: aws
 
 
----
-apiVersion: ec2.aws.upbound.io/v1beta1
-kind: EIP
-metadata:
-  name: sistema-gaturro-vpc
-spec:
-  forProvider:
-    region: us-west-1
-    vpc: true

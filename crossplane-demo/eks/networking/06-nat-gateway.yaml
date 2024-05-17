@@ -7,7 +7,9 @@ spec:
     connectivityType: private
     region: us-west-1
     subnetIdRef: 
-      name: sistema-gaturro-public-subnet-c
+      name: sistema-gaturro-public-subnet-b
+    allocationIdRef:
+      name: sistema-gaturro-eip-b
     # subnetIdSelector:
     #   matchLabels:
     #     testing.upbound.io/example-name: example
@@ -27,6 +29,8 @@ spec:
     region: us-west-1
     subnetIdRef: 
       name: sistema-gaturro-public-subnet-c
+    allocationIdRef:
+      name: sistema-gaturro-eip-c
     # subnetIdSelector:
     #   matchLabels:
     #     testing.upbound.io/example-name: example
