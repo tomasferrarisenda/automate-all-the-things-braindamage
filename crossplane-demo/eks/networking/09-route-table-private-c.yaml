@@ -1,7 +1,7 @@
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: RouteTable
 metadata:
-  name: sistema-gaturro-route-table-private
+  name: sistema-gaturro-route-table-private-c
 spec:
   forProvider:
     region: us-west-1
@@ -18,9 +18,9 @@ spec:
   forProvider:
     destinationCidrBlock: 0.0.0.0/0
     natGatewayIdRef:
-      name: sistema-gaturro-nat-gw
+      name: sistema-gaturro-nat-gw-c
     region: us-west-1
     routeTableIdRef:
-      name: sistema-gaturro-route-table-private
+      name: sistema-gaturro-route-table-private-c
   providerConfigRef:
     name: aws
