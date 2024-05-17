@@ -44,8 +44,13 @@ jobs:
 
      - name: Get URLS
         run: | 
+          export BACKSTAGE_URL=$(kubectl get svc backstage -n backstage -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
           export ARGOCD_URL=$(kubectl get svc argocd-server -n argocd -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
           export GRAFANA_URL=$(kubectl get svc grafana -n monitoring -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+
+     - name: Update Backstage app-config.production.yaml
+        run: | 
+          sed    
 
       - name: Get ArgoCD auth token
         run: | 
