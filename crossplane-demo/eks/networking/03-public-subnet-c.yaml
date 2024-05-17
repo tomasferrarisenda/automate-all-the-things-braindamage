@@ -34,7 +34,7 @@ spec:
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: EIP
 metadata:
-  name: sistema-gaturro-eip-b
+  name: sistema-gaturro-eip-c
 spec:
   forProvider:
     region: us-west-1
