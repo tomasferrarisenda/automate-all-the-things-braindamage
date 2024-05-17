@@ -11,6 +11,8 @@ spec:
       name: sistema-gaturro-vpc
     tags:
       Name: sistema-gaturro-private-subnet-c
+      kubernetes.io/role/internal-elb: "1" # Required for EKS
+      kubernetes.io/cluster/${var.project}-cluster: "owned" # Required for EKS
   providerConfigRef:
     name: aws
 ---
