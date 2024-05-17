@@ -1,6 +1,11 @@
 # Specify your own password for Grafana UI here
 adminPassword: automate-all-the-things
 
+# This should allow backstage to embed Grafana dashboards in an iframe but I couldn't make it work
+grafana.ini:
+  allow_embedding: true
+  cookie_samesite: none
+  
 ingress:
   enabled: true
   annotations:

@@ -22,6 +22,16 @@ backstage:
         secretKeyRef:
           name: github-secret
           key: AUTH_GITHUB_CLIENT_SECRET  
+    - name: ARGOCD_AUTH_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: argocd-auth-token
+          key: ARGOCD_AUTH_TOKEN
+    - name: GRAFANA_TOKEN
+      valueFrom:
+        secretKeyRef:
+          name: grafana-token
+          key: GRAFANA_TOKEN
 
   appConfig:
     catalog:
