@@ -4,7 +4,7 @@ metadata:
   name: sistema-gaturro-private-subnet-b
 spec:
   forProvider:
-    availabilityZone: us-west-1c
+    availabilityZone: us-west-1b
     cidrBlock: 10.0.64.0/19
     region: us-west-1
     vpcIdRef: 
