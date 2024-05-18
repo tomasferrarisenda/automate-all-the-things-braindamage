@@ -842,7 +842,7 @@ There's four stages on this pipeline:
 
 On the Build stage we will use Docker to build a container image from the Dockerfile, tag it with the number of the pipeline run and push it to your DockerHub registry.
 
-On the Deploy Dev stage, we will checkout the repo and modify the [helm-charts/systems/my-app/backend/environments/values-dev.yaml file](/helm-charts/systems/my-app/backend/environments/values-dev.yaml) and push the change to GitHub. [But why?](https://i.gifer.com/2Gg.gif)<br>
+On the Deploy Dev stage, we will checkout the repo and modify the [helm-charts/systems/my-app/backend/environments/values-dev.yaml file](/helm-charts/systems/my-app/backend/environments/values-dv.yaml) and push the change to GitHub. [But why?](https://i.gifer.com/2Gg.gif)<br>
 Remember how we just pushed the image to DockerHub with the new tag? And remember how ArgoCD is watching the helm/my-app directory? Well, this is how we tell ArgoCD that a new version of the backend microservice is available and should be deployed. We modify the image.tag value in the values-dev.yaml file and wait for ArgoCD to apply the changes.
 
 [This is how gentlemen manage their K8S resources](https://i.imgur.com/2Xntz2P.jpg). We are not some cavemen creating and deleting stuff manually with kubectl. We manage our infrastructure with **GitOps**.
