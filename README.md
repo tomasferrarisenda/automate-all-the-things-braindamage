@@ -366,12 +366,6 @@ siempre me queda un securitygroupingressrules.ec2.aws.upbound.io random y hay q 
 
 I added some extra Provider and ProviderConfig manifests for Azure and GCP which are all commented out. They are there just to show that you could deploy to any hyperscaler if you wanted to. 
 
-
-
-
-
-
-
 <br/>
 <br/>
 <p title="Anakin - We use k8s now" align="center"> <img width="460" src="https://i.imgur.com/Gwh1r0L.png"> </p>
