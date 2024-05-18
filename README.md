@@ -739,8 +739,8 @@ Here are the specific numbers:
 ## App of Apps
 - -5 Prometheus / Grafana / Istio Base / Sealed-Secrets
 - -4 Istiod / Istio Gateway / Jaeger / Loki  
-- -3 Flagger / Flagger Load-Tester / Crossplane 
-- -2 Kiali / Crossplane Providers 
+- -3 Flagger / Crossplane 
+- -2 Kiali / Flagger Load-Tester / Crossplane Providers
 - -1 Backstage / Crossplane ProviderConfigs 
 - 0 Backends / Crossplane Managed Resources
 - 1 Frontends
