@@ -737,8 +737,8 @@ Here are the specific numbers:
 - -10 ArgoCD Apps (App of Apps)
 
 ## App of Apps
-- -5 Prometheus / Grafana / Istio Base / Sealed-Secrets
-- -4 Istiod / Istio Gateway / Jaeger / Loki  
+- -5 Prometheus / Grafana / Istio Base / Istiod / Sealed-Secrets 
+- -4 Istio Gateway / Jaeger / Loki  
 - -3 Flagger / Crossplane 
 - -2 Kiali / Flagger Load-Tester / Crossplane Providers
 - -1 Backstage / Crossplane ProviderConfigs 
