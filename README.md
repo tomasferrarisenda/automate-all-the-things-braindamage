@@ -737,12 +737,12 @@ Here are the specific numbers:
 - -10 ArgoCD Apps (App of Apps)
 
 ## App of Apps
-- -5 Prometheus
-- -4 Istio Base / Jaegger / Loki / Sealed-Secrets 
-- -3 Istiod / Grafana 
-- -2 Istio Gateway / Flagger
-- -1 Kiali / Flagger Load-Tester / Backstage / Crossplane
-- 0 Backends
+- -5 Prometheus / Grafana / Istio Base / Sealed-Secrets
+- -4 Istiod / Istio Gateway / Jaeger / Loki  
+- -3 Flagger / Flagger Load-Tester / Crossplane 
+- -2 Kiali / Crossplane Providers 
+- -1 Backstage / Crossplane ProviderConfigs 
+- 0 Backends / Crossplane Managed Resources
 - 1 Frontends
 
 ## Backend Applications
