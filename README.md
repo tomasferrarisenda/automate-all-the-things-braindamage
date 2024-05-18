@@ -325,12 +325,14 @@ not everything can be automated with Crossplane yet; some steps are manual, and 
 ## Cascade deployment & deletion
 si pones los providers y rpoviderconfig en el mismo char t q crossplane nunca levanta ningunrecurso
 "The Kubernetes API could not find pkg.crossplane.io/Provider for requested resource crossplane-system/provider-aws-ec2. Make sure the "Provider" CRD is installed on the destination cluster."
+provider needs crossplane to deploy, providerconfig need provider
+
 Sync waves don't seem to work in this case. So I had to:
 1. Create a [providers application](/helm-charts/infra/crossplane/templates/custom-templates/providers-application.yaml) as a custom template inside the [Crossplane helm chart](/helm-charts/infra/crossplane/) with an Argo sync-wave of "1" so that it deploys only after al Crossplane chart resources are deployed. This application has all the Provider manifest but also:
 2. A [provider-configs application](helm-charts/infra/crossplane/providers/provider-configs-application.yaml) with an Argo sync-wave of "1" so that it deploys only after all Providers have been deployed. It will deploy the [ProviderCofigs](/helm-charts/infra/crossplane/provider-configs/). In this case just one which is the AWS one... BUT ALSO:
 3. A [crossplane-demo application](/helm-charts/infra/crossplane/provider-configs/crossplane-demo-application.yaml) which will deploy the [actual AWS Managed Resources... BUT ALSO!!!... just kidding, that's it.
 
-<p title="Crossplane diagram" align="center"> <img img width="800" src="https://i.imgur.com/JewlQ6T.jpg"> </p>
+<p title="Crossplane diagram" align="center"> <img img width="1000" src="https://i.imgur.com/JewlQ6T.jpg"> </p>
 
 I repeat, THIS IS NOT how one is supposed to use Crossplne. We'll only do it like this to get used to the fundamentals.
 
