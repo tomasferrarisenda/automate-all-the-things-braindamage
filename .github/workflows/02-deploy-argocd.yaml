@@ -80,14 +80,14 @@ jobs:
         run: |
           sed -i "s/host:.*/host: $(cat host_endpoint.txt | tr -d '\n') # This value was modified by the deploy-argocd pipeline/g" helm-charts/systems/$SYSTEM/frontend/values.yaml    
 
-      - name: Commit changes to GitHub
-        run: |
-          git pull
-          git config --global user.email "GitHubActions@DeployArgoCDWorkflow.com"
-          git config --global user.name "GitHub Actions - Deploy ArgoCD Workflow"
-          git add helm-charts/systems/$SYSTEM/frontend/values.yaml
-          git commit -m "Frontend hosts URLs updated by GitHub Actions"
-          git push
+      # - name: Commit changes to GitHub
+      #   run: |
+      #     git pull
+      #     git config --global user.email "GitHubActions@DeployArgoCDWorkflow.com"
+      #     git config --global user.name "GitHub Actions - Deploy ArgoCD Workflow"
+      #     git add helm-charts/systems/$SYSTEM/frontend/values.yaml
+      #     git commit -m "Frontend hosts URLs updated by GitHub Actions"
+      #     git push
 
       - name: 'Save frontend endpoints'
         run: |
