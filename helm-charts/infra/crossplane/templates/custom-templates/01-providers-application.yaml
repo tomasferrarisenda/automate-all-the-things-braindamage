@@ -4,7 +4,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: crossplane-providers
+  name: crossplane-01-providers
   namespace: argocd
   annotations:
     argocd.argoproj.io/sync-wave: "1"
