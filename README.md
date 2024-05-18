@@ -330,7 +330,7 @@ Sync waves don't seem to work in this case. So I had to:
 2. A [provider-configs application](helm-charts/infra/crossplane/providers/provider-configs-application.yaml) with an Argo sync-wave of "1" so that it deploys only after all Providers have been deployed. It will deploy the [ProviderCofigs](/helm-charts/infra/crossplane/provider-configs/). In this case just one which is the AWS one... BUT ALSO:
 3. A [crossplane-demo application](/helm-charts/infra/crossplane/provider-configs/crossplane-demo-application.yaml) which will deploy the [actual AWS Managed Resources... BUT ALSO!!!... just kidding, that's it.
 
-[INSRTAR DIAGRAMA]
+<p title="Crossplane diagram" align="center"> <img img width="800" src="https://i.imgur.com/JewlQ6T.jpg"> </p>
 
 I repeat, THIS IS NOT how one is supposed to use Crossplne. We'll only do it like this to get used to the fundamentals.
 
