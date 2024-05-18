@@ -2,8 +2,8 @@ apiVersion: elasticache.aws.upbound.io/v1beta1
 kind: SubnetGroup
 metadata:
   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
-  # annotations:
-  #   argocd.argoproj.io/sync-wave: "-3"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   forProvider:
     region: us-east-1

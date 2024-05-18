@@ -4,8 +4,8 @@ apiVersion: ec2.aws.upbound.io/v1beta1
 kind: SecurityGroup
 metadata:
   name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
-  # annotations:
-  #   argocd.argoproj.io/sync-wave: "-4"
+  annotations:
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   forProvider:
     description: Security group for {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-database
