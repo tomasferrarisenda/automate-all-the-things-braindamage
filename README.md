@@ -629,7 +629,7 @@ app:
 backend:
   baseUrl: http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com # Don't use final slash "/"
 ```
-You can do the same for:
+Do the same for:
 ```js
 argocd:
   baseUrl: http://<actual-argocd-url>/ 
