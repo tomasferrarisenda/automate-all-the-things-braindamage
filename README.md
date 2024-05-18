@@ -541,7 +541,7 @@ The [Grafana plugin](https://roadie.io/docs/integrations/grafana/) I didn't take
 ### Templates I've created
 
 #### - New Backstage System
-Creates a new Backstage System with the provided information. A System in Backstage is a collection of entities (services, resources, APIs, etc.) that cooperate to perform a some function. For example, we will have a System called "my-app" that includes the my-app-frontend service, the my-app-backend service, the my-app-redis database and the my-app-backend API.
+Creates a new Backstage System with the provided information. A System in Backstage is a collection of entities (services, resources, APIs, etc.) that cooperate to perform a some function. For example, we will have a System called "meme-web" that includes the meme-web-frontend service, the meme-web-backend service, the meme-web-redis database and the meme-web-backend API.
 
 It generates a Pull Request which includes a new System manifest. When merged, the System catalog entity will be automatically added to the Backstage catalog by the GitHub Discovery plugin.
 </br>
@@ -689,7 +689,7 @@ resource "aws_instance" "ec2_instance" {
 
 Commit the changes and run the pipeline again. The backend deployment step will fail, so the pipeline will finish with a warning, you can ignore it.
 
-The pipeline will also modify the [helm-charts/systems/my-app/backend/environments](/helm-charts/systems/my-app/backend/environments) files on the repo. It will get the endpoints for each ElastiCache DB from terraform outputs and include them in the values of each environment.
+The pipeline will also modify the [helm-charts/systems/meme-web/backend/environments](/helm-charts/systems/meme-web/backend/environments) files on the repo. It will get the endpoints for each ElastiCache DB from terraform outputs and include them in the values of each environment.
 
 Oh and lastly... it will export an artifact with the instructions on how to connect to the EC2 instance.
 
@@ -721,7 +721,7 @@ You will see that not all manifests have the ArgoCD Sync Wave annotation. If I d
 The sequence will go like this: 
 1. At the highest level we will make sure that all ArgoCD self-management resources are deployed first. They will get number "-12" to "-10"
 2. Then our infrastructure tools will be deployed (observability, service-mesh, etc.). They will get numbers "-5" to "-1".
-3. My-app resources come next. Backend will get "0" and Frontend "1".
+3. meme-web resources come next. Backend will get "0" and Frontend "1".
 4. Within Backend and Frontend, the individual manifest also get Sync Waves. These sync wave numbers will be evaluated within the scope of the Application in which they are deployed, so they will not compete with the numbers assigned to, for example, the Prometheus Application.
 
 **IMPORTANT**:<br>
@@ -772,11 +772,11 @@ We won't go into what ArgoCD is, for that you have [this video](https://youtu.be
 This pipeline will use the [ArgoCD Helm Chart](/helm-charts/infra/argo-cd/) in our repo to deploy ArgoCD into our EKS.<br>
 The first thing it will do is run the necessary tasks to connect to our the cluster. After this, ArgoCD will be installed, along with its Ingress.
 
-It will then create the necessary resources for ArgoCD to be self-managed and to apply the [App of Apps pattern](https://youtu.be/2pvGL0zqf9o). ArgoCD will be watching the helm charts in the [helm-charts](/helm-charts) directory in our repo, it will automatically create all the resources it finds and apply any future changes me make there. The [helm-charts/infra](/helm-charts/systems/my-app) and [helm-charts/systems/my-app](/helm-charts/systems/my-app) directories simulate what would be our K8S infrastructure repositories would be.
+It will then create the necessary resources for ArgoCD to be self-managed and to apply the [App of Apps pattern](https://youtu.be/2pvGL0zqf9o). ArgoCD will be watching the helm charts in the [helm-charts](/helm-charts) directory in our repo, it will automatically create all the resources it finds and apply any future changes me make there. The [helm-charts/infra](/helm-charts/systems/meme-web) and [helm-charts/systems/meme-web](/helm-charts/systems/meme-web) directories simulate what would be our K8S infrastructure repositories would be.
 
 If you want to know more about Helm, [here's another Nana video](https://youtu.be/-ykwb1d0DXU).
 
-Following up, it will get the Istio Gateway endpoint and put it into the [frontend values file](/helm-charts/systems/my-app/frontend/values.yaml). It will also export the endpoint for each environment as an artifact.
+Following up, it will get the Istio Gateway endpoint and put it into the [frontend values file](/helm-charts/systems/meme-web/frontend/values.yaml). It will also export the endpoint for each environment as an artifact.
 
 Finally the pipeline will get the ArgoCD web UI URL and admin account password and export them as an artifact too. You might need to wait a few seconds for the URL to be active, this is because an AWS Load Balancer takes a little time to be deployed.
 
@@ -805,7 +805,7 @@ Up until now, we have been leaving our Kubernetes secrtes exposed in our repo. A
 
 From now on, we will encrypt them, and for this we will use Bitnami Sealed Secrets. As always, I'm not going into details on how the tool works, but you can check out [this video](https://youtu.be/wWMJCY2E0d4?si=zX93I7hji-6w7hnX) from KodeKloud.
 
-You could easily encrypt the secrets yourselves using the kubeseal CLI tool, but I made a pipeline to make it easier. Before running, the pipeline will require you to introduce the Redis passwords for each environment. The pipeline will then install the Kubeseal CLI tool and with it, it will generate Sealed Secrets and save the values of the encrypted passwords to the [values files of each environment](/helm-charts/systems/my-app/backend/environments/). The [sealed secret manifest](/helm-charts/systems/my-app/backend/templates/redis-sealed-secret.yaml) will use these values to create the SealedSecret objects in the cluster.
+You could easily encrypt the secrets yourselves using the kubeseal CLI tool, but I made a pipeline to make it easier. Before running, the pipeline will require you to introduce the Redis passwords for each environment. The pipeline will then install the Kubeseal CLI tool and with it, it will generate Sealed Secrets and save the values of the encrypted passwords to the [values files of each environment](/helm-charts/systems/meme-web/backend/environments/). The [sealed secret manifest](/helm-charts/systems/meme-web/backend/templates/redis-sealed-secret.yaml) will use these values to create the SealedSecret objects in the cluster.
 
 Same will be done for the GitHub token secret that Backstage will use.
 
@@ -939,7 +939,7 @@ That's it! Now you just need to wait. When Argo sees the new application.yaml it
 If you need to make any further customizations to the chart, you can modify the values-custom.yaml or the contents of the custom-templates directory.<br>
 If you want to remove the tool from your cluster, [just delete the application.yaml you created and wait](https://i.imgur.com/KcSXPER.jpg).
 
-We can follow this same logic for deploying new my-app services, for example for a second backend.
+We can follow this same logic for deploying new systems, for example for a second backend.
 
 <br/>
 <br/>
