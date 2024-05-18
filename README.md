@@ -322,7 +322,7 @@ not everything can be automated with Crossplane yet; some steps are manual, and 
 
 <br/>
 
-## Cascade deployment & deletion
+<!-- ## Cascade deployment & deletion
 si pones los providers y rpoviderconfig en el mismo char t q crossplane nunca levanta ningunrecurso
 "The Kubernetes API could not find pkg.crossplane.io/Provider for requested resource crossplane-system/provider-aws-ec2. Make sure the "Provider" CRD is installed on the destination cluster."
 provider needs crossplane to deploy, providerconfig need provider
@@ -362,7 +362,7 @@ ARGO NO APPLICA EXITOSAMENTE LA APPLICATION DE CORSSPLANE POR LOS PROVIDER Y PRO
 
 siempre me queda un securitygroupingressrules.ec2.aws.upbound.io random y hay q editarle el finalizer pa q no joda. Es por esto? https://github.com/crossplane-contrib/provider-upjet-aws/issues/1242
 
-<br/>
+<br/> -->
 
 ## Extra Providers and ProviderConfigs
 
@@ -732,9 +732,9 @@ The sequence will go like this:
 Here are the specific numbers:
 
 ## ArgoCD Self-Manage Applications
-- -12 ArgoCD AppProjects (ArgoCD Projects)
+- -12 ArgoCD App of Projects
 - -11 ArgoCD (ArgoCD itself)
-- -10 ArgoCD Apps (App of Apps)
+- -10 ArgoCD App of Apps
 
 ## App of Apps
 - -5 Prometheus / Grafana / Istio Base / Istiod / Sealed-Secrets 
