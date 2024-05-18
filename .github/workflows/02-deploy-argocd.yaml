@@ -33,39 +33,39 @@ jobs:
       - name: Configure kubeconfig
         run: aws eks --region $AWS_REGION update-kubeconfig --name $PROJECT-cluster
 
-      # - name: Deploy ArgoCD
-      #   run: helm install argocd -n argocd helm-charts/infra/argo-cd --values helm-charts/infra/argo-cd/values-custom.yaml --dependency-update --create-namespace
+      - name: Deploy ArgoCD
+        run: helm install argocd -n argocd helm-charts/infra/argo-cd --values helm-charts/infra/argo-cd/values-custom.yaml --dependency-update --create-namespace
 
-      # # This deploys the necessary resources for ArgoCD to be able to manage itslef
-      # - name: Make ArgoCD self-managed & implemente App of Apps pattern
-      #   run: |    
-      #     # We first create an ArgoCD AppProject called "argocd" where all ArgoCD self-managment resources will exist.
-      #     kubectl create -n argocd -f argo-cd/self-manage/appprojects/argocd-appproject.yaml  
+      # This deploys the necessary resources for ArgoCD to be able to manage itslef
+      - name: Make ArgoCD self-managed & implemente App of Apps pattern
+        run: |    
+          # We first create an ArgoCD AppProject called "argocd" where all ArgoCD self-managment resources will exist.
+          kubectl create -n argocd -f argo-cd/self-manage/appprojects/argocd-appproject.yaml  
 
-      #     # Then we create an application that will automatically deploy any ArgoCD AppProjects we specify in the argo-cd/self-manage/appprojects/ directory.
-      #     kubectl create -n argocd -f argo-cd/self-manage/argocd-app-of-projects-application.yaml  
+          # Then we create an application that will automatically deploy any ArgoCD AppProjects we specify in the argo-cd/self-manage/appprojects/ directory.
+          kubectl create -n argocd -f argo-cd/self-manage/argocd-app-of-projects-application.yaml  
           
-      #     # Then we create an application that will monitor the helm-charts/infra/argocd directory, the same we used to deploy ArgoCD, making ArgoCD self-managed. Any changes we apply in the helm-charts/infra/argocd directory will be automatically applied.
-      #     kubectl create -n argocd -f argo-cd/self-manage/argocd-application.yaml  
+          # Then we create an application that will monitor the helm-charts/infra/argocd directory, the same we used to deploy ArgoCD, making ArgoCD self-managed. Any changes we apply in the helm-charts/infra/argocd directory will be automatically applied.
+          kubectl create -n argocd -f argo-cd/self-manage/argocd-application.yaml  
 
-      #     # Finally, we create an application that will automatically deploy any ArgoCD Applications we specify in the argo-cd/applications directory (App of Apps pattern).
-      #     kubectl create -n argocd -f argo-cd/self-manage/argocd-app-of-apps-application.yaml  
+          # Finally, we create an application that will automatically deploy any ArgoCD Applications we specify in the argo-cd/applications directory (App of Apps pattern).
+          kubectl create -n argocd -f argo-cd/self-manage/argocd-app-of-apps-application.yaml  
 
-      #     # Quick access to ArgoCD UI.
-      #     until kubectl -n argocd get secret argocd-initial-admin-secret &> /dev/null; do
-      #       echo "Waiting for secret 'argocd-initial-admin-secret' to be available..."
-      #       sleep 3
-      #     done
+          # Quick access to ArgoCD UI.
+          until kubectl -n argocd get secret argocd-initial-admin-secret &> /dev/null; do
+            echo "Waiting for secret 'argocd-initial-admin-secret' to be available..."
+            sleep 3
+          done
           
-      #     echo "###############################################"          
-      #     echo "###############################################"          
-      #     echo "###############################################"          
-      #     echo "URL: http://$(kubectl get ingress -n argocd -o jsonpath='{.items[*].status.loadBalancer.ingress[0].hostname}')"          
-      #     echo "Username: admin"
-      #     echo "Password: $(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)"
-      #     echo "###############################################"          
-      #     echo "###############################################"          
-      #     echo "###############################################"   
+          echo "###############################################"          
+          echo "###############################################"          
+          echo "###############################################"          
+          echo "URL: http://$(kubectl get ingress -n argocd -o jsonpath='{.items[*].status.loadBalancer.ingress[0].hostname}')"          
+          echo "Username: admin"
+          echo "Password: $(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)"
+          echo "###############################################"          
+          echo "###############################################"          
+          echo "###############################################"   
           
       - name: Get meme-web frontend endpoint
         run : |
@@ -80,14 +80,14 @@ jobs:
         run: |
           sed -i "s/host:.*/host: $(cat host_endpoint.txt | tr -d '\n') # This value was modified by the deploy-argocd pipeline/g" helm-charts/systems/$SYSTEM/frontend/values.yaml    
 
-      # - name: Commit changes to GitHub
-      #   run: |
-      #     git pull
-      #     git config --global user.email "GitHubActions@DeployArgoCDWorkflow.com"
-      #     git config --global user.name "GitHub Actions - Deploy ArgoCD Workflow"
-      #     git add helm-charts/systems/$SYSTEM/frontend/values.yaml
-      #     git commit -m "Frontend hosts URLs updated by GitHub Actions"
-      #     git push
+      - name: Commit changes to GitHub
+        run: |
+          git pull
+          git config --global user.email "GitHubActions@DeployArgoCDWorkflow.com"
+          git config --global user.name "GitHub Actions - Deploy ArgoCD Workflow"
+          git add helm-charts/systems/$SYSTEM/frontend/values.yaml
+          git commit -m "Frontend hosts URLs updated by GitHub Actions"
+          git push
 
       - name: 'Save frontend endpoints'
         run: |
