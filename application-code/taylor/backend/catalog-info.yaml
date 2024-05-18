@@ -7,7 +7,7 @@ metadata:
     backstage.io/techdocs-ref: dir:.
     backstage.io/kubernetes-id: taylor-backend
     argocd/app-selector: system-service=taylor-backend # This is for Backstage ArgoCD plugin. You need to add this label in the application.yaml. You can also use argocd/app-name
-
+    github.com/project-slug: tomasferrarisenda/automate-all-the-things-transcendence
   tags:
     - nodejs
   links:
