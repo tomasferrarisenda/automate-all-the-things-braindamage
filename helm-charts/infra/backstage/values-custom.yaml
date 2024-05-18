@@ -65,7 +65,7 @@ backstage:
           # Resources
           resourcesProvider:
             organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
-            catalogPath: '/crossplane-example-manifests/**/*catalog-info.yaml' # this will search all folders for files that end in template.yaml
+            catalogPath: '/helm-chats/infra/crossplane/managed-resources/**/*catalog-info.yaml' # this will search all folders for files that end in template.yaml
             # catalogPath: '/application-code/**/*catalog-info.yaml' # this will search all folders for files that end in template.yaml
             filters:
               branch: 'main' # string
