@@ -2,7 +2,7 @@ environment: prod
 
 deployment:
   image:  
-    tag: 3
+    tag: 4
   replicas: 1
   labels:
     full-name: taylor-backend-prod
