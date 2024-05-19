@@ -292,6 +292,9 @@ Basically, Crossplane will allow us to manage AWS resource the way we manage pod
 Crossplane can get really complex, and I want to start with the basics. So on this edition we will only demo Crossplane. The way we'll implement it here is NOT the way you would actuallty use Crossplane in real life. The true power of Crossplane lies behind Crossplane Compositions, but that's more advaded concept so we'll leave it for next edition.
 
 <!-- If you want to understand what we are deploying a little better, [this video](https://youtu.be/mpfqPXfX6mg?si=mMVgEmT8UEC5o-xA) from Anton Putra should also be very helpful. -->
+Porq seguimos usando tf para algunas
+we might go full crossplane in the future.. maybe, who knows?
+not everything can be automated with Crossplane yet; some steps are manual, and if you need 1-click deployment, Terraform is the better still choice.
 
 <br/>
 
@@ -301,11 +304,7 @@ We are not commiting 100% to Crossplane fot the moment. We'll still be using Ter
 
 Non-Foundational resources will be, for example, the ElastiCache DBs that our meme-backend services will use. These will no longer be deployed with Terrafom, but they will be included as Kubernetes manifests inside of the [meme-web-backed helm chart](/helm-charts/systems/meme-web/backend/templates/crossplane/). 
 
-Ejemplos
-Porq seguimos usando tf para algunas
-we might go full crossplane in the future.. maybe, who knows?
-
-not everything can be automated with Crossplane yet; some steps are manual, and if you need 1-click deployment, Terraform is the better still choice.
+We alao conaider Non-Foundational the [S3 buckets](#--new-s3-bucket) or [EKS clusters](#--new-eks-cluster) you'll be able to deploy with the new [Backstage templates](#templates-ive-created).
 
 <br/>
 <br/>
