@@ -287,82 +287,27 @@ These will be required for our workflows to connect to your AWS account.
 
 Crossplane is awesome. If you haven't heard anything about Crossplane go watch [this series](https://www.youtube.com/playlist?list=PLyicRj904Z99i8U5JaNW5X3AyBvfQz-16) by ne of the best DevOps youtubers and one of the minds behind Crossplane. For the purpose of this edition, watching only part one and two should be enough.
 
-Crossplane can get really complex, and I want to start with the basics. So on this edition we will only demo Crossplane. The way we'll implement it here is NOT the way you would actuallty use Crossplane. The true power of Crossplane lies behind Crossplane Compositions, but that's more advaded concept so we'll leave it for next edition.
-
 Basically, Crossplane will allow us to manage AWS resource the way we manage pods.. the GitOps way. 
 
-If you want to understand what we are deploying a little better, [this one](https://youtu.be/mpfqPXfX6mg?si=mMVgEmT8UEC5o-xA) from Anton Putra should also be very helpful.
+Crossplane can get really complex, and I want to start with the basics. So on this edition we will only demo Crossplane. The way we'll implement it here is NOT the way you would actuallty use Crossplane in real life. The true power of Crossplane lies behind Crossplane Compositions, but that's more advaded concept so we'll leave it for next edition.
+
+<!-- If you want to understand what we are deploying a little better, [this video](https://youtu.be/mpfqPXfX6mg?si=mMVgEmT8UEC5o-xA) from Anton Putra should also be very helpful. -->
 
 <br/>
 
 ## Foundational VS Non-Foundational Resources
 
-We are not commiting 100% to Crossplane fot the moment. We'll still be doing our initial deployment with Terraform of what we'll call our Fondational resources. We'll use Crossplane to deal with our Non-Foundational resources.
+We are not commiting 100% to Crossplane fot the moment. We'll still be using Terraform for deploying what we'll call our Fondational resources, basically all the fundamental stuff that we need to get started. We'll use Crossplane to deal with our Non-Foundational resources.
 
-Non-Foundational resources will be, for example, the ElastiCache DBs that our meme-backend services will use. You will now find the manifests for the ElastiCaches inside of the [meme-web-backed helm chart](/helm-charts/systems/meme-web/backend/templates/crossplane/)
+Non-Foundational resources will be, for example, the ElastiCache DBs that our meme-backend services will use. These will no longer be deployed with Terrafom, but they will be included as Kubernetes manifests inside of the [meme-web-backed helm chart](/helm-charts/systems/meme-web/backend/templates/crossplane/). 
 
 Ejemplos
 Porq seguimos usando tf para algunas
-las bases elasticahce se mudaron a dentro del hel  char de backend. this involved some restructuring of resources loke subenet group and security group IDs. aun se puede ssh desde la ec2 a los nodos de elasticache??? ver security-groups.tf
-hay q ver lo del destroy
-hay q manualmente cargar el redis host en los values
 we might go full crossplane in the future.. maybe, who knows?
-explicar que ahora las bbdd del backend se levantan a traves de manifests del chert de backed, no las levanta teraform
 
-Detalle: cuandoe entremos a los front, el visits no va a funcionar aun porqu ahora tenemos q esperar que las elasticache levantan y tardan bastante
-
-not everything can be automated with Crossplane yet; some steps are manual, and if you need 1-click deployment, Terraform is the better choice.
-
-  <!-- # We don't want ProviderConfigs nor Providers nor Crossplane itsel to be deleted before all Managed Resources are deleted
-  # So we'll remove the finalizers from all the crossplane-realted applications: crossplane, crossplane-providers & crossplane-provider-configs
-  # These will make it so that the resources created by the applications are not deleted when the applications are deleted, remaining in the cluster until the cluster is destroyed
-  # We usually don't want this but in this case its's necessary.
-  # These resources don't create any Ingresses or PersistentVolumes, so there is no issue with them remaining in the cluster until it's destruction. -->
+not everything can be automated with Crossplane yet; some steps are manual, and if you need 1-click deployment, Terraform is the better still choice.
 
 
-<br/>
-
-<!-- ## Cascade deployment & deletion
-si pones los providers y rpoviderconfig en el mismo char t q crossplane nunca levanta ningunrecurso
-"The Kubernetes API could not find pkg.crossplane.io/Provider for requested resource crossplane-system/provider-aws-ec2. Make sure the "Provider" CRD is installed on the destination cluster."
-provider needs crossplane to deploy, providerconfig need provider
-
-Sync waves don't seem to work in this case. So I had to:
-1. Create a [providers application](/helm-charts/infra/crossplane/templates/custom-templates/providers-application.yaml) as a custom template inside the [Crossplane helm chart](/helm-charts/infra/crossplane/) with an Argo sync-wave of "1" so that it deploys only after al Crossplane chart resources are deployed. This application has all the Provider manifest but also:
-2. A [provider-configs application](helm-charts/infra/crossplane/providers/provider-configs-application.yaml) with an Argo sync-wave of "1" so that it deploys only after all Providers have been deployed. It will deploy the [ProviderCofigs](/helm-charts/infra/crossplane/provider-configs/). In this case just one which is the AWS one... BUT ALSO:
-3. A [crossplane-demo application](/helm-charts/infra/crossplane/provider-configs/crossplane-demo-application.yaml) which will deploy the [actual AWS Managed Resources... BUT ALSO!!!... just kidding, that's it.
-
-<p title="Crossplane diagram" align="center"> <img img width="1000" src="https://i.imgur.com/JewlQ6T.jpg"> </p>
-
-I repeat, THIS IS NOT how one is supposed to use Crossplne. We'll only do it like this to get used to the fundamentals.
-
-This way we resolve the order in which they nedd to be deployed so we have no errors.
-I had to find this workaround. not then most elegant solution. If you have any better ideas, I'm all ears
-
-
-## Cascade deletion
-At the time of deletion we need to make sure of three things:
-1. The ProviderConfig doesn't get deleted before the Managed Resources: If it did, there wouldn't be anyone to send the request to AWS to have the Managed Resources deleted.
-2. The aws-secret holding the credentials doesn't get deleted before the ProviderConfig: If it does, the ProviderConfig won't be able to connect to AWS.
-3. The Providers don't get deleted before the Managed Resources: If they do the ProviderConfig won't know how to interact with the AWS APIs.
-
-
-I created a kind fo application cascading effect where ProviderConfig cant be deleted until managed resources are delted (this is by design from Crossplane through the use of ProviderConfigUsages), Provider cant be deleted until ProviderConfig is deleted (this is thanks to this application cascadde) and Crossplane application cant be deleted untip Providers application is deleted (also thanks to cascading effect), which means the secret is not deleted which would stop the ProviderConf from connecting to aws if it was
-
-Managed Resources <- ProviderConfig <- Providers <- Crossplane
-
-
-`The same behaviour doesnt exist for between Provider and Managed Resources, meaning the Managed Resources can be deleted before the Provider they are dependant on.
-
-I thoufght this could be accomplished with sync waves but the managed resources exist iin a differnt application that the providers so it doesnt work
-
-ARGO NO APPLICA EXITOSAMENTE LA APPLICATION DE CORSSPLANE POR LOS PROVIDER Y PROVEDR CONGI Q NO SE PUEDEN APLICAR PORQ NO EXISTEN LOS  CRDS CORRESPONDIENTES, EL TEMA ES Q LOS CRDS CORRESPONDIENTE NO SE EN QUE MOMENTO NI DE DONDE SALEN? LOS GENEREA LOS PODS? ARGO POR DEFAULT DEBERIA APLICAR PRIMERO ESTOS CRDS PERO EN EL CHART NO APARENCE LOS MANIFEST DE LOS CRD POR LO Q NO LOS RECONOCE COMO ALGO QUE TIENE QUE APLICARSE PRIMERO. COMO SE CREAN Y DE DONDE SALEN LOS CRD DE PROVIDEER Y PROVIDERCONFIG???? 
-
-      # We also need to delete all Crossplane managed resources before the Crossplane application is deleted. If the ProviderConfig is deleted before the managed resources, the managed resources will be orphaned and not deleted. See: https://github.com/crossplane/crossplane/issues/1737
-
-siempre me queda un securitygroupingressrules.ec2.aws.upbound.io random y hay q editarle el finalizer pa q no joda. Es por esto? https://github.com/crossplane-contrib/provider-upjet-aws/issues/1242
-
-<br/> -->
 
 ## Extra Providers and ProviderConfigs
 
