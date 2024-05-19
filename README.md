@@ -857,7 +857,7 @@ That's it! Now you just need to wait. When Argo sees the new application.yaml it
 If you need to make any further customizations to the chart, you can modify the values-custom.yaml or the contents of the custom-templates directory.<br>
 If you want to remove the tool from your cluster, [just delete the application.yaml you created and wait](https://i.imgur.com/KcSXPER.jpg).
 
-We can follow this same logic for deploying new systems, for example for a second backend.
+We can follow this same logic for deploying new services.
 
 <br/>
 <br/>
