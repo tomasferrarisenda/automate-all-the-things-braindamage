@@ -503,7 +503,7 @@ Creates all the boilerplate files and directories in an existing repo for deploy
 3. The application.yaml files which will be saved in [the argo-cd/applications/systems/ directory](/argo-cd/applications/systems/).
 4. The build and deploy GitHub workflow manifest, which will be saved [the .github/workflows directory](/.github/workflows/) (working with GitHub Workflows is out of the scope of this lab).
 
-It generates a Pull Request which includes all these files al directories.
+It generates a Pull Request which includes all these files and directories.
 </br>
 
 #### - New NGINX in existing repo
@@ -513,19 +513,19 @@ Creates all the boilerplate files and directories in an existing repo for deploy
 3. The application.yaml files which will be saved in [the argo-cd/applications/systems/ directory](/argo-cd/applications/systems/).
 4. The build and deploy GitHub workflow manifest, which will be saved [the .github/workflows directory](/.github/workflows/) (working with GitHub Workflows is out of the scope of this lab).
 
-It generates a Pull Request which includes all these files al directories.
+It generates a Pull Request which includes all these files and directories.
 </br>
 
 #### - New S3 bucket
 Creates all the manifest for deploying an S3 bucket using Crossplane and saves them in [this directory](/helm-charts/infra/crossplane/managed-resources/). [This ArgoCD application](/argo-cd/applications/infra/crossplane-managed-resources-application.yaml) is monitoring that directory, automatically deploying anything it finds there.
 
-It generates a Pull Request which includes all these files al directories.
+It generates a Pull Request which includes all these files and directories.
 </br>
 
 #### - New EKS cluster
 Creates all the manifest for deploying an EKS cluster using Crossplane and saves them in [this directory](/helm-charts/infra/crossplane/managed-resources/). [This ArgoCD application](/argo-cd/applications/infra/crossplane-managed-resources-application.yaml) is monitoring that directory, automatically deploying anything it finds there.
 
-It generates a Pull Request which includes all these files al directories.
+It generates a Pull Request which includes all these files and directories.
 
 </br>
 
