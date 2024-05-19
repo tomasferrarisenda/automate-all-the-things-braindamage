@@ -70,3 +70,9 @@ ARGO NO APPLICA EXITOSAMENTE LA APPLICATION DE CORSSPLANE POR LOS PROVIDER Y PRO
 siempre me queda un securitygroupingressrules.ec2.aws.upbound.io random y hay q editarle el finalizer pa q no joda. Es por esto? https://github.com/crossplane-contrib/provider-upjet-aws/issues/1242
 
 <br/> -->
+
+<br/>
+
+## Extra Providers and ProviderConfigs
+
+I added some extra Provider and ProviderConfig manifests for Azure and GCP which are all commented out. They are there just to show that you could deploy to any hyperscaler if you wanted to. 

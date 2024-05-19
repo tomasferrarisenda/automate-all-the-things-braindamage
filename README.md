@@ -308,12 +308,6 @@ we might go full crossplane in the future.. maybe, who knows?
 not everything can be automated with Crossplane yet; some steps are manual, and if you need 1-click deployment, Terraform is the better still choice.
 
 <br/>
-
-## Extra Providers and ProviderConfigs
-
-I added some extra Provider and ProviderConfig manifests for Azure and GCP which are all commented out. They are there just to show that you could deploy to any hyperscaler if you wanted to. 
-
-<br/>
 <br/>
 <p title="Anakin - We use k8s now" align="center"> <img width="460" src="https://i.imgur.com/Gwh1r0L.png"> </p>
 <br/>
