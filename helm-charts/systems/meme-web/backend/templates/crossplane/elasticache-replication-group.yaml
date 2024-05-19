@@ -14,14 +14,14 @@ spec:
     region: us-east-1
     securityGroupIdRefs: 
       - name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-db-sec-grp
-    # securityGroupIds: 
-    #   - {{ .Values.securityGroupId }}
-    subnetGroupNameRef: # esto es para referancia a otro managed resource de crossplane donde entrara la infro requerida
+    subnetGroupNameRef:
       name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
     transitEncryptionEnabled: true
     authTokenSecretRef:
       namespace: {{ .Values.system }}-{{ .Values.environment }}
       name: redis-secret 
       key: REDIS_PASS
+    tags:
+      Name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-ec-rep-grp
   providerConfigRef:
     name: aws

@@ -7,10 +7,10 @@ metadata:
 spec:
   forProvider:
     region: us-east-1
-    # subnetIdRefs: # esto es para referancia a otro managed resource de crossplane donde entrara la infro requerida
-    #   - name: subnet-ejemplo
-    subnetIds: # esto es directamente a AWS
-      - {{ .Values.subnetId }} # private subnet C
+    subnetIds:
+      - {{ .Values.subnetId }} # Private subnet in Availability Zone C (created by Terraform)
+    tags:
+      Name: {{ .Values.system }}-{{ .Values.service }}-{{ .Values.environment }}-elasticache-subnet-group
   providerConfigRef:
     name: aws
 
