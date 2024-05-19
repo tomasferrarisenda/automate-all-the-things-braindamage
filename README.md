@@ -26,11 +26,15 @@ This Transcendence Edition builds upon the [Braindamage Edition](https://github.
 
 ### New features:
 - Crossplane
-- Beefier Backstage deployment with new plugins:
-  - GitHub Actions plugin
-  - GitHub Insights plugin
-  - ArgoCD plugin
-  - Grafana plugin
+- Beefier Backstage deployment with 
+  - New plugins:
+    - GitHub Actions plugin
+    - GitHub Insights plugin
+    - ArgoCD plugin
+    - Grafana plugin
+  - New templates:
+    - Create new S3 Bucket
+    - Create new EKS Cluster
 
 ### Versions in order of complexity:
 
@@ -365,10 +369,6 @@ Click Generate token. Store the token somewhere safe.
 </br>
 
 ### Set up GitHub OAuth
-
-ACUTALIZAR ESTA PARETE DICIENDO Q CUANDOTENGAN LA URL DE BACKSTAGE PONERLA ACA SER VERA ALGO ASI
-http://k8s-backstag-backstag-e78a25dae5-420865081.us-east-1.elb.amazonaws.com
-http://k8s-backstag-backstag-e78a25dae5-420865081.us-east-1.elb.amazonaws.com:7000/api/auth/github/handler/frame
 
 1. Go [here](https://github.com/settings/applications/new).
 2. Complete with the following data:<br>
