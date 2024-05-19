@@ -1,23 +1,23 @@
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: SecurityGroup
 metadata:
-  name: ${{ values.system }}-${{ values.name }}-securitygroup
+  name: ${{ values.system}}-${{ values.name }}-securitygroup
 spec:
   forProvider:
     description: Allow TLS inbound traffic
-    name: ${{ values.system }}-${{ values.name }}-securitygroup
+    name: ${{ values.system}}-${{ values.name }}-securitygroup
     region: us-west-1
     vpcIdRef: 
-      name: ${{ values.system }}-${{ values.name }}-vpc
+      name: ${{ values.system}}-${{ values.name }}-vpc
     tags:
-      Name: ${{ values.system }}-${{ values.name }}-securitygroup
+      Name: ${{ values.system}}-${{ values.name }}-securitygroup
   providerConfigRef:
     name: aws
 ---
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: SecurityGroupRule
 metadata:
-  name: ${{ values.system }}-${{ values.name }}-securitygrouprule-1
+  name: ${{ values.system}}-${{ values.name }}-securitygrouprule-1
 spec:
   forProvider:
     cidrBlocks:
@@ -26,18 +26,18 @@ spec:
     protocol: "-1"
     region: us-west-1
     securityGroupIdRef:
-      name: ${{ values.system }}-${{ values.name }}-securitygroup
+      name: ${{ values.system}}-${{ values.name }}-securitygroup
     toPort: 0
     type: ingress
     tags:
-      Name: ${{ values.system }}-${{ values.name }}-securitygrouprule-1
+      Name: ${{ values.system}}-${{ values.name }}-securitygrouprule-1
   providerConfigRef:
     name: aws
 ---
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: SecurityGroupRule
 metadata:
-  name: ${{ values.system }}-${{ values.name }}-securitygrouprule-2
+  name: ${{ values.system}}-${{ values.name }}-securitygrouprule-2
 spec:
   forProvider:
     cidrBlocks:
@@ -46,10 +46,10 @@ spec:
     protocol: "-1"
     region: us-west-1
     securityGroupIdRef:
-      name: ${{ values.system }}-${{ values.name }}-securitygroup
+      name: ${{ values.system}}-${{ values.name }}-securitygroup
     toPort: 0
     type: egress
     tags:
-      Name: ${{ values.system }}-${{ values.name }}-securitygrouprule-2
+      Name: ${{ values.system}}-${{ values.name }}-securitygrouprule-2
   providerConfigRef:
     name: aws

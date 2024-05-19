@@ -1,13 +1,13 @@
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: InternetGateway
 metadata:
-  name: ${{ values.system }}-${{ values.name }}-internet-gw
+  name: ${{ values.system}}-${{ values.name }}-internet-gw
 spec:
   forProvider:
     region: us-west-1
     vpcIdRef:
-      name: ${{ values.system }}-${{ values.name }}-vpc
+      name: ${{ values.system}}-${{ values.name }}-vpc
     tags:
-      Name: ${{ values.system }}-${{ values.name }}-internet-gw
+      Name: ${{ values.system}}-${{ values.name }}-internet-gw
   providerConfigRef:
     name: aws
