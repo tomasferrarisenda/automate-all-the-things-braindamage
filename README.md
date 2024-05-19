@@ -289,9 +289,9 @@ These will be required for our workflows to connect to your AWS account.
 
 # CROSSPLANE
 
-Crossplane is awesome. If you haven't heard anything about Crossplane go watch [this series](https://www.youtube.com/playlist?list=PLyicRj904Z99i8U5JaNW5X3AyBvfQz-16) by ne of the best DevOps youtubers and one of the minds behind Crossplane. For the purpose of this edition, watching only part one and two should be enough.
+Crossplane is awesome. If you haven't heard anything about Crossplane go watch [this series](https://www.youtube.com/playlist?list=PLyicRj904Z99i8U5JaNW5X3AyBvfQz-16) by one of the best DevOps youtubers and one of the minds behind Crossplane. For the purpose of this edition, watching only part one and two should be enough.
 
-Basically, Crossplane will allow us to manage AWS resource the way we manage pods.. the GitOps way. 
+Basically, Crossplane will allow us to manage AWS resource the way we manage pods... the GitOps way. 
 
 Crossplane can get really complex, and I want to start with the basics. So on this edition we will only demo Crossplane. The way we'll implement it here is NOT the way you would actuallty use Crossplane in real life. The true power of Crossplane lies behind Crossplane Compositions, but that's more advaded concept so we'll leave it for next edition.
 
