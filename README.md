@@ -517,13 +517,13 @@ It generates a Pull Request which includes all these files and directories.
 </br>
 
 #### - New S3 bucket
-Creates all the manifest for deploying an S3 bucket using Crossplane and saves them in [this directory](/helm-charts/infra/crossplane/managed-resources/). [This ArgoCD application](/argo-cd/applications/infra/crossplane-managed-resources-application.yaml) is monitoring that directory, automatically deploying anything it finds there.
+Creates all the manifest for deploying an S3 bucket using Crossplane and saves them in [this directory](/helm-charts/infra/crossplane-managed-resources/). [This ArgoCD application](/argo-cd/applications/infra/crossplane-managed-resources-application.yaml) is monitoring that directory, automatically deploying anything it finds there.
 
 It generates a Pull Request which includes all these files and directories.
 </br>
 
 #### - New EKS cluster
-Creates all the manifest for deploying an EKS cluster using Crossplane and saves them in [this directory](/helm-charts/infra/crossplane/managed-resources/). [This ArgoCD application](/argo-cd/applications/infra/crossplane-managed-resources-application.yaml) is monitoring that directory, automatically deploying anything it finds there.
+Creates all the manifest for deploying an EKS cluster using Crossplane and saves them in [this directory](/helm-charts/infra/crossplane-managed-resources/). [This ArgoCD application](/argo-cd/applications/infra/crossplane-managed-resources-application.yaml) is monitoring that directory, automatically deploying anything it finds there.
 
 It generates a Pull Request which includes all these files and directories.
 
