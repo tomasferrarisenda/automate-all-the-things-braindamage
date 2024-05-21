@@ -300,6 +300,8 @@ Porq seguimos usando tf para algunas
 we might go full crossplane in the future.. maybe, who knows?
 not everything can be automated with Crossplane yet; some steps are manual, and if you need 1-click deployment, Terraform is the better still choice.
 
+There's some further info in the [crossplane notes](/docs/crossplane-notes.md) you might find useful.
+
 <br/>
 
 ## Foundational VS Non-Foundational Resources
@@ -455,23 +457,23 @@ You can check the automatic discovery configuration under catalog.providers.gith
 **IMPORTANT**: We use [app-config.yaml](/backstage/my-backstage/app-config.yaml) for local testing (when running `yarn dev`) and [app-config.production.yaml](/backstage/my-backstage/app-config.production.yaml) when deploying to Minikube.
 </br>
 
-### GitHub Actions plugin 
+#### - GitHub Actions plugin 
 The [GitHub Actions plugin](https://roadie.io/backstage/plugins/github-actions/) actually cames by default, but I added "Recent Workflow Runs" card to the overview tab of Components. All workflows will be mixed up because we are using monorepo. If we had a repo for each service, then this would make a lot more sense. 
 
 For this plugin to work you need to do [this](#once-backstage-is-deployed-on-eks).
 </br>
 
-### GitHub Insights plugin
+#### - GitHub Insights plugin
 The [GitHub Insights plugin](https://roadie.io/backstage/plugins/github-insights/) lets you see the GitHub insights of the repo like what languages are used, who are the contributors and a preview of the README.
 
 For this plugin to work you need to do [this](#once-backstage-is-deployed-on-eks).
 </br>
 
-### ArgoCD plugin
+#### - ArgoCD plugin
 The [ArgoCD plugin](https://roadie.io/backstage/plugins/argo-cd/) will display (on the Overview tab of each component) the state of all ArgoCD applications related to it.
 </br>
 
-### Grafana plugin
+#### - Grafana plugin
 The [Grafana plugin](https://roadie.io/docs/integrations/grafana/) I didn't take the time to build an appropiate dashboard for each of our services. Building dashboards is out of the scope of this lab. I've linked to a random dashboard just to demosntrate how the integration works.
 
 </br>
@@ -547,30 +549,6 @@ Also, we will always have the spec.children value of Group manifests as an empty
 
 </br>
 
-## Meme-Web
-
-I've left the meme-web as an example so that you can use it as reference when deploying your new systems, users, groups, services, etc. These are some of the files you might want to check out:
-- [component](/application-code/meme-web/backend/catalog-info.yaml)
-- [resource](/application-code/meme-web/redis/catalog-info.yaml)
-- [api](/application-code/meme-web/backend/api-info.yaml)
-- [system](/backstage/entities/systems/meme-web.yaml)
-- [group](/backstage/entities/groups/meme-web-team.yaml)
-- [user](/backstage/entities/users/geralt.yaml)
-
-</br>
-
-## Challenge
-Using the templates on the "Create" tab:
-1. Create a new Group, merge the generated Pull Request into your main branch.
-2. Create a new System that is owned by that Group, merge the generated Pull Request into your main branch.
-3. Create a new NGINX service that belongs to that System, merge the generated Pull Request into your main branch.
-4. Create a new Node.js service that belongs to that System, merge the generated Pull Request into your main branch.
-5. Run the workflows to build and deploy the new services.
-
-If you did everything right, you should see this new system with both services running when you deploy to EKS.
-
-</br>
-
 ## Once Backstage is deployed on EKS
 In order for some of the new plugins to work you need to do the following:
 
@@ -596,6 +574,31 @@ grafana:
     Authorization callback URL: `http://k8s-backstag-backstag-e78a25dae5-368143972.us-east-1.elb.amazonaws.com/api/auth/github/handler/frame`
 
 Notice that we don't need to use the ports now.
+
+</br>
+
+## Meme-Web
+
+I've left the meme-web as an example so that you can use it as reference when deploying your new systems, users, groups, services, etc. These are some of the files you might want to check out:
+- [component](/application-code/meme-web/backend/catalog-info.yaml)
+- [resource](/application-code/meme-web/redis/catalog-info.yaml)
+- [api](/application-code/meme-web/backend/api-info.yaml)
+- [system](/backstage/entities/systems/meme-web.yaml)
+- [group](/backstage/entities/groups/meme-web-team.yaml)
+- [user](/backstage/entities/users/geralt.yaml)
+
+</br>
+
+## Challenge
+Using the templates on the "Create" tab:
+1. Create a new Group, merge the generated Pull Request into your main branch.
+2. Create a new System that is owned by that Group, merge the generated Pull Request into your main branch.
+3. Create a new NGINX service that belongs to that System, merge the generated Pull Request into your main branch.
+4. Create a new Node.js service that belongs to that System, merge the generated Pull Request into your main branch.
+5. Run the workflows to build and deploy the new services.
+
+If you did everything right, you should see this new system with both services running when you deploy to EKS.
+
 
 <br/>
 <br/>
