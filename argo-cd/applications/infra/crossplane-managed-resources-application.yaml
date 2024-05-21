@@ -14,7 +14,7 @@ spec:
   project: crossplane
   source:
     repoURL: https://github.com/tomasferrarisenda/automate-all-the-things-transcendence.git # This value was modified by the initial-setup python script
-    path: helm-charts/infra/crossplane/managed-resources
+    path: helm-charts/infra/crossplane-managed-resources
     directory:
       recurse: true
       jsonnet: {}
