@@ -93,6 +93,11 @@ This Transcendence Edition builds upon the [Braindamage Edition](https://github.
 - [Sealed Secrets Pipeline](#sealed-secrets-pipeline)
   - [Description](#description-2)
   - [Instructions](#instructions-2)
+- [Destroy All The Things Pipeline](#destroy-all-the-things-pipeline)
+  - [Description](#description-3)
+  - [Instructions](#instructions-3)
+- [Conclusion](#conclusion)
+  - [On the next edition](#on-the-next-edition)
 <!-- - [Backend Service Build & Deploy Pipeline](#backend-service-build--deploy-pipeline)
   - [Description](#description-3)
   - [Instructions](#instructions-3)
@@ -102,11 +107,6 @@ This Transcendence Edition builds upon the [Braindamage Edition](https://github.
 <!-- - [Kubernetes Tools Management](#kubernetes-tools-management)
   - [Description](#description-5)
   - [Instructions](#instructions-5) -->
-- [Destroy All The Things Pipeline](#destroy-all-the-things-pipeline)
-  - [Description](#description-3)
-  - [Instructions](#instructions-3)
-- [Conclusion](#conclusion)
-  - [On the next edition](#on-the-next-edition)
 
 <br/>
 
