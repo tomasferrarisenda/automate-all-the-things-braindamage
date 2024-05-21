@@ -1,4 +1,4 @@
-## Deletion dependencies
+## Deletion
 In order for any Managed Resource to be destroyed succesfully we need 4 things to exist during the deletion process:
 1. The ProviderConfig that manages that Managed Resource
 2. The secret that that ProviderConfig uses to connect to the provider, in our case AWS.
