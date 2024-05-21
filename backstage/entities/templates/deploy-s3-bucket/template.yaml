@@ -65,51 +65,61 @@ spec:
               - github.com
 
   steps:
-    - id: fetch-base-code
-      name: Fetch Base Code
-      action: fetch:template
-      input:
-        url: ./base-code
-        targetPath: application-code/${{ parameters.system }}/${{ parameters.service }}
-        values:
-          system: ${{ parameters.system }}
-          service: ${{ parameters.service }}
-          description: ${{ parameters.description }}
-          owner: ${{ parameters.owner }}
+    # - id: fetch-base-code
+    #   name: Fetch Base Code
+    #   action: fetch:template
+    #   input:
+    #     url: ./base-code
+    #     targetPath: application-code/${{ parameters.system }}/${{ parameters.service }}
+    #     values:
+    #       system: ${{ parameters.system }}
+    #       service: ${{ parameters.service }}
+    #       description: ${{ parameters.description }}
+    #       owner: ${{ parameters.owner }}
           # tags: ['nodejs', 'example-tag2', 'example-tag3']
           # tags:
           #   - hard-coded-tag1
           #   - hard-coded-tag2
 
-    - id: fetch-helm-chart
-      name: Fetch Helm Chart
+    - id: fetch-manifests
+      name: Fetch Manifests
       action: fetch:template
       input:
-        url: ./helm-chart
-        targetPath: helm-charts/systems/${{ parameters.system }}/${{ parameters.service }}
+        url: ./manifests
+        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets
         values:
           system: ${{ parameters.system }}
           service: ${{ parameters.service }}
 
-    - id: fetch-argocd-applications
-      name: Fetch ArgoCD application manifests
+    - id: fetch-catalog-info
+      name: Fetch Catalog Info
       action: fetch:template
       input:
-        url: ./argocd-applications
-        targetPath: argo-cd/applications/systems/${{ parameters.system }}/${{ parameters.service }}
+        url: ./catalog-info
+        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/backstage
         values:
           system: ${{ parameters.system }}
           service: ${{ parameters.service }}
 
-    - id: fetch-github-workflow
-      name: Fetch GitHub Workflow
-      action: fetch:template
-      input:
-        url: ./github-workflow
-        targetPath: .github/workflows
-        values:
-          system: ${{ parameters.system }}
-          service: ${{ parameters.service }}
+    # - id: fetch-argocd-applications
+    #   name: Fetch ArgoCD application manifests
+    #   action: fetch:template
+    #   input:
+    #     url: ./argocd-applications
+    #     targetPath: argo-cd/applications/systems/${{ parameters.system }}/${{ parameters.service }}
+    #     values:
+    #       system: ${{ parameters.system }}
+    #       service: ${{ parameters.service }}
+
+    # - id: fetch-github-workflow
+    #   name: Fetch GitHub Workflow
+    #   action: fetch:template
+    #   input:
+    #     url: ./github-workflow
+    #     targetPath: .github/workflows
+    #     values:
+    #       system: ${{ parameters.system }}
+    #       service: ${{ parameters.service }}
 
     - id: publish
       name: Publish
@@ -120,7 +130,7 @@ spec:
         title: "Create new project: ${{ parameters.system }}-${{ parameters.service }}"
         branchName: create-${{ parameters.system }}-${{ parameters.service }}
         description: |
-          # New project: ${{ parameters.system }}-${{ parameters.service }}
+          # New S3 Bucket: ${{ parameters.system }}-${{ parameters.service }}
 
           ${{ parameters.description if parameters.description }}
         targetPath: "" # Leave empty to use the root of the repo or specify if needed
