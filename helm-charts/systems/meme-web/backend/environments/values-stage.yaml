@@ -4,7 +4,7 @@ environment: stage
 
 deployment:
   image:
-    tag: 8
+    tag: 9
   replicas: 1
   labels:
     full-name: meme-web-backend-stage # This value was modified by the initial-setup python script
