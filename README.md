@@ -99,12 +99,12 @@ This Transcendence Edition builds upon the [Braindamage Edition](https://github.
 - [Frontend Service Build & Deploy Pipeline](#frontend-service-build--deploy-pipeline)
   - [Description](#description-4)
   - [Instructions](#instructions-4) -->
-- [Kubernetes Tools Management](#kubernetes-tools-management)
+<!-- - [Kubernetes Tools Management](#kubernetes-tools-management)
   - [Description](#description-5)
-  - [Instructions](#instructions-5)
+  - [Instructions](#instructions-5) -->
 - [Destroy All The Things Pipeline](#destroy-all-the-things-pipeline)
-  - [Description](#description-6)
-  - [Instructions](#instructions-6)
+  - [Description](#description-3)
+  - [Instructions](#instructions-3)
 - [Conclusion](#conclusion)
   - [On the next edition](#on-the-next-edition)
 
@@ -782,7 +782,7 @@ Same will be done for the GitHub token secret that Backstage will use.
 <br/>
 
 
-# KUBERNETES TOOLS MANAGEMENT
+<!-- # KUBERNETES TOOLS MANAGEMENT
 
 ## Description
 
@@ -817,7 +817,7 @@ We can follow this same logic for deploying new services.
 <br/>
 <p title="Two buttons" align="center"> <img width="460" src="https://i.imgur.com/Fgo7nnZ.jpg"> </p>
 <br/>
-<br/>
+<br/> -->
 
 # DESTROY ALL THE THINGS PIPELINE
 
