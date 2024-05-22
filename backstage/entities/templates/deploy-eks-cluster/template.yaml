@@ -68,7 +68,7 @@ spec:
         description:
           title: Description
           type: string
-          description: Help others understand what this service is for
+          description: Help others understand what this cluster is for
         owner:
           title: Owner
           type: string
@@ -101,8 +101,6 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
-            allowedOrganizations:
-              - tomasferrarisenda
 
 
   steps:

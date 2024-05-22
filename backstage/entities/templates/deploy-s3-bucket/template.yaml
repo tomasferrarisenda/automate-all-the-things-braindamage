@@ -27,7 +27,7 @@ spec:
         system:
           title: System
           type: string
-          description: System the new EKS cluster belongs to.
+          description: System the new S3 bucket belongs to.
           ui:field: EntityPicker
           ui:options:
             catalogFilter:
@@ -40,15 +40,17 @@ spec:
         description:
           title: Description
           type: string
-          description: Help others understand what this service is for
+          description: Help others understand what this bucket is for
         owner:
           title: Owner
           type: string
           description: Owner of the service
           ui:field: OwnerPicker
           ui:options:
-            allowedKinds:
-              - Group
+            # allowedKinds: # DEPRACATED
+            #   - Group
+            catalogFilter:
+              - kind: Group
         # tags:
         #   type: array
         #   title: Tags
