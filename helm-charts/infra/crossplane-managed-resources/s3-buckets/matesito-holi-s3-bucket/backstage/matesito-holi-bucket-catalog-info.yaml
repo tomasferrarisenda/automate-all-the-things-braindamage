@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: matesito--bucket
+  description:  bucket for the matesito system
+  annotations:
+  tags:
+    - aws 
+    - s3
+spec:
+  type: s3-bucket
+  lifecycle: experimental
+  owner: 
+  system: matesito
