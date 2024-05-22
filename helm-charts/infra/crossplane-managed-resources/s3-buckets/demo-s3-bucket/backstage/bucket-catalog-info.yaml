@@ -18,5 +18,5 @@ metadata:
 spec:
   type: s3-bucket
   lifecycle: experimental
-  owner: toto
-  system: sistema
+  owner: demo-team
+  system: demo-system
