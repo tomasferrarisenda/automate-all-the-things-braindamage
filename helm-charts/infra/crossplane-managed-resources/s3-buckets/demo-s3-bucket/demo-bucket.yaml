@@ -2,7 +2,9 @@ apiVersion: s3.aws.upbound.io/v1beta1
 kind: Bucket
 metadata:
   # generateName: crossplane-bucket- # This does not work with ArgoCD because Argo uses "apply" command and generateName can only be used with "create" command.
-  name: sistema-gaturro-bucket
+  name: demo-bucket
+  annotations:
+    backstage.io/kubernetes-id: demo-bucket
 spec:
   forProvider:
     region: us-west-1

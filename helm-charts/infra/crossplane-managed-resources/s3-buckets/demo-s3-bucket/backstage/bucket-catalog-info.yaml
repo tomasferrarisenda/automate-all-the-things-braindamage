@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
   name: demo-bucket
-  description: gaturro S3 bucket for the sistema system
+  description: demo S3 bucket
   annotations:
     # backstage.io/techdocs-ref: dir:.
     # This annotation doesn't work in objects of kind Resource. It only works in objects of kind Component.
