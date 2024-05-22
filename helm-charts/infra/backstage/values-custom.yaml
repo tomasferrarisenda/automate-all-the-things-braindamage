@@ -4,7 +4,7 @@ backstage:
   image:
     registry: "" # This is necessary to override the default value "ghcr.io"
     repository: tferrari92/backstage
-    tag: "19" # This value was modified by the backstage build and push pipeline
+    tag: "20" # This value was modified by the backstage build and push pipeline
 
   extraEnvVars:
     - name: GITHUB_TOKEN
