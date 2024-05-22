@@ -300,6 +300,8 @@ Porq seguimos usando tf para algunas
 we might go full crossplane in the future.. maybe, who knows?
 not everything can be automated with Crossplane yet; some steps are manual, and if you need 1-click deployment, Terraform is the better still choice.
 
+HABLAR DE COMO PODEMOS ESTANDARIZAR TODOS LOS APRAMETROS PARA CUALQUIER TIPO DE CLUSTER, COMO POR EJEMPLO Q SUBENT USA,
+
 There's further info in the [crossplane notes](/docs/crossplane-notes.md) that you might find useful.
 
 <br/>

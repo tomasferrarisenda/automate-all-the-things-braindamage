@@ -15,19 +15,44 @@ spec:
       required:
         - system
         - service
+        - region
         - description
         - owner
       properties:
+        # system:
+          # title: System
+          # type: string
+          # description: Name of the system the new EKS cluster belongs to. Example -> 'my-app'
+          # ui:field: EntityNamePicker
+          # ui:autofocus: true
+        # system:
+        #   title: System
+        #   type: string
+        #   description: System the new EKS cluster belongs to.
+        #   ui:field: EntityPicker
+        #   ui:options:
+        #     catalogFilter:
+        #       kind: System
+        #     defaultKind: System
+
         system:
-          title: System
+          title: Entity
           type: string
-          description: Name of the system the new EKS cluster belongs to. Example -> 'my-app'
-          ui:field: EntityNamePicker
-          ui:autofocus: true
+          description: System the new EKS cluster belongs to....
+          ui:field: EntityPicker
+          ui:options:
+            catalogFilter:
+              - kind: System
+
         service:
           title: Name
           type: string
           description: Unique name of the new EKS cluster.
+          ui:field: EntityNamePicker
+        region:
+          title: Region
+          type: string
+          description: In what AWS region will the EKS cluster be deployed.
           ui:field: EntityNamePicker
         description:
           title: Description
@@ -90,6 +115,7 @@ spec:
         values:
           system: ${{ parameters.system }}
           service: ${{ parameters.service }}
+          region: ${{ parameters.region }}
 
     - id: fetch-catalog-info
       name: Fetch Catalog Info
@@ -100,6 +126,7 @@ spec:
         values:
           system: ${{ parameters.system }}
           service: ${{ parameters.service }}
+          region: ${{ parameters.region }}
 
     # - id: fetch-github-workflow
     #   name: Fetch GitHub Workflow
