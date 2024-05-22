@@ -18,12 +18,20 @@ spec:
         - description
         - owner
       properties:
+        # system:
+        #   title: System
+        #   type: string
+        #   description: Name of the system the new S3 bucket belongs to. Example -> 'my-app'
+        #   ui:field: EntityNamePicker
+        #   ui:autofocus: true
         system:
           title: System
           type: string
-          description: Name of the system the new S3 bucket belongs to. Example -> 'my-app'
-          ui:field: EntityNamePicker
-          ui:autofocus: true
+          description: System the new EKS cluster belongs to.
+          ui:field: EntityPicker
+          ui:options:
+            catalogFilter:
+              - kind: System
         service:
           title: Name
           type: string
