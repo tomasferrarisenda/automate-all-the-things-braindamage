@@ -18,6 +18,7 @@ vpcId: vpc-0a04167a84397d2c5
 subnetId: subnet-0f038a9d4c70de3dc
 # securityGroupId: sg-0b7bab67c05dab563
 
-elasticache:
-  annotations:
-    backstage.io/kubernetes-id: meme-web-elasticache 
+# This doesn't work in objects of kind Resource. It only works in objects of kind Component.
+# elasticache:
+#   annotations:
+#     backstage.io/kubernetes-id: meme-web-elasticache 
