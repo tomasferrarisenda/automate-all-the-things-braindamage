@@ -42,5 +42,5 @@ metadata:
 spec:
   type: database
   lifecycle: production
-  owner: meme-web-elasticache-subteam
+  owner: meme-web-database-subteam
   system: meme-web
