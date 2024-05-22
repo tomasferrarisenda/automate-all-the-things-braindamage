@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: sistema-gaturro-bucket
+  name: demo-bucket
   description: gaturro S3 bucket for the sistema system
   annotations:
     # backstage.io/techdocs-ref: dir:.
