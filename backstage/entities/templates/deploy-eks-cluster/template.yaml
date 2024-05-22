@@ -65,8 +65,10 @@ spec:
           description: Owner of the service
           ui:field: OwnerPicker
           ui:options:
-            allowedKinds:
-              - Group
+            # allowedKinds: # DEPRACATED
+            #   - Group
+            catalogFilter:
+              - kind: Group
         # tags:
         #   type: array
         #   title: Tags
