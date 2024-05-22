@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: deploy-eks-cluster
-  title: Deploy New EKS C luster
+  title: Deploy New EKS Cluster
   description: Creates all the neccesary resources in AWS for deploying an EKS cluster.
   tags:
     - aws
