@@ -86,7 +86,7 @@ spec:
       action: fetch:template
       input:
         url: ./manifests
-        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system }}/${{ parameters.service }}-s3-bucket
+        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system }}-${{ parameters.service }}-s3-bucket
         values:
           system: ${{ parameters.system }}
           service: ${{ parameters.service }}
@@ -96,7 +96,7 @@ spec:
       action: fetch:template
       input:
         url: ./catalog-info
-        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system }}/${{ parameters.service }}-s3-bucket/backstage
+        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system }}-${{ parameters.service }}-s3-bucket/backstage
         values:
           system: ${{ parameters.system }}
           service: ${{ parameters.service }}
