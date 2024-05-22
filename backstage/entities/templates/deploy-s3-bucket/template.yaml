@@ -21,13 +21,13 @@ spec:
         system:
           title: System
           type: string
-          description: Name of the system the new service belongs to. Example -> 'my-app'
+          description: Name of the system the new S3 bucket belongs to. Example -> 'my-app'
           ui:field: EntityNamePicker
           ui:autofocus: true
         service:
           title: Name
           type: string
-          description: Unique name of the new service. Example -> 'backend'
+          description: Unique name of the new S3 bucket.
           ui:field: EntityNamePicker
         description:
           title: Description
@@ -127,8 +127,8 @@ spec:
       input:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
-        title: "Create new project: ${{ parameters.system }}-${{ parameters.service }}"
-        branchName: create-${{ parameters.system }}-${{ parameters.service }}
+        title: "Create new S3 bucket: ${{ parameters.system }}-${{ parameters.service }}"
+        branchName: create-s3-bucket-${{ parameters.system }}-${{ parameters.service }}
         description: |
           # New S3 Bucket: ${{ parameters.system }}-${{ parameters.service }}
 
