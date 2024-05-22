@@ -1,0 +1,25 @@
+apiVersion: eks.aws.upbound.io/v1beta1
+kind: NodeGroup
+metadata:
+  name: matesito--eks-ng
+spec:
+  forProvider:
+    clusterNameRef:
+      name: matesito--eks-cluster
+    nodeRoleArnRef:
+      name: matesito--eks-ng-role
+    region: us-west-1
+    scalingConfig:
+      - desiredSize: 1
+        maxSize: 1
+        minSize: 1
+    subnetIdRefs:
+      - name: matesito--private-subnet-b
+      - name: matesito--private-subnet-c
+    instanceTypes:
+      - t3.nano
+    diskSize: 5
+    tags:
+      Name: matesito--eks-ng
+  providerConfigRef:
+    name: aws
