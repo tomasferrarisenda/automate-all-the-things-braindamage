@@ -30,8 +30,10 @@ spec:
           description: System the new S3 bucket belongs to.
           ui:field: EntityPicker
           ui:options:
-            catalogFilter:
-              - kind: System
+            allowedKinds: # DEPRACATED
+                - System
+            # catalogFilter:
+            #   - kind: System
         service:
           title: Name
           type: string
@@ -47,10 +49,10 @@ spec:
           description: Owner of the service
           ui:field: OwnerPicker
           ui:options:
-            # allowedKinds: # DEPRACATED
-            #   - Group
-            catalogFilter:
-              - kind: Group
+            allowedKinds: # DEPRACATED
+              - Group
+            # catalogFilter:
+            #   - kind: Group
         # tags:
         #   type: array
         #   title: Tags
