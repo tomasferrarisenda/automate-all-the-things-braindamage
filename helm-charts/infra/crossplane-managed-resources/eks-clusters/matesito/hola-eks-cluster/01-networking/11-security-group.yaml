@@ -1,0 +1,55 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroup
+metadata:
+  name: matesito--securitygroup
+spec:
+  forProvider:
+    description: Allow TLS inbound traffic
+    name: matesito--securitygroup
+    region: us-west-1
+    vpcIdRef: 
+      name: matesito--vpc
+    tags:
+      Name: matesito--securitygroup
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroupRule
+metadata:
+  name: matesito--securitygrouprule-1
+spec:
+  forProvider:
+    cidrBlocks:
+      - 0.0.0.0/0
+    fromPort: 0
+    protocol: "-1"
+    region: us-west-1
+    securityGroupIdRef:
+      name: matesito--securitygroup
+    toPort: 0
+    type: ingress
+    tags:
+      Name: matesito--securitygrouprule-1
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroupRule
+metadata:
+  name: matesito--securitygrouprule-2
+spec:
+  forProvider:
+    cidrBlocks:
+      - 0.0.0.0/0
+    fromPort: 0
+    protocol: "-1"
+    region: us-west-1
+    securityGroupIdRef:
+      name: matesito--securitygroup
+    toPort: 0
+    type: egress
+    tags:
+      Name: matesito--securitygrouprule-2
+  providerConfigRef:
+    name: aws
