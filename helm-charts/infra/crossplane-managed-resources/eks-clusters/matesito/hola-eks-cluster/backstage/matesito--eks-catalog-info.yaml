@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: matesito--eks-cluster
+  description:  eks cluster for the matesito system
+  tags:
+    - aws 
+    - eks
+spec:
+  type: kubernetes-cluster
+  lifecycle: experimental
+  owner: 
+  system: matesito

@@ -1,0 +1,30 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: RouteTable
+metadata:
+  name: matesito--route-table-private-c
+spec:
+  forProvider:
+    region: us-west-1
+    vpcIdRef: 
+      name: matesito--vpc
+    tags:
+      Name: matesito--route-table-private-c
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Route
+metadata:
+  name: matesito--route-private-c
+spec:
+  forProvider:
+    destinationCidrBlock: 0.0.0.0/0
+    natGatewayIdRef:
+      name: matesito--nat-gw-c
+    region: us-west-1
+    routeTableIdRef:
+      name: matesito--route-table-private-c
+    tags:
+      Name: matesito--route-private-c
+  providerConfigRef:
+    name: aws
