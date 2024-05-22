@@ -1,30 +1,30 @@
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: RouteTable
 metadata:
-  name: ${{ values.system}}-${{ values.name }}-route-table-private-b
+  name: ${{ values.system}}-${{ values.service }}-route-table-private-b
 spec:
   forProvider:
     region: us-west-1
     vpcIdRef: 
-      name: ${{ values.system}}-${{ values.name }}-vpc
+      name: ${{ values.system}}-${{ values.service }}-vpc
     tags:
-      Name: ${{ values.system}}-${{ values.name }}-route-table-private-b
+      Name: ${{ values.system}}-${{ values.service }}-route-table-private-b
   providerConfigRef:
     name: aws
 ---
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Route
 metadata:
-  name: ${{ values.system}}-${{ values.name }}-route-private-b
+  name: ${{ values.system}}-${{ values.service }}-route-private-b
 spec:
   forProvider:
     destinationCidrBlock: 0.0.0.0/0
     natGatewayIdRef:
-      name: ${{ values.system}}-${{ values.name }}-nat-gw-b
+      name: ${{ values.system}}-${{ values.service }}-nat-gw-b
     region: us-west-1
     routeTableIdRef:
-      name: ${{ values.system}}-${{ values.name }}-route-table-private-b
+      name: ${{ values.system}}-${{ values.service }}-route-table-private-b
     tags:
-      Name: ${{ values.system}}-${{ values.name }}-route-private-b
+      Name: ${{ values.system}}-${{ values.service }}-route-private-b
   providerConfigRef:
     name: aws

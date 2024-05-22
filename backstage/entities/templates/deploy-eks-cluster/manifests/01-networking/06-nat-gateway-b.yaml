@@ -1,16 +1,16 @@
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: NATGateway
 metadata:
-  name: ${{ values.system}}-${{ values.name }}-nat-gw-b
+  name: ${{ values.system}}-${{ values.service }}-nat-gw-b
 spec:
   forProvider:
     region: us-west-1
     subnetIdRef: 
-      name: ${{ values.system}}-${{ values.name }}-public-subnet-b
+      name: ${{ values.system}}-${{ values.service }}-public-subnet-b
     allocationIdRef:
-      name: ${{ values.system}}-${{ values.name }}-eip-b
+      name: ${{ values.system}}-${{ values.service }}-eip-b
     tags:
-      Name: ${{ values.system}}-${{ values.name }}-nat-gw-b
+      Name: ${{ values.system}}-${{ values.service }}-nat-gw-b
   providerConfigRef:
     name: aws
 
@@ -18,12 +18,12 @@ spec:
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: EIP
 metadata:
-  name: ${{ values.system}}-${{ values.name }}-eip-b
+  name: ${{ values.system}}-${{ values.service }}-eip-b
 spec:
   forProvider:
     region: us-west-1
     vpc: true
     tags:
-      Name: ${{ values.system}}-${{ values.name }}-eip-b
+      Name: ${{ values.system}}-${{ values.service }}-eip-b
   providerConfigRef:
     name: aws

@@ -1,7 +1,7 @@
 apiVersion: iam.aws.upbound.io/v1beta1
 kind: Role
 metadata:
-  name: ${{ values.system}}-${{ values.name }}-eks-controlplane-role
+  name: ${{ values.system}}-${{ values.service }}-eks-controlplane-role
 spec:
   forProvider:
     assumeRolePolicy: |
@@ -22,7 +22,7 @@ spec:
         ]
       }
     tags:
-      Name: ${{ values.system}}-${{ values.name }}-eks-controlplane-role
+      Name: ${{ values.system}}-${{ values.service }}-eks-controlplane-role
   providerConfigRef:
     name: aws
 
@@ -36,7 +36,7 @@ spec:
   forProvider:
     policyArn: arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
     roleRef:
-      name: ${{ values.system}}-${{ values.name }}-eks-controlplane-role
+      name: ${{ values.system}}-${{ values.service }}-eks-controlplane-role
     tags:
       Name: samazoneksclusterpolicy-policy-attachment
   providerConfigRef:

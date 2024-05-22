@@ -1,7 +1,7 @@
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Subnet
 metadata:
-  name: ${{ values.system}}-${{ values.name }}-public-subnet-c
+  name: ${{ values.system}}-${{ values.service }}-public-subnet-c
 spec:
   forProvider:
     # mapPublicIpOnLaunch: true
@@ -9,9 +9,9 @@ spec:
     cidrBlock: 10.0.32.0/19
     region: us-west-1
     vpcIdRef: 
-      name: ${{ values.system}}-${{ values.name }}-vpc
+      name: ${{ values.system}}-${{ values.service }}-vpc
     tags:
-      Name: ${{ values.system}}-${{ values.name }}-public-subnet-c
+      Name: ${{ values.system}}-${{ values.service }}-public-subnet-c
       kubernetes.io/role/internal-elb: "1" # Required for EKS
       kubernetes.io/cluster/${var.project}-cluster: "owned" # Required for EKS
   providerConfigRef:
@@ -20,15 +20,15 @@ spec:
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: RouteTableAssociation
 metadata:
-  name: ${{ values.system}}-${{ values.name }}-rta-public-c
+  name: ${{ values.system}}-${{ values.service }}-rta-public-c
 spec:
   forProvider:
     region: us-west-1
     subnetIdRef:
-      name: ${{ values.system}}-${{ values.name }}-public-subnet-c
+      name: ${{ values.system}}-${{ values.service }}-public-subnet-c
     routeTableIdRef:
-      name: ${{ values.system}}-${{ values.name }}-route-table-public
+      name: ${{ values.system}}-${{ values.service }}-route-table-public
     tags:
-      Name: ${{ values.system}}-${{ values.name }}-rta-public-c
+      Name: ${{ values.system}}-${{ values.service }}-rta-public-c
   providerConfigRef:
     name: aws

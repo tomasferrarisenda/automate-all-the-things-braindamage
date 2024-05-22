@@ -1,16 +1,16 @@
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: Subnet
 metadata:
-  name: ${{ values.system}}-${{ values.name }}-private-subnet-b
+  name: ${{ values.system}}-${{ values.service }}-private-subnet-b
 spec:
   forProvider:
     availabilityZone: us-west-1b
     cidrBlock: 10.0.64.0/19
     region: us-west-1
     vpcIdRef: 
-      name: ${{ values.system}}-${{ values.name }}-vpc
+      name: ${{ values.system}}-${{ values.service }}-vpc
     tags:
-      Name: ${{ values.system}}-${{ values.name }}-private-subnet-b
+      Name: ${{ values.system}}-${{ values.service }}-private-subnet-b
       kubernetes.io/role/internal-elb: "1" # Required for EKS
       kubernetes.io/cluster/${var.project}-cluster: "owned" # Required for EKS
   providerConfigRef:
@@ -19,15 +19,15 @@ spec:
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: RouteTableAssociation
 metadata:
-  name: ${{ values.system}}-${{ values.name }}-rta-private-b
+  name: ${{ values.system}}-${{ values.service }}-rta-private-b
 spec:
   forProvider:
     region: us-west-1
     subnetIdRef:
-      name: ${{ values.system}}-${{ values.name }}-private-subnet-b
+      name: ${{ values.system}}-${{ values.service }}-private-subnet-b
     routeTableIdRef:
-      name: ${{ values.system}}-${{ values.name }}-route-table-private-b
+      name: ${{ values.system}}-${{ values.service }}-route-table-private-b
     tags:
-      Name: ${{ values.system}}-${{ values.name }}-rta-private-b
+      Name: ${{ values.system}}-${{ values.service }}-rta-private-b
   providerConfigRef:
     name: aws
