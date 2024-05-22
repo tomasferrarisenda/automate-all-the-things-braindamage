@@ -37,6 +37,6 @@ spec:
   owner: meme-web-backend-subteam
   system: meme-web
   dependsOn:
-    - resource:default/meme-web-redis
+    - resource:default/meme-web-elasticache
   providesApis:
     - meme-web-backend-api
