@@ -1,0 +1,29 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: NATGateway
+metadata:
+  name: matesito--nat-gw-b
+spec:
+  forProvider:
+    region: us-west-1
+    subnetIdRef: 
+      name: matesito--public-subnet-b
+    allocationIdRef:
+      name: matesito--eip-b
+    tags:
+      Name: matesito--nat-gw-b
+  providerConfigRef:
+    name: aws
+
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: EIP
+metadata:
+  name: matesito--eip-b
+spec:
+  forProvider:
+    region: us-west-1
+    vpc: true
+    tags:
+      Name: matesito--eip-b
+  providerConfigRef:
+    name: aws
