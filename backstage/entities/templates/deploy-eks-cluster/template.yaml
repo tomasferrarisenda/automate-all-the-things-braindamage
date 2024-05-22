@@ -37,9 +37,9 @@ spec:
         #     defaultKind: System
 
         system:
-          title: Entity
+          title: System
           type: string
-          description: System the new EKS cluster belongs to....
+          description: System the new EKS cluster belongs to.
           ui:field: EntityPicker
           ui:options:
             catalogFilter:
