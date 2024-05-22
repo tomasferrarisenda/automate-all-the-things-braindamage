@@ -8,4 +8,4 @@ spec:
     email: masterchief@eridanus.com
     picture: https://i.imgur.com/a8eqzkH.jpg
   memberOf:
-    - meme-web-redis-subteam
+    - meme-web-database-subteam

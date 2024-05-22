@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
   name: meme-web-backend-subteam
-  title: meme-web backend subteam
+  title: meme-web-backend-subteam
   description: Responsible for maintaining and developing the backend of meme-web
   tags:
     - engineering
