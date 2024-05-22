@@ -50,11 +50,21 @@ spec:
           type: string
           description: Unique name of the new EKS cluster.
           ui:field: EntityNamePicker
+
         region:
           title: Region
           type: string
           description: In what AWS region will the EKS cluster be deployed.
-          ui:field: EntityNamePicker
+          enum:
+            - us-east-1
+            - us-east-2
+            - us-west-1
+            - us-west-2
+        # region:
+        #   title: Region
+        #   type: string
+        #   description: In what AWS region will the EKS cluster be deployed.
+        #   ui:field: EntityNamePicker
         description:
           title: Description
           type: string
