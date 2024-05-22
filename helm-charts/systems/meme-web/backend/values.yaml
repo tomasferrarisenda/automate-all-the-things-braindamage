@@ -14,8 +14,8 @@ deployment:
   image:
     repository: tferrari92/meme-web-backend # This value was modified by the initial-setup python script
 
-vpcId: vpc-08c98d0c4828534f7
-subnetId: subnet-0d67aeed7c5e05bdc
+vpcId: vpc-0a04167a84397d2c5
+subnetId: subnet-0f038a9d4c70de3dc
 # securityGroupId: sg-0b7bab67c05dab563
 
 elasticache:
