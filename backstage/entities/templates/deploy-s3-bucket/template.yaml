@@ -96,7 +96,7 @@ spec:
       action: fetch:template
       input:
         url: ./catalog-info
-        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/backstage
+        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system }}/${{ parameters.service }}-s3-bucket/backstage
         values:
           system: ${{ parameters.system }}
           service: ${{ parameters.service }}

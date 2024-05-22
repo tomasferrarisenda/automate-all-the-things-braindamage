@@ -21,13 +21,13 @@ spec:
         system:
           title: System
           type: string
-          description: Name of the system the new service belongs to. Example -> 'my-app'
+          description: Name of the system the new EKS cluster belongs to. Example -> 'my-app'
           ui:field: EntityNamePicker
           ui:autofocus: true
         service:
           title: Name
           type: string
-          description: Unique name of the new service. Example -> 'backend'
+          description: Unique name of the new EKS cluster.
           ui:field: EntityNamePicker
         description:
           title: Description
@@ -86,7 +86,7 @@ spec:
       action: fetch:template
       input:
         url: ./manifests
-        targetPath: helm-charts/infra/crossplane-managed-resources/eks-clusters
+        targetPath: helm-charts/infra/crossplane-managed-resources/eks-clusters/${{ parameters.system }}/${{ parameters.service }}-eks-cluster
         values:
           system: ${{ parameters.system }}
           service: ${{ parameters.service }}
@@ -96,7 +96,7 @@ spec:
       action: fetch:template
       input:
         url: ./catalog-info
-        targetPath: helm-charts/infra/crossplane-managed-resources/eks-clusters/backstage
+        targetPath: helm-charts/infra/crossplane-managed-resources/eks-clusters/${{ parameters.system }}/${{ parameters.service }}-eks-cluster/backstage
         values:
           system: ${{ parameters.system }}
           service: ${{ parameters.service }}
@@ -117,8 +117,8 @@ spec:
       input:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
-        title: "Create new project: ${{ parameters.system }}-${{ parameters.service }}"
-        branchName: create-${{ parameters.system }}-${{ parameters.service }}
+        title: "Create new EKS cluster: ${{ parameters.system }}-${{ parameters.service }}"
+        branchName: create-eks-cluster-${{ parameters.system }}-${{ parameters.service }}
         description: |
           # New EKS Cluster: ${{ parameters.system }}-${{ parameters.service }}
 
