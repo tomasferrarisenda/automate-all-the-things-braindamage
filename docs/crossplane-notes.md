@@ -76,3 +76,11 @@ siempre me queda un securitygroupingressrules.ec2.aws.upbound.io random y hay q 
 ## Extra Providers and ProviderConfigs
 
 I added some extra Provider and ProviderConfig manifests for Azure and GCP which are all commented out. They are there just to show that you could deploy to any hyperscaler if you wanted to. 
+
+<br/>
+
+## Elasticache still dependant on infra deployed through Terraform
+
+We will be moving away from this approach, but for now, to keep things simple, the ElastiCache DBs that meme-web-backends use are still deployed within the original subnet created for them through Terraform. 
+
+You can see that in the [deploy-infra pipeline](/.github/workflows/01-deploy-infra.yaml) we get the ID of the subnet with a Terraform output and save it to the [backend's helm chart values](/helm-charts/systems/meme-web/backend/values.yaml).
