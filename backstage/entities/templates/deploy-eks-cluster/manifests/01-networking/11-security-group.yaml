@@ -6,7 +6,7 @@ spec:
   forProvider:
     description: Allow TLS inbound traffic
     name: ${{ values.system}}-${{ values.service }}-securitygroup
-    region: us-west-1
+    region: ${{ values.region }}
     vpcIdRef: 
       name: ${{ values.system}}-${{ values.service }}-vpc
     tags:
@@ -24,7 +24,7 @@ spec:
       - 0.0.0.0/0
     fromPort: 0
     protocol: "-1"
-    region: us-west-1
+    region: ${{ values.region }}
     securityGroupIdRef:
       name: ${{ values.system}}-${{ values.service }}-securitygroup
     toPort: 0
@@ -44,7 +44,7 @@ spec:
       - 0.0.0.0/0
     fromPort: 0
     protocol: "-1"
-    region: us-west-1
+    region: ${{ values.region }}
     securityGroupIdRef:
       name: ${{ values.system}}-${{ values.service }}-securitygroup
     toPort: 0

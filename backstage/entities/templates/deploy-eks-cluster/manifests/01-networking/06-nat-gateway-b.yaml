@@ -4,7 +4,7 @@ metadata:
   name: ${{ values.system}}-${{ values.service }}-nat-gw-b
 spec:
   forProvider:
-    region: us-west-1
+    region: ${{ values.region }}
     subnetIdRef: 
       name: ${{ values.system}}-${{ values.service }}-public-subnet-b
     allocationIdRef:
@@ -21,7 +21,7 @@ metadata:
   name: ${{ values.system}}-${{ values.service }}-eip-b
 spec:
   forProvider:
-    region: us-west-1
+    region: ${{ values.region }}
     vpc: true
     tags:
       Name: ${{ values.system}}-${{ values.service }}-eip-b

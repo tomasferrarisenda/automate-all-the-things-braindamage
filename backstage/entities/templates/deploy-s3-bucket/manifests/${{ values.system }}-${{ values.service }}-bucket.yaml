@@ -4,6 +4,6 @@ metadata:
   name: ${{ values.system }}-${{ values.service }}-bucket
 spec:
   forProvider:
-    region: ${{ values.region }}
+    region: us-east-1
   providerConfigRef:
     name: aws

@@ -4,7 +4,7 @@ metadata:
   name: ${{ values.system}}-${{ values.service }}-route-table-private-b
 spec:
   forProvider:
-    region: us-west-1
+    region: ${{ values.region }}
     vpcIdRef: 
       name: ${{ values.system}}-${{ values.service }}-vpc
     tags:
@@ -21,7 +21,7 @@ spec:
     destinationCidrBlock: 0.0.0.0/0
     natGatewayIdRef:
       name: ${{ values.system}}-${{ values.service }}-nat-gw-b
-    region: us-west-1
+    region: ${{ values.region }}
     routeTableIdRef:
       name: ${{ values.system}}-${{ values.service }}-route-table-private-b
     tags:

@@ -4,6 +4,6 @@ metadata:
   name: matesito-holi-bucket
 spec:
   forProvider:
-    region: 
+    region: us-east-1
   providerConfigRef:
     name: aws
