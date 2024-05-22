@@ -25,6 +25,7 @@ spec:
           # description: Name of the system the new EKS cluster belongs to. Example -> 'my-app'
           # ui:field: EntityNamePicker
           # ui:autofocus: true
+
         # system:
         #   title: System
         #   type: string
@@ -88,6 +89,9 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
+            allowedOrganizations:
+              - tomasferrarisenda
+
 
   steps:
     # - id: fetch-base-code
