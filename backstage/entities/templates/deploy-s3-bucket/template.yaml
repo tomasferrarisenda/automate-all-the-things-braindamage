@@ -30,10 +30,10 @@ spec:
           description: System the new S3 bucket belongs to.
           ui:field: EntityPicker
           ui:options:
-            allowedKinds: # DEPRACATED
-                - System
-            # catalogFilter:
-            #   - kind: System
+            # allowedKinds: # DEPRACATED
+            #     - System
+            catalogFilter:
+              - kind: System
         service:
           title: Name
           type: string
