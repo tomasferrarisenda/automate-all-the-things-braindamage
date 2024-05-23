@@ -34,6 +34,12 @@ spec:
             #     - System
             catalogFilter:
               - kind: System
+            defaultKind: System
+
+
+
+
+
         service:
           title: Name
           type: string
