@@ -203,7 +203,7 @@ spec:
         url: ./manifests
         targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system }}-${{ parameters.service }}-s3-bucket
         values:
-          system: ${{ parameters.system | split('/')[1] }}
+          system: ${{ parameters.system | lower }}
           # system: ${{ parameters.system }}
           service: ${{ parameters.service }}
 
@@ -217,6 +217,7 @@ spec:
           system: ${{ parameters.system | split('/')[1] }}
           # system: ${{ parameters.system }}
           service: ${{ parameters.service }}
+          owner: ${{ parameters.owner }}
 
     # - id: fetch-argocd-applications
     #   name: Fetch ArgoCD application manifests
