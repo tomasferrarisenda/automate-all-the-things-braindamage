@@ -19,25 +19,25 @@ spec:
         - description
         - owner
       properties:
-        # system:
-        #   title: System
-        #   type: string
-        #   description: System the new S3 bucket belongs to.
-        #   ui:field: EntityPicker
-        #   ui:options:
-        #     catalogFilter:
-        #       - kind: System
-        #     # defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
-        #     defaultNamespace: default
         system:
           title: System
           type: string
           description: System the new S3 bucket belongs to.
-          ui:field: OwnerPicker
+          ui:field: EntityPicker
           ui:options:
-            catalogFilter: # This uses the value "system:default/meme-web"
+            catalogFilter:
               - kind: System
-            defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
+            # defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
+        #     defaultNamespace: default
+        # system:
+        #   title: System
+        #   type: string
+        #   description: System the new S3 bucket belongs to.
+        #   ui:field: OwnerPicker
+        #   ui:options:
+        #     catalogFilter: # This uses the value "system:default/meme-web"
+        #       - kind: System
+        #     defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
 
         service:
           title: Name
@@ -58,6 +58,7 @@ spec:
           # TESTING
           # ui:autocomplete: probando-esto
 
+        # This returns a variable in the format group:<namespace>/<group-or-user-name>. You can extract the entity name using replace when you refer to the parameter like so: ${{ parameters.owner | replace(\"group:.*/\", \"\") }}
         owner:
           title: Owner
           type: string
@@ -67,6 +68,7 @@ spec:
             catalogFilter: # This uses the value "group:default/meme-web-team"
               - kind: Group
                 # spec.type: team # You can make it more specific by adding more filters like this
+        
 
 
         # ##################################################################################################
