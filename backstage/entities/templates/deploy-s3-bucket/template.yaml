@@ -44,6 +44,8 @@ spec:
 
           # TESTING
           # ui:autocomplete: probando-esto
+          ui:help: 'Hint: Make it descriptive!'
+
 
         owner:
           title: Owner
