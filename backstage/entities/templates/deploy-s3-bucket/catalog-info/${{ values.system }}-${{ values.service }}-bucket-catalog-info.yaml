@@ -1,7 +1,6 @@
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  # name: ${{ parameters.system | split('/')[1] }}-${{ values.name }}-bucket
   name: ${{ values.system }}-${{ values.name }}-bucket
   description: ${{ values.name }} bucket for the ${{ values.system }} system
   annotations:
