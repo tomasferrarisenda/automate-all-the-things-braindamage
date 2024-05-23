@@ -18,13 +18,6 @@ spec:
         - description
         - owner
       properties:
-        # system:
-        #   title: System
-        #   type: string
-        #   description: Name of the system the new S3 bucket belongs to. Example -> 'my-app'
-        #   ui:field: EntityNamePicker
-        #   ui:autofocus: true
-
 
         system:
           title: System
@@ -32,32 +25,33 @@ spec:
           description: System the new S3 bucket belongs to.
           ui:field: EntityPicker
           ui:options:
-            # allowedKinds: # DEPRACATED
-            #     - System
             catalogFilter:
               - kind: System
             defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
-
 
         service:
           title: Name
           type: string
           description: Unique name of the new S3 bucket.
           ui:field: EntityNamePicker
+
         description:
           title: Description
           type: string
           description: Help others understand what this bucket is for
+
         owner:
           title: Owner
           type: string
           description: Owner of the service
           ui:field: OwnerPicker
           ui:options:
-            allowedKinds: # DEPRACATED
-              - Group
-            # catalogFilter:
-            #   - kind: Group
+            # allowedKinds: # DEPRACATED
+            #   - Group
+            catalogFilter:
+              - kind: Group
+                spec.type: team # You can make it more specific by adding more filters like this
+
         # tags:
         #   type: array
         #   title: Tags
