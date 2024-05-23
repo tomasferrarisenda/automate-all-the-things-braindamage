@@ -19,7 +19,6 @@ spec:
         - description
         - owner
       properties:
-
         system:
           title: System
           type: string
@@ -135,8 +134,10 @@ spec:
       input:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
-        title: "Create new S3 bucket: ${{ parameters.system }}-${{ parameters.service }}"
-        branchName: create-s3-bucket-${{ parameters.system }}-${{ parameters.service }}
+        title: "Create new S3 bucket: ${{ parameters.system | split('/')[1] }}-${{ parameters.service }}"
+        # title: "Create new S3 bucket: ${{ parameters.system }}-${{ parameters.service }}"
+        branchName: create-s3-bucket-${{ parameters.system | split('/')[1] }}-${{ parameters.service }}
+        # branchName: create-s3-bucket-${{ parameters.system }}-${{ parameters.service }}
         description: |
           # New S3 Bucket: ${{ parameters.system }}-${{ parameters.service }}
 
