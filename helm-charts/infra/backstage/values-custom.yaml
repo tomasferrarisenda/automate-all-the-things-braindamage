@@ -51,6 +51,17 @@ backstage:
 
       providers:
         github:
+
+          # Use this if new services are created in their own repositories
+          # catalogsProvider:
+          #   organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
+          #   catalogPath: '/catalog-info.yaml' # string
+          #   filters:
+          #     branch: 'main' # string
+          #     repository: '.*' # Regex
+          #   schedule: # same options as in TaskScheduleDefinition
+          #     frequency: { minutes: 30 }
+          #     timeout: { minutes: 3 }
           # Catalogs
           catalogsProvider:
             organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
