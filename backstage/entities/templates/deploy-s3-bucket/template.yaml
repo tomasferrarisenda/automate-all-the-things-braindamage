@@ -24,6 +24,8 @@ spec:
         #   description: Name of the system the new S3 bucket belongs to. Example -> 'my-app'
         #   ui:field: EntityNamePicker
         #   ui:autofocus: true
+
+
         system:
           title: System
           type: string
@@ -34,10 +36,7 @@ spec:
             #     - System
             catalogFilter:
               - kind: System
-            defaultKind: System
-
-
-
+            defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
 
 
         service:
