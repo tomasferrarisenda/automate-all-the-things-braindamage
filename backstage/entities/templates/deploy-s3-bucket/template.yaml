@@ -59,21 +59,21 @@ spec:
               - kind: Group
                 # spec.type: team # You can make it more specific by adding more filters like this
 
-        region:
-          title: Region
-          type: string
-          description: In what AWS region will the EKS cluster be deployed.
-          default: us-east-1
-          enum:
-            - us-east-1
-            - us-east-2
-            - us-west-1
-            - us-west-2
-          enumNames:
-            - 'Virginia (us-east-1)'
-            - 'Ohio (us-east-2)'
-            - 'California (us-west-1)'
-            - 'Oregon (us-west-2)'
+        # region:
+        #   title: Region
+        #   type: string
+        #   description: In what AWS region will the EKS cluster be deployed.
+        #   default: us-east-1
+        #   enum:
+        #     - us-east-1
+        #     - us-east-2
+        #     - us-west-1
+        #     - us-west-2
+        #   enumNames:
+        #     - 'Virginia (us-east-1)'
+        #     - 'Ohio (us-east-2)'
+        #     - 'California (us-west-1)'
+        #     - 'Oregon (us-west-2)'
     
     # Second page
     - title: Choose a location
