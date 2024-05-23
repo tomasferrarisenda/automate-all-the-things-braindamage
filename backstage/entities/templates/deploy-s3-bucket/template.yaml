@@ -88,6 +88,30 @@ spec:
               - development
           uniqueItems: true
           ui:widget: checkboxes
+
+        # Boolean
+        boolean:
+          title: Checkbox boolean
+          type: boolean
+
+        # Boolean with radio
+        flag:
+          title: Yes or No options
+          type: boolean
+          ui:widget: radio
+
+        # Boolean with multiple optiones
+        name:
+          title: Select features
+          type: array
+          items:
+            type: boolean
+            enum:
+              - 'Enable scraping'
+              - 'Enable HPA'
+              - 'Enable cache'
+          uniqueItems: true
+          ui:widget: checkboxes
     
         # Array with another types
         arrayObjects:
@@ -117,16 +141,7 @@ spec:
                 title: Simple text input
                 type: string
 
-        # Boolean
-        boolean:
-          title: Checkbox boolean
-          type: boolean
-          
-        # Boolean with radio
-        name:
-          title: Yes or No options
-          type: boolean
-          ui:widget: radio
+
 
     # Second page
     - title: Choose a location
