@@ -49,7 +49,6 @@ spec:
           # TESTING
           # ui:autocomplete: probando-esto
 
-
         owner:
           title: Owner
           type: string
