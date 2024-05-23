@@ -37,6 +37,8 @@ spec:
           ui:field: EntityNamePicker
           pattern: '^[a-z0-9-]+$' # Only lowercase letters, numbers and hyphens
           maxLength: 30
+          ui:help: 'Use only lowercase letters, numbers and hyphens. Max length: 30 characters.'
+
 
 
         description:
