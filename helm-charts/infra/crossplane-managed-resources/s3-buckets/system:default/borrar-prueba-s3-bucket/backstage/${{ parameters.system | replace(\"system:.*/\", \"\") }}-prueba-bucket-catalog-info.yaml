@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: ${{ parameters.system | replace(\"system:.*/\", \"\") }}--bucket
+  description:  bucket for the ${{ parameters.system | replace(\"system:.*/\", \"\") }} system
+  annotations:
+  tags:
+    - aws 
+    - s3
+spec:
+  type: s3-bucket
+  lifecycle: experimental
+  owner: ${{ parameters.owner | replace(\"group:.*/\", \"\") }}
+  system: ${{ parameters.system | replace(\"system:.*/\", \"\") }}
