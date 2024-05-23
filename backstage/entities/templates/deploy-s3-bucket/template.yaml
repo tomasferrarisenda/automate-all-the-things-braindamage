@@ -11,6 +11,7 @@ spec:
   owner: web@example.com
   type: service
   parameters:
+    # First page
     - title: Provide some simple information
       required:
         - system
@@ -28,6 +29,7 @@ spec:
             catalogFilter:
               - kind: System
             defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
+            defaultNamespace: default
 
         service:
           title: Name
@@ -38,12 +40,11 @@ spec:
         description:
           title: Description
           type: string
-          description: Help others understand what this bucket is for
-
-          # TESTING
-          ui:autocomplete: probando-esto
+          description: Help others understand what this bucket is for.
           minLength: 10
 
+          # TESTING
+          # ui:autocomplete: probando-esto
 
         owner:
           title: Owner
@@ -56,18 +57,8 @@ spec:
             catalogFilter:
               - kind: Group
                 spec.type: team # You can make it more specific by adding more filters like this
-
-        # tags:
-        #   type: array
-        #   title: Tags
-        #   description: Tags to categorize the service
-        #   items:
-        #     type: string
-        # targetPath:
-        #   title: Target Path in repo
-        #   type: string
-        #   description: Name of the directory to create in the repository. Don't include the root slash.
-
+    
+    # Second page
     - title: Choose a location
       required:
         - repoUrl
