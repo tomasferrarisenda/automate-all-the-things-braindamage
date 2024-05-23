@@ -205,7 +205,7 @@ spec:
       action: fetch:template
       input:
         url: ./manifests
-        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system }}-${{ parameters.service }}-s3-bucket
+        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system| replace('system:default/', '') }}-${{ parameters.service }}-s3-bucket
         values:
           # system: ${{ parameters.system | lower }}
           system: ${{ parameters.system| replace('system:default/', '') }}
@@ -218,7 +218,7 @@ spec:
       action: fetch:template
       input:
         url: ./catalog-info
-        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system }}-${{ parameters.service }}-s3-bucket/backstage
+        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system| replace('system:default/', '') }}-${{ parameters.service }}-s3-bucket/backstage
         values:
           # system: ${{ parameters.system | lower }}
           # system: ${{ parameters.system | split('/')[1] }}
@@ -226,7 +226,7 @@ spec:
           system: ${{ parameters.system| replace('system:default/', '') }}
           # system: ${{ parameters.system | replace(\"system:.*/\", \"\") }}
           service: ${{ parameters.service }}
-          owner: ${{ parameters.owner | replace(\"group:.*/\", \"\") }}
+          owner: ${{ parameters.system| replace('group:default/', '') }}
           # group: ${{ parameters.group }}
 
     # - id: fetch-argocd-applications
@@ -256,13 +256,13 @@ spec:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
         # title: "Create new S3 bucket: ${{ parameters.system | split('/')[1] }}-${{ parameters.service }}"
-        title: "Create new S3 bucket: ${{ parameters.system | replace(\"system:.*/\", \"\") }}-${{ parameters.service }}"
+        title: "Create new S3 bucket: ${{ parameters.system| replace('system:default/', '') }}-${{ parameters.service }}"
         # branchName: create-s3-bucket-${{ parameters.system | split('/')[1] }}-${{ parameters.service }}
         # branchName: create-s3-bucket-${{ parameters.system }}-${{ parameters.service }}
         # branchName: create-s3-bucket-${{ parameters.system | replace(\"system:.*/\", \"\") }}-${{ parameters.service }}
-        branchName: create-s3-bucket--${{ parameters.service }}
+        branchName: create-s3-bucket-${{ parameters.system| replace('system:default/', '') }}-${{ parameters.service }}
         description: |
-          # New S3 Bucket: ${{ parameters.system | replace(\"system:.*/\", \"\") }}-${{ parameters.service }}
+          # New S3 Bucket: ${{ parameters.system| replace('system:default/', '') }}-${{ parameters.service }}
 
           ${{ parameters.description if parameters.description }}
         targetPath: "" # Leave empty to use the root of the repo or specify if needed
