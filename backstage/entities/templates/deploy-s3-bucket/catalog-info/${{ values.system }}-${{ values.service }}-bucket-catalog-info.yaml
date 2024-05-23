@@ -10,5 +10,6 @@ metadata:
 spec:
   type: s3-bucket
   lifecycle: experimental
-  owner: ${{ values.owner }}
+  # owner: ${{ values.owner }}
+  owner: ${{ values.group }}
   system: ${{ values.system }}

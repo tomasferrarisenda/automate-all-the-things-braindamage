@@ -60,16 +60,25 @@ spec:
           # TESTING
           # ui:autocomplete: probando-esto
 
-        owner:
-          title: Owner
+        # owner:
+        #   title: Owner
+        #   type: string
+        #   description: Owner of the service
+        #   ui:field: OwnerPicker
+        #   ui:options:
+        #     # catalogFilter: # This uses the value "group:default/meme-web-team"
+        #     #   - kind: Group
+        #     #     # spec.type: team # You can make it more specific by adding more filters like this
+        #     allowedKinds: # This is depracated, but it works. Uses the value "meme-web-team"
+        #       - Group
+
+        group:
+          title: Group
           type: string
-          description: Owner of the service
+          description: Group this user belongs to
           ui:field: OwnerPicker
           ui:options:
-            # catalogFilter: # This uses the value "group:default/meme-web-team"
-            #   - kind: Group
-            #     # spec.type: team # You can make it more specific by adding more filters like this
-            allowedKinds: # This is depracated, but it works. Uses the value "meme-web-team"
+            allowedKinds:
               - Group
 
         # ##################################################################################################
@@ -222,7 +231,8 @@ spec:
           # system: ${{ parameters.system | split('/')[1] }}
           # system: ${{ parameters.system }}
           service: ${{ parameters.service }}
-          owner: ${{ parameters.owner }}
+          # owner: ${{ parameters.owner }}
+          group: ${{ parameters.group }}
 
     # - id: fetch-argocd-applications
     #   name: Fetch ArgoCD application manifests
