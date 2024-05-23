@@ -198,6 +198,11 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
+            allowedOrganizations:
+              - tomasferrarisenda
+            allowedRepos:
+              - automate-all-the-things-transcendence
+              - backstage-minikube-lab
 
   steps:
     - id: fetch-manifests
