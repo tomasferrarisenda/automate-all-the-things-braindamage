@@ -40,6 +40,11 @@ spec:
           type: string
           description: Help others understand what this bucket is for
 
+          # TESTING
+          ui:autocomplete: probando-esto
+          minLength: 10
+
+
         owner:
           title: Owner
           type: string
@@ -99,8 +104,8 @@ spec:
         url: ./manifests
         targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system }}-${{ parameters.service }}-s3-bucket
         values:
-          system: ${{ parameters.system }}
-          service: ${{ parameters.service }}
+            system: ${{ parameters.system | split('/')[1] }}
+            service: ${{ parameters.service }}
 
     - id: fetch-catalog-info
       name: Fetch Catalog Info
