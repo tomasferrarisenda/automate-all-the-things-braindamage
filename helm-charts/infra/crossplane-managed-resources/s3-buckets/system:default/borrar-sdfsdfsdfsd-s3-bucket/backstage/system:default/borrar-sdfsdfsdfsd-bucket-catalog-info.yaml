@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: system:default/borrar--bucket
+  description:  bucket for the system:default/borrar system
+  annotations:
+  tags:
+    - aws 
+    - s3
+spec:
+  type: s3-bucket
+  lifecycle: experimental
+  owner: group:default/meme-web-database-subteam
+  system: system:default/borrar
