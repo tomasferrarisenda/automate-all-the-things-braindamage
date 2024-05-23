@@ -141,7 +141,8 @@ spec:
         # branchName: create-s3-bucket-${{ parameters.system }}-${{ parameters.service }}
         branchName: create-s3-bucket--${{ parameters.service }}
         description: |
-          # New S3 Bucket: ${{ parameters.system }}-${{ parameters.service }}
+          New S3 Bucket: ${{ parameters.system }}-${{ parameters.service }}
+          # New S3 Bucket: ${{ parameters.system | split('/')[1] }}-${{ parameters.service }}
 
           ${{ parameters.description if parameters.description }}
         targetPath: "" # Leave empty to use the root of the repo or specify if needed
