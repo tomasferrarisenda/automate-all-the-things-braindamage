@@ -113,7 +113,7 @@ spec:
               - 'Enable cache'
           uniqueItems: true
           ui:widget: checkboxes
-          
+
         # Multi line text input
         multiline:
           title: Text area input
@@ -177,22 +177,6 @@ spec:
               - github.com
 
   steps:
-    # - id: fetch-base-code
-    #   name: Fetch Base Code
-    #   action: fetch:template
-    #   input:
-    #     url: ./base-code
-    #     targetPath: application-code/${{ parameters.system }}/${{ parameters.service }}
-    #     values:
-    #       system: ${{ parameters.system }}
-    #       service: ${{ parameters.service }}
-    #       description: ${{ parameters.description }}
-    #       owner: ${{ parameters.owner }}
-          # tags: ['nodejs', 'example-tag2', 'example-tag3']
-          # tags:
-          #   - hard-coded-tag1
-          #   - hard-coded-tag2
-
     - id: fetch-manifests
       name: Fetch Manifests
       action: fetch:template
