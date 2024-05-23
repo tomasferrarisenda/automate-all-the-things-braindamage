@@ -198,9 +198,9 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
-            allowedOrganizations:
-              - tomasferrarisenda
-              - tferrari92
+            # allowedOrganizations: # This doesn't get displayed as a dropdown like allowedRepos. IDK why
+            #   - tomasferrarisenda
+            #   - tferrari92
             allowedRepos:
               - automate-all-the-things-braindamage
               - automate-all-the-things-transcendence
