@@ -54,12 +54,10 @@ spec:
           type: string
           description: Owner of the service
           ui:field: OwnerPicker
-          ui:options:
-            # allowedKinds: # DEPRACATED
-            #   - Group
+          ui:options:f
             catalogFilter:
               - kind: Group
-                spec.type: team # You can make it more specific by adding more filters like this
+                # spec.type: team # You can make it more specific by adding more filters like this
 
         region:
           title: Region
