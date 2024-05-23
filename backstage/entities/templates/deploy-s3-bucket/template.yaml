@@ -35,9 +35,11 @@ spec:
           description: System the new S3 bucket belongs to.
           ui:field: OwnerPicker
           ui:options:
-            catalogFilter:
-              - kind: System
-            defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
+            # catalogFilter:
+            #   - kind: System
+            # defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
+            allowedKinds:
+              - Group
 
         service:
           title: Name
@@ -64,9 +66,11 @@ spec:
           description: Owner of the service
           ui:field: OwnerPicker
           ui:options:
-            catalogFilter:
-              - kind: Group
-                # spec.type: team # You can make it more specific by adding more filters like this
+            # catalogFilter:
+            #   - kind: Group
+            #     # spec.type: team # You can make it more specific by adding more filters like this
+            allowedKinds:
+              - Group
 
         # ##################################################################################################
         # # The following are examples of different field types you can use. They are here just as reference
