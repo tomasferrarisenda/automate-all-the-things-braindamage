@@ -257,7 +257,8 @@ spec:
         title: "Create new S3 bucket: ${{ parameters.system | replace(\"system:.*/\", \"\") }}-${{ parameters.service }}"
         # branchName: create-s3-bucket-${{ parameters.system | split('/')[1] }}-${{ parameters.service }}
         # branchName: create-s3-bucket-${{ parameters.system }}-${{ parameters.service }}
-        branchName: create-s3-bucket-${{ parameters.system | replace(\"system:.*/\", \"\") }}-${{ parameters.service }}
+        # branchName: create-s3-bucket-${{ parameters.system | replace(\"system:.*/\", \"\") }}-${{ parameters.service }}
+        branchName: create-s3-bucket--${{ parameters.service }}
         description: |
           # New S3 Bucket: ${{ parameters.system | replace(\"system:.*/\", \"\") }}-${{ parameters.service }}
 
