@@ -203,8 +203,8 @@ spec:
         url: ./manifests
         targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system }}-${{ parameters.service }}-s3-bucket
         values:
-          # system: ${{ parameters.system | split('/')[1] }}
-          system: ${{ parameters.system }}
+          system: ${{ parameters.system | split('/')[1] }}
+          # system: ${{ parameters.system }}
           service: ${{ parameters.service }}
 
     - id: fetch-catalog-info
@@ -214,8 +214,8 @@ spec:
         url: ./catalog-info
         targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system }}-${{ parameters.service }}-s3-bucket/backstage
         values:
-          # system: ${{ parameters.system | split('/')[1] }}
-          system: ${{ parameters.system }}
+          system: ${{ parameters.system | split('/')[1] }}
+          # system: ${{ parameters.system }}
           service: ${{ parameters.service }}
 
     # - id: fetch-argocd-applications
