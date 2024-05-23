@@ -28,7 +28,7 @@ spec:
             catalogFilter:
               - kind: System
             defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
-            defaultNamespace: default
+            # defaultNamespace: default
 
         service:
           title: Name
@@ -95,6 +95,7 @@ spec:
         targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system }}-${{ parameters.service }}-s3-bucket
         values:
           system: ${{ parameters.system | split('/')[1] }}
+          # system: ${{ parameters.system }}
           service: ${{ parameters.service }}
 
     - id: fetch-catalog-info
@@ -134,10 +135,11 @@ spec:
       input:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
-        title: "Create new S3 bucket: ${{ parameters.system | split('/')[1] }}-${{ parameters.service }}"
-        # title: "Create new S3 bucket: ${{ parameters.system }}-${{ parameters.service }}"
-        branchName: create-s3-bucket-${{ parameters.system | split('/')[1] }}-${{ parameters.service }}
-        # branchName: create-s3-bucket-${{ parameters.system }}-${{ parameters.service }}
+        # title: "Create new S3 bucket: ${{ parameters.system | split('/')[1] }}-${{ parameters.service }}"
+        title: "Create new S3 bucket: ${{ parameters.system }}-${{ parameters.service }}"
+        # branchName: create-s3-bucket-${{ parameters.system | split('/')[1] }}-${{ parameters.service }}
+        branchName: create-s3-bucket-${{ parameters.system }}-${{ parameters.service }}
+        branchName: create-s3-bucket--${{ parameters.service }}
         description: |
           # New S3 Bucket: ${{ parameters.system }}-${{ parameters.service }}
 
