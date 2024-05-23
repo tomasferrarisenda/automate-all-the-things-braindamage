@@ -28,7 +28,7 @@ spec:
             catalogFilter:
               - kind: System
             defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
-            # defaultNamespace: default
+            defaultNamespace: default
 
         # system:
         #   title: System
@@ -258,7 +258,6 @@ spec:
         # branchName: create-s3-bucket-${{ parameters.system | split('/')[1] }}-${{ parameters.service }}
         # branchName: create-s3-bucket-${{ parameters.system }}-${{ parameters.service }}
         branchName: create-s3-bucket-${{ parameters.system | replace(\"system:.*/\", \"\") }}-${{ parameters.service }}
-        branchName: create-s3-bucket--${{ parameters.service }}
         description: |
           # New S3 Bucket: ${{ parameters.system | replace(\"system:.*/\", \"\") }}-${{ parameters.service }}
 
