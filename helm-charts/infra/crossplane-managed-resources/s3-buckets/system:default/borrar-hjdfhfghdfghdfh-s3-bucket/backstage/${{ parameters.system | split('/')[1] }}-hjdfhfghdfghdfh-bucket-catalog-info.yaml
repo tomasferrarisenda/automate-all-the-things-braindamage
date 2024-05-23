@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: ${{ parameters.system | split('/')[1] }}--bucket
+  description:  bucket for the ${{ parameters.system | split('/')[1] }} system
+  annotations:
+  tags:
+    - aws 
+    - s3
+spec:
+  type: s3-bucket
+  lifecycle: experimental
+  owner: 
+  system: ${{ parameters.system | split('/')[1] }}
