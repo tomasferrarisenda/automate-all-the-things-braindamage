@@ -224,7 +224,7 @@ spec:
           # system: ${{ parameters.system }}
           system: ${{ parameters.system | replace(\"system:.*/\", \"\") }}
           service: ${{ parameters.service }}
-          owner: ${{ parameters.owner }}
+          owner: ${{ parameters.owner | replace(\"group:.*/\", \"\") }}
           # group: ${{ parameters.group }}
 
     # - id: fetch-argocd-applications
