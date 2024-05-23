@@ -200,6 +200,7 @@ spec:
               - github.com
             allowedOrganizations:
               - tomasferrarisenda
+              - tferrari92
             allowedRepos:
               - automate-all-the-things-transcendence
               - backstage-minikube-lab
