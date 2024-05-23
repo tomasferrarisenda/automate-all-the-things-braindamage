@@ -28,7 +28,7 @@ spec:
             catalogFilter:
               - kind: System
             defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
-            defaultNamespace: default
+            # defaultNamespace: default
 
         # system:
         #   title: System
