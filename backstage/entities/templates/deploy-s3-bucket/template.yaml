@@ -208,7 +208,8 @@ spec:
         targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system }}-${{ parameters.service }}-s3-bucket
         values:
           # system: ${{ parameters.system | lower }}
-          system: ${{ parameters.system | replace(\"system:.*/\", \"\") }}
+          system: ${{ parameters.system| replace('system:default/', '') }}
+          # system: ${{ parameters.system | replace(\"system:.*/\", \"\") }}
           # system: ${{ parameters.system }}
           service: ${{ parameters.service }}
 
@@ -222,7 +223,8 @@ spec:
           # system: ${{ parameters.system | lower }}
           # system: ${{ parameters.system | split('/')[1] }}
           # system: ${{ parameters.system }}
-          system: ${{ parameters.system | replace(\"system:.*/\", \"\") }}
+          system: ${{ parameters.system| replace('system:default/', '') }}
+          # system: ${{ parameters.system | replace(\"system:.*/\", \"\") }}
           service: ${{ parameters.service }}
           owner: ${{ parameters.owner | replace(\"group:.*/\", \"\") }}
           # group: ${{ parameters.group }}
