@@ -35,6 +35,8 @@ spec:
           type: string
           description: Unique name of the new S3 bucket.
           ui:field: EntityNamePicker
+          pattern: '^[a-z0-9-]+$' # Only lowercase letters, numbers and hyphens
+
 
         description:
           title: Description
