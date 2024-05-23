@@ -53,7 +53,7 @@ spec:
           type: string
           description: Help others understand what this bucket is for.
           minLength: 10
-          ui:help: 'Hint: Make it descriptive!'
+          ui:help: 'Make it descriptive! At least 10 characters.'
 
           # TESTING
           # ui:autocomplete: probando-esto
