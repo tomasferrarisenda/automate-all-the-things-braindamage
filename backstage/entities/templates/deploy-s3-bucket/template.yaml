@@ -27,8 +27,8 @@ spec:
           ui:options:
             catalogFilter:
               - kind: System
-            defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
-            # defaultNamespace: default
+            # defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
+            defaultNamespace: default
 
         service:
           title: Name
