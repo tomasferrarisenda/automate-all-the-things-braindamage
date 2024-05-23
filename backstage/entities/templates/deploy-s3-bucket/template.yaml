@@ -35,11 +35,11 @@ spec:
           description: System the new S3 bucket belongs to.
           ui:field: OwnerPicker
           ui:options:
-            # catalogFilter:
+            # catalogFilter: # This uses the value "system:default/borrar"
             #   - kind: System
             # defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
             allowedKinds:
-              - Group
+              - System
 
         service:
           title: Name
@@ -66,7 +66,7 @@ spec:
           description: Owner of the service
           ui:field: OwnerPicker
           ui:options:
-            # catalogFilter:
+            # catalogFilter: # This uses the value "group:default/meme-web-frontend-subteam"
             #   - kind: Group
             #     # spec.type: team # You can make it more specific by adding more filters like this
             allowedKinds:
