@@ -36,6 +36,7 @@ spec:
           description: Unique name of the new S3 bucket.
           ui:field: EntityNamePicker
           pattern: '^[a-z0-9-]+$' # Only lowercase letters, numbers and hyphens
+          maxLength: 30
 
 
         description:
@@ -43,10 +44,10 @@ spec:
           type: string
           description: Help others understand what this bucket is for.
           minLength: 10
+          ui:help: 'Hint: Make it descriptive!'
 
           # TESTING
           # ui:autocomplete: probando-esto
-          ui:help: 'Hint: Make it descriptive!'
 
 
         owner:
