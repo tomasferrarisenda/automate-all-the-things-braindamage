@@ -202,8 +202,10 @@ spec:
               - tomasferrarisenda
               - tferrari92
             allowedRepos:
+              - automate-all-the-things-braindamage
               - automate-all-the-things-transcendence
-              - backstage-minikube-lab
+              - automate-all-the-things-nirvana
+              - automate-all-the-things-almighty
 
   steps:
     - id: fetch-manifests
