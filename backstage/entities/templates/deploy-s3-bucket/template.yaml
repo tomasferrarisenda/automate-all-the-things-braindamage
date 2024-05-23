@@ -11,6 +11,8 @@ spec:
   owner: web@example.com
   type: service
   parameters:
+
+    ###############################################################################################################
     # First page
     - title: Provide some simple information
       required:
@@ -28,17 +30,6 @@ spec:
             catalogFilter:
               - kind: System
             defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
-            # defaultNamespace: default
-
-        # system:
-        #   title: System
-        #   type: string
-        #   description: System the new S3 bucket belongs to.
-        #   ui:field: OwnerPicker
-        #   ui:options:
-        #     catalogFilter: # This uses the value "system:default/meme-web"
-        #       - kind: System
-        #     defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
 
         service:
           title: Name
@@ -56,10 +47,6 @@ spec:
           minLength: 10
           ui:help: 'Make it descriptive! At least 10 characters.'
 
-          # TESTING
-          # ui:autocomplete: probando-esto
-
-        # This returns a variable in the format group:<namespace>/<group-or-user-name>. You can extract the entity name using replace when you refer to the parameter like so: ${{ parameters.owner | replace(\"group:.*/\", \"\") }}
         owner:
           title: Owner
           type: string
@@ -70,122 +57,7 @@ spec:
               - kind: Group
                 # spec.type: team # You can make it more specific by adding more filters like this
         
-
-
-        # ##################################################################################################
-        # # The following are examples of different field types you can use. They are here just as reference
-        # ##################################################################################################
-        
-        # ##############################
-        # # Array with custom titles
-        # region:
-        #   title: Region
-        #   type: string
-        #   description: In what AWS region will the EKS cluster be deployed.
-        #   default: us-east-1
-        #   enum:
-        #     - us-east-1
-        #     - us-east-2
-        #     - us-west-1
-        #     - us-west-2
-        #   enumNames:
-        #     - 'Virginia (us-east-1)'
-        #     - 'Ohio (us-east-2)'
-        #     - 'California (us-west-1)'
-        #     - 'Oregon (us-west-2)'
-
-        # ##############################
-        # # Multiple choice list
-        # multichoice:
-        #   title: Select environments
-        #   type: array
-        #   items:
-        #     type: string
-        #     enum:
-        #       - production
-        #       - staging
-        #       - development
-        #   uniqueItems: true
-        #   ui:widget: checkboxes
-
-        # ##############################
-        # # Boolean
-        # boolean:
-        #   title: Checkbox boolean
-        #   type: boolean
-
-        # ##############################
-        # # Boolean with radio
-        # flag:
-        #   title: Yes or No options
-        #   type: boolean
-        #   ui:widget: radio
-
-        # ##############################
-        # # Boolean with multiple optiones
-        # name:
-        #   title: Select features
-        #   type: array
-        #   items:
-        #     type: boolean
-        #     enum:
-        #       - 'Enable scraping'
-        #       - 'Enable HPA'
-        #       - 'Enable cache'
-        #   uniqueItems: true
-        #   ui:widget: checkboxes
-
-        # ##############################
-        # # Multi line text input
-        # multiline:
-        #   title: Text area input
-        #   type: string
-        #   description: Insert your multi line string
-        #   ui:widget: textarea
-        #   ui:options:
-        #     rows: 10
-        #   ui:help: 'Hint: Make it strong!'
-        #   ui:placeholder: |
-        #     apiVersion: backstage.io/v1alpha1
-        #       kind: Component
-        #       metadata:
-        #         name: backstage
-        #       spec:
-        #         type: library
-        #         owner: CNCF
-        #         lifecycle: experimental
-
-        # ##############################
-        # # Array with another types
-        # arrayObjects:
-        #   title: Array with custom objects
-        #   type: array
-        #   minItems: 0
-        #   ui:options:
-        #     addable: true
-        #     orderable: true
-        #     removable: true
-        #   items:
-        #     type: object
-        #     properties:
-        #       array:
-        #         title: Array string with default value
-        #         type: string
-        #         default: value3
-        #         enum:
-        #           - value1
-        #           - value2
-        #           - value3
-        #       flag:
-        #         title: Boolean flag
-        #         type: boolean
-        #         ui:widget: radio
-        #       someInput:
-        #         title: Simple text input
-        #         type: string
-
-
-
+    ###############################################################################################################
     # Second page
     - title: Choose a location
       required:
@@ -198,7 +70,7 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
-            # allowedOrganizations: # This doesn't get displayed as a dropdown like allowedRepos. IDK why
+            # allowedOrganizations: # This doesn't get displayed as a dropdown list like allowedRepos does, IDK why.
             #   - tomasferrarisenda
             #   - tferrari92
             allowedRepos:
@@ -215,10 +87,7 @@ spec:
         url: ./manifests
         targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}-s3-bucket
         values:
-          # system: ${{ parameters.system | lower }}
           system: ${{ parameters.system | replace('system:default/', '') }}
-          # system: ${{ parameters.system | replace(\"system:.*/\", \"\") }}
-          # system: ${{ parameters.system }}
           service: ${{ parameters.service }}
 
     - id: fetch-catalog-info
@@ -228,34 +97,9 @@ spec:
         url: ./catalog-info
         targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}-s3-bucket/backstage
         values:
-          # system: ${{ parameters.system | lower }}
-          # system: ${{ parameters.system | split('/')[1] }}
-          # system: ${{ parameters.system }}
           system: ${{ parameters.system | replace('system:default/', '') }}
-          # system: ${{ parameters.system | replace(\"system:.*/\", \"\") }}
           service: ${{ parameters.service }}
           owner: ${{ parameters.owner | replace('group:default/', '') }}
-          # group: ${{ parameters.group }}
-
-    # - id: fetch-argocd-applications
-    #   name: Fetch ArgoCD application manifests
-    #   action: fetch:template
-    #   input:
-    #     url: ./argocd-applications
-    #     targetPath: argo-cd/applications/systems/${{ parameters.system }}/${{ parameters.service }}
-    #     values:
-    #       system: ${{ parameters.system }}
-    #       service: ${{ parameters.service }}
-
-    # - id: fetch-github-workflow
-    #   name: Fetch GitHub Workflow
-    #   action: fetch:template
-    #   input:
-    #     url: ./github-workflow
-    #     targetPath: .github/workflows
-    #     values:
-    #       system: ${{ parameters.system }}
-    #       service: ${{ parameters.service }}
 
     - id: publish
       name: Publish
@@ -263,11 +107,7 @@ spec:
       input:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
-        # title: "Create new S3 bucket: ${{ parameters.system | split('/')[1] }}-${{ parameters.service }}"
         title: "Create new S3 bucket: ${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}"
-        # branchName: create-s3-bucket-${{ parameters.system | split('/')[1] }}-${{ parameters.service }}
-        # branchName: create-s3-bucket-${{ parameters.system }}-${{ parameters.service }}
-        # branchName: create-s3-bucket-${{ parameters.system | replace(\"system:.*/\", \"\") }}-${{ parameters.service }}
         branchName: create-s3-bucket-${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}
         description: |
           # New S3 Bucket: ${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}
@@ -275,10 +115,10 @@ spec:
           ${{ parameters.description if parameters.description }}
         targetPath: "" # Leave empty to use the root of the repo or specify if needed
         # paths: 
-          # - application-code/${{ parameters.system }}/${{ parameters.service }}
-          # - helm-charts/systems/${{ parameters.system }}/${{parameters.service}}
-          # - argo-cd/applications/systems/${{ parameters.system }}/${{ parameters.service }}
-          # - .github/workflows
+        #   - application-code/${{ parameters.system }}/${{ parameters.service }}
+        #   - helm-charts/systems/${{ parameters.system }}/${{parameters.service}}
+        #   - argo-cd/applications/systems/${{ parameters.system }}/${{ parameters.service }}
+        #   - .github/workflows
 
 
   output:
