@@ -9,7 +9,11 @@ meme-web (used to be my-app) helm charts now exists within [/helm-charts/systems
 So my-app is a sytem whinch includes my-app frontend  and my-app-backend but we could also have your-app system which might include any number of services.
 
 ## Flagger limitation
-Backstage Kubernetes plugin doesnt show primary deployments because we can't tag the primary dpls through the FLagger canary
+Backstage Kubernetes plugin can't display information from the primary deployments pods because we can't assign labels to the primary deploymeny through the Fagger canary. Backstage needs the ```backstage.io/kubernetes-id``` to recognize and display the resource in the UI.
+
+We would require [this functionality](https://docs.flagger.app/usage/how-it-works#canary-service) but for deployments instead of services.
+
+See https://github.com/fluxcd/flagger/issues/1115#issuecomment-1631266845.
 
 
 ## ui:options Examples
