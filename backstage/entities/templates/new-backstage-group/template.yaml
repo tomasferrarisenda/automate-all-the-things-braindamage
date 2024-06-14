@@ -93,8 +93,7 @@ spec:
           name: ${{ parameters.name }}
           description: ${{ parameters.description }}
           type: ${{ parameters.type }}
-          parent: ${{ parameters.parent }}
-          # parent: ${{ parameters.parent | replace('group:default/', '') }}
+          parent: ${{ parameters.parent | replace('group:default/', '') }}
           email: ${{ parameters.email }}
 
     - id: publish
