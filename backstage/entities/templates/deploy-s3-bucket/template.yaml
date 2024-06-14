@@ -17,7 +17,7 @@ spec:
     - title: Provide some simple information
       required:
         - system
-        - service
+        - name
         - description
         - owner
       properties:
@@ -31,7 +31,7 @@ spec:
               - kind: System
             defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
 
-        service:
+        name:
           title: Name
           type: string
           description: Unique name of the new S3 bucket.
@@ -85,20 +85,20 @@ spec:
       action: fetch:template
       input:
         url: ./manifests
-        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}-s3-bucket
+        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system | replace('system:default/', '') }}-${{ parameters.name }}-s3-bucket
         values:
           system: ${{ parameters.system | replace('system:default/', '') }}
-          service: ${{ parameters.service }}
+          name: ${{ parameters.name }}
 
     - id: fetch-catalog-info
       name: Fetch Catalog Info
       action: fetch:template
       input:
         url: ./catalog-info
-        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}-s3-bucket/backstage
+        targetPath: helm-charts/infra/crossplane-managed-resources/s3-buckets/${{ parameters.system | replace('system:default/', '') }}-${{ parameters.name }}-s3-bucket/backstage
         values:
           system: ${{ parameters.system | replace('system:default/', '') }}
-          service: ${{ parameters.service }}
+          name: ${{ parameters.name }}
           owner: ${{ parameters.owner | replace('group:default/', '') }}
 
     - id: publish
@@ -107,17 +107,17 @@ spec:
       input:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
-        title: "Create new S3 bucket: ${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}"
-        branchName: create-s3-bucket-${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}
+        title: "Create new S3 bucket: ${{ parameters.system | replace('system:default/', '') }}-${{ parameters.name }}"
+        branchName: create-s3-bucket-${{ parameters.system | replace('system:default/', '') }}-${{ parameters.name }}
         description: |
-          # New S3 Bucket: ${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}
+          # New S3 Bucket: ${{ parameters.system | replace('system:default/', '') }}-${{ parameters.name }}
 
           ${{ parameters.description if parameters.description }}
         targetPath: "" # Leave empty to use the root of the repo or specify if needed
         # paths: 
-        #   - application-code/${{ parameters.system }}/${{ parameters.service }}
-        #   - helm-charts/systems/${{ parameters.system }}/${{parameters.service}}
-        #   - argo-cd/applications/systems/${{ parameters.system }}/${{ parameters.service }}
+        #   - application-code/${{ parameters.system }}/${{ parameters.name }}
+        #   - helm-charts/systems/${{ parameters.system }}/${{parameters.name}}
+        #   - argo-cd/applications/systems/${{ parameters.system }}/${{ parameters.name }}
         #   - .github/workflows
 
 
