@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: borrar-perro-bucket
+  description: perro bucket for the borrar system
+  annotations:
+  tags:
+    - aws 
+    - s3
+spec:
+  type: s3-bucket
+  lifecycle: experimental
+  owner: meme-web-frontend-subteam
+  system: borrar
