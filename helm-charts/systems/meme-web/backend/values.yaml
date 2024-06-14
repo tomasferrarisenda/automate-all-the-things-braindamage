@@ -14,8 +14,8 @@ deployment:
   image:
     repository: tferrari92/meme-web-backend # This value was modified by the initial-setup python script
 
-vpcId: vpc-0a1be374bcf1b22ba
-subnetId: subnet-0795ca4e25078b188
+vpcId: vpc-06fde70cc0a4e4298
+subnetId: subnet-08f245ee38a378300
 # securityGroupId: sg-0b7bab67c05dab563
 
 # This doesn't work in objects of kind Resource. It only works in objects of kind Component.
