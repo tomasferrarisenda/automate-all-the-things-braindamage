@@ -1,0 +1,33 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Subnet
+metadata:
+  name: system:default/borrar-gato-private-subnet-b
+spec:
+  forProvider:
+    availabilityZone: us-west-1b
+    cidrBlock: 10.0.64.0/19
+    region: us-west-1
+    vpcIdRef: 
+      name: system:default/borrar-gato-vpc
+    tags:
+      Name: system:default/borrar-gato-private-subnet-b
+      kubernetes.io/role/internal-elb: "1" # Required for EKS
+      kubernetes.io/cluster/${var.project}-cluster: "owned" # Required for EKS
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: RouteTableAssociation
+metadata:
+  name: system:default/borrar-gato-rta-private-b
+spec:
+  forProvider:
+    region: us-west-1
+    subnetIdRef:
+      name: system:default/borrar-gato-private-subnet-b
+    routeTableIdRef:
+      name: system:default/borrar-gato-route-table-private-b
+    tags:
+      Name: system:default/borrar-gato-rta-private-b
+  providerConfigRef:
+    name: aws
