@@ -17,7 +17,7 @@ spec:
     - title: Provide some simple information
       required:
         - system
-        - service
+        - name
         - region
         - description
         - owner
@@ -32,7 +32,7 @@ spec:
               - kind: System
             defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
 
-        service:
+        name:
           title: Name
           type: string
           description: Unique name of the new EKS cluster.
@@ -102,10 +102,10 @@ spec:
       action: fetch:template
       input:
         url: ./manifests
-        targetPath: helm-charts/infra/crossplane-managed-resources/eks-clusters/${{ parameters.system }}-${{ parameters.service }}-eks-cluster
+        targetPath: helm-charts/infra/crossplane-managed-resources/eks-clusters/${{ parameters.system }}-${{ parameters.name }}-eks-cluster
         values:
           system: ${{ parameters.system }}
-          service: ${{ parameters.service }}
+          name: ${{ parameters.name }}
           region: ${{ parameters.region }}
 
     - id: fetch-catalog-info
@@ -113,10 +113,10 @@ spec:
       action: fetch:template
       input:
         url: ./catalog-info
-        targetPath: helm-charts/infra/crossplane-managed-resources/eks-clusters/${{ parameters.system }}-${{ parameters.service }}-eks-cluster/backstage
+        targetPath: helm-charts/infra/crossplane-managed-resources/eks-clusters/${{ parameters.system }}-${{ parameters.name }}-eks-cluster/backstage
         values:
           system: ${{ parameters.system | replace('system:default/', '') }}
-          service: ${{ parameters.service }}
+          name: ${{ parameters.name }}
           owner: ${{ parameters.owner | replace('group:default/', '') }}
 
     - id: publish
@@ -125,17 +125,17 @@ spec:
       input:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
-        title: "Create new EKS cluster: ${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}"
-        branchName: create-eks-cluster-${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}
+        title: "Create new EKS cluster: ${{ parameters.system | replace('system:default/', '') }}-${{ parameters.name }}"
+        branchName: create-eks-cluster-${{ parameters.system | replace('system:default/', '') }}-${{ parameters.name }}
         description: |
-          # New EKS Cluster: ${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}
+          # New EKS Cluster: ${{ parameters.system | replace('system:default/', '') }}-${{ parameters.name }}
 
           ${{ parameters.description if parameters.description }}
         targetPath: "" # Leave empty to use the root of the repo or specify if needed
         # paths: 
-        #   - application-code/${{ parameters.system }}/${{ parameters.service }}
-        #   - helm-charts/systems/${{ parameters.system }}/${{parameters.service}}
-        #   - argo-cd/applications/systems/${{ parameters.system }}/${{ parameters.service }}
+        #   - application-code/${{ parameters.system }}/${{ parameters.name }}
+        #   - helm-charts/systems/${{ parameters.system }}/${{parameters.name}}
+        #   - argo-cd/applications/systems/${{ parameters.system }}/${{ parameters.name }}
         #   - .github/workflows
 
 

@@ -1,7 +1,7 @@
 apiVersion: ec2.aws.upbound.io/v1beta1
 kind: VPC
 metadata:
-  name: ${{ values.system}}-${{ values.service }}-vpc
+  name: ${{ values.system}}-${{ values.name }}-vpc
 spec:
   forProvider:
     cidrBlock: 10.0.0.0/16
@@ -9,7 +9,7 @@ spec:
     enableDnsSupport: true
     region: ${{ values.region }}
     tags:
-      Name: ${{ values.system}}-${{ values.service }}-vpc
+      Name: ${{ values.system}}-${{ values.name }}-vpc
   providerConfigRef:
     name: aws
 

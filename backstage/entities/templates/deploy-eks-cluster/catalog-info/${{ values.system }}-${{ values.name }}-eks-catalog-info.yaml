@@ -1,8 +1,8 @@
 apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
-  name: ${{ values.system }}-${{ values.service }}-eks-cluster
-  description: ${{ values.service }} eks cluster for the ${{ values.system }} system
+  name: ${{ values.system }}-${{ values.name }}-eks-cluster
+  description: ${{ values.name }} eks cluster for the ${{ values.system }} system
   tags:
     - aws 
     - eks
