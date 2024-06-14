@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
-  name: ${{ values.name | lower }}-${{ values.lastName | lower }}
+  name: ${{ values.name }}-${{ values.lastName }}
 spec:
   profile:
     displayName: "${{ values.name }} ${{ values.lastName }}"	
