@@ -3,7 +3,6 @@ kind: Resource
 metadata:
   name: ${{ values.system }}-${{ values.name }}-bucket
   description: ${{ values.name }} bucket for the ${{ values.system }} system
-  annotations:
   tags:
     - aws 
     - s3
