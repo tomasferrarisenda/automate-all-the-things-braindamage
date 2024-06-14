@@ -85,7 +85,7 @@ spec:
           name: ${{ parameters.name | lower }}
           lastName: ${{ parameters.lastName | lower }}
           email: ${{ parameters.email }}
-          group: ${{ parameters.group }}
+          group: ${{ parameters.group | replace('group:default/', '') }}
           pictureURL: ${{ parameters.pictureURL }}
 
     - id: publish
