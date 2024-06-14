@@ -1,0 +1,25 @@
+apiVersion: eks.aws.upbound.io/v1beta1
+kind: NodeGroup
+metadata:
+  name: borrar-gato-eks-ng
+spec:
+  forProvider:
+    clusterNameRef:
+      name: borrar-gato-eks-cluster
+    nodeRoleArnRef:
+      name: borrar-gato-eks-ng-role
+    region: us-west-1
+    scalingConfig:
+      - desiredSize: 1
+        maxSize: 1
+        minSize: 1
+    subnetIdRefs:
+      - name: borrar-gato-private-subnet-b
+      - name: borrar-gato-private-subnet-c
+    instanceTypes:
+      - t3.nano
+    diskSize: 5
+    tags:
+      Name: borrar-gato-eks-ng
+  providerConfigRef:
+    name: aws

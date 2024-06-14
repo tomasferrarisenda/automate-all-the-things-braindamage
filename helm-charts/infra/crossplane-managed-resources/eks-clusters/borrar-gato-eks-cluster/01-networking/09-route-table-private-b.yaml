@@ -1,0 +1,30 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: RouteTable
+metadata:
+  name: borrar-gato-route-table-private-b
+spec:
+  forProvider:
+    region: us-west-1
+    vpcIdRef: 
+      name: borrar-gato-vpc
+    tags:
+      Name: borrar-gato-route-table-private-b
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Route
+metadata:
+  name: borrar-gato-route-private-b
+spec:
+  forProvider:
+    destinationCidrBlock: 0.0.0.0/0
+    natGatewayIdRef:
+      name: borrar-gato-nat-gw-b
+    region: us-west-1
+    routeTableIdRef:
+      name: borrar-gato-route-table-private-b
+    tags:
+      Name: borrar-gato-route-private-b
+  providerConfigRef:
+    name: aws
