@@ -97,22 +97,6 @@ spec:
               - automate-all-the-things-almighty
 
   steps:
-    # - id: fetch-base-code
-    #   name: Fetch Base Code
-    #   action: fetch:template
-    #   input:
-    #     url: ./base-code
-    #     targetPath: application-code/${{ parameters.system }}/${{ parameters.service }}
-    #     values:
-    #       system: ${{ parameters.system }}
-    #       service: ${{ parameters.service }}
-    #       description: ${{ parameters.description }}
-    #       owner: ${{ parameters.owner }}
-          # tags: ['nodejs', 'example-tag2', 'example-tag3']
-          # tags:
-          #   - hard-coded-tag1
-          #   - hard-coded-tag2
-
     - id: fetch-manifests
       name: Fetch Manifests
       action: fetch:template
@@ -131,19 +115,9 @@ spec:
         url: ./catalog-info
         targetPath: helm-charts/infra/crossplane-managed-resources/eks-clusters/${{ parameters.system }}-${{ parameters.service }}-eks-cluster/backstage
         values:
-          system: ${{ parameters.system }}
+          system: ${{ parameters.system | replace('system:default/', '') }}
           service: ${{ parameters.service }}
-          region: ${{ parameters.region }}
-
-    # - id: fetch-github-workflow
-    #   name: Fetch GitHub Workflow
-    #   action: fetch:template
-    #   input:
-    #     url: ./github-workflow
-    #     targetPath: .github/workflows
-    #     values:
-    #       system: ${{ parameters.system }}
-    #       service: ${{ parameters.service }}
+          owner: ${{ parameters.owner | replace('group:default/', '') }}
 
     - id: publish
       name: Publish
@@ -151,10 +125,10 @@ spec:
       input:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
-        title: "Create new EKS cluster: ${{ parameters.system }}-${{ parameters.service }}"
-        branchName: create-eks-cluster-${{ parameters.system }}-${{ parameters.service }}
+        title: "Create new EKS cluster: ${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}"
+        branchName: create-eks-cluster-${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}
         description: |
-          # New EKS Cluster: ${{ parameters.system }}-${{ parameters.service }}
+          # New EKS Cluster: ${{ parameters.system | replace('system:default/', '') }}-${{ parameters.service }}
 
           ${{ parameters.description if parameters.description }}
         targetPath: "" # Leave empty to use the root of the repo or specify if needed
