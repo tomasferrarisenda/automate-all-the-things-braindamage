@@ -65,7 +65,7 @@ spec:
           ui:field: RepoUrlPicker
           ui:options:
             allowedHosts:
-              - github.com'
+              - github.com
             # allowedOrganizations: # This doesn't get displayed as a dropdown list like allowedRepos does, IDK why.
             #   - tomasferrarisenda
             #   - tferrari92
