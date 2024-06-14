@@ -102,9 +102,9 @@ spec:
       action: fetch:template
       input:
         url: ./manifests
-        targetPath: helm-charts/infra/crossplane-managed-resources/eks-clusters/${{ parameters.system }}-${{ parameters.name }}-eks-cluster
+        targetPath: helm-charts/infra/crossplane-managed-resources/eks-clusters/${{ parameters.system | replace('system:default/', '') }}-${{ parameters.name }}-eks-cluster
         values:
-          system: ${{ parameters.system }}
+          system: ${{ parameters.system | replace('system:default/', '') }}
           name: ${{ parameters.name }}
           region: ${{ parameters.region }}
 
@@ -113,7 +113,7 @@ spec:
       action: fetch:template
       input:
         url: ./catalog-info
-        targetPath: helm-charts/infra/crossplane-managed-resources/eks-clusters/${{ parameters.system }}-${{ parameters.name }}-eks-cluster/backstage
+        targetPath: helm-charts/infra/crossplane-managed-resources/eks-clusters/${{ parameters.system | replace('system:default/', '') }}-${{ parameters.name }}-eks-cluster/backstage
         values:
           system: ${{ parameters.system | replace('system:default/', '') }}
           name: ${{ parameters.name }}
