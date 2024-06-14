@@ -50,7 +50,7 @@ spec:
         owner:
           title: Owner
           type: string
-          description: Owner of the service
+          description: Owner of the resource
           ui:field: OwnerPicker
           ui:options:
             catalogFilter: # This uses the value "group:default/meme-web-team"

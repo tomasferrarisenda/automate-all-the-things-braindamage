@@ -11,6 +11,9 @@ spec:
   owner: web@example.com
   type: service
   parameters:
+
+    ###############################################################################################################
+    # First page
     - title: Provide some simple information
       required:
         - system
@@ -19,23 +22,6 @@ spec:
         - description
         - owner
       properties:
-        # system:
-          # title: System
-          # type: string
-          # description: Name of the system the new EKS cluster belongs to. Example -> 'my-app'
-          # ui:field: EntityNamePicker
-          # ui:autofocus: true
-
-        # system:
-        #   title: System
-        #   type: string
-        #   description: System the new EKS cluster belongs to.
-        #   ui:field: EntityPicker
-        #   ui:options:
-        #     catalogFilter:
-        #       kind: System
-        #     defaultKind: System
-
         system:
           title: System
           type: string
@@ -44,52 +30,52 @@ spec:
           ui:options:
             catalogFilter:
               - kind: System
+            defaultKind: System # Necessary for options to show as "system-name" and not "default/system-name"
 
         service:
           title: Name
           type: string
           description: Unique name of the new EKS cluster.
           ui:field: EntityNamePicker
+          pattern: '^[a-z0-9-]+$' # Only lowercase letters, numbers and hyphens
+          maxLength: 30
+          ui:help: 'Use only lowercase letters, numbers and hyphens. Max length: 30 characters.'  
 
         region:
           title: Region
           type: string
           description: In what AWS region will the EKS cluster be deployed.
+          default: us-east-1
           enum:
             - us-east-1
             - us-east-2
             - us-west-1
             - us-west-2
-        # region:
-        #   title: Region
-        #   type: string
-        #   description: In what AWS region will the EKS cluster be deployed.
-        #   ui:field: EntityNamePicker
+          enumNames:
+            - 'Virginia (us-east-1)'
+            - 'Ohio (us-east-2)'
+            - 'California (us-west-1)'
+            - 'Oregon (us-west-2)'
+
         description:
           title: Description
           type: string
-          description: Help others understand what this cluster is for
+          description: Help others understand what this cluster is for.
+          minLength: 10
+          ui:help: 'Make it descriptive! At least 10 characters.'
+
         owner:
           title: Owner
           type: string
-          description: Owner of the service
+          description: Owner of the resource
           ui:field: OwnerPicker
           ui:options:
-            # allowedKinds: # DEPRACATED
-            #   - Group
-            catalogFilter:
+            catalogFilter: # This uses the value "group:default/meme-web-team"
               - kind: Group
-        # tags:
-        #   type: array
-        #   title: Tags
-        #   description: Tags to categorize the service
-        #   items:
-        #     type: string
-        # targetPath:
-        #   title: Target Path in repo
-        #   type: string
-        #   description: Name of the directory to create in the repository. Don't include the root slash.
-
+                # spec.type: team # You can make it more specific by adding more filters like this
+        
+    ###############################################################################################################
+    # Second page
     - title: Choose a location
       required:
         - repoUrl
@@ -101,7 +87,14 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
-
+            # allowedOrganizations: # This doesn't get displayed as a dropdown list like allowedRepos does, IDK why.
+            #   - tomasferrarisenda
+            #   - tferrari92
+            allowedRepos:
+              - automate-all-the-things-braindamage
+              - automate-all-the-things-transcendence
+              - automate-all-the-things-nirvana
+              - automate-all-the-things-almighty
 
   steps:
     # - id: fetch-base-code
