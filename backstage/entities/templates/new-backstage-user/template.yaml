@@ -97,7 +97,7 @@ spec:
         title: "Create new user: ${{ parameters.name | lower }} ${{ parameters.lastName | lower }}"
         branchName: create-user-${{parameters.name | lower }}-${{parameters.lastName | lower }}
         description: |
-          # New user: ${{ parameters.name | lower }} ${{parameters.lastName | lower }}
+          # New user: ${{ parameters.name }} ${{ parameters.lastName }}
         targetPath: backstage/entities/users
 
         
