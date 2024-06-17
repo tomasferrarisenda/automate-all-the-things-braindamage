@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
   name: prueba-team
-  title: 
+  title: prueba-team
   description: fgdfghdfgsdfg
 spec:
   type: team

@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
   name: ${{ values.name }}
-  title: ${{ values.title }}
+  title: ${{ values.name }}
   description: ${{ values.description }}
 spec:
   type: ${{ values.type }}
