@@ -1,0 +1,4 @@
+apiVersion: v2
+name: prueba-frontend
+description: A Helm chart for deploying prueba-frontend
+version: 1.0
