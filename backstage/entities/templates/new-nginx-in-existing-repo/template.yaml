@@ -23,7 +23,7 @@ spec:
         system:
           title: System
           type: string
-          description: System the new S3 bucket belongs to.
+          description: System the new service belongs to.
           ui:field: EntityPicker
           ui:options:
             catalogFilter:
