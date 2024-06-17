@@ -289,18 +289,13 @@ These will be required for our workflows to connect to your AWS account.
 
 # CROSSPLANE
 
-Crossplane is awesome. If you haven't heard anything about Crossplane go watch [this series](https://www.youtube.com/playlist?list=PLyicRj904Z99i8U5JaNW5X3AyBvfQz-16) by one of the best DevOps youtubers and one of the minds behind Crossplane. For the purpose of this edition, watching only part one and two should be enough.
+Crossplane is awesome. If you haven't heard anything about Crossplane go watch [this series](https://www.youtube.com/playlist?list=PLyicRj904Z99i8U5JaNW5X3AyBvfQz-16) by one of the best DevOps YouTubers and one of the minds behind Crossplane. For the purpose of this edition, watching only part one and two should be enough.
 
 Basically, Crossplane will allow us to manage AWS resource the way we manage pods... the GitOps way. 
 
-Crossplane can get really complex, and I want to start with the basics. So on this edition we will only demo Crossplane. The way we'll implement it here is NOT the way you would actuallty use Crossplane in real life. The true power of Crossplane lies behind Crossplane Compositions, but that's more advaded concept so we'll leave it for next edition.
+Crossplane can get really complex, and I want to start with the basics. So on this edition we will only demo Crossplane. The way we'll implement it here is NOT the way you would actuallty use Crossplane in real life. The true power of Crossplane lies behind Crossplane Compositions, but that's more advanced concept so we'll leave it for next edition.
 
-<!-- If you want to understand what we are deploying a little better, [this video](https://youtu.be/mpfqPXfX6mg?si=mMVgEmT8UEC5o-xA) from Anton Putra should also be very helpful. -->
-Porq seguimos usando tf para algunas
-we might go full crossplane in the future.. maybe, who knows?
-not everything can be automated with Crossplane yet; some steps are manual, and if you need 1-click deployment, Terraform is the better still choice.
-
-HABLAR DE COMO PODEMOS ESTANDARIZAR TODOS LOS APRAMETROS PARA CUALQUIER TIPO DE CLUSTER, COMO POR EJEMPLO Q SUBENT USA,
+You will find new Backstage templates which will let you deploy [S3 buckets](#--new-s3-bucket) and [EKS clusters](#--new-eks-cluster) using Crossplane. [This video](https://youtu.be/mpfqPXfX6mg?si=mMVgEmT8UEC5o-xA) by Anton Putra will help you understand how the EKS cluster manifests are put together.
 
 There's further info in the [crossplane notes](/docs/crossplane-notes.md) that you might find useful.
 
@@ -312,7 +307,7 @@ We are not commiting 100% to Crossplane fot the moment. We'll still be using Ter
 
 Non-Foundational resources will be, for example, the ElastiCache DBs that our meme-backend services will use. These will no longer be deployed with Terrafom, but they will be included as Kubernetes manifests inside of the [meme-web-backed helm chart](/helm-charts/systems/meme-web/backend/templates/crossplane/). 
 
-We alao conaider Non-Foundational the [S3 buckets](#--new-s3-bucket) or [EKS clusters](#--new-eks-cluster) you'll be able to deploy with the new [Backstage templates](#templates-ive-created).
+We also consider Non-Foundational the [S3 buckets](#--new-s3-bucket) and [EKS clusters](#--new-eks-cluster) you'll be able to deploy with the new [Backstage templates](#templates-ive-created).
 
 <br/>
 <br/>
