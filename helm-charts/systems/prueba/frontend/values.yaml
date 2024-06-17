@@ -1,0 +1,12 @@
+system: prueba 
+
+service: frontend 
+
+deployment:
+  image:
+    repository: tferrari92/prueba-frontend
+  labels:
+    system: prueba
+    service: frontend
+    backstage.io/kubernetes-id: prueba-frontend
+    istio: monitor
