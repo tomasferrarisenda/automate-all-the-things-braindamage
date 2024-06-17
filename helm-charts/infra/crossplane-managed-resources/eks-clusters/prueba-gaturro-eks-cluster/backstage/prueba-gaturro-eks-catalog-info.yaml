@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: prueba-gaturro-eks-cluster
+  description: gaturro eks cluster for the prueba system
+  tags:
+    - aws 
+    - eks
+spec:
+  type: kubernetes-cluster
+  lifecycle: experimental
+  owner: prueba-team
+  system: prueba

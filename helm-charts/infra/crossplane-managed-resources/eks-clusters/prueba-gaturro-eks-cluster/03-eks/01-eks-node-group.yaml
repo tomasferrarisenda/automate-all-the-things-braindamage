@@ -1,0 +1,25 @@
+apiVersion: eks.aws.upbound.io/v1beta1
+kind: NodeGroup
+metadata:
+  name: prueba-gaturro-eks-ng
+spec:
+  forProvider:
+    clusterNameRef:
+      name: prueba-gaturro-eks-cluster
+    nodeRoleArnRef:
+      name: prueba-gaturro-eks-ng-role
+    region: us-west-1
+    scalingConfig:
+      - desiredSize: 1
+        maxSize: 1
+        minSize: 1
+    subnetIdRefs:
+      - name: prueba-gaturro-private-subnet-b
+      - name: prueba-gaturro-private-subnet-c
+    instanceTypes:
+      - t3.nano
+    diskSize: 5
+    tags:
+      Name: prueba-gaturro-eks-ng
+  providerConfigRef:
+    name: aws

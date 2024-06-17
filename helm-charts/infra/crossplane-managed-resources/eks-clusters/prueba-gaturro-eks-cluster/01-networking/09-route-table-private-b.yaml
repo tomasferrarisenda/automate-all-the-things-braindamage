@@ -1,0 +1,30 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: RouteTable
+metadata:
+  name: prueba-gaturro-route-table-private-b
+spec:
+  forProvider:
+    region: us-west-1
+    vpcIdRef: 
+      name: prueba-gaturro-vpc
+    tags:
+      Name: prueba-gaturro-route-table-private-b
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Route
+metadata:
+  name: prueba-gaturro-route-private-b
+spec:
+  forProvider:
+    destinationCidrBlock: 0.0.0.0/0
+    natGatewayIdRef:
+      name: prueba-gaturro-nat-gw-b
+    region: us-west-1
+    routeTableIdRef:
+      name: prueba-gaturro-route-table-private-b
+    tags:
+      Name: prueba-gaturro-route-private-b
+  providerConfigRef:
+    name: aws
