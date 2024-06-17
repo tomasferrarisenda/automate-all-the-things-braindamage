@@ -82,8 +82,8 @@ spec:
       input:
         url: ./skeleton
         values:
-          name: ${{ parameters.name | lower }}
-          lastName: ${{ parameters.lastName | lower }}
+          name: ${{ parameters.name }}
+          lastName: ${{ parameters.lastName }}
           email: ${{ parameters.email }}
           group: ${{ parameters.group | replace('group:default/', '') }}
           pictureURL: ${{ parameters.pictureURL }}
