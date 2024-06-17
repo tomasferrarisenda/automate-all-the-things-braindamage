@@ -94,7 +94,7 @@ spec:
       input:
         allowedHosts: ['github.com']
         repoUrl: ${{ parameters.repoUrl }}
-        title: "Create new user: ${{ parameters.name | lower }} ${{ parameters.lastName | lower }}"
+        title: "Create new user: ${{ parameters.name }} ${{ parameters.lastName }}"
         branchName: create-user-${{parameters.name | lower }}-${{parameters.lastName | lower }}
         description: |
           # New user: ${{ parameters.name }} ${{ parameters.lastName }}
