@@ -1,0 +1,14 @@
+environment: dev
+    
+deployment:
+  image:  
+    tag: 
+  replicas: 1
+  labels:
+    full-name: prueba-frontend-2-dev
+
+configmap: 
+  nginxConf: |-
+      location /api {
+          proxy_pass http://prueba-backend-dev-service:3000/;
+      }
