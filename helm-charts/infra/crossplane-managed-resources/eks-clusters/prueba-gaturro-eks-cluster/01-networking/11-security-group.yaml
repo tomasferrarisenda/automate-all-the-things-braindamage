@@ -1,0 +1,55 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroup
+metadata:
+  name: prueba-gaturro-securitygroup
+spec:
+  forProvider:
+    description: Allow TLS inbound traffic
+    name: prueba-gaturro-securitygroup
+    region: us-west-1
+    vpcIdRef: 
+      name: prueba-gaturro-vpc
+    tags:
+      Name: prueba-gaturro-securitygroup
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroupRule
+metadata:
+  name: prueba-gaturro-securitygrouprule-1
+spec:
+  forProvider:
+    cidrBlocks:
+      - 0.0.0.0/0
+    fromPort: 0
+    protocol: "-1"
+    region: us-west-1
+    securityGroupIdRef:
+      name: prueba-gaturro-securitygroup
+    toPort: 0
+    type: ingress
+    tags:
+      Name: prueba-gaturro-securitygrouprule-1
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroupRule
+metadata:
+  name: prueba-gaturro-securitygrouprule-2
+spec:
+  forProvider:
+    cidrBlocks:
+      - 0.0.0.0/0
+    fromPort: 0
+    protocol: "-1"
+    region: us-west-1
+    securityGroupIdRef:
+      name: prueba-gaturro-securitygroup
+    toPort: 0
+    type: egress
+    tags:
+      Name: prueba-gaturro-securitygrouprule-2
+  providerConfigRef:
+    name: aws

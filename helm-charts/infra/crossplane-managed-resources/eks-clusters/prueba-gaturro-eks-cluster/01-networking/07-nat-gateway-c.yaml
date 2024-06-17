@@ -1,0 +1,28 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: NATGateway
+metadata:
+  name: prueba-gaturro-nat-gw-c
+spec:
+  forProvider:
+    region: us-west-1
+    subnetIdRef: 
+      name: prueba-gaturro-public-subnet-c
+    allocationIdRef:
+      name: prueba-gaturro-eip-c
+    tags:
+      Name: prueba-gaturro-nat-gw-c
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: EIP
+metadata:
+  name: prueba-gaturro-eip-c
+spec:
+  forProvider:
+    region: us-west-1
+    vpc: true
+    tags:
+      Name: prueba-gaturro-eip-c
+  providerConfigRef:
+    name: aws
