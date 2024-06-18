@@ -2,7 +2,7 @@ environment: prod
 
 deployment:
   image:  
-    tag: 1
+    tag: 3
   replicas: 1
   labels:
     full-name: piaggio-frontend-prod
