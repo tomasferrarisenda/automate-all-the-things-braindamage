@@ -4,7 +4,7 @@ service: frontend
 
 deployment:
   image:
-    repository: AATT_DOCKERHUB_USERNAME/piaggio-frontend
+    repository: tferrari92/piaggio-frontend
   labels:
     system: piaggio
     service: frontend
