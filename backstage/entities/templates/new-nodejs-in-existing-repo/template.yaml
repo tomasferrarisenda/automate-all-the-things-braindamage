@@ -70,8 +70,7 @@ spec:
             allowedHosts:
               - github.com
             # allowedOrganizations: # This doesn't get displayed as a dropdown list like allowedRepos does, IDK why.
-            #   - tomasferrarisenda
-            #   - tferrari92
+            #   - AATT_GITHUB_USERNAME
             allowedRepos:
               - automate-all-the-things-braindamage
               - automate-all-the-things-transcendence
@@ -90,6 +89,9 @@ spec:
           service: ${{ parameters.service }}
           description: ${{ parameters.description }}
           owner: ${{ parameters.owner }}
+          repoHost: ${{ (parameters.repoUrl | parseRepoUrl).host }}
+          repoOwner: ${{ (parameters.repoUrl | parseRepoUrl).owner }}
+          repoName: ${{ (parameters.repoUrl | parseRepoUrl).repo }}
 
     - id: fetch-helm-chart
       name: Fetch Helm Chart
@@ -110,6 +112,9 @@ spec:
         values:
           system: ${{ parameters.system | replace('system:default/', '') }}
           service: ${{ parameters.service }}
+          repoHost: ${{ (parameters.repoUrl | parseRepoUrl).host }}
+          repoOwner: ${{ (parameters.repoUrl | parseRepoUrl).owner }}
+          repoName: ${{ (parameters.repoUrl | parseRepoUrl).repo }}
 
     - id: fetch-github-workflow
       name: Fetch GitHub Workflow
