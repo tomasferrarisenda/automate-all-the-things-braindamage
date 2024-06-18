@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: ale-pipi
+spec:
+  profile:
+    displayName: "Ale Pipi"	
+    email: admin@admin.com
+    picture: https://img.a.transfermarkt.technology/portrait/big/28003-1710080339.jpg?lm=1
+  memberOf:
+    - piaggio-team
