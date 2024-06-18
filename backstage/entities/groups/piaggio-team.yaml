@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: piaggio-team
+  title: piaggio-team
+  description: fdgdfgdfg fgdfgdfg gdfgfdgdg
+spec:
+  type: team
+  children: []
+  parent: prueba-team
+  profile:
+    email: admin@admin.com
+    # slack: 
