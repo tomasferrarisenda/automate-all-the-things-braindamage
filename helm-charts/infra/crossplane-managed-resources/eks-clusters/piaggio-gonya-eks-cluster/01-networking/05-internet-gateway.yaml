@@ -1,0 +1,13 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: InternetGateway
+metadata:
+  name: piaggio-gonya-internet-gw
+spec:
+  forProvider:
+    region: us-west-1
+    vpcIdRef:
+      name: piaggio-gonya-vpc
+    tags:
+      Name: piaggio-gonya-internet-gw
+  providerConfigRef:
+    name: aws
