@@ -1,0 +1,12 @@
+system: piaggio 
+
+service: backend 
+
+deployment:
+  image:
+    repository: AATT_DOCKERHUB_USERNAME/piaggio-backend
+  labels:
+    system: piaggio
+    service: backend
+    backstage.io/kubernetes-id: piaggio-backend
+    istio: monitor

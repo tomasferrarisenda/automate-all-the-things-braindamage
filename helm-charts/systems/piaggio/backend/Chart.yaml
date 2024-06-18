@@ -1,0 +1,4 @@
+apiVersion: v2
+name: piaggio-backend
+description: A Helm chart for deploying piaggio-backend
+version: 1.0
