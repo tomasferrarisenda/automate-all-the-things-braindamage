@@ -1,0 +1,55 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroup
+metadata:
+  name: piaggio-gonya-securitygroup
+spec:
+  forProvider:
+    description: Allow TLS inbound traffic
+    name: piaggio-gonya-securitygroup
+    region: us-west-1
+    vpcIdRef: 
+      name: piaggio-gonya-vpc
+    tags:
+      Name: piaggio-gonya-securitygroup
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroupRule
+metadata:
+  name: piaggio-gonya-securitygrouprule-1
+spec:
+  forProvider:
+    cidrBlocks:
+      - 0.0.0.0/0
+    fromPort: 0
+    protocol: "-1"
+    region: us-west-1
+    securityGroupIdRef:
+      name: piaggio-gonya-securitygroup
+    toPort: 0
+    type: ingress
+    tags:
+      Name: piaggio-gonya-securitygrouprule-1
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: SecurityGroupRule
+metadata:
+  name: piaggio-gonya-securitygrouprule-2
+spec:
+  forProvider:
+    cidrBlocks:
+      - 0.0.0.0/0
+    fromPort: 0
+    protocol: "-1"
+    region: us-west-1
+    securityGroupIdRef:
+      name: piaggio-gonya-securitygroup
+    toPort: 0
+    type: egress
+    tags:
+      Name: piaggio-gonya-securitygrouprule-2
+  providerConfigRef:
+    name: aws

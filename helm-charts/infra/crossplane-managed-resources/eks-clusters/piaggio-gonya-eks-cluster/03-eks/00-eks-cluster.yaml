@@ -1,0 +1,20 @@
+apiVersion: eks.aws.upbound.io/v1beta1
+kind: Cluster
+metadata:
+  name: piaggio-gonya-eks-cluster
+spec:
+  forProvider:
+    region: us-west-1
+    version: "1.29"
+    roleArnRef:
+      name: piaggio-gonya-eks-controlplane-role
+    vpcConfig:
+      - endpointPublicAccess: true
+        endpointPrivateAccess: false 
+        subnetIdRefs:
+          - name: piaggio-gonya-private-subnet-b
+          - name: piaggio-gonya-private-subnet-c
+    tags:
+      Name: piaggio-gonya-eks-cluster
+  providerConfigRef:
+    name: aws

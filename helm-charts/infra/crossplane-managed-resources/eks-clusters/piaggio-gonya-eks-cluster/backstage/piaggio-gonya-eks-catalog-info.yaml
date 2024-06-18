@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: piaggio-gonya-eks-cluster
+  description: gonya eks cluster for the piaggio system
+  tags:
+    - aws 
+    - eks
+spec:
+  type: kubernetes-cluster
+  lifecycle: experimental
+  owner: piaggio-team
+  system: piaggio

@@ -1,0 +1,30 @@
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: RouteTable
+metadata:
+  name: piaggio-gonya-route-table-private-c
+spec:
+  forProvider:
+    region: us-west-1
+    vpcIdRef: 
+      name: piaggio-gonya-vpc
+    tags:
+      Name: piaggio-gonya-route-table-private-c
+  providerConfigRef:
+    name: aws
+---
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: Route
+metadata:
+  name: piaggio-gonya-route-private-c
+spec:
+  forProvider:
+    destinationCidrBlock: 0.0.0.0/0
+    natGatewayIdRef:
+      name: piaggio-gonya-nat-gw-c
+    region: us-west-1
+    routeTableIdRef:
+      name: piaggio-gonya-route-table-private-c
+    tags:
+      Name: piaggio-gonya-route-private-c
+  providerConfigRef:
+    name: aws
