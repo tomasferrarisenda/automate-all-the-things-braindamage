@@ -25,6 +25,7 @@
 This Transcendence Edition builds upon the [Braindamage Edition](https://github.com/tferrari92/automate-all-the-things-braindamage).
 
 ### New features:
+- Horizontal Pod Autoscaler & Metrics-Server
 - Crossplane
 - Beefier Backstage deployment with 
   - New plugins:
@@ -45,6 +46,7 @@ This Transcendence Edition builds upon the [Braindamage Edition](https://github.
 5. [Braindamage Edition](https://github.com/tferrari92/automate-all-the-things-braindamage)
 6. [Transcendence Edition](https://github.com/tferrari92/automate-all-the-things-transcendence) 
 7. [Nirvana Edition](https://github.com/tferrari92/automate-all-the-things-nirvana)
+8. [Almighty Edition](https://github.com/tferrari92/automate-all-the-things-almighty)
 
 ### Spin-offs:
 - [Backstage Minikube Lab](https://github.com/tferrari92/backstage-minikube-lab)
@@ -689,7 +691,7 @@ Here are the specific numbers:
 ## App of Apps
 - -5 Prometheus / Grafana / Istio Base / Istiod / Sealed-Secrets 
 - -4 Istio Gateway / Jaeger / Loki  
-- -3 Flagger / Crossplane 
+- -3 Flagger / Crossplane / Metrics-Server
 - -2 Kiali / Flagger Load-Tester / Crossplane Providers
 - -1 Backstage / Crossplane ProviderConfigs 
 - 0 Backends / Crossplane Managed Resources
@@ -878,7 +880,6 @@ Special thanks to all these wonderful YouTube people. This wouldn't have been po
 
 [Automate All The Things Nirvana Edition](https://github.com/tferrari92/automate-all-the-things-nirvana):
 
-- We'll start using Horizontal Pod Autoscalers.
 - We'll automate TLS certificates provisioning with Kubernetes Cert Manager.
 - We'll automate DNS records provisioning with Kubernetes External DNS.
 - We'll ditch DockerHub and start using our self-hosted image registry with Harbor.
