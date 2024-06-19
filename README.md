@@ -702,10 +702,12 @@ Here are the specific numbers:
 - -1 SealedSecret
 - 0 Deployment
 - 1 Canary
+- 2 Horizontal Pod Autoscaler
 
 ## Frontend Applications
 - 0 Deployment
 - 1 Canary
+- 2 Horizontal Pod Autoscaler
 
 <br/>
 <br/>
