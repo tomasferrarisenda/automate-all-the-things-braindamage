@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
   name: aatt-demo-bucket
-  description: aatt-demo S3 bucket
+  description: Demo S3 bucket for the aatt system
   tags:
     - aws 
     - s3

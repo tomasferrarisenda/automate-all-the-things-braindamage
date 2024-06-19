@@ -2,12 +2,12 @@ apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
   name: aatt-demo-eks-cluster
-  description: demo eks cluster for the aatt system
+  description: Demo EKS cluster for the aatt system
   tags:
     - aws 
     - eks
 spec:
   type: kubernetes-cluster
   lifecycle: experimental
-  owner: prueba-team
-  system: aatt
+  owner: aatt-demo-team
+  system: aatt-demo-system
